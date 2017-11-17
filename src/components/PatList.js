@@ -74,7 +74,7 @@ class PatList extends React.Component {
         {
           this.state.pats.slice().map(pat =>
             <GridTile key={pat.VisitId} style={styles.tile}>
-              <Link to={`/emr/${pat.VisitId}`}>
+              <Link to={`/ModuleWrapper/${pat.VisitId}`}>
                 <PatTile pat={pat} />
               </Link>
             </GridTile>

@@ -12,8 +12,10 @@ import EmrWrapper from './components/EmrWrapper';
 import EmrMedias from './components/EmrMedias';
 import Login from './components/Login';
 import Setting from './components/Setting';
+import ModuleWrapper from './components/ModuleWrapper';
 import NotFound from './components/404';
 import auth from './auth';
+
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route {...rest} render={props => (
@@ -34,7 +36,9 @@ const AppRouter = () => (
             <Switch>
                 <PrivateRoute exact path="/" component={Home} />
                 <PrivateRoute path="/home/:wardId?" component={Home} />
-                <PrivateRoute path="/emr/:regId/:emrId?" component={EmrWrapper} />
+                <PrivateRoute path="/emr/:regId?/:emrId?" component={EmrWrapper} />
+                {/* 整体功能模块的界面 */}
+                <PrivateRoute path="/ModuleWrapper/:regId/:visitId?" component={ModuleWrapper} />
                 <PrivateRoute path="/sign/:regId/:emrId" component={EmrSign} />
                 <PrivateRoute path="/informed/:regId/:emrId" component={EmrInformed} />
                 <PrivateRoute path="/media/:regId/:emrId/:pos?" component={EmrMedias} />
