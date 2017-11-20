@@ -4,10 +4,10 @@ import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
 
 const contentstyle={
-    'paddingTop':64, 
+    'paddingTop':64
 };
 const style = {
-    'marginLeft': 20,
+    'marginLeft': 20
 };
 
 class ReportTemperature extends React.Component {
@@ -24,7 +24,6 @@ class ReportTemperature extends React.Component {
                 <Divider />
             </Paper>
         )
-
     }
 }
 

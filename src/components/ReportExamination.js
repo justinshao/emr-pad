@@ -14,13 +14,13 @@ const content={
     'fontSize':14,
     'width':'76%',
     'lineHeight':'1.6',
-    'letterSpacing':'2px',
+    'letterSpacing':'2px'
 };
 const cardstyle={
-    'padding':'10px',
+    'padding':'10px'
 };
 const containerStyle={
-    'marginTop':'20px',
+    'marginTop':'20px'
 }
 class ReportExamination extends React.Component{
     
@@ -31,7 +31,7 @@ class ReportExamination extends React.Component{
             detailHeader:'姓名： 性别： 年龄： 病区： 床号： 临床诊断： 检查项目： 报告单号：',
             detailBottom:'报告人： 报告日期： 审核人： 审核日期：',
             showContent:'检查所见内容',
-            promptContent:'提示信息内容',
+            promptContent:'提示信息内容'
         }
     }
 

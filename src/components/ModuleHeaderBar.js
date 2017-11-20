@@ -10,7 +10,7 @@ class ModuleHeaderBar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            title: null,
+            title: null
         };
         this.handleNavBackRequest = this.handleNavBackRequest.bind(this);
         this.handleMenuButtonTouchTap = this.handleMenuButtonTouchTap.bind(this);
@@ -41,7 +41,7 @@ class ModuleHeaderBar extends React.Component {
         let title = (this.state.title || <CircularProgress color="white" size={headerBarLoadingStyle.size} style={headerBarLoadingStyle} />);
         const style = {
             'color': 'white',
-            'paddingRight': '40px',
+            'paddingRight': '40px'
         }
         return (
             <NavBackHeaderBar

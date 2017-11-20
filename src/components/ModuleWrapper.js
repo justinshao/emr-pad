@@ -8,7 +8,7 @@ class ModuleWrapper extends React.Component {
         super(props);
 
         this.state = {
-            menuOpen: false,
+            menuOpen: false
         }
 
         this.handleNavBackRequest = this.handleNavBackRequest.bind(this);
@@ -43,64 +43,64 @@ class ModuleWrapper extends React.Component {
     // view模块默认显示页面
     componentDidMount() {
         let { history } = this.props;
-        let { regId, emrId } = this.props.match.params;
-        history.push('/ModuleWrapper/ReportLaboratory');
+        let { regId } = this.props.match.params;
+        history.push(`/ModuleWrapper/ReportLaboratory/${regId}`);
     }
 
     // 显示病例页面
     handleEmrTouchTap() {
         let { history } = this.props;
-        let { regId, emrId } = this.props.match.params;
-        history.replace(`/emr/${emrId}`);
+        let { regId } = this.props.match.params;
+        history.replace(`/emr/${regId}`);
     }
 
     // 显示检查页面
     handleExamTouchTap() {
         let { history } = this.props;
-        let { regId, emrId } = this.props.match.params;
-        history.replace(`/ModuleWrapper/ReportExamination/${emrId}`);
+        let { regId } = this.props.match.params;
+        history.replace(`/ModuleWrapper/ReportExamination/${regId}`);
     }
 
     // 显示化验界面
     handleLabTouchTap() {
         let { history } = this.props;
-        let { regId, emrId } = this.props.match.params;
-        history.replace(`/ModuleWrapper/ReportLaboratory/${emrId}`);
+        let { regId } = this.props.match.params;
+        history.replace(`/ModuleWrapper/ReportLaboratory/${regId}`);
     }
 
     // 显示护理记录单
     handleCareTouchTap() {
         let { history } = this.props;
-        let { regId, emrId } = this.props.match.params;
-        history.replace(`/ModuleWrapper/ReportCareOrder/${emrId}`);
+        let { regId } = this.props.match.params;
+        history.replace(`/ModuleWrapper/ReportCareOrder/${regId}`);
     }
 
     // 显示体温报告单
     handleTemperTouchTap() {
         let { history } = this.props;
-        let { regId, emrId } = this.props.match.params;
-        history.replace(`/ModuleWrapper/ReportTemperature/${emrId}`);
+        let { regId } = this.props.match.params;
+        history.replace(`/ModuleWrapper/ReportTemperature/${regId}`);
     }
 
     // 跳转医嘱
     handleDtAdviceTouchTap() {
         let { history } = this.props;
-        let { regId, emrId } = this.props.match.params;
-        history.replace(`/ModuleWrapper/ReportDtAdvice/${emrId}`);
+        let { regId } = this.props.match.params;
+        history.replace(`/ModuleWrapper/ReportDtAdvice/${regId}`);
     }
 
     // 跳转中药医嘱
     handleChDtAdviceTouchTap() {
         let { history } = this.props;
-        let { regId, emrId } = this.props.match.params;
-        history.replace(`/ModuleWrapper/ReportChDtAdvice/${emrId}`);
+        let { regId } = this.props.match.params;
+        history.replace(`/ModuleWrapper/ReportChDtAdvice/${regId}`);
     }
 
     // 跳转诊断
     handleDiagTouchTap() {
         let { history } = this.props;
-        let { regId, emrId } = this.props.match.params;
-        history.replace(`/ModuleWrapper/ReportDiag/${emrId}`);
+        let { regId } = this.props.match.params;
+        history.replace(`/ModuleWrapper/ReportDiag/${regId}`);
     }
 
     render() {

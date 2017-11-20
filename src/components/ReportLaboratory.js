@@ -7,23 +7,23 @@ import {
     TableHeader,
     TableHeaderColumn,
     TableRow,
-    TableRowColumn,
+    TableRowColumn
 } from 'material-ui/Table';
 
-const tableHeader={
-    'backgroundColor':'#f1f1f1',
-    'height':'30px',
-    'lineHeight':'1',
-    'padding':'0',
-    'textAlign':'center',
-    'fontSize':'13px',
+const tableHeader = {
+    'backgroundColor': '#f1f1f1',
+    'height': '30px',
+    'lineHeight': '1',
+    'padding': '0',
+    'textAlign': 'center',
+    'fontSize': '13px'
 };
-const tableContent={
-    'height':'26px',
-    'lineHeight':'1',
-    'padding':'0',
-    'textAlign':'center',
-    'fontSize':'12px',
+const tableContent = {
+    'height': '26px',
+    'lineHeight': '1',
+    'padding': '0',
+    'textAlign': 'center',
+    'fontSize': '12px'
 };
 
 class ReportLaboratory extends React.Component {
@@ -42,9 +42,8 @@ class ReportLaboratory extends React.Component {
                 <ReportTitle
                     title={this.state.title}
                     detailHeader={this.state.detailHeader}
-                    detailBottom={this.state.detailBottom}
-                >
-                    <Table style={{'border':'2px solid #f1f1f1'}}>
+                    detailBottom={this.state.detailBottom}>
+                    <Table style={{ 'border': '2px solid #f1f1f1' }}>
                         <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                             <TableRow style={tableHeader}>
                                 <TableHeaderColumn style={tableHeader} >检查项目</TableHeaderColumn>
@@ -76,13 +75,11 @@ class ReportLaboratory extends React.Component {
                                 <TableRowColumn style={tableContent}>g/L</TableRowColumn>
                                 <TableRowColumn style={tableContent}>→</TableRowColumn>
                             </TableRow>
-                            
                         </TableBody>
-                    </Table>  
+                    </Table>
                 </ReportTitle>
             </div>
         )
-
     }
 }
 
