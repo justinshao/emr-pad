@@ -16,7 +16,6 @@ import ModuleWrapper from './components/ModuleWrapper';
 import NotFound from './components/404';
 import auth from './auth';
 
-
 const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route {...rest} render={props => (
         auth.isAuthenticated ? (
@@ -38,7 +37,7 @@ const AppRouter = () => (
                 <PrivateRoute path="/home/:wardId?" component={Home} />
                 <PrivateRoute path="/emr/:regId?/:emrId?" component={EmrWrapper} />
                 {/* 整体功能模块的界面 */}
-                <PrivateRoute path="/ModuleWrapper/:regId/:visitId?" component={ModuleWrapper} />
+                <PrivateRoute path="/ModuleWrapper/:regId?" component={ModuleWrapper}/>
                 <PrivateRoute path="/sign/:regId/:emrId" component={EmrSign} />
                 <PrivateRoute path="/informed/:regId/:emrId" component={EmrInformed} />
                 <PrivateRoute path="/media/:regId/:emrId/:pos?" component={EmrMedias} />
