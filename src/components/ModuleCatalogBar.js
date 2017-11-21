@@ -9,12 +9,12 @@ class ModuleCatalogBar extends React.Component {
         this.handleEmrTouchTap = this.handleEmrTouchTap.bind(this);
         this.handleExamTouchTap = this.handleExamTouchTap.bind(this);
         this.handleLabTouchTap = this.handleLabTouchTap.bind(this);
+        this.handleLabXTouchTap = this.handleLabXTouchTap.bind(this);
         this.handleCareTouchTap = this.handleCareTouchTap.bind(this);
         this.handleTemperTouchTap = this.handleTemperTouchTap.bind(this);
         this.handleDtAdviceTouchTap = this.handleDtAdviceTouchTap.bind(this);
         this.handleChDtAdviceTouchTap = this.handleChDtAdviceTouchTap.bind(this);
         this.handleDiagTouchTap = this.handleDiagTouchTap.bind(this);
-
     }
 
     // 跳转病例组件
@@ -35,6 +35,13 @@ class ModuleCatalogBar extends React.Component {
     handleLabTouchTap() {
         if (this.props.onLabTouchTap) {
             this.props.onLabTouchTap();
+        }
+    }
+
+    // 跳转化验X报告
+    handleLabXTouchTap() {
+        if (this.props.onLabXTouchTap) {
+            this.props.onLabXTouchTap();
         }
     }
 
@@ -87,6 +94,7 @@ class ModuleCatalogBar extends React.Component {
                     onEmrTouchTap={this.handleEmrTouchTap}
                     onExamTouchTap={this.handleExamTouchTap}
                     onLabTouchTap={this.handleLabTouchTap}
+                    onLabXTouchTap={this.handleLabXTouchTap}
                     onCareTouchTap={this.handleCareTouchTap}
                     onTemperTouchTap={this.handleTemperTouchTap}
                     onDtAdviceTouchTap={this.handleDtAdviceTouchTap}
@@ -96,7 +104,6 @@ class ModuleCatalogBar extends React.Component {
             </Drawer>
         );
     }
-
 }
 
 export default ModuleCatalogBar;

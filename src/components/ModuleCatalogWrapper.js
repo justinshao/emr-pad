@@ -12,6 +12,7 @@ export default class ModuleCatalogWrapper extends React.Component {
         this.handleEmrTouchTap = this.handleEmrTouchTap.bind(this);
         this.handleExamTouchTap = this.handleExamTouchTap.bind(this);
         this.handleLabTouchTap = this.handleLabTouchTap.bind(this);
+        this.handleLabXTouchTap = this.handleLabXTouchTap.bind(this);
         this.handleCareTouchTap = this.handleCareTouchTap.bind(this);
         this.handleTemperTouchTap = this.handleTemperTouchTap.bind(this);
         this.handleDtAdviceTouchTap = this.handleDtAdviceTouchTap.bind(this);
@@ -37,6 +38,13 @@ export default class ModuleCatalogWrapper extends React.Component {
     handleLabTouchTap() {
         if (this.props.onLabTouchTap) {
             this.props.onLabTouchTap();
+        }
+    }
+
+    // 跳转化验X报告
+    handleLabXTouchTap() {
+        if (this.props.onLabXTouchTap) {
+            this.props.onLabXTouchTap();
         }
     }
 
@@ -81,7 +89,17 @@ export default class ModuleCatalogWrapper extends React.Component {
                 <List>
                     <ListItem primaryText="病例" leftIcon={<ContentInbox style={style} />} key='bingli' onClick={this.handleEmrTouchTap} />
                     <ListItem primaryText="检查报告" leftIcon={<ContentInbox style={style} />} key='jiancha' onClick={this.handleExamTouchTap} />
-                    <ListItem primaryText="化验报告" leftIcon={<ContentInbox style={style} />} key='huayan' onClick={this.handleLabTouchTap} />
+                    <ListItem
+                        primaryText="化验报告"
+                        leftIcon={<ContentInbox style={style} />}
+                        key='huayan'
+                        initiallyOpen={false}
+                        primaryTogglesNestedList={true}
+                        nestedItems={[
+                            <ListItem key='xuechanggui' primaryText="血常规" onClick={this.handleLabTouchTap} />,
+                            <ListItem key='x1' primaryText="X1" onClick={this.handleLabXTouchTap} />
+                        ]}
+                    />
                     <ListItem
                         primaryText="护理单"
                         key='huli'

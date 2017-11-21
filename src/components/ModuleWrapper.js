@@ -17,6 +17,7 @@ class ModuleWrapper extends React.Component {
         this.handleEmrTouchTap = this.handleEmrTouchTap.bind(this);
         this.handleExamTouchTap = this.handleExamTouchTap.bind(this);
         this.handleLabTouchTap = this.handleLabTouchTap.bind(this);
+        this.handleLabXTouchTap = this.handleLabXTouchTap.bind(this);
         this.handleCareTouchTap = this.handleCareTouchTap.bind(this);
         this.handleTemperTouchTap = this.handleTemperTouchTap.bind(this);
         this.handleDtAdviceTouchTap = this.handleDtAdviceTouchTap.bind(this);
@@ -66,6 +67,13 @@ class ModuleWrapper extends React.Component {
         let { history } = this.props;
         let { regId } = this.props.match.params;
         history.replace(`/ModuleWrapper/ReportLaboratory/${regId}`);
+    }
+
+    // 显示化验X界面
+    handleLabXTouchTap() {
+        let { history } = this.props;
+        let { regId } = this.props.match.params;
+        history.replace(`/ModuleWrapper/ReportLaboratoryX/${regId}`);
     }
 
     // 显示护理记录单
@@ -118,6 +126,7 @@ class ModuleWrapper extends React.Component {
                     onEmrTouchTap={this.handleEmrTouchTap}
                     onExamTouchTap={this.handleExamTouchTap}
                     onLabTouchTap={this.handleLabTouchTap}
+                    onLabXTouchTap={this.handleLabXTouchTap}
                     onCareTouchTap={this.handleCareTouchTap}
                     onTemperTouchTap={this.handleTemperTouchTap}
                     onDtAdviceTouchTap={this.handleDtAdviceTouchTap}

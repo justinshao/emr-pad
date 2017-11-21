@@ -1,28 +1,39 @@
 import React from 'react';
-import Divider from 'material-ui/Divider';
-import Paper from 'material-ui/Paper';
-import TextField from 'material-ui/TextField';
+import { titleStyle} from '../styles';
 
-const contentstyle={
-    'paddingTop':64
+const viewHeight=document.body.clientHeight;
+const contentStyle={
+    'width': '100%',
+    'paddingTop': '64px',
+    'height':`${viewHeight-64}px`,
+    'overflow':'hidden'
 };
-const style = {
-    'marginLeft': 20
+const tempContentStyle={
+    'height':`${viewHeight-120}px`,
+    'overflow':'scroll'
+};
+const imgStyle={
+    'width':'94%',
+    'display':'block',
+    'margin':'auto'
 };
 
 class ReportTemperature extends React.Component {
-    render() {
-        return (
-            <Paper zDepth={2} style={contentstyle}>
-                <TextField hintText="体温1" style={style} underlineShow={false} />
-                <Divider />
-                <TextField hintText="体温2" style={style} underlineShow={false} />
-                <Divider />
-                <TextField hintText="体温3" style={style} underlineShow={false} />
-                <Divider />
-                <TextField hintText="体温4" style={style} underlineShow={false} />
-                <Divider />
-            </Paper>
+    constructor(props){
+        super(props);
+        this.state={
+            src:''
+        }
+    }
+
+    render(){
+        return(
+            <div style={contentStyle}>
+                <div style={titleStyle}>体温单</div>
+                <div style={tempContentStyle}>
+                    <img src='../../images/picCare.jpg' style={imgStyle}/>
+                </div>
+            </div>
         )
     }
 }

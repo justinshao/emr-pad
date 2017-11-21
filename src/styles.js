@@ -4,6 +4,14 @@ const headerBarHeight = 64;
 const headerBarLoadingSize = 40;
 const appThemeColor = 'rgb(0, 188, 212)';
 
+// 自定义报告标题样式
+const titleStyle={
+    'textAlign': 'center',
+    'lineHeight': '2.8',
+    'margin': '0',
+    'fontWeight': '600'
+};
+
 const headerBarStyle = {
     position: 'fixed',
     paddingRight: '0px'
@@ -66,5 +74,6 @@ export {
     errorStyle,
     appThemeColor,
     writingBoardStyle,
-    signBoardStyle
+    signBoardStyle,
+    titleStyle
 };
