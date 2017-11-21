@@ -1,5 +1,6 @@
 import React from 'react';
 import { titleStyle} from '../styles';
+import NoResult from './NoResult';
 
 const viewHeight=document.body.clientHeight;
 const contentStyle={
@@ -27,12 +28,19 @@ class ReportTemperature extends React.Component {
     }
 
     render(){
+        let showContent = (
+            true ? (
+                <div>
+                    <div style={titleStyle}>体温单</div>
+                    <div style={tempContentStyle}>
+                        <img src='../../images/picCare.jpg' style={imgStyle}/>
+                    </div>
+                </div>
+            ) : <NoResult />
+        );
         return(
             <div style={contentStyle}>
-                <div style={titleStyle}>体温单</div>
-                <div style={tempContentStyle}>
-                    <img src='../../images/picCare.jpg' style={imgStyle}/>
-                </div>
+                {showContent}
             </div>
         )
     }

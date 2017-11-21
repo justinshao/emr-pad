@@ -9,6 +9,7 @@ import {
     TableRow,
     TableRowColumn
 } from 'material-ui/Table';
+import NoResult from './NoResult';
 
 const tableHeader = {
     'backgroundColor': '#f1f1f1',
@@ -37,8 +38,8 @@ class ReportLaboratory extends React.Component {
     }
 
     render() {
-        return (
-            <div style={contentStyle}>
+        let showContent = (
+            true ? (
                 <ReportTitle
                     title={this.state.title}
                     detailHeader={this.state.detailHeader}
@@ -78,6 +79,11 @@ class ReportLaboratory extends React.Component {
                         </TableBody>
                     </Table>
                 </ReportTitle>
+            ) : <NoResult />
+        );
+        return (
+            <div style={contentStyle}>
+                {showContent}
             </div>
         )
     }

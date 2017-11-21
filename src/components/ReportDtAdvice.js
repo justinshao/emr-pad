@@ -2,6 +2,7 @@ import React from 'react';
 import { titleStyle } from '../styles';
 import ReportDtAdviceHeader from './ReportDtAdviceHeader';
 import ReportDtAdviceContent from './ReportDtAdviceContent';
+import NoResult from './NoResult';
 
 const contentStyle = {
     'width': '100%',
@@ -68,23 +69,30 @@ class ReportDtAdvice extends React.Component {
     }
 
     render() {
+        let showContent = (
+            true ? (
+                <div>
+                    <div style={titleStyle}>医嘱单</div>
+                    <ReportDtAdviceHeader
+                        onChangeTimeofAdvice={this.handleChangeTimeofAdvice}
+                        onChangeDischargedDrug={this.handleChangeDischargedDrug}
+                        onChangeTypeofadvice={this.handleChangeTypeofadvice}
+                        onChangeDate={this.handleChangeDate}
+                        onChangeStatus={this.handleChangeStatus}
+                    />
+                    <ReportDtAdviceContent
+                        timeofAdvice={this.state.timeofAdvice}
+                        dischargedDrug={this.state.dischargedDrug}
+                        typeofadvice={this.state.typeofadvice}
+                        date={this.state.date}
+                        status={this.state.status}
+                    />
+            </div>
+            ) : <NoResult />
+        );
         return (
             <div style={contentStyle}>
-                <div style={titleStyle}>医嘱单</div>
-                <ReportDtAdviceHeader
-                    onChangeTimeofAdvice={this.handleChangeTimeofAdvice}
-                    onChangeDischargedDrug={this.handleChangeDischargedDrug}
-                    onChangeTypeofadvice={this.handleChangeTypeofadvice}
-                    onChangeDate={this.handleChangeDate}
-                    onChangeStatus={this.handleChangeStatus}
-                />
-                <ReportDtAdviceContent
-                    timeofAdvice={this.state.timeofAdvice}
-                    dischargedDrug={this.state.dischargedDrug}
-                    typeofadvice={this.state.typeofadvice}
-                    date={this.state.date}
-                    status={this.state.status}
-                />
+                {showContent}
             </div>
         )
     }

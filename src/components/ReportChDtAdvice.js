@@ -2,6 +2,7 @@ import React from 'react';
 import { titleStyle } from '../styles';
 import ReportChDtAdviceHeader from './ReportChDtAdviceHeader';
 import ReportChDtAdviceContent from './ReportChDtAdviceContent';
+import NoResult from './NoResult';
 
 const contentStyle = {
     'width': '100%',
@@ -46,19 +47,26 @@ class ReportChDtAdvice extends React.Component {
     }
 
     render() {
+        let showContent = (
+            true ? (
+                <div>
+                    <div style={titleStyle}>中药医嘱单</div>
+                    <ReportChDtAdviceHeader
+                        onChangeTypeofadvice={this.handleChangeTypeofadvice}
+                        onChangeDate={this.handleChangeDate}
+                        onChangeStatus={this.handleChangeStatus}
+                    />
+                    <ReportChDtAdviceContent
+                        typeofadvice={this.state.typeofadvice}
+                        date={this.state.date}
+                        status={this.state.status}
+                    />
+                </div>
+            ) : <NoResult />
+        );
         return (
             <div style={contentStyle}>
-                <div style={titleStyle}>中药医嘱单</div>
-                <ReportChDtAdviceHeader
-                    onChangeTypeofadvice={this.handleChangeTypeofadvice}
-                    onChangeDate={this.handleChangeDate}
-                    onChangeStatus={this.handleChangeStatus}
-                />
-                <ReportChDtAdviceContent
-                    typeofadvice={this.state.typeofadvice}
-                    date={this.state.date}
-                    status={this.state.status}
-                />
+                {showContent}
             </div>
         )
     }
