@@ -1,5 +1,5 @@
 import React from 'react';
-import { contentStyle } from '../styles';
+import { contentStyle, tableHeader, tableContent } from '../styles';
 import ReportTitle from './ReportTitle';
 import {
     Table,
@@ -11,21 +11,7 @@ import {
 } from 'material-ui/Table';
 import NoResult from './NoResult';
 
-const tableHeader = {
-    'backgroundColor': '#f1f1f1',
-    'height': '30px',
-    'lineHeight': '1',
-    'padding': '0',
-    'textAlign': 'center',
-    'fontSize': '13px'
-};
-const tableContent = {
-    'height': '26px',
-    'lineHeight': '1',
-    'padding': '0',
-    'textAlign': 'center',
-    'fontSize': '12px'
-};
+
 
 class ReportLaboratory extends React.Component {
     constructor(props) {

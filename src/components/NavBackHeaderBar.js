@@ -25,7 +25,8 @@ class NavBackHeaderBar extends React.Component {
                 iconElementLeft={<IconButton><BackIcon /></IconButton>}
                 iconElementRight={this.props.iconElementRight}
                 onLeftIconButtonTouchTap={this.handleNavBackTouchTap}
-                style={headerBarStyle}>
+                style={headerBarStyle}
+                titleStyle={{'fontSize':'20px'}}>
                 {this.props.children}
             </AppBar>
         );

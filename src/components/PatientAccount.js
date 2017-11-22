@@ -1,32 +1,18 @@
 import React from 'react';
-import { contentStyle, titleStyle ,tableHeader,tableContent} from '../styles';
-import {
-    Table,
-    TableBody,
-    TableHeader,
-    TableHeaderColumn,
-    TableRow,
-    TableRowColumn
-} from 'material-ui/Table';
+import { contentStyle, titleStyle, tableHeader, tableContent } from '../styles';
+import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 import NoResult from './NoResult';
 
-class ReportDiag extends React.Component {
+class PatientHospital extends React.Component {
+    
     render() {
-        let showContent = (
-            true ? (
+        let content=(
+            true? (
                 <div>
-                <div style={titleStyle}>诊断信息</div>
                     <Table style={{ 'border': '2px solid #f1f1f1' }}>
                         <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                             <TableRow style={tableHeader}>
-                                <TableHeaderColumn style={tableHeader} >诊断名</TableHeaderColumn>
-                                <TableHeaderColumn style={tableHeader} >主诊断</TableHeaderColumn>
-                                <TableHeaderColumn style={tableHeader} >确诊</TableHeaderColumn>
-                                <TableHeaderColumn style={tableHeader} >传染</TableHeaderColumn>
-                                <TableHeaderColumn style={tableHeader} >ICD</TableHeaderColumn>
-                                <TableHeaderColumn style={tableHeader} >诊断医生</TableHeaderColumn>
-                                <TableHeaderColumn style={tableHeader} >诊断时间</TableHeaderColumn>
-                                <TableHeaderColumn style={tableHeader} >诊断依据</TableHeaderColumn>
+                                <TableHeaderColumn style={tableHeader} >账户信息</TableHeaderColumn>
                             </TableRow>
                         </TableHeader>
                         <TableBody displayRowCheckbox={false}>
@@ -53,14 +39,14 @@ class ReportDiag extends React.Component {
                         </TableBody>
                     </Table>
                 </div>
-            ) : <NoResult />
-        );
+            ):<NoResult/>
+        )
         return (
-            <div style={contentStyle}>
-                {showContent}
+            <div>
+                {content}
             </div>
         )
     }
 }
 
-export default ReportDiag;
+export default PatientHospital;

@@ -13,6 +13,7 @@ import EmrMedias from './components/EmrMedias';
 import Login from './components/Login';
 import Setting from './components/Setting';
 import ModuleWrapper from './components/ModuleWrapper';
+import PatientInfor from './components/PatientInfor';
 import NotFound from './components/404';
 import auth from './auth';
 
@@ -37,7 +38,8 @@ const AppRouter = () => (
                 <PrivateRoute path="/home/:wardId?" component={Home} />
                 <PrivateRoute path="/emr/:regId?/:emrId?" component={EmrWrapper} />
                 {/* 整体功能模块的界面 */}
-                <PrivateRoute path="/ModuleWrapper/:regId?" component={ModuleWrapper}/>
+                <PrivateRoute path="/ModuleWrapper/:regId/:content?" component={ModuleWrapper}/>
+                <PrivateRoute path="/PaitentInfor/:regId/:inforId?" component={PatientInfor}/>
                 <PrivateRoute path="/sign/:regId/:emrId" component={EmrSign} />
                 <PrivateRoute path="/informed/:regId/:emrId" component={EmrInformed} />
                 <PrivateRoute path="/media/:regId/:emrId/:pos?" component={EmrMedias} />

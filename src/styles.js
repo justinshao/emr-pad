@@ -61,6 +61,24 @@ const signBoardStyle = {
     boxShadow: '1px 1px 5px #888888'
 };
 
+const tableHeader = {
+    backgroundColor: 'rgba(0, 188, 212,0.4)',
+    height: '30px',
+    lineHeight: '1',
+    padding: '0',
+    textAlign: 'center',
+    fontSize: '13px',
+    color: 'white'
+};
+
+const tableContent = {
+    height: '26px',
+    lineHeight: '1',
+    padding: '0',
+    textAlign: 'center',
+    fontSize: '12px'
+};
+
 export {
     headerBarStyle,
     contentStyle,
@@ -75,5 +93,7 @@ export {
     appThemeColor,
     writingBoardStyle,
     signBoardStyle,
-    titleStyle
+    titleStyle,
+    tableHeader,
+    tableContent
 };

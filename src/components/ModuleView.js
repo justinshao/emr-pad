@@ -11,16 +11,20 @@ import ReportDiag from './ReportDiag';
 
 class ModuleView extends React.Component {
     render() {
+        let { content,regId } = this.props;
+
         return (
             <div>
-                <Route path='/ModuleWrapper/ReportExamination/:regId?' component={ReportExamination} />
-                <Route path='/ModuleWrapper/ReportLaboratory/:regId?' component={ReportLaboratory} />
-                <Route path='/ModuleWrapper/ReportLaboratoryX/:regId?' component={ReportLaboratoryX} />
-                <Route path='/ModuleWrapper/ReportCareOrder/:regId?' component={ReportCareOrder} />
-                <Route path='/ModuleWrapper/ReportTemperature/:regId?' component={ReportTemperature} />
-                <Route path='/ModuleWrapper/ReportDtAdvice/:regId?' component={ReportDtAdvice} />
-                <Route path='/ModuleWrapper/ReportChDtAdvice/:regId?' component={ReportChDtAdvice} />
-                <Route path='/ModuleWrapper/ReportDiag/:regId?' component={ReportDiag} />
+                {
+                    content == 'ReportExamination' ? <ReportExamination/> :
+                    content == 'ReportLaboratory' ? <ReportLaboratory/> :
+                    content == 'ReportLaboratoryX' ? <ReportLaboratoryX/> :
+                    content == 'ReportCareOrder' ? <ReportCareOrder/> :
+                    content == 'ReportTemperature' ? <ReportTemperature/> :
+                    content == 'ReportDtAdvice' ? <ReportDtAdvice/> :
+                    content == 'ReportChDtAdvice' ? <ReportChDtAdvice/> :
+                    content == 'ReportDiag' ? <ReportDiag/> : <ReportLaboratory/>
+                }
             </div>
         )
     }
