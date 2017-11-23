@@ -122,12 +122,13 @@ class ModuleWrapper extends React.Component {
                     regId={regId}
                     onNavBackRequest={this.handleNavBackRequest}
                     onOpenMenuRequest={this.handleMenuButtonTouchTap}
-                    onPaitentInfor={this.handlePaitentInfor}
+                    
                 />
                 {/* 侧边栏菜单组件 */}
                 <ModuleCatalogBar
                     regId={regId}
                     open={this.state.menuOpen}
+                    onPaitentInfor={this.handlePaitentInfor}
                     onMenuRequestChange={this.handleMenuRequestChange}
                     onEmrTouchTap={this.handleEmrTouchTap}
                     onExamTouchTap={this.handleExamTouchTap}

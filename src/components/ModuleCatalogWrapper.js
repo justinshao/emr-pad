@@ -9,6 +9,7 @@ export default class ModuleCatalogWrapper extends React.Component {
 
     constructor(props) {
         super(props);
+        this.handlePaitentInfor = this.handlePaitentInfor.bind(this);
         this.handleEmrTouchTap = this.handleEmrTouchTap.bind(this);
         this.handleExamTouchTap = this.handleExamTouchTap.bind(this);
         this.handleLabTouchTap = this.handleLabTouchTap.bind(this);
@@ -18,6 +19,13 @@ export default class ModuleCatalogWrapper extends React.Component {
         this.handleDtAdviceTouchTap = this.handleDtAdviceTouchTap.bind(this);
         this.handleChDtAdviceTouchTap = this.handleChDtAdviceTouchTap.bind(this);
         this.handleDiagTouchTap = this.handleDiagTouchTap.bind(this);
+    }
+
+    // 跳转病人信息
+    handlePaitentInfor(){
+        if(this.props.onPaitentInfor){
+            this.props.onPaitentInfor();
+        }
     }
 
     // 跳转病例菜单
@@ -87,6 +95,7 @@ export default class ModuleCatalogWrapper extends React.Component {
         return (
             <div>
                 <List>
+                    <ListItem primaryText="基本信息" leftIcon={<ContentInbox style={style} />} key='xinxi' onClick={this.handlePaitentInfor} />
                     <ListItem primaryText="病例" leftIcon={<ContentInbox style={style} />} key='bingli' onClick={this.handleEmrTouchTap} />
                     <ListItem primaryText="检查报告" leftIcon={<ContentInbox style={style} />} key='jiancha' onClick={this.handleExamTouchTap} />
                     <ListItem

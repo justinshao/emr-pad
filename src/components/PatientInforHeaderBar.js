@@ -7,19 +7,21 @@ import RaisedButton from 'material-ui/RaisedButton';
 import Popover, { PopoverAnimationVertical } from 'material-ui/Popover';
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
+import MenuIcon from 'material-ui/svg-icons/navigation/menu';
+import FlatButton from 'material-ui/FlatButton';
 
 const popoverStyle={
-    'width':'100px'
-}
-
+     'width':'100px'
+};
 const buttonStyle={
     'backgroundColor':''
-}
-
+};
 const raiseStyle={
     'backgroundColor':'',
     'boxShadow':'',
-    'lineHeight':'64px'
+    'lineHeight':'64px',
+    'height':'64px',
+    'paddingRight':'0'
 }
 
 class PatientInforHeaderBar extends React.Component {
@@ -43,9 +45,7 @@ class PatientInforHeaderBar extends React.Component {
     }
 
     handleTouchTap = (event) => {
-        // This prevents ghost click.
         event.preventDefault();
-
         this.setState({
             open: true,
             anchorEl: event.currentTarget
@@ -142,8 +142,12 @@ class PatientInforHeaderBar extends React.Component {
                 iconStyleRight={style}>
                 <RaisedButton
                     onClick={this.handleTouchTap}
-                    label="more"
+                    label={<FlatButton
+                            icon={<MenuIcon />}
+                            style={headerBarBtnStyle}
+                            onTouchTap={this.handleMenuButtonTouchTap} />}
                     style={raiseStyle}
+                    labelStyle={raiseStyle}
                     buttonStyle={buttonStyle}
                 />
                 <Popover
@@ -155,8 +159,8 @@ class PatientInforHeaderBar extends React.Component {
                     animation={PopoverAnimationVertical}
                     style={popoverStyle}
                 >
-                    <Menu menuItemStyle={{'width':'100px'}}>
-                        <MenuItem primaryText="住院信息" onClick={this.handlePatientHospital}/>
+                    <Menu>
+                        <MenuItem primaryText="住院信息" onClick={this.handlePatientHospital} />
                         <MenuItem primaryText="基本信息" onClick={this.handlePatientBasicInfor}/>
                         <MenuItem primaryText="过敏信息" onClick={this.handlePatientAllergy}/>
                         <MenuItem primaryText="饮食医嘱" onClick={this.handlePatientDiet}/>

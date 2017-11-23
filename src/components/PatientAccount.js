@@ -1,9 +1,9 @@
 import React from 'react';
-import { contentStyle, titleStyle, tableHeader, tableContent } from '../styles';
+import {tableHeader, tableContent } from '../styles';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 import NoResult from './NoResult';
 
-class PatientHospital extends React.Component {
+class PatientAccount extends React.Component {
     
     render() {
         let content=(
@@ -12,28 +12,42 @@ class PatientHospital extends React.Component {
                     <Table style={{ 'border': '2px solid #f1f1f1' }}>
                         <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                             <TableRow style={tableHeader}>
-                                <TableHeaderColumn style={tableHeader} >账户信息</TableHeaderColumn>
+                                <TableHeaderColumn style={tableHeader} >住院账户信息</TableHeaderColumn>
                             </TableRow>
                         </TableHeader>
                         <TableBody displayRowCheckbox={false}>
                             <TableRow style={tableContent}>
-                                <TableRowColumn style={tableContent}>慢性肠胃炎</TableRowColumn>
-                                <TableRowColumn style={tableContent}>是</TableRowColumn>
-                                <TableRowColumn style={tableContent}>是</TableRowColumn>
-                                <TableRowColumn style={tableContent}>否</TableRowColumn>
-                                <TableRowColumn style={tableContent}>K52.909</TableRowColumn>
-                                <TableRowColumn style={tableContent}>赵强</TableRowColumn>
-                                <TableRowColumn style={tableContent}>01-05</TableRowColumn>
+                                <TableRowColumn style={tableContent}>费用总额</TableRowColumn>
+                                <TableRowColumn style={tableContent}></TableRowColumn>
+                                <TableRowColumn style={tableContent}>预交总额</TableRowColumn>
                                 <TableRowColumn style={tableContent}></TableRowColumn>
                             </TableRow>
                             <TableRow style={tableContent}>
-                                <TableRowColumn style={tableContent}>慢性肠胃炎</TableRowColumn>
-                                <TableRowColumn style={tableContent}>是</TableRowColumn>
-                                <TableRowColumn style={tableContent}>是</TableRowColumn>
-                                <TableRowColumn style={tableContent}>否</TableRowColumn>
-                                <TableRowColumn style={tableContent}>K52.909</TableRowColumn>
-                                <TableRowColumn style={tableContent}>赵强</TableRowColumn>
-                                <TableRowColumn style={tableContent}>01-05</TableRowColumn>
+                                <TableRowColumn style={tableContent}>账户余额</TableRowColumn>
+                                <TableRowColumn style={tableContent}></TableRowColumn>
+                                <TableRowColumn style={tableContent}>最低限制余额</TableRowColumn>
+                                <TableRowColumn style={tableContent}></TableRowColumn>
+                            </TableRow>
+                            <TableRow style={tableContent}>
+                                <TableRowColumn style={tableContent}>最低催缴金额</TableRowColumn>
+                                <TableRowColumn style={tableContent}></TableRowColumn>
+                                <TableRowColumn style={tableContent}>自负总额</TableRowColumn>
+                                <TableRowColumn style={tableContent}></TableRowColumn>
+                            </TableRow>
+                            <TableRow style={tableContent}>
+                                <TableRowColumn style={tableContent}>已结费用总额</TableRowColumn>
+                                <TableRowColumn style={tableContent}></TableRowColumn>
+                                <TableRowColumn style={tableContent}>已结自负总额</TableRowColumn>
+                                <TableRowColumn style={tableContent}></TableRowColumn>
+                            </TableRow>
+                            <TableRow style={tableContent}>
+                                <TableRowColumn style={tableContent}>已结预付总额</TableRowColumn>
+                                <TableRowColumn style={tableContent}></TableRowColumn>
+                                <TableRowColumn style={tableContent}>累计欠款金额</TableRowColumn>
+                                <TableRowColumn style={tableContent}></TableRowColumn>
+                            </TableRow>
+                            <TableRow style={tableContent}>
+                                <TableRowColumn style={tableContent}>累计补交金额</TableRowColumn>
                                 <TableRowColumn style={tableContent}></TableRowColumn>
                             </TableRow>
                         </TableBody>
@@ -49,4 +63,4 @@ class PatientHospital extends React.Component {
     }
 }
 
-export default PatientHospital;
+export default PatientAccount;

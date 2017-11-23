@@ -32,7 +32,7 @@ class PatientInfor extends React.Component {
     //跳转基本信息
     handlePatientBasicInfor() {
         let { history } = this.props;
-        let { regId } = this.props.match.params;        
+        let { regId } = this.props.match.params;
         history.replace(`/PaitentInfor/${regId}/PatientBasicInfor`);
     }
 

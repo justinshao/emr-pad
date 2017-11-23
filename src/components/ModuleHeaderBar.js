@@ -14,7 +14,6 @@ class ModuleHeaderBar extends React.Component {
         };
         this.handleNavBackRequest = this.handleNavBackRequest.bind(this);
         this.handleMenuButtonTouchTap = this.handleMenuButtonTouchTap.bind(this);
-        this.handlePaitentInfor=this.handlePaitentInfor.bind(this);
     }
 
     // 挂在时加载病人信息
@@ -38,13 +37,6 @@ class ModuleHeaderBar extends React.Component {
         }
     }
 
-    // 跳转病人信息
-    handlePaitentInfor(){
-        if(this.props.onPaitentInfor){
-            this.props.onPaitentInfor();
-        }
-    }
-
     render() {
         let title = (this.state.title || <CircularProgress color="white" size={headerBarLoadingStyle.size} style={headerBarLoadingStyle} />);
         const style = {
@@ -54,14 +46,9 @@ class ModuleHeaderBar extends React.Component {
         return (
             <NavBackHeaderBar
                 title={title}
-                // iconElementRight={<IconButton><MenuIcon/></IconButton>}
                 onNavBackRequest={this.handleNavBackRequest}
                 style={headerBarBtnStyle}
                 iconStyleRight={style}>
-                <FlatButton
-                    icon={<MenuIcon />}
-                    style={headerBarBtnStyle}
-                    onTouchTap={this.handlePaitentInfor} />
                 <FlatButton
                     icon={<MenuIcon />}
                     style={headerBarBtnStyle}

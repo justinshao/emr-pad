@@ -1,5 +1,4 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
 import ReportExamination from './ReportExamination';
 import ReportLaboratory from './ReportLaboratory';
 import ReportLaboratoryX from './ReportLaboratoryX';
@@ -16,14 +15,14 @@ class ModuleView extends React.Component {
         return (
             <div>
                 {
-                    content == 'ReportExamination' ? <ReportExamination/> :
-                    content == 'ReportLaboratory' ? <ReportLaboratory/> :
-                    content == 'ReportLaboratoryX' ? <ReportLaboratoryX/> :
-                    content == 'ReportCareOrder' ? <ReportCareOrder/> :
-                    content == 'ReportTemperature' ? <ReportTemperature/> :
-                    content == 'ReportDtAdvice' ? <ReportDtAdvice/> :
-                    content == 'ReportChDtAdvice' ? <ReportChDtAdvice/> :
-                    content == 'ReportDiag' ? <ReportDiag/> : <ReportLaboratory/>
+                    content == 'ReportExamination' ? <ReportExamination regId={regId}/> :
+                    content == 'ReportLaboratory' ? <ReportLaboratory  regId={regId}/> :
+                    content == 'ReportLaboratoryX' ? <ReportLaboratoryX  regId={regId}/> :
+                    content == 'ReportCareOrder' ? <ReportCareOrder  regId={regId}/> :
+                    content == 'ReportTemperature' ? <ReportTemperature  regId={regId}/> :
+                    content == 'ReportDtAdvice' ? <ReportDtAdvice  regId={regId}/> :
+                    content == 'ReportChDtAdvice' ? <ReportChDtAdvice  regId={regId}/> :
+                    content == 'ReportDiag' ? <ReportDiag  regId={regId}/> : <ReportLaboratory  regId={regId}/>
                 }
             </div>
         )

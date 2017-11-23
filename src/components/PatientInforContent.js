@@ -16,7 +16,7 @@ const contentStyle = {
 class PatientInforContent extends React.Component {
       
     render() {
-        let inforId = this.props.inforId; 
+        let inforId = this.props.inforId;
         let content=(
             inforId=='PatientHospital'? <PatientHospital/>:
             inforId=='PatientBasicInfor'? <PatientBasicInfor/>:

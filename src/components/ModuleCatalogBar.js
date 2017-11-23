@@ -6,6 +6,7 @@ class ModuleCatalogBar extends React.Component {
     
     constructor(props) {
         super(props);
+        this.handlePaitentInfor=this.handlePaitentInfor.bind(this);
         this.handleEmrTouchTap = this.handleEmrTouchTap.bind(this);
         this.handleExamTouchTap = this.handleExamTouchTap.bind(this);
         this.handleLabTouchTap = this.handleLabTouchTap.bind(this);
@@ -15,6 +16,13 @@ class ModuleCatalogBar extends React.Component {
         this.handleDtAdviceTouchTap = this.handleDtAdviceTouchTap.bind(this);
         this.handleChDtAdviceTouchTap = this.handleChDtAdviceTouchTap.bind(this);
         this.handleDiagTouchTap = this.handleDiagTouchTap.bind(this);
+    }
+
+    // 跳转病人信息
+    handlePaitentInfor(){
+        if(this.props.onPaitentInfor){
+            this.props.onPaitentInfor();
+        }
     }
 
     // 跳转病例组件
@@ -100,6 +108,7 @@ class ModuleCatalogBar extends React.Component {
                     onDtAdviceTouchTap={this.handleDtAdviceTouchTap}
                     onChDtAdviceTouchTap={this.handleChDtAdviceTouchTap}
                     onDiagTouchTap={this.handleDiagTouchTap}
+                    onPaitentInfor={this.handlePaitentInfor}
                 />
             </Drawer>
         );
