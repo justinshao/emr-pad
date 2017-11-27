@@ -52,7 +52,7 @@ class ReportLaboratory extends React.Component {
                     detailHeader={this.state.detailHeader}
                     detailBottom={this.state.detailBottom}
                 >
-                    <Table>
+                    <Table  selectable={false}>
                         <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                             <TableRow style={promptStyle}>
                                 <TableHeaderColumn style={promptStyle}>培养结果：</TableHeaderColumn>

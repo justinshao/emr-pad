@@ -9,7 +9,7 @@ class PatientDiet extends React.Component {
         let content=(
             true? (
                 <div>
-                    <Table style={{ 'border': '2px solid #f1f1f1' }}>
+                    <Table style={{ 'border': '2px solid #f1f1f1' }}  selectable={false}>
                         <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                             <TableRow style={tableHeader} >
                                 <TableHeaderColumn style={tableHeader } colSpan='5'>饮食医嘱</TableHeaderColumn>

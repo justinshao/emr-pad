@@ -35,8 +35,8 @@ class ReportChDtAdviceContent extends React.Component{
 
     render(){
         return(
-            <div>
-                <Table style={{ 'border': '2px solid #f1f1f1','width':'200%'}}>
+            <div style={{'overFlow':'hidden'}}>
+                <Table style={{ 'border': '2px solid #f1f1f1','width':'700px'}}  selectable={false} bodyStyle={{'width':'700px','overFlow':'auto'}}>
                     <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                         <TableRow style={tableHeader}>
                             <TableHeaderColumn style={tableHeader} >状态</TableHeaderColumn>
@@ -53,7 +53,7 @@ class ReportChDtAdviceContent extends React.Component{
                             <TableHeaderColumn style={tableHeader} >嘱托</TableHeaderColumn>
                         </TableRow>
                     </TableHeader>
-                    <TableBody displayRowCheckbox={false}>
+                    <TableBody displayRowCheckbox={false} >
                         <TableRow style={tableContent}>
                             <TableRowColumn style={tableContent}>新增</TableRowColumn>
                             <TableRowColumn style={tableContent}>220022029220</TableRowColumn>

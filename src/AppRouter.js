@@ -16,6 +16,7 @@ import ModuleWrapper from './components/ModuleWrapper';
 import PatientInfor from './components/PatientInfor';
 import NotFound from './components/404';
 import auth from './auth';
+import ReportEchars from './components/ReportEchars';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route {...rest} render={props => (
@@ -45,6 +46,7 @@ const AppRouter = () => (
                 <PrivateRoute path="/media/:regId/:emrId/:pos?" component={EmrMedias} />
                 <Route path="/setting" component={Setting} />
                 <Route path="/login" component={Login} />
+                <Route path="/ReportEchars" component={ReportEchars} />
                 <Route component={NotFound} />
             </Switch>
         </div>

@@ -9,7 +9,7 @@ class PatientHospital extends React.Component {
         let content=(
             true? (
                 <div>
-                    <Table style={{ 'border': '2px solid #f1f1f1' }}>
+                    <Table style={{ 'border': '2px solid #f1f1f1' }}  selectable={false}>
                         <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                             <TableRow style={tableHeader}>
                                 <TableHeaderColumn style={tableHeader} >住院信息</TableHeaderColumn>
@@ -84,6 +84,8 @@ class PatientHospital extends React.Component {
                             </TableRow>
                             <TableRow style={tableContent}>
                                 <TableRowColumn style={tableContent}>临床出院时间</TableRowColumn>
+                                <TableRowColumn style={tableContent}></TableRowColumn>
+                                <TableRowColumn style={tableContent}></TableRowColumn>
                                 <TableRowColumn style={tableContent}></TableRowColumn>
                             </TableRow>
                         </TableBody>

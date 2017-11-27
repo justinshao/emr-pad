@@ -14,7 +14,7 @@ class ModuleWrapper extends React.Component {
         this.handleNavBackRequest = this.handleNavBackRequest.bind(this);
         this.handleMenuButtonTouchTap = this.handleMenuButtonTouchTap.bind(this);
         this.handleMenuRequestChange = this.handleMenuRequestChange.bind(this);
-        this.handlePaitentInfor=this.handlePaitentInfor.bind(this);
+        this.handlePaitentInfor = this.handlePaitentInfor.bind(this);
         this.handleEmrTouchTap = this.handleEmrTouchTap.bind(this);
         this.handleExamTouchTap = this.handleExamTouchTap.bind(this);
         this.handleLabTouchTap = this.handleLabTouchTap.bind(this);
@@ -24,6 +24,7 @@ class ModuleWrapper extends React.Component {
         this.handleDtAdviceTouchTap = this.handleDtAdviceTouchTap.bind(this);
         this.handleChDtAdviceTouchTap = this.handleChDtAdviceTouchTap.bind(this);
         this.handleDiagTouchTap = this.handleDiagTouchTap.bind(this);
+        this.handleReportEchars = this.handleReportEchars.bind(this);
     }
 
     // 返回前一页请求
@@ -43,9 +44,9 @@ class ModuleWrapper extends React.Component {
     }
 
     // 查看病人信息
-    handlePaitentInfor(){
-        let {history}=this.props;
-        let {regId}=this.props.match.params;
+    handlePaitentInfor() {
+        let { history } = this.props;
+        let { regId } = this.props.match.params;
         history.push(`/PaitentInfor/${regId}`);
     }
 
@@ -112,6 +113,12 @@ class ModuleWrapper extends React.Component {
         history.replace(`/ModuleWrapper/${regId}/ReportDiag`);
     }
 
+    // 跳转趋势图
+    handleReportEchars() {
+        let { history } = this.props;
+        history.push('/ReportEchars');
+    }
+
     render() {
         var { regId, content } = this.props.match.params;
 
@@ -122,7 +129,6 @@ class ModuleWrapper extends React.Component {
                     regId={regId}
                     onNavBackRequest={this.handleNavBackRequest}
                     onOpenMenuRequest={this.handleMenuButtonTouchTap}
-                    
                 />
                 {/* 侧边栏菜单组件 */}
                 <ModuleCatalogBar
@@ -144,6 +150,7 @@ class ModuleWrapper extends React.Component {
                 <ModuleView
                     regId={regId}
                     content={content}
+                    onReportEchars={this.handleReportEchars}
                 />
             </div>
         )
