@@ -26,56 +26,56 @@ class PatientInfor extends React.Component {
     handlePatientHospital() {
         let { history } = this.props;
         let { regId } = this.props.match.params;
-        history.replace(`/PaitentInfor/${regId}/PatientHospital`);
+        history.replace(`/patInfo/${regId}/2/PatientHospital`);
     }
 
     //跳转基本信息
     handlePatientBasicInfor() {
         let { history } = this.props;
         let { regId } = this.props.match.params;
-        history.replace(`/PaitentInfor/${regId}/PatientBasicInfor`);
+        history.replace(`/patInfo/${regId}/2/PatientBasicInfor`);
     }
 
     //跳转过敏信息
     handlePatientAllergy() {
         let { history } = this.props;
         let { regId } = this.props.match.params;
-        history.replace(`/PaitentInfor/${regId}/PatientAllergy`);
+        history.replace(`/patInfo/${regId}/2/PatientAllergy`);
     }
 
     //跳转饮食医嘱信息
     handlePatientDiet() {
         let { history } = this.props;
         let { regId } = this.props.match.params;
-        history.replace(`/PaitentInfor/${regId}/PatientDiet`);
+        history.replace(`/patInfo/${regId}/2/PatientDiet`);
     }
 
     //跳转关联住院信息
     handlePatientAssociatHospital() {
         let { history } = this.props;
         let { regId } = this.props.match.params;
-        history.replace(`/PaitentInfor/${regId}/PatientAssociatHospital`);
+        history.replace(`/patInfo/${regId}/2/PatientAssociatHospital`);
     }
 
     //跳转轮转信息
     handlePatientRotation() {
         let { history } = this.props;
         let { regId } = this.props.match.params;
-        history.replace(`/PaitentInfor/${regId}/PatientRotation`);
+        history.replace(`/patInfo/${regId}/2/PatientRotation`);
     }
 
     //跳转住院变更信息
     handlePatientChangeHospital() {
         let { history } = this.props;
         let { regId } = this.props.match.params;
-        history.replace(`/PaitentInfor/${regId}/PatientChangeHospital`);
+        history.replace(`/patInfo/${regId}/2/PatientChangeHospital`);
     }
 
     //跳转住院账户信息
     handlePatientAccount() {
         let { history } = this.props;
         let { regId } = this.props.match.params;
-        history.replace(`/PaitentInfor/${regId}/PatientAccount`);
+        history.replace(`/patInfo/${regId}/2/PatientAccount`);
     }
 
     render() {

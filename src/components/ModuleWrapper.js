@@ -56,7 +56,7 @@ class ModuleWrapper extends React.Component {
     handlePaitentInfor() {
         let { history } = this.props;
         let { regId } = this.props.match.params;
-        history.push(`/paitentInfor/${regId}/2`);
+        history.push(`/patInfo/${regId}/2`);
     }
 
     // 跳转趋势图

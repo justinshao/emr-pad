@@ -8,7 +8,7 @@ class ModuleCatalogBar extends React.Component {
     constructor(props) {
         super(props);
         this.handlePaitentInfor = this.handlePaitentInfor.bind(this);
-        this.handleChangeTap=this.handleChangeTap.bind(this);
+        this.handleChangeTap = this.handleChangeTap.bind(this);
     }
 
     // 跳转病人信息
@@ -19,8 +19,8 @@ class ModuleCatalogBar extends React.Component {
     }
 
     // 跳转其他界面
-    handleChangeTap(item){
-        if(this.props.onChangeTap){
+    handleChangeTap(item) {
+        if (this.props.onChangeTap) {
             this.props.onChangeTap(item);
         }
     }
@@ -35,11 +35,11 @@ class ModuleCatalogBar extends React.Component {
                 onRequestChange={this.props.onMenuRequestChange}
                 openSecondary={true}
             >
-                <PatInfoWrapper/>
+                <PatInfoWrapper
+                    onPaitentInfor ={this.handlePaitentInfor}/>
                 <ModuleCatalogWrapper
                     menu={this.props.menu}
                     onChangeTap={this.handleChangeTap}
-                    onPaitentInfor={this.handlePaitentInfor}
                 />
             </Drawer>
         );

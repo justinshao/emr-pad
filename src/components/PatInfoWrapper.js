@@ -12,9 +12,21 @@ const style = {
 };
 
 class PatInfoWrapper extends React.Component {
+    constructor(props) {
+        super(props);
+        this.handlePaitentInfor = this.handlePaitentInfor.bind(this);
+    }
+
+    // 跳转病人信息
+    handlePaitentInfor() {
+        if (this.props.onPaitentInfor) {
+            this.props.onPaitentInfor();
+        }
+    }
+
     render() {
         return (
-            <div>
+            <div onClick={this.handlePaitentInfor}>
                 <Paper style={style} zDepth={1}>
                     <div>病人：</div>
                     <div>性别：</div>
