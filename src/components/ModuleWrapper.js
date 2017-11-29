@@ -2,29 +2,38 @@ import React from 'react';
 import ModuleHeaderBar from './ModuleHeaderBar';
 import ModuleCatalogBar from './ModuleCatalogBar';
 import ModuleView from './ModuleView';
+import { getMainMenu } from '../service';
 
 class ModuleWrapper extends React.Component {
     constructor(props) {
         super(props);
-
         this.state = {
-            menuOpen: false
+            menuOpen: false,
+            menu: []
         }
 
         this.handleNavBackRequest = this.handleNavBackRequest.bind(this);
         this.handleMenuButtonTouchTap = this.handleMenuButtonTouchTap.bind(this);
         this.handleMenuRequestChange = this.handleMenuRequestChange.bind(this);
         this.handlePaitentInfor = this.handlePaitentInfor.bind(this);
-        this.handleEmrTouchTap = this.handleEmrTouchTap.bind(this);
-        this.handleExamTouchTap = this.handleExamTouchTap.bind(this);
-        this.handleLabTouchTap = this.handleLabTouchTap.bind(this);
-        this.handleLabXTouchTap = this.handleLabXTouchTap.bind(this);
-        this.handleCareTouchTap = this.handleCareTouchTap.bind(this);
-        this.handleTemperTouchTap = this.handleTemperTouchTap.bind(this);
-        this.handleDtAdviceTouchTap = this.handleDtAdviceTouchTap.bind(this);
-        this.handleChDtAdviceTouchTap = this.handleChDtAdviceTouchTap.bind(this);
-        this.handleDiagTouchTap = this.handleDiagTouchTap.bind(this);
         this.handleReportEchars = this.handleReportEchars.bind(this);
+        this.fetchMainMenu = this.fetchMainMenu.bind(this);
+        this.handleChangeTap=this.handleChangeTap.bind(this);
+    }
+
+    // 加载mainmenu主菜单项
+    componentWillMount() {
+        let { regId, sourceType } = this.props.match.params;
+        this.fetchMainMenu(regId, sourceType);
+    }
+
+    //加载数据主菜单的数据
+    fetchMainMenu(regId, sourceType) {
+        getMainMenu(regId, sourceType)
+            .then(menu => {
+                this.setState({ menu: menu });
+            })
+            .catch('数据出错');
     }
 
     // 返回前一页请求
@@ -47,80 +56,28 @@ class ModuleWrapper extends React.Component {
     handlePaitentInfor() {
         let { history } = this.props;
         let { regId } = this.props.match.params;
-        history.push(`/PaitentInfor/${regId}`);
-    }
-
-    // 显示病例页面
-    handleEmrTouchTap() {
-        let { history } = this.props;
-        let { regId } = this.props.match.params;
-        history.push(`/emr/${regId}`);
-    }
-
-    // 显示检查页面
-    handleExamTouchTap() {
-        let { history } = this.props;
-        let { regId } = this.props.match.params;
-        history.replace(`/ModuleWrapper/${regId}/ReportExamination`);
-    }
-
-    // 显示化验界面
-    handleLabTouchTap() {
-        let { history } = this.props;
-        let { regId } = this.props.match.params;
-        history.replace(`/ModuleWrapper/${regId}/ReportLaboratory`);
-    }
-
-    // 显示化验X界面
-    handleLabXTouchTap() {
-        let { history } = this.props;
-        let { regId } = this.props.match.params;
-        history.replace(`/ModuleWrapper/${regId}/ReportLaboratoryX`);
-    }
-
-    // 显示护理记录单
-    handleCareTouchTap() {
-        let { history } = this.props;
-        let { regId } = this.props.match.params;
-        history.replace(`/ModuleWrapper/${regId}/ReportCareOrder`);
-    }
-
-    // 显示体温报告单
-    handleTemperTouchTap() {
-        let { history } = this.props;
-        let { regId } = this.props.match.params;
-        history.replace(`/ModuleWrapper/${regId}/ReportTemperature`);
-    }
-
-    // 跳转医嘱
-    handleDtAdviceTouchTap() {
-        let { history } = this.props;
-        let { regId } = this.props.match.params;
-        history.replace(`/ModuleWrapper/${regId}/ReportDtAdvice`);
-    }
-
-    // 跳转中药医嘱
-    handleChDtAdviceTouchTap() {
-        let { history } = this.props;
-        let { regId } = this.props.match.params;
-        history.replace(`/ModuleWrapper/${regId}/ReportChDtAdvice`);
-    }
-
-    // 跳转诊断
-    handleDiagTouchTap() {
-        let { history } = this.props;
-        let { regId } = this.props.match.params;
-        history.replace(`/ModuleWrapper/${regId}/ReportDiag`);
+        history.push(`/paitentInfor/${regId}/2`);
     }
 
     // 跳转趋势图
     handleReportEchars() {
         let { history } = this.props;
-        history.push('/ReportEchars');
+        history.push('/reportEchars');
+    }
+
+    // 跳转其他界面
+    handleChangeTap(item){
+        let { history } = this.props;
+        if(name=="病历概要"){
+            history.push(item.Url);
+        }
+        else{
+            history.replace(item.Url);
+        }
     }
 
     render() {
-        var { regId, content } = this.props.match.params;
+        let { regId, sourceType,content,reportType} = this.props.match.params;
 
         return (
             <div>
@@ -134,22 +91,17 @@ class ModuleWrapper extends React.Component {
                 <ModuleCatalogBar
                     regId={regId}
                     open={this.state.menuOpen}
-                    onPaitentInfor={this.handlePaitentInfor}
+                    menu={this.state.menu}
                     onMenuRequestChange={this.handleMenuRequestChange}
-                    onEmrTouchTap={this.handleEmrTouchTap}
-                    onExamTouchTap={this.handleExamTouchTap}
-                    onLabTouchTap={this.handleLabTouchTap}
-                    onLabXTouchTap={this.handleLabXTouchTap}
-                    onCareTouchTap={this.handleCareTouchTap}
-                    onTemperTouchTap={this.handleTemperTouchTap}
-                    onDtAdviceTouchTap={this.handleDtAdviceTouchTap}
-                    onChDtAdviceTouchTap={this.handleChDtAdviceTouchTap}
-                    onDiagTouchTap={this.handleDiagTouchTap}
+                    onPaitentInfor={this.handlePaitentInfor}
+                    onChangeTap={this.handleChangeTap}
                 />
                 {/* 正文组件 */}
                 <ModuleView
                     regId={regId}
+                    sourceType={sourceType}
                     content={content}
+                    reportType={reportType}
                     onReportEchars={this.handleReportEchars}
                 />
             </div>

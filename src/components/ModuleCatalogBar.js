@@ -1,90 +1,27 @@
 import React from 'react';
 import ModuleCatalogWrapper from './ModuleCatalogWrapper';
 import Drawer from 'material-ui/Drawer';
+import PatInfoWrapper from './PatInfoWrapper';
 
 class ModuleCatalogBar extends React.Component {
-    
+
     constructor(props) {
         super(props);
-        this.handlePaitentInfor=this.handlePaitentInfor.bind(this);
-        this.handleEmrTouchTap = this.handleEmrTouchTap.bind(this);
-        this.handleExamTouchTap = this.handleExamTouchTap.bind(this);
-        this.handleLabTouchTap = this.handleLabTouchTap.bind(this);
-        this.handleLabXTouchTap = this.handleLabXTouchTap.bind(this);
-        this.handleCareTouchTap = this.handleCareTouchTap.bind(this);
-        this.handleTemperTouchTap = this.handleTemperTouchTap.bind(this);
-        this.handleDtAdviceTouchTap = this.handleDtAdviceTouchTap.bind(this);
-        this.handleChDtAdviceTouchTap = this.handleChDtAdviceTouchTap.bind(this);
-        this.handleDiagTouchTap = this.handleDiagTouchTap.bind(this);
+        this.handlePaitentInfor = this.handlePaitentInfor.bind(this);
+        this.handleChangeTap=this.handleChangeTap.bind(this);
     }
 
     // 跳转病人信息
-    handlePaitentInfor(){
-        if(this.props.onPaitentInfor){
+    handlePaitentInfor() {
+        if (this.props.onPaitentInfor) {
             this.props.onPaitentInfor();
         }
     }
 
-    // 跳转病例组件
-    handleEmrTouchTap() {
-        if (this.props.onEmrTouchTap) {
-            this.props.onEmrTouchTap();
-        }
-    }
-
-    // 跳转检查组件
-    handleExamTouchTap() {
-        if (this.props.onExamTouchTap) {
-            this.props.onExamTouchTap();
-        }
-    }
-
-    // 跳转化验组件
-    handleLabTouchTap() {
-        if (this.props.onLabTouchTap) {
-            this.props.onLabTouchTap();
-        }
-    }
-
-    // 跳转化验X报告
-    handleLabXTouchTap() {
-        if (this.props.onLabXTouchTap) {
-            this.props.onLabXTouchTap();
-        }
-    }
-
-    // 跳转护理记录单
-    handleCareTouchTap() {
-        if (this.props.onCareTouchTap) {
-            this.props.onCareTouchTap()
-        }
-    }
-
-    // 跳转体温报告单
-    handleTemperTouchTap() {
-        if (this.props.onTemperTouchTap) {
-            this.props.onTemperTouchTap();
-        }
-    }
-
-    // 跳转医嘱
-    handleDtAdviceTouchTap() {
-        if (this.props.onDtAdviceTouchTap) {
-            this.props.onDtAdviceTouchTap();
-        }
-    }
-
-    // 跳转中药医嘱
-    handleChDtAdviceTouchTap() {
-        if (this.props.onChDtAdviceTouchTap) {
-            this.props.onChDtAdviceTouchTap();
-        }
-    }
-
-    // 跳转诊断
-    handleDiagTouchTap() {
-        if (this.props.onDiagTouchTap) {
-            this.props.onDiagTouchTap();
+    // 跳转其他界面
+    handleChangeTap(item){
+        if(this.props.onChangeTap){
+            this.props.onChangeTap(item);
         }
     }
 
@@ -98,16 +35,10 @@ class ModuleCatalogBar extends React.Component {
                 onRequestChange={this.props.onMenuRequestChange}
                 openSecondary={true}
             >
+                <PatInfoWrapper/>
                 <ModuleCatalogWrapper
-                    onEmrTouchTap={this.handleEmrTouchTap}
-                    onExamTouchTap={this.handleExamTouchTap}
-                    onLabTouchTap={this.handleLabTouchTap}
-                    onLabXTouchTap={this.handleLabXTouchTap}
-                    onCareTouchTap={this.handleCareTouchTap}
-                    onTemperTouchTap={this.handleTemperTouchTap}
-                    onDtAdviceTouchTap={this.handleDtAdviceTouchTap}
-                    onChDtAdviceTouchTap={this.handleChDtAdviceTouchTap}
-                    onDiagTouchTap={this.handleDiagTouchTap}
+                    menu={this.props.menu}
+                    onChangeTap={this.handleChangeTap}
                     onPaitentInfor={this.handlePaitentInfor}
                 />
             </Drawer>

@@ -38,7 +38,7 @@ class ReportTemperature extends React.Component {
     constructor(props){
         super(props);
         this.state={
-            src:'../../images/before.png',
+            src:'../../../images/before.png',
             startX:'',
             startY:''
         }
@@ -83,9 +83,9 @@ class ReportTemperature extends React.Component {
                 <div>
                     <div style={titleStyle}>体温单</div>
                     <div style={tempContentStyle} onTouchMove={this.handleChangeImg} onTouchStart={this.handleWillChangeImg}>
-                        <img src='../../images/picTemp.jpg' style={imgStyle}/>
+                        <img src='../../../images/picTemp.jpg' style={imgStyle}/>
                         <img src={this.state.src} style={imgBeforeStyle}/>
-                        <img src='../../images/next.png' style={imgNextStyle}/>
+                        <img src='../../../images/next.png' style={imgNextStyle}/>
                     </div>
                 </div>
             ) : <NoResult />

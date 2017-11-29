@@ -16,9 +16,9 @@ function checkStatus(response) {
 }
 function checkApi(response) {
     return checkStatus(response).json().then(ret => {
-        if(ret.Ok){
+        if (ret.Ok) {
             return ret.Data;
-        }else{
+        } else {
             throw new Error(ret.Message);
         }
     });
@@ -53,8 +53,8 @@ const loggedIn = () => {
         credentials: credentials,
         headers: xHeaders
     })
-    .then(checkApi)
-    .then(data => data == 'true');
+        .then(checkApi)
+        .then(data => data == 'true');
 }
 
 const getWards = () => {
@@ -155,6 +155,15 @@ const patSign = (chdId, signPic) => {
     }).then(checkApi);
 }
 
+// 获取主菜单
+const getMainMenu = (regId, sourceType) => {
+    return fetch(`${root}/api/MainMenu?regId=${regId}&sourceType=${sourceType}`, {
+        method: 'get',
+        credentials: credentials,
+        headers: xHeaders
+    }).then(checkApi);
+}
+
 export {
     login,
     loginout,
@@ -170,5 +179,6 @@ export {
     getPictures,
     deleteMedia,
     postEmrInformed,
-    patSign
+    patSign,
+    getMainMenu
 }

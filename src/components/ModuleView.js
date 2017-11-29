@@ -18,23 +18,22 @@ class ModuleView extends React.Component {
     handleReportEchars() {
         if (this.props.onReportEchars) {
             this.props.onReportEchars();
-            console.log("11111");
         }
     }
 
     render() {
-        let { content, regId } = this.props;
+        let { regId,sourceType,content,reportType} = this.props;
         return (
             <div>
                 {
-                    content == 'ReportExamination' ? <ReportExamination regId={regId} /> :
+                    content == 'exam' ? <ReportExamination regId={regId}/> :
                         content == 'ReportLaboratory' ? <ReportLaboratory regId={regId} onReportEchars={this.handleReportEchars} /> :
-                            content == 'ReportLaboratoryX' ? <ReportLaboratoryX regId={regId} /> :
-                                content == 'ReportCareOrder' ? <ReportCareOrder regId={regId} /> :
-                                    content == 'ReportTemperature' ? <ReportTemperature regId={regId} /> :
-                                        content == 'ReportDtAdvice' ? <ReportDtAdvice regId={regId} /> :
-                                            content == 'ReportChDtAdvice' ? <ReportChDtAdvice regId={regId} /> :
-                                                content == 'ReportDiag' ? <ReportDiag regId={regId} /> : <ReportLaboratory regId={regId} onReportEchars={this.handleReportEchars} />
+                            content == 'assay' ? <ReportLaboratoryX regId={regId} /> :
+                                content == 'nursing' ? <ReportCareOrder regId={regId} /> :
+                                    content == 'temp' ? <ReportTemperature regId={regId} /> :
+                                        content == 'inPatOrder' ? <ReportDtAdvice regId={regId} /> :
+                                            content == 'chnOrder' ? <ReportChDtAdvice regId={regId} /> :
+                                                content == 'diag' ? <ReportDiag regId={regId} /> : <ReportTemperature regId={regId} />
                 }
             </div>
         )

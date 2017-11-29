@@ -38,15 +38,15 @@ const AppRouter = () => (
                 <PrivateRoute exact path="/" component={Home} />
                 <PrivateRoute path="/home/:wardId?" component={Home} />
                 <PrivateRoute path="/emr/:regId?/:emrId?" component={EmrWrapper} />
-                {/* 整体功能模块的界面 */}
-                <PrivateRoute path="/ModuleWrapper/:regId/:content?" component={ModuleWrapper}/>
-                <PrivateRoute path="/PaitentInfor/:regId/:inforId?" component={PatientInfor}/>
+                {/* 主菜单，根据content来跳转 */}
+                <PrivateRoute path="/clinic/:regId/:sourceType/:content?" component={ModuleWrapper}/>
+                <PrivateRoute path="/patInfo/:regId/:sourceType/:inforId?" component={PatientInfor}/>
                 <PrivateRoute path="/sign/:regId/:emrId" component={EmrSign} />
                 <PrivateRoute path="/informed/:regId/:emrId" component={EmrInformed} />
                 <PrivateRoute path="/media/:regId/:emrId/:pos?" component={EmrMedias} />
                 <Route path="/setting" component={Setting} />
                 <Route path="/login" component={Login} />
-                <Route path="/ReportEchars" component={ReportEchars} />
+                <Route path="/reportEchars" component={ReportEchars} />
                 <Route component={NotFound} />
             </Switch>
         </div>

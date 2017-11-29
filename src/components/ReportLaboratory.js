@@ -22,7 +22,6 @@ class ReportLaboratory extends React.Component {
     handleReportEchars() {
         if (this.props.onReportEchars) {
             this.props.onReportEchars();
-            console.log('1111');
         }
     }
 

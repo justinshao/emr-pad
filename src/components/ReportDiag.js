@@ -39,7 +39,7 @@ class ReportDiag extends React.Component {
             true ? (
                 <div>
                     <div style={titleStyle}>诊断信息</div>
-                    <Table style={{ 'border': '2px solid #f1f1f1','width':'500px'}} bodyStyle={{'width':'500px','overFlow':'auto'}}>
+                    <Table style={{ 'border': '2px solid #f1f1f1','width':'500px'}} bodyStyle={{'width':'500px','overFlow':'auto'}}  selectable={false}>
                         <TableHeader displaySelectAll={false} adjustForCheckbox={false} style={{'overFlow':'auto'}}>
                             <TableRow style={tableHeader}>
                                 <TableHeaderColumn style={tableHeader} >诊断名</TableHeaderColumn>
