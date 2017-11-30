@@ -5,6 +5,7 @@ import ContentInbox from 'material-ui/svg-icons/content/inbox';
 const style = {
     'fill': 'rgb(0, 188, 212)'
 };
+
 class ModuleCatalogWrapper extends React.Component {
 
     constructor(props) {
@@ -39,7 +40,7 @@ class ModuleCatalogWrapper extends React.Component {
         })
 
         return (
-            <div>
+            <div style={{overflow:'auto',height:'80%'}}>
                 <List>
                     {menus}
                 </List>

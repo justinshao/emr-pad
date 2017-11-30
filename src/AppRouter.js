@@ -39,7 +39,7 @@ const AppRouter = () => (
                 <PrivateRoute path="/home/:wardId?" component={Home} />
                 <PrivateRoute path="/emr/:regId?/:emrId?" component={EmrWrapper} />
                 {/* 主菜单，根据content来跳转 */}
-                <PrivateRoute path="/clinic/:regId/:sourceType/:content?" component={ModuleWrapper}/>
+                <PrivateRoute path="/clinic/:regId/:sourceType/:content?/:reportType?" component={ModuleWrapper}/>
                 <PrivateRoute path="/patInfo/:regId/:sourceType/:inforId?" component={PatientInfor}/>
                 <PrivateRoute path="/sign/:regId/:emrId" component={EmrSign} />
                 <PrivateRoute path="/informed/:regId/:emrId" component={EmrInformed} />

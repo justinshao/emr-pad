@@ -1,7 +1,7 @@
 import React from 'react';
 import ReportExamination from './ReportExamination';
 import ReportLaboratory from './ReportLaboratory';
-import ReportLaboratoryX from './ReportLaboratoryX';
+// import ReportLaboratoryX from './ReportLaboratoryX';
 import ReportCareOrder from './ReportCareOrder';
 import ReportTemperature from './ReportTemperature';
 import ReportDtAdvice from './ReportDtAdvice';
@@ -23,19 +23,20 @@ class ModuleView extends React.Component {
     }
 
     render() {
-        let { regId, sourceType, content, reportType } = this.props;
+        // let { regId, sourceType, content, reportType } = this.props;
+         let { content } = this.props;
         return (
             <div>
                 {
-                    content == 'exam' ? <ReportExamination regId={regId} /> :
-                        content == 'pathlg' ? <ReportPathology regId={regId} /> :
-                            content == 'ReportLaboratory' ? <ReportLaboratory regId={regId} onReportEchars={this.handleReportEchars} /> :
-                                content == 'assay' ? <ReportLaboratoryX regId={regId} onReportEchars={this.handleReportEchars} /> :
-                                    content == 'nursing' ? <ReportCareOrder regId={regId} /> :
-                                        content == 'temp' ? <ReportTemperature regId={regId} /> :
-                                            content == 'inPatOrder' ? <ReportDtAdvice regId={regId} /> :
-                                                content == 'chnOrder' ? <ReportChDtAdvice regId={regId} /> :
-                                                    content == 'diag' ? <ReportDiag regId={regId} /> : <ReportTemperature regId={regId} />
+                    content == 'exam' ? <ReportExamination {...this.props}/> :
+                        content == 'pathlg' ? <ReportPathology {...this.props}/> :
+                            content == 'assay' ? <ReportLaboratory {...this.props}/> :
+                                // content == 'assay' ? <ReportLaboratoryX {...this.props}/> :
+                                    content == 'nursing' ? <ReportCareOrder {...this.props} /> :
+                                        content == 'temp' ? <ReportTemperature {...this.props} /> :
+                                            content == 'inPatOrder' ? <ReportDtAdvice {...this.props} /> :
+                                                content == 'chnOrder' ? <ReportChDtAdvice {...this.props} /> :
+                                                    content == 'diag' ? <ReportDiag {...this.props} /> : <ReportTemperature {...this.props} />
                 }
             </div>
         )
