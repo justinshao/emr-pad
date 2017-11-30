@@ -25,18 +25,18 @@ const tableContent = {
     'fontSize': '12px'
 };
 
-class ReportDtAdviceContent extends React.Component{
-    constructor(props){
+class ReportDtAdviceContent extends React.Component {
+    constructor(props) {
         super(props);
-        this.state={
+        this.state = {
 
         };
     }
 
-    render(){
-        return(
-            <div style={{'overFlow':'hidden'}}>
-                <Table style={{ 'border': '2px solid #f1f1f1','width':'700px'}}  selectable={false} bodyStyle={{'width':'700px','overFlow':'auto'}} >
+    render() {
+        return (
+            <div style={{ 'overFlow': 'hidden' }}>
+                <Table style={{ 'border': '2px solid #f1f1f1', 'width': '700px' }} selectable={false} bodyStyle={{ 'width': '700px', 'overFlow': 'auto' }} >
                     <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                         <TableRow style={tableHeader}>
                             <TableHeaderColumn style={tableHeader} >状态</TableHeaderColumn>
@@ -53,7 +53,7 @@ class ReportDtAdviceContent extends React.Component{
                             <TableHeaderColumn style={tableHeader} >停嘱时间</TableHeaderColumn>
                         </TableRow>
                     </TableHeader>
-                    <TableBody displayRowCheckbox={false} style={{'overFlow':'auto'}}>
+                    <TableBody displayRowCheckbox={false} style={{ 'overFlow': 'auto' }}>
                         <TableRow style={tableContent}>
                             <TableRowColumn style={tableContent}>新增</TableRowColumn>
                             <TableRowColumn style={tableContent}>09-13 19：04</TableRowColumn>

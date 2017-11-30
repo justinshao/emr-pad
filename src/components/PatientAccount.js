@@ -1,15 +1,15 @@
 import React from 'react';
-import {tableHeader, tableContent } from '../styles';
+import { tableHeader, tableContent } from '../styles';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 import NoResult from './NoResult';
 
 class PatientAccount extends React.Component {
-    
+
     render() {
-        let content=(
-            true? (
+        let content = (
+            true ? (
                 <div>
-                    <Table style={{ 'border': '2px solid #f1f1f1' }}  selectable={false}>
+                    <Table style={{ 'border': '2px solid #f1f1f1' }} selectable={false}>
                         <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                             <TableRow style={tableHeader}>
                                 <TableHeaderColumn style={tableHeader} >住院账户信息</TableHeaderColumn>
@@ -53,7 +53,7 @@ class PatientAccount extends React.Component {
                         </TableBody>
                     </Table>
                 </div>
-            ):<NoResult/>
+            ) : <NoResult />
         )
         return (
             <div>

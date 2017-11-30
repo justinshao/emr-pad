@@ -18,7 +18,7 @@ class ModuleWrapper extends React.Component {
         this.handlePaitentInfor = this.handlePaitentInfor.bind(this);
         this.handleReportEchars = this.handleReportEchars.bind(this);
         this.fetchMainMenu = this.fetchMainMenu.bind(this);
-        this.handleChangeTap=this.handleChangeTap.bind(this);
+        this.handleChangeTap = this.handleChangeTap.bind(this);
     }
 
     // 加载mainmenu主菜单项
@@ -56,7 +56,7 @@ class ModuleWrapper extends React.Component {
     handlePaitentInfor() {
         let { history } = this.props;
         let { regId } = this.props.match.params;
-        history.push(`/patInfo/${regId}/2`);
+        history.push(`/patInfo/${regId}/sourceType`);
     }
 
     // 跳转趋势图
@@ -66,21 +66,21 @@ class ModuleWrapper extends React.Component {
     }
 
     // 跳转其他界面
-    handleChangeTap(item){
+    handleChangeTap(item) {
         let { history } = this.props;
-        if(item.Name=='病历概要'){
+        if (item.Name == '病历概要') {
             history.push(item.Url);
         }
-        else{
+        else {
             history.replace(item.Url);
         }
         this.setState({
-            menuOpen:false
+            menuOpen: false
         })
     }
 
     render() {
-        let { regId, sourceType,content,reportType} = this.props.match.params;
+        let { regId, sourceType, content, reportType } = this.props.match.params;
 
         return (
             <div>
@@ -94,6 +94,7 @@ class ModuleWrapper extends React.Component {
                 <ModuleCatalogBar
                     regId={regId}
                     open={this.state.menuOpen}
+                    sourceType={sourceType}
                     menu={this.state.menu}
                     onMenuRequestChange={this.handleMenuRequestChange}
                     onPaitentInfor={this.handlePaitentInfor}

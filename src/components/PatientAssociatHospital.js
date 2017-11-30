@@ -6,22 +6,22 @@ import NoResult from './NoResult';
 class PatientAssociatHospital extends React.Component {
 
     render() {
-        let content=(
-            true? (
+        let content = (
+            true ? (
                 <div>
-                    <Table style={{ 'border': '2px solid #f1f1f1' }}  selectable={false}>
+                    <Table style={{ 'border': '2px solid #f1f1f1' }} selectable={false}>
                         <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                             <TableRow style={tableHeader} >
-                                <TableHeaderColumn style={tableHeader } colSpan='7'>关联住院</TableHeaderColumn>
+                                <TableHeaderColumn style={tableHeader} colSpan='7'>关联住院</TableHeaderColumn>
                             </TableRow>
                             <TableRow style={tableHeader} >
-                                <TableHeaderColumn style={tableHeader }>住院号</TableHeaderColumn>
-                                <TableHeaderColumn style={tableHeader }>姓名</TableHeaderColumn>
-                                <TableHeaderColumn style={tableHeader }>床位号</TableHeaderColumn>
-                                <TableHeaderColumn style={tableHeader }>性别</TableHeaderColumn>
-                                <TableHeaderColumn style={tableHeader }>出生日期</TableHeaderColumn>
-                                <TableHeaderColumn style={tableHeader }>年龄</TableHeaderColumn>
-                                <TableHeaderColumn style={tableHeader }>关系</TableHeaderColumn>
+                                <TableHeaderColumn style={tableHeader}>住院号</TableHeaderColumn>
+                                <TableHeaderColumn style={tableHeader}>姓名</TableHeaderColumn>
+                                <TableHeaderColumn style={tableHeader}>床位号</TableHeaderColumn>
+                                <TableHeaderColumn style={tableHeader}>性别</TableHeaderColumn>
+                                <TableHeaderColumn style={tableHeader}>出生日期</TableHeaderColumn>
+                                <TableHeaderColumn style={tableHeader}>年龄</TableHeaderColumn>
+                                <TableHeaderColumn style={tableHeader}>关系</TableHeaderColumn>
                             </TableRow>
                         </TableHeader>
                         <TableBody displayRowCheckbox={false}>
@@ -37,7 +37,7 @@ class PatientAssociatHospital extends React.Component {
                         </TableBody>
                     </Table>
                 </div>
-            ):<NoResult/>
+            ) : <NoResult />
         )
         return (
             <div>

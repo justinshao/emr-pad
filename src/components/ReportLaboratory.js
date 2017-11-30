@@ -4,8 +4,8 @@ import ReportTitle from './ReportTitle';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 import NoResult from './NoResult';
 
-const divStyle={
-    'color':'blue'
+const divStyle = {
+    'color': 'blue'
 }
 
 class ReportLaboratory extends React.Component {

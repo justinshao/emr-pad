@@ -40,7 +40,7 @@ class ModuleCatalogWrapper extends React.Component {
         })
 
         return (
-            <div style={{overflow:'auto',height:'80%'}}>
+            <div style={{ overflow: 'auto', height: '80%' }}>
                 <List>
                     {menus}
                 </List>

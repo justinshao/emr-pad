@@ -87,7 +87,7 @@ class ReportDtAdvice extends React.Component {
                         date={this.state.date}
                         status={this.state.status}
                     />
-            </div>
+                </div>
             ) : <NoResult />
         );
         return (

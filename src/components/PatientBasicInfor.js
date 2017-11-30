@@ -1,18 +1,18 @@
 import React from 'react';
-import {tableHeader, tableContent } from '../styles';
+import { tableHeader, tableContent } from '../styles';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 import NoResult from './NoResult';
 
 class PatientBasicInfor extends React.Component {
 
     render() {
-        let content=(
-            true? (
+        let content = (
+            true ? (
                 <div>
-                    <Table style={{ 'border': '2px solid #f1f1f1' }}  selectable={false}>
+                    <Table style={{ 'border': '2px solid #f1f1f1' }} selectable={false}>
                         <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                             <TableRow style={tableHeader} >
-                                <TableHeaderColumn style={tableHeader } colSpan='4'>病人信息</TableHeaderColumn>
+                                <TableHeaderColumn style={tableHeader} colSpan='4'>病人信息</TableHeaderColumn>
                             </TableRow>
                             <TableRow style={tableContent}>
                                 <TableRowColumn style={tableContent}>姓名</TableRowColumn>
@@ -89,7 +89,7 @@ class PatientBasicInfor extends React.Component {
                         </TableBody>
                     </Table>
                 </div>
-            ):<NoResult/>
+            ) : <NoResult />
         )
         return (
             <div>

@@ -24,19 +24,19 @@ class ModuleView extends React.Component {
 
     render() {
         // let { regId, sourceType, content, reportType } = this.props;
-         let { content } = this.props;
+        let { content } = this.props;
         return (
             <div>
                 {
-                    content == 'exam' ? <ReportExamination {...this.props}/> :
-                        content == 'pathlg' ? <ReportPathology {...this.props}/> :
-                            content == 'assay' ? <ReportLaboratory {...this.props}/> :
+                    content == 'exam' ? <ReportExamination {...this.props} /> :
+                        content == 'pathlg' ? <ReportPathology {...this.props} /> :
+                            content == 'assay' ? <ReportLaboratory {...this.props} /> :
                                 // content == 'assay' ? <ReportLaboratoryX {...this.props}/> :
-                                    content == 'nursing' ? <ReportCareOrder {...this.props} /> :
-                                        content == 'temp' ? <ReportTemperature {...this.props} /> :
-                                            content == 'inPatOrder' ? <ReportDtAdvice {...this.props} /> :
-                                                content == 'chnOrder' ? <ReportChDtAdvice {...this.props} /> :
-                                                    content == 'diag' ? <ReportDiag {...this.props} /> : <ReportTemperature {...this.props} />
+                                content == 'nursing' ? <ReportCareOrder {...this.props} /> :
+                                    content == 'temp' ? <ReportTemperature {...this.props} /> :
+                                        content == 'inPatOrder' ? <ReportDtAdvice {...this.props} /> :
+                                            content == 'chnOrder' ? <ReportChDtAdvice {...this.props} /> :
+                                                content == 'diag' ? <ReportDiag {...this.props} /> : <ReportTemperature {...this.props} />
                 }
             </div>
         )

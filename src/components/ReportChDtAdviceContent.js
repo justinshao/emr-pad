@@ -25,18 +25,18 @@ const tableContent = {
     'fontSize': '12px'
 };
 
-class ReportChDtAdviceContent extends React.Component{
-    constructor(props){
+class ReportChDtAdviceContent extends React.Component {
+    constructor(props) {
         super(props);
-        this.state={
+        this.state = {
 
         };
     }
 
-    render(){
-        return(
-            <div style={{'overFlow':'hidden'}}>
-                <Table style={{ 'border': '2px solid #f1f1f1','width':'700px'}}  selectable={false} bodyStyle={{'width':'700px','overFlow':'auto'}}>
+    render() {
+        return (
+            <div style={{ 'overFlow': 'hidden' }}>
+                <Table style={{ 'border': '2px solid #f1f1f1', 'width': '700px' }} selectable={false} bodyStyle={{ 'width': '700px', 'overFlow': 'auto' }}>
                     <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                         <TableRow style={tableHeader}>
                             <TableHeaderColumn style={tableHeader} >状态</TableHeaderColumn>

@@ -11,10 +11,10 @@ class PatientInforHeaderBar extends React.Component {
         super(props);
         this.state = {
             title: null,
-            open:false
+            open: false
         };
         this.handleNavBackRequest = this.handleNavBackRequest.bind(this);
-        this.handleMenuButtonTouchTap=this.handleMenuButtonTouchTap.bind(this);
+        this.handleMenuButtonTouchTap = this.handleMenuButtonTouchTap.bind(this);
     }
 
     //获取菜单信息

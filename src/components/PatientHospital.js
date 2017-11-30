@@ -6,10 +6,10 @@ import NoResult from './NoResult';
 class PatientHospital extends React.Component {
 
     render() {
-        let content=(
-            true? (
+        let content = (
+            true ? (
                 <div>
-                    <Table style={{ 'border': '2px solid #f1f1f1' }}  selectable={false}>
+                    <Table style={{ 'border': '2px solid #f1f1f1' }} selectable={false}>
                         <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                             <TableRow style={tableHeader}>
                                 <TableHeaderColumn style={tableHeader} >住院信息</TableHeaderColumn>
@@ -91,7 +91,7 @@ class PatientHospital extends React.Component {
                         </TableBody>
                     </Table>
                 </div>
-            ):<NoResult/>
+            ) : <NoResult />
         )
         return (
             <div>

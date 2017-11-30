@@ -2,30 +2,30 @@ import React from 'react';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
 
-const leftStyle={
-    'float':'left',
-    'width':'33.33%'
+const leftStyle = {
+    'float': 'left',
+    'width': '33.33%'
 };
 
-class ReportDtAdviceHeader extends React.Component{
-    constructor(props){
+class ReportDtAdviceHeader extends React.Component {
+    constructor(props) {
         super(props);
-        this.state={
-            value:1,
-            typeofAdvice:3,
-            status:3
+        this.state = {
+            value: 1,
+            typeofAdvice: 3,
+            status: 3
         };
-        this.handleChange=this.handleChange.bind(this);
-        this.handleChange2=this.handleChange2.bind(this);
-        this.handleChange3=this.handleChange3.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.handleChange2 = this.handleChange2.bind(this);
+        this.handleChange3 = this.handleChange3.bind(this);
     }
 
-    handleChange = (event, index, value) => this.setState({value});
-    handleChange2 = (event, index, typeofAdvice) => this.setState({typeofAdvice});
-    handleChange3 = (event, index, status) => this.setState({status});
+    handleChange = (event, index, value) => this.setState({ value });
+    handleChange2 = (event, index, typeofAdvice) => this.setState({ typeofAdvice });
+    handleChange3 = (event, index, status) => this.setState({ status });
 
-    render(){
-        return(
+    render() {
+        return (
             <div>
                 <div style={leftStyle}>
                     <DropDownMenu value={this.state.value} onChange={this.handleChange}>
@@ -48,7 +48,7 @@ class ReportDtAdviceHeader extends React.Component{
                         <MenuItem value={3} primaryText="全部" />
                     </DropDownMenu>
                 </div>
-                <br style={{'clear':'both'}}/>
+                <br style={{ 'clear': 'both' }} />
             </div>
         )
     }

@@ -40,29 +40,29 @@ class ReportExamination extends React.Component {
     render() {
         let showContent = (
             true ? (<ReportTitle
-                        title={this.state.title}
-                        detailHeader={this.state.detailHeader}
-                        detailBottom={this.state.detailBottom}
-                    >
-                        <Card containerStyle={containerStyle}>
-                            <div style={cardstyle}>
-                                <h5 style={titleStyle}>检查所见:</h5>
-                                <div style={content}>
-                                    {this.state.showContent}
-                                </div>
-                                <br style={{ 'clear': 'both' }} />
-                            </div>
-                        </Card>
-                        <Card containerStyle={containerStyle}>
-                            <div style={cardstyle}>
-                                <h5 style={titleStyle}>检查提示:</h5>
-                                <div style={content}>
-                                    {this.state.promptContent}
-                                </div>
-                                <br style={{ 'clear': 'both' }} />
-                            </div>
-                        </Card>
-                    </ReportTitle>) : <NoResult />
+                title={this.state.title}
+                detailHeader={this.state.detailHeader}
+                detailBottom={this.state.detailBottom}
+            >
+                <Card containerStyle={containerStyle}>
+                    <div style={cardstyle}>
+                        <h5 style={titleStyle}>检查所见:</h5>
+                        <div style={content}>
+                            {this.state.showContent}
+                        </div>
+                        <br style={{ 'clear': 'both' }} />
+                    </div>
+                </Card>
+                <Card containerStyle={containerStyle}>
+                    <div style={cardstyle}>
+                        <h5 style={titleStyle}>检查提示:</h5>
+                        <div style={content}>
+                            {this.state.promptContent}
+                        </div>
+                        <br style={{ 'clear': 'both' }} />
+                    </div>
+                </Card>
+            </ReportTitle>) : <NoResult />
         );
         return (
             <div style={contentStyle}>

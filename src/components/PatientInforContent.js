@@ -14,22 +14,22 @@ const contentStyle = {
 };
 
 class PatientInforContent extends React.Component {
-      
+
     render() {
         let inforId = this.props.inforId;
-        let content=(
-            inforId=='PatientHospital'? <PatientHospital/>:
-            inforId=='PatientBasicInfor'? <PatientBasicInfor/>:
-            inforId=='PatientAllergy'? <PatientAllergy/>:
-            inforId=='PatientDiet'? <PatientDiet/>:
-            inforId=='PatientAssociatHospital'? <PatientAssociatHospital/>:
-            inforId=='PatientRotation'? <PatientRotation/>:
-            inforId=='PatientChangeHospital'? <PatientChangeHospital/>:
-            inforId=='PatientAccount'? <PatientAccount/>:<PatientHospital/>
+        let content = (
+            inforId == 'PatientHospital' ? <PatientHospital /> :
+                inforId == 'PatientBasicInfor' ? <PatientBasicInfor /> :
+                    inforId == 'PatientAllergy' ? <PatientAllergy /> :
+                        inforId == 'PatientDiet' ? <PatientDiet /> :
+                            inforId == 'PatientAssociatHospital' ? <PatientAssociatHospital /> :
+                                inforId == 'PatientRotation' ? <PatientRotation /> :
+                                    inforId == 'PatientChangeHospital' ? <PatientChangeHospital /> :
+                                        inforId == 'PatientAccount' ? <PatientAccount /> : <PatientHospital />
         );
         return (
             <div style={contentStyle}>
-                 {content}
+                {content}
             </div>
         )
     }

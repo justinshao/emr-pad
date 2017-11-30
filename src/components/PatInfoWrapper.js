@@ -2,13 +2,13 @@ import React from 'react';
 import Paper from 'material-ui/Paper';
 
 const style = {
-    width:'90%',
-    margin:'5%',
-    padding:' 5% 7%',
-    borderRadius:'10px',
-    backgroundColor:'rgb(0, 188, 212)',
-    color:'white',
-    lineHeight:'1.6'
+    width: '90%',
+    margin: '5%',
+    padding: ' 5% 7%',
+    borderRadius: '10px',
+    backgroundColor: 'rgb(0, 188, 212)',
+    color: 'white',
+    lineHeight: '1.6'
 };
 
 class PatInfoWrapper extends React.Component {
