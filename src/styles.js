@@ -79,7 +79,7 @@ const tableContent = {
     fontSize: '12px',
     whiteSpace: 'normal',
     textOverflow:'no',
-    wordWrap:'break-word' 
+    wordWrap:'break-word'
 };
 
 export {

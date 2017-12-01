@@ -6,7 +6,7 @@ import { getPat } from '../service';
 import MenuIcon from 'material-ui/svg-icons/navigation/menu';
 import FlatButton from 'material-ui/FlatButton';
 
-class ModuleHeaderBar extends React.Component {
+class ClinicHeaderBar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -58,4 +58,4 @@ class ModuleHeaderBar extends React.Component {
     }
 }
 
-export default ModuleHeaderBar;
+export default ClinicHeaderBar;

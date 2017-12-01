@@ -1,10 +1,10 @@
 import React from 'react';
-import ModuleHeaderBar from './ModuleHeaderBar';
-import ModuleCatalogBar from './ModuleCatalogBar';
-import ModuleView from './ModuleView';
+import ClinicHeaderBar from './ClinicHeaderBar';
+import ClinicCatalogBar from './ClinicCatalogBar';
+import ClinicView from './ClinicView';
 import { getMainMenu } from '../service';
 
-class ModuleWrapper extends React.Component {
+class ClinicWrapper extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -87,13 +87,13 @@ class ModuleWrapper extends React.Component {
         return (
             <div>
                 {/* 页头组件 */}
-                <ModuleHeaderBar
+                <ClinicHeaderBar
                     regId={regId}
                     onNavBackRequest={this.handleNavBackRequest}
                     onOpenMenuRequest={this.handleMenuButtonTouchTap}
                 />
                 {/* 侧边栏菜单组件 */}
-                <ModuleCatalogBar
+                <ClinicCatalogBar
                     regId={regId}
                     loading={this.state.loading}
                     open={this.state.menuOpen}
@@ -104,7 +104,7 @@ class ModuleWrapper extends React.Component {
                     onChangeTap={this.handleChangeTap}
                 />
                 {/* 正文组件 */}
-                <ModuleView
+                <ClinicView
                     regId={regId}
                     sourceType={sourceType}
                     content={content}
@@ -116,4 +116,4 @@ class ModuleWrapper extends React.Component {
     }
 }
 
-export default ModuleWrapper;
+export default ClinicWrapper;

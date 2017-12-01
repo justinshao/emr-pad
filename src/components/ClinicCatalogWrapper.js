@@ -8,7 +8,7 @@ const style = {
     'fill': 'rgb(0, 188, 212)'
 };
 
-class ModuleCatalogWrapper extends React.Component {
+class ClinicCatalogWrapper extends React.Component {
 
     constructor(props) {
         super(props);
@@ -60,4 +60,4 @@ class ModuleCatalogWrapper extends React.Component {
     }
 }
 
-export default ModuleCatalogWrapper;
+export default ClinicCatalogWrapper;

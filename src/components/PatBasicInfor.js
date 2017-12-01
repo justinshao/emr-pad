@@ -3,7 +3,7 @@ import { tableHeader, tableContent } from '../styles';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 import NoResult from './NoResult';
 
-class PatientHospital extends React.Component {
+class PatBasicInfor extends React.Component {
 
     render() {
         let content = (
@@ -11,81 +11,79 @@ class PatientHospital extends React.Component {
                 <div>
                     <Table style={{ 'border': '2px solid #f1f1f1' }} selectable={false}>
                         <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
-                            <TableRow style={tableHeader}>
-                                <TableHeaderColumn style={tableHeader} >住院信息</TableHeaderColumn>
+                            <TableRow style={tableHeader} >
+                                <TableHeaderColumn style={tableHeader} colSpan='4'>病人信息</TableHeaderColumn>
                             </TableRow>
-                        </TableHeader>
-                        <TableBody displayRowCheckbox={false}>
                             <TableRow style={tableContent}>
                                 <TableRowColumn style={tableContent}>姓名</TableRowColumn>
                                 <TableRowColumn style={tableContent}></TableRowColumn>
-                                <TableRowColumn style={tableContent}>性别</TableRowColumn>
+                                <TableRowColumn style={tableContent}>病案号</TableRowColumn>
                                 <TableRowColumn style={tableContent}></TableRowColumn>
                             </TableRow>
                             <TableRow style={tableContent}>
-                                <TableRowColumn style={tableContent}>出生日期</TableRowColumn>
+                                <TableRowColumn style={tableContent}>性别</TableRowColumn>
                                 <TableRowColumn style={tableContent}></TableRowColumn>
                                 <TableRowColumn style={tableContent}>证件号码</TableRowColumn>
                                 <TableRowColumn style={tableContent}></TableRowColumn>
                             </TableRow>
                             <TableRow style={tableContent}>
-                                <TableRowColumn style={tableContent}>住院号</TableRowColumn>
+                                <TableRowColumn style={tableContent}>出生日期</TableRowColumn>
                                 <TableRowColumn style={tableContent}></TableRowColumn>
-                                <TableRowColumn style={tableContent}>病区</TableRowColumn>
-                                <TableRowColumn style={tableContent}></TableRowColumn>
-                            </TableRow>
-                            <TableRow style={tableContent}>
-                                <TableRowColumn style={tableContent}>科室</TableRowColumn>
-                                <TableRowColumn style={tableContent}></TableRowColumn>
-                                <TableRowColumn style={tableContent}>主治医生</TableRowColumn>
+                                <TableRowColumn style={tableContent}>手机</TableRowColumn>
                                 <TableRowColumn style={tableContent}></TableRowColumn>
                             </TableRow>
                             <TableRow style={tableContent}>
-                                <TableRowColumn style={tableContent}>入院时间</TableRowColumn>
+                                <TableRowColumn style={tableContent}>电话</TableRowColumn>
                                 <TableRowColumn style={tableContent}></TableRowColumn>
-                                <TableRowColumn style={tableContent}>住院医生</TableRowColumn>
+                                <TableRowColumn style={tableContent}>隐私级别</TableRowColumn>
+                                <TableRowColumn style={tableContent}></TableRowColumn>
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody stripedRows={true} displayRowCheckbox={false}>
+                            <TableRow style={tableContent} >
+                                <TableRowColumn style={tableContent}>居住地址</TableRowColumn>
+                                <TableRowColumn style={tableContent} colSpan='3'></TableRowColumn>
+                            </TableRow>
+                            <TableRow style={tableContent} >
+                                <TableRowColumn style={tableContent}>名族</TableRowColumn>
+                                <TableRowColumn style={tableContent}></TableRowColumn>
+                                <TableRowColumn style={tableContent}>国籍</TableRowColumn>
                                 <TableRowColumn style={tableContent}></TableRowColumn>
                             </TableRow>
                             <TableRow style={tableContent}>
-                                <TableRowColumn style={tableContent}>入院病区</TableRowColumn>
+                                <TableRowColumn style={tableContent}>职业</TableRowColumn>
                                 <TableRowColumn style={tableContent}></TableRowColumn>
-                                <TableRowColumn style={tableContent}>入院科室</TableRowColumn>
-                                <TableRowColumn style={tableContent}></TableRowColumn>
-                            </TableRow>
-                            <TableRow style={tableContent}>
-                                <TableRowColumn style={tableContent}>住院天数</TableRowColumn>
-                                <TableRowColumn style={tableContent}></TableRowColumn>
-                                <TableRowColumn style={tableContent}>费别类型</TableRowColumn>
+                                <TableRowColumn style={tableContent}>婚姻状况</TableRowColumn>
                                 <TableRowColumn style={tableContent}></TableRowColumn>
                             </TableRow>
                             <TableRow style={tableContent}>
-                                <TableRowColumn style={tableContent}>医疗证号</TableRowColumn>
+                                <TableRowColumn style={tableContent}>关系人</TableRowColumn>
                                 <TableRowColumn style={tableContent}></TableRowColumn>
-                                <TableRowColumn style={tableContent}>护理等级</TableRowColumn>
-                                <TableRowColumn style={tableContent}></TableRowColumn>
-                            </TableRow>
-                            <TableRow style={tableContent}>
-                                <TableRowColumn style={tableContent}>危重级别</TableRowColumn>
-                                <TableRowColumn style={tableContent}></TableRowColumn>
-                                <TableRowColumn style={tableContent}>登记时间</TableRowColumn>
+                                <TableRowColumn style={tableContent}>关系人号码</TableRowColumn>
                                 <TableRowColumn style={tableContent}></TableRowColumn>
                             </TableRow>
                             <TableRow style={tableContent}>
-                                <TableRowColumn style={tableContent}>登记人员</TableRowColumn>
+                                <TableRowColumn style={tableContent}>关系人关系</TableRowColumn>
                                 <TableRowColumn style={tableContent}></TableRowColumn>
-                                <TableRowColumn style={tableContent}>登记机构</TableRowColumn>
-                                <TableRowColumn style={tableContent}></TableRowColumn>
-                            </TableRow>
-                            <TableRow style={tableContent}>
-                                <TableRowColumn style={tableContent}>结账时间</TableRowColumn>
-                                <TableRowColumn style={tableContent}></TableRowColumn>
-                                <TableRowColumn style={tableContent}>离院方式</TableRowColumn>
+                                <TableRowColumn style={tableContent}>Email</TableRowColumn>
                                 <TableRowColumn style={tableContent}></TableRowColumn>
                             </TableRow>
                             <TableRow style={tableContent}>
-                                <TableRowColumn style={tableContent}>临床出院时间</TableRowColumn>
+                                <TableRowColumn style={tableContent}>ABO血型</TableRowColumn>
                                 <TableRowColumn style={tableContent}></TableRowColumn>
+                                <TableRowColumn style={tableContent}>RH血型</TableRowColumn>
                                 <TableRowColumn style={tableContent}></TableRowColumn>
+                            </TableRow>
+                            <TableRow style={tableContent}>
+                                <TableRowColumn style={tableContent}>家庭电话</TableRowColumn>
+                                <TableRowColumn style={tableContent}></TableRowColumn>
+                                <TableRowColumn style={tableContent}>单位</TableRowColumn>
+                                <TableRowColumn style={tableContent}></TableRowColumn>
+                            </TableRow>
+                            <TableRow style={tableContent}>
+                                <TableRowColumn style={tableContent}>家庭地址</TableRowColumn>
+                                <TableRowColumn style={tableContent}></TableRowColumn>
+                                <TableRowColumn style={tableContent}>单位地址</TableRowColumn>
                                 <TableRowColumn style={tableContent}></TableRowColumn>
                             </TableRow>
                         </TableBody>
@@ -101,4 +99,4 @@ class PatientHospital extends React.Component {
     }
 }
 
-export default PatientHospital;
+export default PatBasicInfor;

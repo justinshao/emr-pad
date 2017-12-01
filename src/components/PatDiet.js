@@ -3,11 +3,7 @@ import { tableHeader, tableContent } from '../styles';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 import NoResult from './NoResult';
 
-const contentStyle = {
-    'width': '500px'
-}
-
-class PatientAllergy extends React.Component {
+class PatDiet extends React.Component {
 
     render() {
         let content = (
@@ -16,22 +12,18 @@ class PatientAllergy extends React.Component {
                     <Table style={{ 'border': '2px solid #f1f1f1' }} selectable={false}>
                         <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                             <TableRow style={tableHeader} >
-                                <TableHeaderColumn style={tableHeader} colSpan='7'>过敏信息</TableHeaderColumn>
+                                <TableHeaderColumn style={tableHeader} colSpan='5'>饮食医嘱</TableHeaderColumn>
                             </TableRow>
                             <TableRow style={tableHeader} >
-                                <TableHeaderColumn style={tableHeader}>发病日期</TableHeaderColumn>
-                                <TableHeaderColumn style={tableHeader}>药物过敏</TableHeaderColumn>
-                                <TableHeaderColumn style={tableHeader}>过敏原</TableHeaderColumn>
-                                <TableHeaderColumn style={tableHeader}>过敏原因</TableHeaderColumn>
-                                <TableHeaderColumn style={tableHeader}>治疗措施</TableHeaderColumn>
-                                <TableHeaderColumn style={tableHeader}>登记人员</TableHeaderColumn>
-                                <TableHeaderColumn style={tableHeader}>登记时间</TableHeaderColumn>
+                                <TableHeaderColumn style={tableHeader}>医嘱日期</TableHeaderColumn>
+                                <TableHeaderColumn style={tableHeader}>医嘱内容</TableHeaderColumn>
+                                <TableHeaderColumn style={tableHeader}>开嘱医生</TableHeaderColumn>
+                                <TableHeaderColumn style={tableHeader}>停嘱日期</TableHeaderColumn>
+                                <TableHeaderColumn style={tableHeader}>停嘱人员</TableHeaderColumn>
                             </TableRow>
                         </TableHeader>
                         <TableBody displayRowCheckbox={false}>
                             <TableRow style={tableContent} >
-                                <TableRowColumn style={tableContent}></TableRowColumn>
-                                <TableRowColumn style={tableContent}></TableRowColumn>
                                 <TableRowColumn style={tableContent}></TableRowColumn>
                                 <TableRowColumn style={tableContent}></TableRowColumn>
                                 <TableRowColumn style={tableContent}></TableRowColumn>
@@ -44,11 +36,11 @@ class PatientAllergy extends React.Component {
             ) : <NoResult />
         )
         return (
-            <div style={contentStyle}>
+            <div>
                 {content}
             </div>
         )
     }
 }
 
-export default PatientAllergy;
+export default PatDiet;

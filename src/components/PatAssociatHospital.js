@@ -3,7 +3,7 @@ import { tableHeader, tableContent } from '../styles';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 import NoResult from './NoResult';
 
-class PatientRotation extends React.Component {
+class PatAssociatHospital extends React.Component {
 
     render() {
         let content = (
@@ -12,16 +12,16 @@ class PatientRotation extends React.Component {
                     <Table style={{ 'border': '2px solid #f1f1f1' }} selectable={false}>
                         <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                             <TableRow style={tableHeader} >
-                                <TableHeaderColumn style={tableHeader} colSpan='7'>轮转信息</TableHeaderColumn>
+                                <TableHeaderColumn style={tableHeader} colSpan='7'>关联住院</TableHeaderColumn>
                             </TableRow>
                             <TableRow style={tableHeader} >
-                                <TableHeaderColumn style={tableHeader}>原病区</TableHeaderColumn>
-                                <TableHeaderColumn style={tableHeader}>原科室</TableHeaderColumn>
-                                <TableHeaderColumn style={tableHeader}>新病区</TableHeaderColumn>
-                                <TableHeaderColumn style={tableHeader}>新科室</TableHeaderColumn>
-                                <TableHeaderColumn style={tableHeader}>轮转类型</TableHeaderColumn>
-                                <TableHeaderColumn style={tableHeader}>操作时间</TableHeaderColumn>
-                                <TableHeaderColumn style={tableHeader}>操作员</TableHeaderColumn>
+                                <TableHeaderColumn style={tableHeader}>住院号</TableHeaderColumn>
+                                <TableHeaderColumn style={tableHeader}>姓名</TableHeaderColumn>
+                                <TableHeaderColumn style={tableHeader}>床位号</TableHeaderColumn>
+                                <TableHeaderColumn style={tableHeader}>性别</TableHeaderColumn>
+                                <TableHeaderColumn style={tableHeader}>出生日期</TableHeaderColumn>
+                                <TableHeaderColumn style={tableHeader}>年龄</TableHeaderColumn>
+                                <TableHeaderColumn style={tableHeader}>关系</TableHeaderColumn>
                             </TableRow>
                         </TableHeader>
                         <TableBody displayRowCheckbox={false}>
@@ -47,4 +47,4 @@ class PatientRotation extends React.Component {
     }
 }
 
-export default PatientRotation;
+export default PatAssociatHospital;

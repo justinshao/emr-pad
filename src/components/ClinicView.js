@@ -9,7 +9,7 @@ import ReportChDtAdvice from './ReportChDtAdvice';
 import ReportDiag from './ReportDiag';
 import ReportPathology from './ReportPathology';
 
-class ModuleView extends React.Component {
+class ClinicView extends React.Component {
 
     constructor(props) {
         super(props);
@@ -23,8 +23,8 @@ class ModuleView extends React.Component {
     }
 
     render() {
-        let { regId, sourceType, content, reportType } = this.props;
-        // let { content } = this.props;
+        // let { regId, sourceType, content, reportType } = this.props;
+        let { content } = this.props;
         return (
             <div>
                 {
@@ -43,4 +43,4 @@ class ModuleView extends React.Component {
     }
 }
 
-export default ModuleView;
+export default ClinicView;

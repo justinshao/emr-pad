@@ -3,7 +3,7 @@ import { tableHeader, tableContent } from '../styles';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 import NoResult from './NoResult';
 
-class PatientAccount extends React.Component {
+class PatAccount extends React.Component {
 
     render() {
         let content = (
@@ -63,4 +63,4 @@ class PatientAccount extends React.Component {
     }
 }
 
-export default PatientAccount;
+export default PatAccount;

@@ -1,9 +1,9 @@
 import React from 'react';
-import PatientInforContent from './PatientInforContent';
-import PatientInforHeaderBar from './PatientInforHeaderBar';
-import PatientInforCatalogBar from './PatientInforCatalogBar';
+import PatInfoContent from './PatInfoContent';
+import PatInfoHeaderBar from './PatInfoHeaderBar';
+import PatInfoCatalogBar from './PatInfoCatalogBar';
 
-class PatientInfor extends React.Component {
+class PatInfo extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -11,14 +11,14 @@ class PatientInfor extends React.Component {
         };
         this.handleNavBackRequest = this.handleNavBackRequest.bind(this);
         this.handleMenuButtonTouchTap = this.handleMenuButtonTouchTap.bind(this);
-        this.handlePatientHospital = this.handlePatientHospital.bind(this);
-        this.handlePatientBasicInfor = this.handlePatientBasicInfor.bind(this);
-        this.handlePatientAllergy = this.handlePatientAllergy.bind(this);
-        this.handlePatientDiet = this.handlePatientDiet.bind(this);
-        this.handlePatientAssociatHospital = this.handlePatientAssociatHospital.bind(this);
-        this.handlePatientRotation = this.handlePatientRotation.bind(this);
-        this.handlePatientChangeHospital = this.handlePatientChangeHospital.bind(this);
-        this.handlePatientAccount = this.handlePatientAccount.bind(this);
+        this.handlePatHospital = this.handlePatHospital.bind(this);
+        this.handlePatBasicInfor = this.handlePatBasicInfor.bind(this);
+        this.handlePatAllergy = this.handlePatAllergy.bind(this);
+        this.handlePatDiet = this.handlePatDiet.bind(this);
+        this.handlePatAssociatHospital = this.handlePatAssociatHospital.bind(this);
+        this.handlePatRotation = this.handlePatRotation.bind(this);
+        this.handlePatChangeHospital = this.handlePatChangeHospital.bind(this);
+        this.handlePatAccount = this.handlePatAccount.bind(this);
     }
 
     // 返回上一层
@@ -38,66 +38,66 @@ class PatientInfor extends React.Component {
     }
 
     //跳转住院信息
-    handlePatientHospital() {
+    handlePatHospital() {
         let { history } = this.props;
         let { regId,sourceType} = this.props.match.params;
-        history.replace(`/patInfo/${regId}/${sourceType}/PatientHospital`);
+        history.replace(`/patInfo/${regId}/${sourceType}/PatHospital`);
         this.setState({ openmenu: false });
     }
 
     //跳转基本信息
-    handlePatientBasicInfor() {
+    handlePatBasicInfor() {
         let { history } = this.props;
         let { regId,sourceType} = this.props.match.params;
-        history.replace(`/patInfo/${regId}/${sourceType}/PatientBasicInfor`);
+        history.replace(`/patInfo/${regId}/${sourceType}/PatBasicInfor`);
         this.setState({ openmenu: false });
     }
 
     //跳转过敏信息
-    handlePatientAllergy() {
+    handlePatAllergy() {
         let { history } = this.props;
         let { regId,sourceType} = this.props.match.params;
-        history.replace(`/patInfo/${regId}/${sourceType}/PatientAllergy`);
+        history.replace(`/patInfo/${regId}/${sourceType}/PatAllergy`);
         this.setState({ openmenu: false });
     }
 
     //跳转饮食医嘱信息
-    handlePatientDiet() {
+    handlePatDiet() {
         let { history } = this.props;
         let { regId,sourceType} = this.props.match.params;
-        history.replace(`/patInfo/${regId}/${sourceType}/PatientDiet`);
+        history.replace(`/patInfo/${regId}/${sourceType}/PatDiet`);
         this.setState({ openmenu: false });
     }
 
     //跳转关联住院信息
-    handlePatientAssociatHospital() {
+    handlePatAssociatHospital() {
         let { history } = this.props;
         let { regId,sourceType} = this.props.match.params;
-        history.replace(`/patInfo/${regId}/${sourceType}/PatientAssociatHospital`);
+        history.replace(`/patInfo/${regId}/${sourceType}/PatAssociatHospital`);
         this.setState({ openmenu: false });
     }
 
     //跳转轮转信息
-    handlePatientRotation() {
+    handlePatRotation() {
         let { history } = this.props;
         let { regId,sourceType} = this.props.match.params;
-        history.replace(`/patInfo/${regId}/${sourceType}/PatientRotation`);
+        history.replace(`/patInfo/${regId}/${sourceType}/PatRotation`);
         this.setState({ openmenu: false });
     }
 
     //跳转住院变更信息
-    handlePatientChangeHospital() {
+    handlePatChangeHospital() {
         let { history } = this.props;
         let { regId,sourceType} = this.props.match.params;
-        history.replace(`/patInfo/${regId}/${sourceType}/PatientChangeHospital`);
+        history.replace(`/patInfo/${regId}/${sourceType}/PatChangeHospital`);
         this.setState({ openmenu: false });
     }
 
     //跳转住院账户信息
-    handlePatientAccount() {
+    handlePatAccount() {
         let { history } = this.props;
         let { regId,sourceType} = this.props.match.params;
-        history.replace(`/patInfo/${regId}/${sourceType}/PatientAccount`);
+        history.replace(`/patInfo/${regId}/${sourceType}/PatAccount`);
         this.setState({ openmenu: false });
     }
 
@@ -105,24 +105,24 @@ class PatientInfor extends React.Component {
         let { regId, inforId } = this.props.match.params;
         return (
             <div>
-                <PatientInforHeaderBar
+                <PatInfoHeaderBar
                     regId={regId}
                     onNavBackRequest={this.handleNavBackRequest}
                     onOpenMenuRequest={this.handleMenuButtonTouchTap}
                 />
-                <PatientInforCatalogBar
+                <PatInfoCatalogBar
                     open={this.state.openmenu}
                     onMenuRequestChange={this.handleMenuRequestChange}
-                    onPatientHospital={this.handlePatientHospital}
-                    onPatientBasicInfor={this.handlePatientBasicInfor}
-                    onPatientAllergy={this.handlePatientAllergy}
-                    onPatientDiet={this.handlePatientDiet}
-                    onPatientAssociatHospital={this.handlePatientAssociatHospital}
-                    onPatientRotation={this.handlePatientRotation}
-                    onPatientChangeHospital={this.handlePatientChangeHospital}
-                    onPatientAccount={this.handlePatientAccount}
+                    onPatHospital={this.handlePatHospital}
+                    onPatBasicInfor={this.handlePatBasicInfor}
+                    onPatAllergy={this.handlePatAllergy}
+                    onPatDiet={this.handlePatDiet}
+                    onPatAssociatHospital={this.handlePatAssociatHospital}
+                    onPatRotation={this.handlePatRotation}
+                    onPatChangeHospital={this.handlePatChangeHospital}
+                    onPatAccount={this.handlePatAccount}
                 />
-                <PatientInforContent
+                <PatInfoContent
                     regId={regId}
                     inforId={inforId}
                 />
@@ -131,4 +131,4 @@ class PatientInfor extends React.Component {
     }
 }
 
-export default PatientInfor;
+export default PatInfo;

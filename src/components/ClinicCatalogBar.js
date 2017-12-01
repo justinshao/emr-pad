@@ -1,9 +1,9 @@
 import React from 'react';
-import ModuleCatalogWrapper from './ModuleCatalogWrapper';
+import ClinicCatalogWrapper from './ClinicCatalogWrapper';
 import Drawer from 'material-ui/Drawer';
 import PatInfoWrapper from './PatInfoWrapper';
 
-class ModuleCatalogBar extends React.Component {
+class ClinicCatalogBar extends React.Component {
 
     constructor(props) {
         super(props);
@@ -29,10 +29,10 @@ class ModuleCatalogBar extends React.Component {
         return (
             <Drawer docked={false} open={this.props.open} onRequestChange={this.props.onMenuRequestChange} openSecondary={true} containerStyle={{ overflow: 'hidden' }}>
                 <PatInfoWrapper onPaitentInfor={this.handlePaitentInfor} sourceType={this.props.sourceType}/>
-                <ModuleCatalogWrapper menu={this.props.menu} onChangeTap={this.handleChangeTap} loading={this.props.loading}/>
+                <ClinicCatalogWrapper menu={this.props.menu} onChangeTap={this.handleChangeTap} loading={this.props.loading}/>
             </Drawer>
         );
     }
 }
 
-export default ModuleCatalogBar;
+export default ClinicCatalogBar;
