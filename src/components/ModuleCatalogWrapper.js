@@ -1,6 +1,8 @@
 import React from 'react';
 import { List, ListItem } from 'material-ui/List';
 import ContentInbox from 'material-ui/svg-icons/content/inbox';
+import CircularProgress from 'material-ui/CircularProgress';
+
 
 const style = {
     'fill': 'rgb(0, 188, 212)'
@@ -21,6 +23,12 @@ class ModuleCatalogWrapper extends React.Component {
     }
 
     render() {
+        let loading = (
+            <div style={{ marginTop: '100px', textAlign: 'center' }}>
+                <CircularProgress size={60} thickness={7} />
+                <h3>努力加载中...</h3>
+            </div>
+        );
         let menu = this.props.menu;
         let menus = menu.map(mainmenu => {
             let nestedItem = mainmenu.Items ? (mainmenu.Items.map(item =>
@@ -41,9 +49,12 @@ class ModuleCatalogWrapper extends React.Component {
 
         return (
             <div style={{ overflow: 'auto', height: '80%' }}>
-                <List>
-                    {menus}
-                </List>
+                {
+                    this.props.loading ? loading :
+                        (<List>
+                            {menus}
+                        </List>)
+                }
             </div>
         );
     }

@@ -76,7 +76,10 @@ const tableContent = {
     lineHeight: '1',
     padding: '0',
     textAlign: 'center',
-    fontSize: '12px'
+    fontSize: '12px',
+    whiteSpace: 'normal',
+    textOverflow:'no',
+    wordWrap:'break-word' 
 };
 
 export {

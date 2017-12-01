@@ -22,9 +22,6 @@ const imgStyle = {
 class ReportCareOrder extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            src: ''
-        }
     }
 
     render() {
@@ -33,7 +30,7 @@ class ReportCareOrder extends React.Component {
                 <div>
                     <div style={titleStyle}>护理单</div>
                     <div style={careContentStyle}>
-                        <img src='../../images/picCare.jpg' style={imgStyle} />
+                        <img src='../../../../images/picCare.jpg' style={imgStyle} />
                     </div>
                 </div>
             ) : <NoResult />

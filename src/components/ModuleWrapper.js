@@ -9,7 +9,8 @@ class ModuleWrapper extends React.Component {
         super(props);
         this.state = {
             menuOpen: false,
-            menu: []
+            menu: [],
+            loading:true
         }
 
         this.handleNavBackRequest = this.handleNavBackRequest.bind(this);
@@ -31,7 +32,8 @@ class ModuleWrapper extends React.Component {
     fetchMainMenu(regId, sourceType) {
         getMainMenu(regId, sourceType)
             .then(menu => {
-                this.setState({ menu: menu });
+                this.setState({ menu: menu,loading:false });
+
             })
             .catch('数据出错');
     }
@@ -93,6 +95,7 @@ class ModuleWrapper extends React.Component {
                 {/* 侧边栏菜单组件 */}
                 <ModuleCatalogBar
                     regId={regId}
+                    loading={this.state.loading}
                     open={this.state.menuOpen}
                     sourceType={sourceType}
                     menu={this.state.menu}

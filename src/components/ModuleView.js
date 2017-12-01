@@ -23,8 +23,8 @@ class ModuleView extends React.Component {
     }
 
     render() {
-        // let { regId, sourceType, content, reportType } = this.props;
-        let { content } = this.props;
+        let { regId, sourceType, content, reportType } = this.props;
+        // let { content } = this.props;
         return (
             <div>
                 {

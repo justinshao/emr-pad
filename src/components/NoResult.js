@@ -9,7 +9,7 @@ class NoResult extends React.Component {
     render() {
         return (
             <div>
-                <h2 style={textStyle}>未出结果</h2>
+                <h2 style={textStyle}>暂无数据</h2>
             </div>
         )
     }

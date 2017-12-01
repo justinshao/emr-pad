@@ -5,7 +5,7 @@ import Toggle from 'material-ui/Toggle';
 import NoResult from './NoResult';
 
 const styles = {
-    toggle: { maxWidth: 130 }
+    toggle: { maxWidth: 160 }
 };
 
 class ReportDiag extends React.Component {

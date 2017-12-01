@@ -7,36 +7,17 @@ import {
     TableRow,
     TableRowColumn
 } from 'material-ui/Table';
-
-const tableHeader = {
-    'backgroundColor': 'rgba(0, 188, 212,0.4)',
-    'height': '30px',
-    'lineHeight': '1',
-    'padding': '0',
-    'textAlign': 'center',
-    'fontSize': '13px',
-    'color': 'white'
-};
-const tableContent = {
-    'height': '26px',
-    'lineHeight': '1',
-    'padding': '0',
-    'textAlign': 'center',
-    'fontSize': '12px'
-};
+import { tableHeader, tableContent } from '../styles';
 
 class ReportChDtAdviceContent extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-
-        };
     }
 
     render() {
         return (
-            <div style={{ 'overFlow': 'hidden' }}>
-                <Table style={{ 'border': '2px solid #f1f1f1', 'width': '700px' }} selectable={false} bodyStyle={{ 'width': '700px', 'overFlow': 'auto' }}>
+            <div>
+                <Table style={{ 'border': '2px solid #f1f1f1', 'minWidth': '700px' }} selectable={false} bodyStyle={{ 'minWidth': '700px'}}>
                     <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                         <TableRow style={tableHeader}>
                             <TableHeaderColumn style={tableHeader} >状态</TableHeaderColumn>
@@ -56,7 +37,7 @@ class ReportChDtAdviceContent extends React.Component {
                     <TableBody displayRowCheckbox={false} >
                         <TableRow style={tableContent}>
                             <TableRowColumn style={tableContent}>新增</TableRowColumn>
-                            <TableRowColumn style={tableContent}>220022029220</TableRowColumn>
+                            <TableRowColumn style={tableContent}>2200220292209900</TableRowColumn>
                             <TableRowColumn style={tableContent}>09-13 19：04</TableRowColumn>
                             <TableRowColumn style={tableContent}>艾叶</TableRowColumn>
                             <TableRowColumn style={tableContent}>1贴</TableRowColumn>
