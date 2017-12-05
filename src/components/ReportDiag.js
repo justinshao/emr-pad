@@ -5,12 +5,18 @@ import Toggle from 'material-ui/Toggle';
 import NoResult from './NoResult';
 
 const styles = {
-    toggle: { maxWidth: 160 }
+    toggle: { maxWidth: 140,backgroundColor:'white'},
+    noshow: { display: 'none' }
 };
 
 class ReportDiag extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            initialtoggled: true,
+            finaltoggled: true,
+            supplytoggled: true,
+        };
         this.handleShowInitialDiag = this.handleShowInitialDiag.bind(this);
         this.handleShowFinalDiag = this.handleShowFinalDiag.bind(this);
         this.handleShowSupplyDiag = this.handleShowSupplyDiag.bind(this);
@@ -18,17 +24,24 @@ class ReportDiag extends React.Component {
 
     // 显示初步诊断信息
     handleShowInitialDiag() {
-        // 点击togglelist表单隐藏
+        this.setState({
+            initialtoggled: !this.state.initialtoggled
+        })
     }
 
     // 显示最终诊断信息
     handleShowFinalDiag() {
-        //点击togglelist表单隐藏
+        this.setState({
+            finaltoggled: !this.state.finaltoggled
+        })
     }
 
     // 显示补充诊断信息
     handleShowSupplyDiag() {
         // 点击togglelist表单隐藏
+        this.setState({
+            supplytoggled: !this.state.supplytoggled
+        })
     }
 
     render() {
@@ -36,7 +49,7 @@ class ReportDiag extends React.Component {
             true ? (
                 <div>
                     <div style={titleStyle}>诊断信息</div>
-                    <Table style={{ 'border': '2px solid #f1f1f1', 'MinWidth': '500px' }} bodyStyle={{ 'MinWidth': '500px'}} selectable={false}>
+                    <Table style={{ 'border': '2px solid #f1f1f1', 'minWidth': '500px' }} bodyStyle={{ 'minWidth': '500px' }} selectable={false}>
                         <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                             <TableRow style={tableHeader}>
                                 <TableHeaderColumn style={tableHeader} >诊断名</TableHeaderColumn>
@@ -51,17 +64,20 @@ class ReportDiag extends React.Component {
                         </TableHeader>
                         {/* toggle组件实现显示控制 */}
                         <TableBody displayRowCheckbox={false}>
-                            <TableRow style={tableContent}>
+                            <TableRow style={tableContent} >
                                 <TableRowColumn style={tableContent} colSpan='8'>
                                     <Toggle
                                         label="归类：初步诊断"
                                         labelPosition="right"
                                         style={styles.toggle}
+                                        labelStyle={styles.toggle}
+                                        iconStyle={styles.toggle}
                                         onToggle={this.handleShowInitialDiag}
+                                        defaultToggled={this.state.initialtoggled}
                                     />
                                 </TableRowColumn>
                             </TableRow>
-                            <TableRow style={tableContent}>
+                            <TableRow style={this.state.initialtoggled ? tableContent : styles.noshow}>
                                 <TableRowColumn style={tableContent}>慢性肠胃炎</TableRowColumn>
                                 <TableRowColumn style={tableContent}>是</TableRowColumn>
                                 <TableRowColumn style={tableContent}>是</TableRowColumn>
@@ -72,16 +88,19 @@ class ReportDiag extends React.Component {
                                 <TableRowColumn style={tableContent}></TableRowColumn>
                             </TableRow>
                             <TableRow style={tableContent}>
-                                <TableRowColumn style={tableContent} colSpan='8'>
+                                <TableRowColumn style={tableContent} colSpan='8' >
                                     <Toggle
                                         label="归类：最后诊断"
                                         labelPosition="right"
                                         style={styles.toggle}
+                                        labelStyle={styles.toggle}
+                                        iconStyle={styles.toggle}
                                         onToggle={this.handleShowFinalDiag}
+                                        defaultToggled={this.state.finaltoggled}
                                     />
                                 </TableRowColumn>
                             </TableRow>
-                            <TableRow style={tableContent}>
+                            <TableRow style={this.state.finaltoggled ? tableContent : styles.noshow}>
                                 <TableRowColumn style={tableContent}>慢性肠胃炎</TableRowColumn>
                                 <TableRowColumn style={tableContent}>是</TableRowColumn>
                                 <TableRowColumn style={tableContent}>是</TableRowColumn>
@@ -92,16 +111,19 @@ class ReportDiag extends React.Component {
                                 <TableRowColumn style={tableContent}></TableRowColumn>
                             </TableRow>
                             <TableRow style={tableContent}>
-                                <TableRowColumn style={tableContent} colSpan='8'>
+                                <TableRowColumn style={tableContent} colSpan='8'  >
                                     <Toggle
                                         label="归类：补充诊断"
                                         labelPosition="right"
                                         style={styles.toggle}
+                                        labelStyle={styles.toggle}
+                                        iconStyle={styles.toggle}
                                         onToggle={this.handleShowSupplyDiag}
+                                        defaultToggled={this.state.supplytoggled}
                                     />
                                 </TableRowColumn>
                             </TableRow>
-                            <TableRow style={tableContent}>
+                            <TableRow style={this.state.supplytoggled ? tableContent : styles.noshow}>
                                 <TableRowColumn style={tableContent}>慢性肠胃炎</TableRowColumn>
                                 <TableRowColumn style={tableContent}>是</TableRowColumn>
                                 <TableRowColumn style={tableContent}>是</TableRowColumn>

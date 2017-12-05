@@ -73,8 +73,8 @@ const tableHeader = {
 
 const tableContent = {
     height: '26px',
-    lineHeight: '1',
-    padding: '0',
+    lineHeight: '1.2',
+    padding: ' 2px 0',
     textAlign: 'center',
     fontSize: '12px',
     whiteSpace: 'normal',

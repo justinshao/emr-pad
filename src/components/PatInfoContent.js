@@ -18,14 +18,14 @@ class PatInfoContent extends React.Component {
     render() {
         let inforId = this.props.inforId;
         let content = (
-            inforId == 'PatHospital' ? <PatHospital /> :
-                inforId == 'PatBasicInfor' ? <PatBasicInfor /> :
-                    inforId == 'PatAllergy' ? <PatAllergy /> :
-                        inforId == 'PatDiet' ? <PatDiet /> :
-                            inforId == 'PatAssociatHospital' ? <PatAssociatHospital /> :
-                                inforId == 'PatRotation' ? <PatRotation /> :
-                                    inforId == 'PatChangeHospital' ? <PatChangeHospital /> :
-                                        inforId == 'PatAccount' ? <PatAccount /> : <PatHospital />
+            inforId == 'patHospital' ? <PatHospital /> :
+                inforId == 'patBasicInfor' ? <PatBasicInfor /> :
+                    inforId == 'patAllergy' ? <PatAllergy /> :
+                        inforId == 'patDiet' ? <PatDiet /> :
+                            inforId == 'patAssociatHospital' ? <PatAssociatHospital /> :
+                                inforId == 'patRotation' ? <PatRotation /> :
+                                    inforId == 'patChangeHospital' ? <PatChangeHospital /> :
+                                        inforId == 'patAccount' ? <PatAccount /> : <PatHospital />
         );
         return (
             <div style={contentStyle}>

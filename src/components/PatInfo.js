@@ -41,7 +41,7 @@ class PatInfo extends React.Component {
     handlePatHospital() {
         let { history } = this.props;
         let { regId,sourceType} = this.props.match.params;
-        history.replace(`/patInfo/${regId}/${sourceType}/PatHospital`);
+        history.replace(`/patInfo/${regId}/${sourceType}/patHospital`);
         this.setState({ openmenu: false });
     }
 
@@ -49,7 +49,7 @@ class PatInfo extends React.Component {
     handlePatBasicInfor() {
         let { history } = this.props;
         let { regId,sourceType} = this.props.match.params;
-        history.replace(`/patInfo/${regId}/${sourceType}/PatBasicInfor`);
+        history.replace(`/patInfo/${regId}/${sourceType}/patBasicInfor`);
         this.setState({ openmenu: false });
     }
 
@@ -57,7 +57,7 @@ class PatInfo extends React.Component {
     handlePatAllergy() {
         let { history } = this.props;
         let { regId,sourceType} = this.props.match.params;
-        history.replace(`/patInfo/${regId}/${sourceType}/PatAllergy`);
+        history.replace(`/patInfo/${regId}/${sourceType}/patAllergy`);
         this.setState({ openmenu: false });
     }
 
@@ -65,7 +65,7 @@ class PatInfo extends React.Component {
     handlePatDiet() {
         let { history } = this.props;
         let { regId,sourceType} = this.props.match.params;
-        history.replace(`/patInfo/${regId}/${sourceType}/PatDiet`);
+        history.replace(`/patInfo/${regId}/${sourceType}/patDiet`);
         this.setState({ openmenu: false });
     }
 
@@ -73,7 +73,7 @@ class PatInfo extends React.Component {
     handlePatAssociatHospital() {
         let { history } = this.props;
         let { regId,sourceType} = this.props.match.params;
-        history.replace(`/patInfo/${regId}/${sourceType}/PatAssociatHospital`);
+        history.replace(`/patInfo/${regId}/${sourceType}/patAssociatHospital`);
         this.setState({ openmenu: false });
     }
 
@@ -81,7 +81,7 @@ class PatInfo extends React.Component {
     handlePatRotation() {
         let { history } = this.props;
         let { regId,sourceType} = this.props.match.params;
-        history.replace(`/patInfo/${regId}/${sourceType}/PatRotation`);
+        history.replace(`/patInfo/${regId}/${sourceType}/patRotation`);
         this.setState({ openmenu: false });
     }
 
@@ -89,7 +89,7 @@ class PatInfo extends React.Component {
     handlePatChangeHospital() {
         let { history } = this.props;
         let { regId,sourceType} = this.props.match.params;
-        history.replace(`/patInfo/${regId}/${sourceType}/PatChangeHospital`);
+        history.replace(`/patInfo/${regId}/${sourceType}/patChangeHospital`);
         this.setState({ openmenu: false });
     }
 
@@ -97,7 +97,7 @@ class PatInfo extends React.Component {
     handlePatAccount() {
         let { history } = this.props;
         let { regId,sourceType} = this.props.match.params;
-        history.replace(`/patInfo/${regId}/${sourceType}/PatAccount`);
+        history.replace(`/patInfo/${regId}/${sourceType}/patAccount`);
         this.setState({ openmenu: false });
     }
 
