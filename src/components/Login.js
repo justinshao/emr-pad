@@ -10,15 +10,15 @@ import auth from '../auth';
 import { headerBarStyle } from '../styles';
 
 class Login extends React.Component {
-    state = {
-        redirectToReferrer: false,
-        usrError: null,
-        pwdError: null,
-        loading: false
-    }
 
     constructor(props) {
         super(props);
+        this.state = {
+            redirectToReferrer: false,
+            usrError: null,
+            pwdError: null,
+            loading: false
+        }
 
         this.handleLoginRequest = this.handleLoginRequest.bind(this);
         this.handleSettings = this.handleSettings.bind(this);
@@ -35,7 +35,7 @@ class Login extends React.Component {
             });
         });
     }
-    handleSettings(){
+    handleSettings() {
         this.props.history.push('/setting');
     }
 
@@ -51,8 +51,8 @@ class Login extends React.Component {
 
         return (
             <div>
-                <AppBar title="登录" style={ headerBarStyle }
-                    iconElementLeft={<IconButton onTouchTap={this.handleSettings}><SettingsIcon /></IconButton>}/>
+                <AppBar title="登录" style={headerBarStyle}
+                    iconElementLeft={<IconButton onTouchTap={this.handleSettings}><SettingsIcon /></IconButton>} />
                 <LoginBox onLoginRequest={this.handleLoginRequest} style={{ paddingTop: '200px' }}
                     usrError={this.state.usrError}
                     pwdError={this.state.pwdError}

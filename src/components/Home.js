@@ -4,16 +4,15 @@ import HomeHeaderBar from './HomeHeaderBar';
 import { headerBarStyle, contentStyle, patListStyle } from '../styles';
 
 const cellHeight = 270;
-const [ minCellWidth, maxCellWidth ] = [ 200, 250 ];
+const [minCellWidth, maxCellWidth] = [200, 250];
 
 class Home extends React.Component {
 
-    state = {
-        col: 5
-    }
-
     constructor(props) {
         super(props);
+        this.state = {
+            col: 5
+        }
 
         this.handleSelectedWardChange = this.handleSelectedWardChange.bind(this);
         this.handleWindowResize = this.handleWindowResize.bind(this);
@@ -37,16 +36,16 @@ class Home extends React.Component {
     adaption() {
         const regin = document.body.clientWidth;
 
-        if(minCellWidth * this.state.col > regin){
+        if (minCellWidth * this.state.col > regin) {
             let col = this.state.col - 1;
-            while(minCellWidth * col > regin){ col--; }
+            while (minCellWidth * col > regin) { col--; }
 
-            this.setState( { col: Math.max(2, col) } );
-        }else if(maxCellWidth * this.state.col < regin){
+            this.setState({ col: Math.max(2, col) });
+        } else if (maxCellWidth * this.state.col < regin) {
             let col = this.state.col + 1;
-            while(maxCellWidth * col < regin){ col++; }
+            while (maxCellWidth * col < regin) { col++; }
 
-            this.setState( { col: col } );
+            this.setState({ col: col });
         }
     }
 
@@ -65,13 +64,13 @@ class Home extends React.Component {
 
         return (
             <div>
-                <HomeHeaderBar wardId={ wardId }
-                    onSelectedWardChange={ this.handleSelectedWardChange }
+                <HomeHeaderBar wardId={wardId}
+                    onSelectedWardChange={this.handleSelectedWardChange}
                     onExitAppRequest={this.handleExitAppRequest}
                     onUserHomeRequest={this.handleUserHomeRequest}
-                    style={ headerBarStyle } />
-                <PatList wardId={ wardId } cellHeight={ cellHeight } col={ this.state.col }
-                    style={ Object.assign({}, contentStyle, patListStyle) } />
+                    style={headerBarStyle} />
+                <PatList wardId={wardId} cellHeight={cellHeight} col={this.state.col}
+                    style={Object.assign({}, contentStyle, patListStyle)} />
             </div>
         );
     }

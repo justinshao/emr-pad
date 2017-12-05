@@ -18,13 +18,12 @@ const btnLabelStyle = {
 
 class Sign extends React.Component {
 
-    state = {
-        empty: true,
-        alertMessage: ''
-    }
-
     constructor(props) {
         super(props);
+        this.state = {
+            empty: true,
+            alertMessage: ''
+        }
 
         this.handleClear = this.handleClear.bind(this);
         this.handlePost = this.handlePost.bind(this);

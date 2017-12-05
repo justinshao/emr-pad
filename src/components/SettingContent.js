@@ -11,13 +11,12 @@ const rIp = /^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}(:\d{1,5})*$/;
 
 class SettingContent extends React.Component {
 
-    state = {
-        appRoot: localStorage.getItem('appRoot'),
-        appRootError: ''
-    }
-
     constructor(props) {
         super(props);
+        this.state = {
+            appRoot: localStorage.getItem('appRoot'),
+            appRootError: ''
+        }
 
         this.handleOk = this.handleOk.bind(this);
         this.handleAppRootChange = this.handleAppRootChange.bind(this);

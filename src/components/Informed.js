@@ -37,12 +37,11 @@ const maxWordsPerLine = 20;
 
 class Informed extends React.Component {
 
-    state = {
-        alertMessage: ''
-    }
-
     constructor(props) {
         super(props);
+        this.state = {
+            alertMessage: ''
+        }
 
         this.handleBackspace = this.handleBackspace.bind(this);
         this.handleClear = this.handleClear.bind(this);

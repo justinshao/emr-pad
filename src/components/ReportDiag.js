@@ -15,7 +15,7 @@ class ReportDiag extends React.Component {
         this.state = {
             initialtoggled: true,
             finaltoggled: true,
-            supplytoggled: true,
+            supplytoggled: true
         };
         this.handleShowInitialDiag = this.handleShowInitialDiag.bind(this);
         this.handleShowFinalDiag = this.handleShowFinalDiag.bind(this);

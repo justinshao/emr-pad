@@ -26,10 +26,13 @@ const emptyPatList = [];
 
 class PatList extends React.Component {
 
-  state = {
-    pats: emptyPatList,
-    error: null,
-    loading: false
+  constructor(props){
+    super(props);
+    this.state = {
+      pats: emptyPatList,
+      error: null,
+      loading: false
+    };
   }
 
   componentDidMount() {

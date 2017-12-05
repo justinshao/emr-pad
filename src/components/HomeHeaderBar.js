@@ -18,13 +18,12 @@ const styles = {
 
 class HomeHeaderBar extends React.Component {
 
-    state = {
-        title: null,
-        wards: []
-    }
-
     constructor(props) {
         super(props);
+        this.state = {
+            title: null,
+            wards: []
+        }
 
         this.handleChange = this.handleChange.bind(this);
         this.handleExitApp = this.handleExitApp.bind(this);

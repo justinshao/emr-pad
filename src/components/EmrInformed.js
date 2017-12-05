@@ -7,12 +7,13 @@ import logger from '../logger';
 
 class EmrSign extends React.Component {
 
-    state = {
-        informedText: ''
-    }
+    
 
     constructor(props) {
         super(props);
+        this.state = {
+            informedText: ''
+        }
 
         this.handleNavBackRequest = this.handleNavBackRequest.bind(this);
     }

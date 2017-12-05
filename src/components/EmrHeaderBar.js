@@ -18,15 +18,15 @@ import { headerBarStyle, headerBarBtnStyle, headerBarLoadingStyle } from '../sty
 import { getPat } from '../service';
 
 class EmrHeaderBar extends React.Component {
-  state = {
-    title: null,
-    recording: false,
-    narrowScreen1: false,
-    narrowScreen2: false
-  }
 
   constructor(props) {
     super(props);
+    this.state = {
+      title: null,
+      recording: false,
+      narrowScreen1: false,
+      narrowScreen2: false
+    }
 
     this.handleNavBackRequest = this.handleNavBackRequest.bind(this);
     this.handleRecordTouchTap = this.handleRecordTouchTap.bind(this);
@@ -93,12 +93,12 @@ class EmrHeaderBar extends React.Component {
       this.props.onEmrAttachRequest();
     }
   }
-  handlePhotoTouchTap(){
+  handlePhotoTouchTap() {
     if (this.props.onTakePhotoRequest) {
       this.props.onTakePhotoRequest();
     }
   }
-  handleVideoTouchTap(){
+  handleVideoTouchTap() {
     if (this.props.onVideoRequest) {
       this.props.onVideoRequest();
     }
@@ -167,28 +167,28 @@ class EmrHeaderBar extends React.Component {
         />
       ];
     let optMenuItems = narrowScreen1 ? [
-            <MenuItem key="record" primaryText={recording ? '停止' : '录音'} leftIcon={recording ? <StopIcon color="red" /> : <KeyboardVoiceIcon />}
-                onTouchTap={this.handleRecordTouchTap} />,
-            <MenuItem key="sign" primaryText="签名" leftIcon={<BorderColorIcon />} onTouchTap={this.handleSignTouchTap} />,
-            <MenuItem key="informed" primaryText="知情" leftIcon={<MoodIcon />} onTouchTap={this.handleInformedTouchTap} />,
-            <MenuItem key="attach" primaryText="附件" leftIcon={<InsertLinkIcon />} onTouchTap={this.handleAttachTouchTap} />,
-            <MenuItem key="photo" primaryText="拍照" leftIcon={<CameraIcon />} onTouchTap={this.handlePhotoTouchTap} />,
-            <MenuItem key="video" primaryText="视频" leftIcon={<VideoIcon />} onTouchTap={this.handleVideoTouchTap} />
-         ] :
-          narrowScreen2 ? [
-            <MenuItem key="informed" primaryText="知情" leftIcon={<MoodIcon />} onTouchTap={this.handleInformedTouchTap} />,
-            <MenuItem key="attach" primaryText="附件" leftIcon={<InsertLinkIcon />} onTouchTap={this.handleAttachTouchTap} />,
-            <MenuItem key="photo" primaryText="拍照" leftIcon={<CameraIcon />} onTouchTap={this.handlePhotoTouchTap} />,
-            <MenuItem key="video" primaryText="视频" leftIcon={<VideoIcon />} onTouchTap={this.handleVideoTouchTap} />
-           ] : [
-            <MenuItem key="photo" primaryText="拍照" leftIcon={<CameraIcon />} onTouchTap={this.handlePhotoTouchTap} />,
-            <MenuItem key="video" primaryText="视频" leftIcon={<VideoIcon />} onTouchTap={this.handleVideoTouchTap} />
-           ];
+      <MenuItem key="record" primaryText={recording ? '停止' : '录音'} leftIcon={recording ? <StopIcon color="red" /> : <KeyboardVoiceIcon />}
+        onTouchTap={this.handleRecordTouchTap} />,
+      <MenuItem key="sign" primaryText="签名" leftIcon={<BorderColorIcon />} onTouchTap={this.handleSignTouchTap} />,
+      <MenuItem key="informed" primaryText="知情" leftIcon={<MoodIcon />} onTouchTap={this.handleInformedTouchTap} />,
+      <MenuItem key="attach" primaryText="附件" leftIcon={<InsertLinkIcon />} onTouchTap={this.handleAttachTouchTap} />,
+      <MenuItem key="photo" primaryText="拍照" leftIcon={<CameraIcon />} onTouchTap={this.handlePhotoTouchTap} />,
+      <MenuItem key="video" primaryText="视频" leftIcon={<VideoIcon />} onTouchTap={this.handleVideoTouchTap} />
+    ] :
+      narrowScreen2 ? [
+        <MenuItem key="informed" primaryText="知情" leftIcon={<MoodIcon />} onTouchTap={this.handleInformedTouchTap} />,
+        <MenuItem key="attach" primaryText="附件" leftIcon={<InsertLinkIcon />} onTouchTap={this.handleAttachTouchTap} />,
+        <MenuItem key="photo" primaryText="拍照" leftIcon={<CameraIcon />} onTouchTap={this.handlePhotoTouchTap} />,
+        <MenuItem key="video" primaryText="视频" leftIcon={<VideoIcon />} onTouchTap={this.handleVideoTouchTap} />
+      ] : [
+          <MenuItem key="photo" primaryText="拍照" leftIcon={<CameraIcon />} onTouchTap={this.handlePhotoTouchTap} />,
+          <MenuItem key="video" primaryText="视频" leftIcon={<VideoIcon />} onTouchTap={this.handleVideoTouchTap} />
+        ];
 
     let optMenu = (
       <IconMenu
         iconButtonElement={
-          <IconButton style={{height: '100%', padding: '20px 12px'}}><MoreVertIcon color="white" /></IconButton>
+          <IconButton style={{ height: '100%', padding: '20px 12px' }}><MoreVertIcon color="white" /></IconButton>
         }
         targetOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'top' }} >

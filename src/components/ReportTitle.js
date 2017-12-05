@@ -29,7 +29,7 @@ class ReportTitle extends React.Component {
                 <h6 style={detail}>（此单仅供本院医生参考用，不做证明用）</h6>
                 <h5 style={detailstyle}>
                     {this.props.detailHeader}
-                    <span style={{ 'color': 'blue', 'fontWeight': '600' }}> 查看详细报告>></span>
+                    <span style={{ 'color': '#2894FF', 'fontWeight': '600' }}> 查看详细报告>></span>
                 </h5>
                 {/* 插入报告正文 */}
                 {this.props.children}

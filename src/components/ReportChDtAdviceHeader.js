@@ -18,8 +18,8 @@ class ReportChDtAdviceHeader extends React.Component {
         this.handleChange3 = this.handleChange3.bind(this);
     }
 
-    handleChange2 = (event, index, typeofAdvice) => this.setState({ typeofAdvice });
-    handleChange3 = (event, index, status) => this.setState({ status });
+    handleChange2 = (event, index, typeofAdvice) => this.setState({ typeofAdvice })
+    handleChange3 = (event, index, status) => this.setState({ status })
 
     render() {
         return (

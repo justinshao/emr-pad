@@ -2,15 +2,15 @@ import React from 'react';
 
 export default (MediaList, getMedias, playMedia, deleteMedia) => {
     return class extends React.Component {
-        state = {
-            loading: true,
-            medias: [],
-            error: null,
-            alertError: ''
-        }
-
+        
         constructor(props) {
             super(props);
+            this.state = {
+                loading: true,
+                medias: [],
+                error: null,
+                alertError: ''
+            }
 
             this.handlePlay = this.handlePlay.bind(this);
             this.handleDelete = this.handleDelete.bind(this);

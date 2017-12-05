@@ -3,9 +3,27 @@ import { contentStyle, tableHeader, tableContent } from '../styles';
 import ReportTitle from './ReportTitle';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 import NoResult from './NoResult';
+import 'semantic-ui-css/semantic.css';
 
-const divStyle = {
-    'color': 'blue'
+const tableCont={
+    height: '26px',
+    lineHeight: '1.2',
+    padding: ' 2px 0',
+    textAlign: 'center',
+    fontSize: '12px',
+    whiteSpace: 'normal',
+    textOverflow:'no',
+    wordWrap:'break-word',
+    width:'30px'
+};
+const headerCont={
+    backgroundColor: 'rgba(0, 188, 212,0.4)',
+    height: '30px',
+    lineHeight: '1',
+    padding: '0',
+    fontSize: '13px',
+    color: 'white',
+    width:'30px'
 }
 
 class ReportLaboratory extends React.Component {
@@ -29,6 +47,7 @@ class ReportLaboratory extends React.Component {
         let showContent = (
             true ? (
                 <div>
+
                     <ReportTitle
                         title={this.state.title}
                         detailHeader={this.state.detailHeader}
@@ -39,6 +58,7 @@ class ReportLaboratory extends React.Component {
                                 <TableRow style={tableHeader}>
                                     <TableHeaderColumn style={tableHeader} >检查项目</TableHeaderColumn>
                                     <TableHeaderColumn style={tableHeader} >检查结果</TableHeaderColumn>
+                                    <TableHeaderColumn style={headerCont} ></TableHeaderColumn>
                                     <TableHeaderColumn style={tableHeader} >参考范围</TableHeaderColumn>
                                     <TableHeaderColumn style={tableHeader} >单位</TableHeaderColumn>
                                     <TableHeaderColumn style={tableHeader} >趋势图</TableHeaderColumn>
@@ -48,28 +68,43 @@ class ReportLaboratory extends React.Component {
                                 <TableRow style={tableContent}>
                                     <TableRowColumn style={tableContent}>总蛋白</TableRowColumn>
                                     <TableRowColumn style={tableContent}>47.5</TableRowColumn>
+                                    <TableRowColumn style={tableCont}>
+                                        <i className="blue long arrow down icon"></i>
+                                    </TableRowColumn>
                                     <TableRowColumn style={tableContent}>总蛋白</TableRowColumn>
                                     <TableRowColumn style={tableContent}>g/L</TableRowColumn>
                                     <TableRowColumn style={tableContent}>
-                                        <div onClick={this.handleReportEchars} style={divStyle}>趋势图</div>
+                                        <div>
+                                            <i className="blue bar chart icon"  onClick={this.handleReportEchars}></i>
+                                        </div>
                                     </TableRowColumn>
                                 </TableRow>
                                 <TableRow style={tableContent}>
                                     <TableRowColumn style={tableContent}>总蛋白</TableRowColumn>
                                     <TableRowColumn style={tableContent}>47.5</TableRowColumn>
+                                    <TableRowColumn style={tableCont}>
+                                        <i className="blue long arrow down icon"></i>
+                                    </TableRowColumn>
                                     <TableRowColumn style={tableContent}>总蛋白</TableRowColumn>
                                     <TableRowColumn style={tableContent}>g/L</TableRowColumn>
                                     <TableRowColumn style={tableContent}>
-                                        <div onClick={this.handleReportEchars} style={divStyle}>趋势图</div>
+                                        <div >
+                                            <i className="blue bar chart icon" onClick={this.handleReportEchars}></i>
+                                        </div>
                                     </TableRowColumn>
                                 </TableRow>
                                 <TableRow style={tableContent}>
                                     <TableRowColumn style={tableContent}>总蛋白</TableRowColumn>
                                     <TableRowColumn style={tableContent}>47.5</TableRowColumn>
+                                    <TableRowColumn style={tableCont}>
+                                        <i className="red long arrow up icon"></i>
+                                    </TableRowColumn>
                                     <TableRowColumn style={tableContent}>总蛋白</TableRowColumn>
                                     <TableRowColumn style={tableContent}>g/L</TableRowColumn>
                                     <TableRowColumn style={tableContent}>
-                                        <div onClick={this.handleReportEchars} style={divStyle}>趋势图</div>
+                                        <div>
+                                            <i className="blue bar chart icon"  onClick={this.handleReportEchars}></i>
+                                        </div>
                                     </TableRowColumn>
                                 </TableRow>
                             </TableBody>
@@ -80,6 +115,7 @@ class ReportLaboratory extends React.Component {
         );
         return (
             <div style={contentStyle}>
+
                 {showContent}
             </div>
         )

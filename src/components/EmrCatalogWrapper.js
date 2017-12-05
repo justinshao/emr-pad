@@ -11,10 +11,15 @@ import { getEmrCatalog } from '../service';
 const emptyCatalog = [];
 
 class EmrCatalogWrapper extends React.Component {
-    state = {
-        loading: false,
-        error: null,
-        emrCatalog: emptyCatalog
+    
+    constructor(props){
+        super(props);
+
+        this.state = {
+            loading: false,
+            error: null,
+            emrCatalog: emptyCatalog
+        }
     }
 
     componentDidMount() {

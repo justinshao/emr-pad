@@ -17,12 +17,11 @@ const loading = <RefreshIndicator
 
 class SignOutButton extends React.Component {
 
-    state = {
-        processing: false
-    }
-
     constructor(props) {
         super(props);
+        this.state = {
+            processing: false
+        }
 
         this.handleExitApp = this.handleExitApp.bind(this);
     }
