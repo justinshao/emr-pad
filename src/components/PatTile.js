@@ -63,10 +63,10 @@ const styles = {
         backgroundColor: 'white',
         color: '#0096a9',
         padding: '3px 10px',
-        width: '70px',
+        width: '80px',
         textAlign: 'center',
-        left: '-23px',
-        top: '9px'
+        left: '-22px',
+        top: '7px'
     }
 }
 

@@ -3,9 +3,10 @@ import { contentStyle, titleStyle, tableHeader, tableContent } from '../styles';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 import Toggle from 'material-ui/Toggle';
 import NoResult from './NoResult';
+import { Icon } from 'semantic-ui-react';
 
 const styles = {
-    toggle: { maxWidth: 140,backgroundColor:'white'},
+    toggle: { maxWidth: 140, backgroundColor: 'white' },
     noshow: { display: 'none' }
 };
 
@@ -79,9 +80,15 @@ class ReportDiag extends React.Component {
                             </TableRow>
                             <TableRow style={this.state.initialtoggled ? tableContent : styles.noshow}>
                                 <TableRowColumn style={tableContent}>慢性肠胃炎</TableRowColumn>
-                                <TableRowColumn style={tableContent}>是</TableRowColumn>
-                                <TableRowColumn style={tableContent}>是</TableRowColumn>
-                                <TableRowColumn style={tableContent}>否</TableRowColumn>
+                                <TableRowColumn style={tableContent}>
+                                    {true ? <Icon disabled name='checkmark' color='green' /> : ''}
+                                </TableRowColumn>
+                                <TableRowColumn style={tableContent}>
+                                    {true ? <Icon disabled name='checkmark' color='green' /> : ''}
+                                </TableRowColumn>
+                                <TableRowColumn style={tableContent}>
+                                    {false ? <Icon disabled name='checkmark' color='green' /> : ''}
+                                </TableRowColumn>
                                 <TableRowColumn style={tableContent}>K52.909</TableRowColumn>
                                 <TableRowColumn style={tableContent}>赵强</TableRowColumn>
                                 <TableRowColumn style={tableContent}>01-05</TableRowColumn>
@@ -102,9 +109,15 @@ class ReportDiag extends React.Component {
                             </TableRow>
                             <TableRow style={this.state.finaltoggled ? tableContent : styles.noshow}>
                                 <TableRowColumn style={tableContent}>慢性肠胃炎</TableRowColumn>
-                                <TableRowColumn style={tableContent}>是</TableRowColumn>
-                                <TableRowColumn style={tableContent}>是</TableRowColumn>
-                                <TableRowColumn style={tableContent}>否</TableRowColumn>
+                                <TableRowColumn style={tableContent}>
+                                    {true ? <Icon disabled name='checkmark' color='green' /> : ''}
+                                </TableRowColumn>
+                                <TableRowColumn style={tableContent}>
+                                    {false ? <Icon disabled name='checkmark' color='green' /> : ''}
+                                </TableRowColumn>
+                                <TableRowColumn style={tableContent}>
+                                    {true ? <Icon disabled name='checkmark' color='green' /> : ''}
+                                </TableRowColumn>
                                 <TableRowColumn style={tableContent}>K52.909</TableRowColumn>
                                 <TableRowColumn style={tableContent}>赵强</TableRowColumn>
                                 <TableRowColumn style={tableContent}>01-05</TableRowColumn>
@@ -125,9 +138,15 @@ class ReportDiag extends React.Component {
                             </TableRow>
                             <TableRow style={this.state.supplytoggled ? tableContent : styles.noshow}>
                                 <TableRowColumn style={tableContent}>慢性肠胃炎</TableRowColumn>
-                                <TableRowColumn style={tableContent}>是</TableRowColumn>
-                                <TableRowColumn style={tableContent}>是</TableRowColumn>
-                                <TableRowColumn style={tableContent}>否</TableRowColumn>
+                                <TableRowColumn style={tableContent}>
+                                    {false ? <Icon disabled name='checkmark' color='green' /> : ''}
+                                </TableRowColumn>
+                                <TableRowColumn style={tableContent}>
+                                    {true ? <Icon disabled name='checkmark' color='green' /> : ''}
+                                </TableRowColumn>
+                                <TableRowColumn style={tableContent}>
+                                    {true ? <Icon disabled name='checkmark' color='green' /> : ''}
+                                </TableRowColumn>
                                 <TableRowColumn style={tableContent}>K52.909</TableRowColumn>
                                 <TableRowColumn style={tableContent}>赵强</TableRowColumn>
                                 <TableRowColumn style={tableContent}>01-05</TableRowColumn>
