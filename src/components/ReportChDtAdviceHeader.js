@@ -1,44 +1,46 @@
 import React from 'react';
-import DropDownMenu from 'material-ui/DropDownMenu';
-import MenuItem from 'material-ui/MenuItem';
-
-const leftStyle = {
-    'float': 'left',
-    'width': '33.33%'
-};
+import { Dropdown, Menu } from 'semantic-ui-react';
 
 class ReportChDtAdviceHeader extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            typeofAdvice: 1,
-            status: 3
+            valueA: '中药方',
+            valueB: '全部'
         };
-        this.handleChange2 = this.handleChange2.bind(this);
-        this.handleChange3 = this.handleChange3.bind(this);
+        this.handleChooseA = this.handleChooseA.bind(this);
+        this.handleChooseB = this.handleChooseB.bind(this);
     }
 
-    handleChange2 = (event, index, typeofAdvice) => this.setState({ typeofAdvice })
-    handleChange3 = (event, index, status) => this.setState({ status })
+    handleChooseA(e){
+        this.setState({
+            valueA:e.target.textContent
+        })
+    }
+
+    handleChooseB(e){
+        this.setState({
+            valueB:e.target.textContent
+        })
+    }
 
     render() {
         return (
-            <div>
-                <div style={leftStyle}>
-                    <DropDownMenu value={this.state.typeofAdvice} onChange={this.handleChange2}>
-                        <MenuItem value={1} primaryText="中药方" />
-                        <MenuItem value={2} primaryText="免煎中药" />
-                    </DropDownMenu>
-                </div>
-                <div style={leftStyle}>
-                    <DropDownMenu value={this.state.status} onChange={this.handleChange3}>
-                        <MenuItem value={1} primaryText="当日" />
-                        <MenuItem value={2} primaryText="未停" />
-                        <MenuItem value={3} primaryText="全部" />
-                    </DropDownMenu>
-                </div>
-                <br style={{ 'clear': 'both' }} />
-            </div>
+            <Menu widths='two'>
+                <Dropdown text={this.state.valueA} pointing className='link item'>
+                    <Dropdown.Menu>
+                        <Dropdown.Item style={{ textAlign: 'center' }} onClick={this.handleChooseA}>中药方</Dropdown.Item>
+                        <Dropdown.Item style={{ textAlign: 'center' }} onClick={this.handleChooseA}>免煎中药</Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
+                <Dropdown text={this.state.valueB} pointing className='link item'>
+                    <Dropdown.Menu>
+                        <Dropdown.Item style={{ textAlign: 'center' }} onClick={this.handleChooseB}>当日</Dropdown.Item>
+                        <Dropdown.Item style={{ textAlign: 'center' }} onClick={this.handleChooseB}>未停</Dropdown.Item>
+                        <Dropdown.Item style={{ textAlign: 'center' }} onClick={this.handleChooseB}>全部</Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
+            </Menu>
         )
     }
 }

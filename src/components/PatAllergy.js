@@ -3,17 +3,13 @@ import { tableHeader, tableContent } from '../styles';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 import NoResult from './NoResult';
 
-const contentStyle = {
-    'width': '500px'
-}
-
 class PatAllergy extends React.Component {
 
     render() {
         let content = (
             true ? (
                 <div>
-                    <Table style={{ 'border': '2px solid #f1f1f1' }} selectable={false}>
+                    <Table style={{ border: '2px solid #f1f1f1',minWidth:'600px'}} selectable={false}>
                         <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                             <TableRow style={tableHeader} >
                                 <TableHeaderColumn style={tableHeader} colSpan='7'>过敏信息</TableHeaderColumn>
@@ -44,7 +40,7 @@ class PatAllergy extends React.Component {
             ) : <NoResult />
         )
         return (
-            <div style={contentStyle}>
+            <div>
                 {content}
             </div>
         )

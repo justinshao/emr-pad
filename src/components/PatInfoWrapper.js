@@ -1,5 +1,6 @@
 import React from 'react';
 import Paper from 'material-ui/Paper';
+import { Icon } from 'semantic-ui-react';
 
 const style = {
     width: '90%',
@@ -9,6 +10,11 @@ const style = {
     backgroundColor: 'rgb(0, 188, 212)',
     color: 'white',
     lineHeight: '1.6'
+};
+const person={
+    position:'absolute',
+    top:'26px',
+    right:'24px'
 };
 
 class PatInfoWrapper extends React.Component {
@@ -32,7 +38,7 @@ class PatInfoWrapper extends React.Component {
                     <div>性别：</div>
                     <div>年龄：</div>
                     <div>住院号：</div>
-                    更多>>
+                    <div style={person}><Icon name='user circle' size='big'/></div>
                 </Paper>
             </div>
         )

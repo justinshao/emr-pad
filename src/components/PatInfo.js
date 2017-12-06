@@ -11,6 +11,7 @@ class PatInfo extends React.Component {
         };
         this.handleNavBackRequest = this.handleNavBackRequest.bind(this);
         this.handleMenuButtonTouchTap = this.handleMenuButtonTouchTap.bind(this);
+        this.handleMenuRequestChange = this.handleMenuRequestChange.bind(this);
         this.handlePatHospital = this.handlePatHospital.bind(this);
         this.handlePatBasicInfor = this.handlePatBasicInfor.bind(this);
         this.handlePatAllergy = this.handlePatAllergy.bind(this);

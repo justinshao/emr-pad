@@ -1,86 +1,62 @@
 import React from 'react';
-import DropDownMenu from 'material-ui/DropDownMenu';
-import MenuItem from 'material-ui/MenuItem';
-
-const leftStyle = {
-    float: 'left',
-    padding: '0 10px'
-};
-const labelStyle = {
-    padding: '0 20px 0 2px'
-};
-const underlineStyle = {
-    margin: '-1px 0'
-};
-const innerDivStyle={
-    padding:'0 10px',
-    width:'60px'
-}
+import { Dropdown, Menu } from 'semantic-ui-react';
 
 class ReportDtAdviceHeader extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            value: 1,
-            typeofAdvice: 3,
-            status: 3
+            valueA: '长期医嘱',
+            valueB:'全部',
+            valueC:'全部'
         };
-        this.handleChange = this.handleChange.bind(this);
-        this.handleChange2 = this.handleChange2.bind(this);
-        this.handleChange3 = this.handleChange3.bind(this);
+        this.handleChooseA = this.handleChooseA.bind(this);
+        this.handleChooseB = this.handleChooseB.bind(this);
+        this.handleChooseC = this.handleChooseC.bind(this);
     }
 
-    handleChange = (event, index, value) => this.setState({ value });
-    handleChange2 = (event, index, typeofAdvice) => this.setState({ typeofAdvice });
-    handleChange3 = (event, index, status) => this.setState({ status });
+    handleChooseA(e){
+        this.setState({
+            valueA:e.target.textContent
+        })
+    }
+
+    handleChooseB(e){
+        this.setState({
+            valueB:e.target.textContent
+        })
+    }
+
+    handleChooseC(e){
+        this.setState({
+            valueC:e.target.textContent
+        })
+    }
 
     render() {
         return (
-            <div style={{ padding: '0 10px' }}>
-                <div style={leftStyle}>
-                    <DropDownMenu
-                        value={this.state.value}
-                        onChange={this.handleChange}
-                        labelStyle={labelStyle}
-                        underlineStyle={underlineStyle}
-                        iconStyle={{ padding: '0 0 0 90px' }}
-                        anchorOrigin={{ vertical: 'bottom', horizontal: 'left'}}
-                    >
-                        <MenuItem value={1} primaryText="长期医嘱" innerDivStyle={innerDivStyle}/>
-                        <MenuItem value={2} primaryText="临时医嘱" innerDivStyle={innerDivStyle}/>
-                        <MenuItem value={3} primaryText="出院带药" innerDivStyle={innerDivStyle}/>
-                    </DropDownMenu>
-                </div>
-                <div style={leftStyle}>
-                    <DropDownMenu
-                        value={this.state.typeofAdvice}
-                        onChange={this.handleChange2}
-                        labelStyle={labelStyle}
-                        underlineStyle={underlineStyle}
-                        iconStyle={{ padding: '0 0 0 50px' }}
-                        anchorOrigin={{ vertical: 'bottom', horizontal: 'left'}}
-                    >
-                        <MenuItem value={1} primaryText="药品"  innerDivStyle={innerDivStyle}/>
-                        <MenuItem value={2} primaryText="非药品" innerDivStyle={innerDivStyle}/>
-                        <MenuItem value={3} primaryText="全部" innerDivStyle={innerDivStyle}/>
-                    </DropDownMenu>
-                </div>
-                <div style={leftStyle}>
-                    <DropDownMenu
-                        value={this.state.status}
-                        onChange={this.handleChange3}
-                        labelStyle={labelStyle}
-                        underlineStyle={underlineStyle}
-                        iconStyle={{ padding: '0 0 0 50px' }}
-                        anchorOrigin={{ vertical: 'bottom', horizontal: 'left'}}
-                    >
-                        <MenuItem value={1} primaryText="当日" innerDivStyle={innerDivStyle}/>
-                        <MenuItem value={2} primaryText="未停" innerDivStyle={innerDivStyle}/>
-                        <MenuItem value={3} primaryText="全部" innerDivStyle={innerDivStyle}/>
-                    </DropDownMenu>
-                </div>
-                <br style={{ 'clear': 'both' }} />
-            </div>
+            <Menu widths='three'>
+                <Dropdown text={this.state.valueA} pointing className='link item'>
+                    <Dropdown.Menu>
+                        <Dropdown.Item style={{textAlign:'center'}} onClick={this.handleChooseA}>长期医嘱</Dropdown.Item>
+                        <Dropdown.Item style={{textAlign:'center'}} onClick={this.handleChooseA}>临时医嘱</Dropdown.Item>
+                        <Dropdown.Item style={{textAlign:'center'}} onClick={this.handleChooseA}>出院带药</Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
+                <Dropdown text={this.state.valueB} pointing className='link item' >
+                    <Dropdown.Menu>
+                        <Dropdown.Item style={{textAlign:'center'}} onClick={this.handleChooseB}>药品</Dropdown.Item>
+                        <Dropdown.Item style={{textAlign:'center'}} onClick={this.handleChooseB}>非药品</Dropdown.Item>
+                        <Dropdown.Item style={{textAlign:'center'}} onClick={this.handleChooseB}>全部</Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
+                <Dropdown text={this.state.valueC} pointing className='link item'>
+                    <Dropdown.Menu>
+                        <Dropdown.Item style={{textAlign:'center'}} onClick={this.handleChooseC}>当日</Dropdown.Item>
+                        <Dropdown.Item style={{textAlign:'center'}} onClick={this.handleChooseC}>未停</Dropdown.Item>
+                        <Dropdown.Item style={{textAlign:'center'}} onClick={this.handleChooseC}>全部</Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
+            </Menu>
         )
     }
 }
