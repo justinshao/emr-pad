@@ -34,7 +34,7 @@ class ReportDtAdviceHeader extends React.Component {
 
     render() {
         return (
-            <Menu widths='three'>
+            <Menu widths='three' style={{marginTop:'0'}}>
                 <Dropdown text={this.state.valueA} pointing className='link item'>
                     <Dropdown.Menu>
                         <Dropdown.Item style={{textAlign:'center'}} onClick={this.handleChooseA}>长期医嘱</Dropdown.Item>

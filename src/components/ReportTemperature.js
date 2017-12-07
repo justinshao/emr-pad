@@ -1,6 +1,7 @@
 import React from 'react';
 import { titleStyle } from '../styles';
 import NoResult from './NoResult';
+import { Icon } from 'semantic-ui-react'
 
 const viewHeight = document.body.clientHeight;
 const contentStyle = {
@@ -38,7 +39,7 @@ class ReportTemperature extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            src: '../../../images/before.png',
+            src: '../../../images/picTemp.jpg',
             startX: '',
             startY: ''
         }
@@ -81,11 +82,11 @@ class ReportTemperature extends React.Component {
         let showContent = (
             true ? (
                 <div>
-                    <div style={titleStyle}>体温单</div>
+                    <h3 style={titleStyle}>体温单</h3>
                     <div style={tempContentStyle} onTouchMove={this.handleChangeImg} onTouchStart={this.handleWillChangeImg}>
-                        <img src='../../../images/picTemp.jpg' style={imgStyle} />
-                        <img src={this.state.src} style={imgBeforeStyle} />
-                        <img src='../../../images/next.png' style={imgNextStyle} />
+                        <Icon name='chevron left' style={imgBeforeStyle} size='big'/>
+                        <Icon name='chevron right' style={imgNextStyle} size='big'/>
+                        <img src={this.state.src} style={imgStyle} />
                     </div>
                 </div>
             ) : <NoResult />

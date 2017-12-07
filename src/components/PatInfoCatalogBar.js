@@ -4,9 +4,9 @@ import PatInfoWrapper from './PatInfoWrapper';
 import { List, ListItem } from 'material-ui/List';
 import { Icon } from 'semantic-ui-react';
 
-const color={
-    color:"rgba(0, 188, 212,1)",
-    paddingLeft:'10px'
+const color = {
+    color: 'rgb(0, 188, 212)',
+    paddingLeft: '10px'
 };
 
 class PatCatalogBar extends React.Component {
@@ -88,49 +88,49 @@ class PatCatalogBar extends React.Component {
                         key='zhuyuan'
                         primaryText='住院信息'
                         onClick={this.handlePatHospital}
-                        leftIcon={<Icon disabled name='hospital' size='large' style={color}/>}
+                        leftIcon={<Icon disabled name='hospital' size='large' style={color} />}
                     />
                     <ListItem
                         key='jiben'
                         primaryText='基本信息'
                         onClick={this.handlePatBasicInfor}
-                        leftIcon={<Icon disabled name='id badge' size='large' style={color}/>}
+                        leftIcon={<Icon disabled name='id badge' size='large' style={color} />}
                     />
                     <ListItem
                         key='guomin'
                         primaryText='过敏信息'
                         onClick={this.handlePatAllergy}
-                        leftIcon={<Icon disabled name='heartbeat' size='large' style={color}/>}
+                        leftIcon={<Icon disabled name='heartbeat' size='large' style={color} />}
                     />
                     <ListItem
                         key='yinshi'
                         primaryText='饮食医嘱'
                         onClick={this.handlePatDiet}
-                        leftIcon={<Icon disabled name='doctor' size='large' style={color}/>}
+                        leftIcon={<Icon disabled name='doctor' size='large' style={color} />}
                     />
                     <ListItem
                         key='guanlian'
                         primaryText='关联住院'
                         onClick={this.handlePatAssociatHospital}
-                        leftIcon={<Icon disabled name='sitemap' size='large' style={color}/>}
+                        leftIcon={<Icon disabled name='sitemap' size='large' style={color} />}
                     />
                     <ListItem
                         key='lunzhuan'
                         primaryText='轮转信息'
                         onClick={this.handlePatRotation}
-                        leftIcon={<Icon disabled name='history' size='large' style={color}/>}
+                        leftIcon={<Icon disabled name='history' size='large' style={color} />}
                     />
                     <ListItem
                         key='biangeng'
                         primaryText='住院变更'
                         onClick={this.handlePatChangeHospital}
-                        leftIcon={<Icon disabled name='exchange' size='large' style={color}/>}
+                        leftIcon={<Icon disabled name='exchange' size='large' style={color} />}
                     />
                     <ListItem
                         key='zhanghu'
                         primaryText='住院账户'
                         onClick={this.handlePatAccount}
-                        leftIcon={<Icon disabled name='payment' size='large' style={color}/>}
+                        leftIcon={<Icon disabled name='payment' size='large' style={color} />}
                     />
                 </List>
             </Drawer>

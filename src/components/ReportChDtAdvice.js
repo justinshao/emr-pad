@@ -50,7 +50,7 @@ class ReportChDtAdvice extends React.Component {
         let showContent = (
             true ? (
                 <div>
-                    <div style={titleStyle}>中药医嘱单</div>
+                    <h3 style={titleStyle}>中药医嘱单</h3>
                     <ReportChDtAdviceHeader
                         onChangeTypeofadvice={this.handleChangeTypeofadvice}
                         onChangeDate={this.handleChangeDate}

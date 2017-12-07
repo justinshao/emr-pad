@@ -3,15 +3,13 @@ import signpad from './images/signpad.jpg'
 const headerBarHeight = 64;
 const headerBarLoadingSize = 40;
 const appThemeColor = 'rgb(0, 188, 212)';
-
-// 自定义报告标题样式
 const titleStyle={
-    'textAlign': 'center',
-    'lineHeight': '2.8',
-    'margin': '0',
-    'fontWeight': '600'
+    textAlign: 'center',
+    lineHeight: '2.8',
+    margin: '0',
+    fontWeight: '600',
+    color:'#3c3c3c'
 };
-
 const headerBarStyle = {
     position: 'fixed',
     paddingRight: '0px'
@@ -60,7 +58,6 @@ const writingBoardStyle = {
 const signBoardStyle = {
     boxShadow: '1px 1px 5px #888888'
 };
-
 const tableHeader = {
     backgroundColor: 'rgba(0, 188, 212,0.4)',
     height: '30px',
@@ -70,7 +67,6 @@ const tableHeader = {
     fontSize: '13px',
     color: 'white'
 };
-
 const tableContent = {
     height: '26px',
     lineHeight: '1.2',
@@ -81,6 +77,18 @@ const tableContent = {
     textOverflow:'no',
     wordWrap:'break-word'
 };
+const content = {
+    float: 'left',
+    fontSize: 14,
+    width: '76%',
+    lineHeight: '1.6',
+    letterSpacing: '1px',
+    textAlign:'justify'
+};
+const containerStyle = {
+    marginTop: '14px',
+    border:'1px #EAEAEA solid'
+}
 
 export {
     headerBarStyle,
@@ -98,5 +106,7 @@ export {
     signBoardStyle,
     titleStyle,
     tableHeader,
-    tableContent
+    tableContent,
+    content,
+    containerStyle
 };

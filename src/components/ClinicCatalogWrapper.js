@@ -3,12 +3,8 @@ import { List, ListItem } from 'material-ui/List';
 import CircularProgress from 'material-ui/CircularProgress';
 import { Icon } from 'semantic-ui-react'
 
-
-const style = {
-    'fill': 'rgb(0, 188, 212)'
-};
-const color={
-    color:"rgba(0, 188, 212,1)"
+const color = {
+    color: 'rgba(0, 188, 212,1)'
 };
 
 class ClinicCatalogWrapper extends React.Component {
@@ -35,16 +31,17 @@ class ClinicCatalogWrapper extends React.Component {
         let menu = this.props.menu;
         let menus = menu.map(mainmenu => {
             let nestedItem = mainmenu.Items ? (mainmenu.Items.map(item =>
-                <ListItem 
-                key={item.Id} 
-                primaryText={item.Name} 
-                leftIcon={<Icon disabled name='tags' size='large' style={color}/>}
-                onClick={() => this.handleChangeTap(item)} />
+                <ListItem
+                    key={item.Id}
+                    primaryText={item.Name}
+                    leftIcon={<Icon disabled name='tags' size='large' style={color} />}
+                    onClick={() => this.handleChangeTap(item)}
+                />
             )) : [];
             return (
                 <ListItem
                     primaryText={mainmenu.Name}
-                    leftIcon={<Icon disabled name='tag' size='large' style={color}/>}
+                    leftIcon={<Icon disabled name='tag' size='large' style={color} />}
                     key={mainmenu.Name}
                     initiallyOpen={false}
                     primaryTogglesNestedList={true}

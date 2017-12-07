@@ -6,12 +6,12 @@ const viewHeight = document.body.clientHeight;
 const contentStyle = {
     'width': '100%',
     'paddingTop': '64px',
-    'height': `${viewHeight - 64}px`,
+    'height': `${viewHeight}px`,
     'overflow': 'hidden'
 };
 const careContentStyle = {
     'height': `${viewHeight - 120}px`,
-    'overflow': 'scroll'
+    'overflowY': 'scroll'
 };
 const imgStyle = {
     'width': '94%',
@@ -28,7 +28,7 @@ class ReportCareOrder extends React.Component {
         let showContent = (
             true ? (
                 <div>
-                    <div style={titleStyle}>护理单</div>
+                    <h3 style={titleStyle}>护理单</h3>
                     <div style={careContentStyle}>
                         <img src='../../../../images/picCare.jpg' style={imgStyle} />
                     </div>
