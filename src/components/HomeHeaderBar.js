@@ -12,7 +12,8 @@ import logger from '../logger';
 
 const styles = {
     signOut: {
-        height: 'inherit'
+        height: 'inherit',
+        minWidth:'50px'
     }
 }
 
@@ -85,9 +86,11 @@ class HomeHeaderBar extends React.Component {
             <AppBar
                 iconElementLeft={leftElement}
                 iconElementRight={rightElement}
-                iconStyleRight={{ marginTop: '0px' }}
+                iconStyleRight={{ marginTop: '0px'}}
                 title={this.state.title}
-                style={this.props.style}>
+                style={this.props.style}
+                titleStyle={{fontSize:'18px'}}
+                >
                 <SignOutButton style={ Object.assign({}, headerBarBtnStyle, styles.signOut)} onLoginout={ this.handleExitApp } />
             </AppBar>
         );

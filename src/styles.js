@@ -12,7 +12,8 @@ const titleStyle={
 };
 const headerBarStyle = {
     position: 'fixed',
-    paddingRight: '0px'
+    paddingRight: '0px',
+    paddingLeft:'16px'
 };
 const contentStyle = {
     width: '100%',
