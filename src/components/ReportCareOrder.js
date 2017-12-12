@@ -6,11 +6,11 @@ const viewHeight = document.body.clientHeight;
 const contentStyle = {
     'width': '100%',
     'paddingTop': '64px',
-    'height': `${viewHeight}px`,
+    'height': `${viewHeight - 50}px`,
     'overflow': 'hidden'
 };
 const careContentStyle = {
-    'height': `${viewHeight - 120}px`,
+    'height': `${viewHeight - 170}px`,
     'overflowY': 'scroll'
 };
 const imgStyle = {

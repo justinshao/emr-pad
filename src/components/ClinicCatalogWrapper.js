@@ -4,7 +4,7 @@ import CircularProgress from 'material-ui/CircularProgress';
 import { Icon } from 'semantic-ui-react'
 
 const color = {
-    color: 'rgba(0, 188, 212,1)'
+    color: 'rgb(0, 188, 212)'
 };
 
 class ClinicCatalogWrapper extends React.Component {
@@ -34,20 +34,22 @@ class ClinicCatalogWrapper extends React.Component {
                 <ListItem
                     key={item.Id}
                     primaryText={item.Name}
-                    leftIcon={<Icon disabled name='tags' size='large' style={color} />}
                     onClick={() => this.handleChangeTap(item)}
+                    style={{paddingLeft:'27px'}}
                 />
             )) : [];
             return (
                 <ListItem
                     primaryText={mainmenu.Name}
-                    leftIcon={<Icon disabled name='tag' size='large' style={color} />}
+                    leftIcon={<Icon disabled name='tags' size='large' style={color} />}
                     key={mainmenu.Name}
                     initiallyOpen={false}
                     primaryTogglesNestedList={true}
                     nestedItems={nestedItem}
                     onClick={() => this.handleChangeTap(mainmenu)}
+                    innerDivStyle={{paddingLeft:'60px'}}
                 />
+
             )
         })
 
