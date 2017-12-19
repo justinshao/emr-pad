@@ -23,8 +23,7 @@ class ClinicView extends React.Component {
     }
 
     render() {
-        // let { regId, sourceType, content, reportType } = this.props;
-        let { content } = this.props;
+        let { content,requestNo} = this.props;
         return (
             <div>
                 {

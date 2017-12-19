@@ -33,7 +33,7 @@ class PatInfo extends React.Component {
         this.setState({ openmenu: true });
     }
 
-    // 显示目录
+    // 隐藏显示目录
     handleMenuRequestChange() {
         this.setState({ openmenu: !this.state.openmenu });
     }
@@ -103,7 +103,7 @@ class PatInfo extends React.Component {
     }
 
     render() {
-        let { regId, inforId } = this.props.match.params;
+        let { regId,sourceType,inforId } = this.props.match.params;
         return (
             <div>
                 <PatInfoHeaderBar
@@ -112,6 +112,8 @@ class PatInfo extends React.Component {
                     onOpenMenuRequest={this.handleMenuButtonTouchTap}
                 />
                 <PatInfoCatalogBar
+                    regId={regId}
+                    sourceType={sourceType}
                     open={this.state.openmenu}
                     onMenuRequestChange={this.handleMenuRequestChange}
                     onPatHospital={this.handlePatHospital}
@@ -125,6 +127,7 @@ class PatInfo extends React.Component {
                 />
                 <PatInfoContent
                     regId={regId}
+                    sourceType={sourceType}
                     inforId={inforId}
                 />
             </div>

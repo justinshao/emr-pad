@@ -164,6 +164,86 @@ const getMainMenu = (regId, sourceType) => {
     }).then(checkApi);
 }
 
+// 获取住院信息
+const getInHospitalInfo = (regId) => {
+    return fetch(`${root}/api/InHospitalInfo?regId=${regId}`, {
+        method: 'get',
+        credentials: credentials,
+        headers: xHeaders
+    }).then(checkApi);
+}
+
+// 获取病人信息
+const getPersonInfo = (regId, sourceType) => {
+    return fetch(`${root}/api/PersonInfo?regId=${regId}&sourceType=${sourceType}`, {
+        method: 'get',
+        credentials: credentials,
+        headers: xHeaders
+    }).then(checkApi);
+}
+
+// 获取过敏信息
+const getAllergyInfo = (regId, sourceType) => {
+    return fetch(`${root}/api/AllergyInfo?regId=${regId}&sourceType=${sourceType}`, {
+        method: 'get',
+        credentials: credentials,
+        headers: xHeaders
+    }).then(checkApi);
+}
+
+// 获取饮食医嘱信息
+const getDietOrder = (regId) => {
+    return fetch(`${root}/api/DietOrder?regId=${regId}`, {
+        method: 'get',
+        credentials: credentials,
+        headers: xHeaders
+    }).then(checkApi);
+}
+
+// 获取关联住院信息
+const getRelaInHospital = (regId) => {
+    return fetch(`${root}/api/RelaInHospital?regId=${regId}`, {
+        method: 'get',
+        credentials: credentials,
+        headers: xHeaders
+    }).then(checkApi);
+}
+
+// 获取轮转信息
+const getInpatTurn = (regId) => {
+    return fetch(`${root}/api/InpatTurn?regId=${regId}`, {
+        method: 'get',
+        credentials: credentials,
+        headers: xHeaders
+    }).then(checkApi);
+}
+
+// 获取轮转信息
+const getInpatChange = (regId) => {
+    return fetch(`${root}/api/InpatChange?regId=${regId}`, {
+        method: 'get',
+        credentials: credentials,
+        headers: xHeaders
+    }).then(checkApi);
+}
+
+// 获取账户信息
+const getAccountInfo = (regId) => {
+    return fetch(`${root}/api/AccountInfo?regId=${regId}`, {
+        method: 'get',
+        credentials: credentials,
+        headers: xHeaders
+    }).then(checkApi);
+}
+
+// 获取检查报告
+const getExamReport = (requestNo,sourceType) => {
+    return fetch(`${root}/api/ExamReport?requestNo=${requestNo}&sourceType=${sourceType}`, {
+        method: 'get',
+        credentials: credentials,
+        headers: xHeaders
+    }).then(checkApi);
+}
 export {
     login,
     loginout,
@@ -180,5 +260,14 @@ export {
     deleteMedia,
     postEmrInformed,
     patSign,
-    getMainMenu
+    getMainMenu,
+    getInHospitalInfo,
+    getPersonInfo,
+    getAllergyInfo,
+    getDietOrder,
+    getRelaInHospital,
+    getInpatTurn,
+    getInpatChange,
+    getAccountInfo,
+    getExamReport
 }

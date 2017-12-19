@@ -2,14 +2,39 @@ import React from 'react';
 import { tableHeader, tableContent } from '../styles';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 import NoResult from './NoResult';
+import { getRelaInHospital } from '../service';
 
 class PatAssociatHospital extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            data: []
+        }
+    }
+
+    componentDidMount() {
+        let { regId } = this.props;
+        getRelaInHospital(regId)
+            .then(data => this.setState({ data: data }))
+    }
 
     render() {
+        let tableRow = this.state.data.map((item, i) => (
+            <TableRow style={tableContent} key={i}>
+                <TableRowColumn style={tableContent}>{item.VisitNo}</TableRowColumn>
+                <TableRowColumn style={tableContent}>{item.Name}</TableRowColumn>
+                <TableRowColumn style={tableContent}>{item.BedCode}</TableRowColumn>
+                <TableRowColumn style={tableContent}>{item.Sex}</TableRowColumn>
+                <TableRowColumn style={tableContent}>{item.BirthDate}</TableRowColumn>
+                <TableRowColumn style={tableContent}>{item.Age}</TableRowColumn>
+                <TableRowColumn style={tableContent}>{item.Relation}</TableRowColumn>
+            </TableRow>
+        ))
+
         let content = (
             true ? (
                 <div>
-                    <Table style={{ 'border': '2px solid #f1f1f1',minWidth:'600px'}} selectable={false}>
+                    <Table style={{ 'border': '2px solid #f1f1f1', minWidth: '600px' }} selectable={false} bodyStyle={{ 'minWidth': '600px'}}>
                         <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                             <TableRow style={tableHeader} >
                                 <TableHeaderColumn style={tableHeader} colSpan='7'>关联住院</TableHeaderColumn>
@@ -25,15 +50,7 @@ class PatAssociatHospital extends React.Component {
                             </TableRow>
                         </TableHeader>
                         <TableBody displayRowCheckbox={false}>
-                            <TableRow style={tableContent} >
-                                <TableRowColumn style={tableContent}></TableRowColumn>
-                                <TableRowColumn style={tableContent}></TableRowColumn>
-                                <TableRowColumn style={tableContent}></TableRowColumn>
-                                <TableRowColumn style={tableContent}></TableRowColumn>
-                                <TableRowColumn style={tableContent}></TableRowColumn>
-                                <TableRowColumn style={tableContent}></TableRowColumn>
-                                <TableRowColumn style={tableContent}></TableRowColumn>
-                            </TableRow>
+                            {tableRow}
                         </TableBody>
                     </Table>
                 </div>

@@ -82,7 +82,11 @@ class PatCatalogBar extends React.Component {
     render() {
         return (
             <Drawer docked={false} open={this.props.open} onRequestChange={this.props.onMenuRequestChange} openSecondary={true} containerStyle={{ overflow: 'hidden' }}>
-                <PatInfoWrapper onPaitentInfor={this.handlePaitentInfor} />
+                <PatInfoWrapper 
+                    onPaitentInfor={this.handlePaitentInfor} 
+                    regId={this.props.regId}
+                    sourceType={this.props.sourceType}
+                    />
                 <List>
                     <ListItem
                         key='zhuyuan'

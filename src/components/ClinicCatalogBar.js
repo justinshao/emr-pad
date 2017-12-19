@@ -28,7 +28,7 @@ class ClinicCatalogBar extends React.Component {
     render() {
         return (
             <Drawer docked={false} open={this.props.open} onRequestChange={this.props.onMenuRequestChange} openSecondary={true} containerStyle={{ overflow: 'hidden' }}>
-                <PatInfoWrapper onPaitentInfor={this.handlePaitentInfor} sourceType={this.props.sourceType}/>
+                <PatInfoWrapper onPaitentInfor={this.handlePaitentInfor} sourceType={this.props.sourceType} regId={this.props.regId}/>
                 <ClinicCatalogWrapper menu={this.props.menu} onChangeTap={this.handleChangeTap} loading={this.props.loading}/>
             </Drawer>
         );

@@ -38,7 +38,7 @@ const AppRouter = () => (
                 <PrivateRoute exact path="/" component={Home} />
                 <PrivateRoute path="/home/:wardId?" component={Home} />
                 <PrivateRoute path="/emr/:regId?/:emrId?" component={EmrWrapper} />
-                <PrivateRoute path="/clinic/:regId/:sourceType/:content?/:reportType?" component={ClinicWrapper}/>
+                <PrivateRoute path="/clinic/:regId/:sourceType/:content?/:requestNo?" component={ClinicWrapper}/>
                 <PrivateRoute path="/patInfo/:regId/:sourceType/:inforId?" component={PatInfo}/>
                 <PrivateRoute path="/sign/:regId/:emrId" component={EmrSign} />
                 <PrivateRoute path="/informed/:regId/:emrId" component={EmrInformed} />

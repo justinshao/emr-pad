@@ -33,7 +33,6 @@ class ClinicWrapper extends React.Component {
         getMainMenu(regId, sourceType)
             .then(menu => {
                 this.setState({ menu: menu,loading:false });
-
             })
             .catch('数据出错');
     }
@@ -57,8 +56,8 @@ class ClinicWrapper extends React.Component {
     // 查看病人信息
     handlePaitentInfor() {
         let { history } = this.props;
-        let { regId } = this.props.match.params;
-        history.push(`/patInfo/${regId}/sourceType`);
+        let { regId ,sourceType} = this.props.match.params;
+        history.push(`/patInfo/${regId}/${sourceType}`);
     }
 
     // 跳转趋势图
@@ -82,8 +81,7 @@ class ClinicWrapper extends React.Component {
     }
 
     render() {
-        let { regId, sourceType, content, reportType } = this.props.match.params;
-
+        let { regId, sourceType, content, requestNo } = this.props.match.params;
         return (
             <div>
                 {/* 页头组件 */}
@@ -108,7 +106,7 @@ class ClinicWrapper extends React.Component {
                     regId={regId}
                     sourceType={sourceType}
                     content={content}
-                    reportType={reportType}
+                    requestNo={requestNo}
                     onReportEchars={this.handleReportEchars}
                 />
             </div>

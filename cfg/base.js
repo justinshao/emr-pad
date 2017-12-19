@@ -30,7 +30,7 @@ module.exports = {
     proxy: [
       {
         context: ['/api/*'],
-        target: 'http://172.16.140.42:8084',
+        target: 'http://172.17.254.76:8080',
         secure: false
       }
     ]
