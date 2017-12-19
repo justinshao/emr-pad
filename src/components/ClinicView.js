@@ -33,7 +33,7 @@ class ClinicView extends React.Component {
                                 // content == 'assay' ? <ReportLaboratoryX {...this.props}/> :
                                 content == 'nursing' ? <ReportCareOrder {...this.props} /> :
                                     content == 'temp' ? <ReportTemperature {...this.props} /> :
-                                        content == 'inPatOrder' ? <ReportDtAdvice {...this.props} /> :
+                                        content == 'order' ? <ReportDtAdvice {...this.props} /> :
                                             content == 'chnOrder' ? <ReportChDtAdvice {...this.props} /> :
                                                 content == 'diag' ? <ReportDiag {...this.props} /> : <ReportTemperature {...this.props} />
                 }

@@ -1,9 +1,10 @@
 import React from 'react';
-import { contentStyle, tableHeader, tableContent } from '../styles';
+import { contentStyle, tableHeader, tableContent,spanStyle } from '../styles';
 import ReportTitle from './ReportTitle';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 import NoResult from './NoResult';
 import 'semantic-ui-css/semantic.css';
+import { getAssayRpt } from '../service';
 
 const colorRed = {
     color: 'red'
@@ -32,15 +33,73 @@ const headerCont = {
     width: '30px'
 }
 
+const tableHeader2={
+    width:'30%'
+}
+
 class ReportLaboratory extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             title: '化验报告单标题',
-            detailHeader: '姓名： 性别： 年龄： 住院号： 病区： 床号： 样本编号： 样本种类： 科室： 送检人员：',
-            detailBottom: '核对时间： 报告时间： 检验者： 审核者： '
+            detailHeader: <span>
+                <span>姓名：</span>
+                <span>性别：</span>
+                <span>年龄：</span>
+                <span>住院号：</span>
+                <span>病区：</span>
+                <span>床号：</span>
+                <span>样本编号：</span>
+                <span>样本种类：</span>
+                <span>科室：</span>
+                <span>送检人员：</span>
+            </span>,
+            detailBottom: <span>
+                <span>核对时间：</span>
+                <span>报告时间：</span>
+                <span>检验者：</span>
+                <span>审核者：</span>
+            </span>,
+            details: []
         }
         this.handleReportEchars = this.handleReportEchars.bind(this);
+    }
+
+    componentDidMount() {
+        let { requestNo, sourceType } = this.props;
+        this.getAssayRptFun(requestNo, sourceType)
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (this.props.requestNo !== nextProps.requestNo) {
+            this.getAssayRptFun(nextProps.requestNo, nextProps.sourceType)
+        }
+    }
+
+    getAssayRptFun(requestNo, sourceType) {
+        getAssayRpt(requestNo, sourceType)
+            .then(data => this.setState({
+                title: '化验报告单标题',
+                detailHeader: <span>
+                    <span style={spanStyle}>姓名：{data[0].Header.PatientName}</span>
+                    <span style={spanStyle}>性别：{data[0].Header.Sex}</span>
+                    <span style={spanStyle}>年龄：{data[0].Header.Age}</span>
+                    <span style={spanStyle}>住院号：{data[0].Header.VisitNo}</span>
+                    <span style={spanStyle}>病区：{data[0].Header.Ward}</span>
+                    <span style={spanStyle}>床号：{data[0].Header.BedCode}</span>
+                    <span style={spanStyle}>样本编号：{data[0].Header.SampleNumber}</span>
+                    <span style={spanStyle}>样本种类：{data[0].Header.SpecType}</span>
+                    <span style={spanStyle}>科室：{data[0].Header.Dept}</span>
+                    <span style={spanStyle}>送检人员：{data[0].Header.SendEmp}</span>
+                </span>,
+                detailBottom: <span>
+                    <span style={spanStyle}>核对时间：{data[0].Header.AuditTime}</span>
+                    <span style={spanStyle}>报告时间：{data[0].Header.ReportTime}</span>
+                    <span style={spanStyle}>检验者：{data[0].Header.EntryEmp}</span>
+                    <span style={spanStyle}>审核者：{data[0].Header.AuditEmp}</span>
+                </span>,
+                details: data[0].Details
+            }))
     }
 
     handleReportEchars() {
@@ -50,6 +109,24 @@ class ReportLaboratory extends React.Component {
     }
 
     render() {
+        let tableRow = this.state.details.map(item => {
+            let isNormal = true;
+            return (
+                <TableRow style={tableContent}>
+                    <TableRowColumn style={Object.assign({}, tableContent, true ? {} : true ? colorBlue : colorRed,tableHeader2)}>{item.Name}</TableRowColumn>
+                    <TableRowColumn style={Object.assign({}, tableContent, true ? {} : true ? colorBlue : colorRed)}>{item.ResultData}</TableRowColumn>
+                    <TableRowColumn style={tableCont}>{item.ResultStateDesc}
+                    </TableRowColumn>
+                    <TableRowColumn style={Object.assign({}, tableContent, true ? {} : true ? colorBlue : colorRed)}>{item.RefRange}</TableRowColumn>
+                    <TableRowColumn style={Object.assign({}, tableContent, true ? {} : true ? colorBlue : colorRed)}>{item.ResultUnit}</TableRowColumn>
+                    <TableRowColumn style={Object.assign({}, tableContent, true ? {} : true ? colorBlue : colorRed)}>
+                        <div onClick={this.handleReportEchars}>
+                            {true ? <i className="bar chart icon" /> : true ? <i className="blue bar chart icon" /> : <i className="red bar chart icon" />}
+                        </div>
+                    </TableRowColumn>
+                </TableRow>
+            )
+        })
         let showContent = (
             true ? (
                 <div>
@@ -61,7 +138,7 @@ class ReportLaboratory extends React.Component {
                         <Table style={{ 'border': '2px solid #f1f1f1' }} selectable={false}>
                             <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                                 <TableRow style={tableHeader}>
-                                    <TableHeaderColumn style={tableHeader} >检查项目</TableHeaderColumn>
+                                    <TableHeaderColumn style={Object.assign({}, tableHeader,tableHeader2 )}>检查项目</TableHeaderColumn>
                                     <TableHeaderColumn style={tableHeader} >检查结果</TableHeaderColumn>
                                     <TableHeaderColumn style={headerCont} ></TableHeaderColumn>
                                     <TableHeaderColumn style={tableHeader} >参考范围</TableHeaderColumn>
@@ -70,48 +147,49 @@ class ReportLaboratory extends React.Component {
                                 </TableRow>
                             </TableHeader>
                             <TableBody displayRowCheckbox={false}>
-                                <TableRow style={tableContent}>
-                                    <TableRowColumn style={Object.assign({}, tableContent, true ? {} : true?colorBlue:colorRed)}>总蛋白</TableRowColumn>
-                                    <TableRowColumn style={Object.assign({}, tableContent, true ? {} : true?colorBlue:colorRed)}>47.5</TableRowColumn>
+                                {tableRow}
+                                {/* <TableRow style={tableContent}>
+                                    <TableRowColumn style={Object.assign({}, tableContent, true ? {} : true ? colorBlue : colorRed)}>总蛋白</TableRowColumn>
+                                    <TableRowColumn style={Object.assign({}, tableContent, true ? {} : true ? colorBlue : colorRed)}>47.5</TableRowColumn>
                                     <TableRowColumn style={tableCont}>
                                         {true ? '' : true ? <i className="blue long arrow down icon" /> : <i className="red long arrow up icon" />}
                                     </TableRowColumn>
-                                    <TableRowColumn style={Object.assign({}, tableContent, true ? {} : true?colorBlue:colorRed)}>总蛋白</TableRowColumn>
-                                    <TableRowColumn style={Object.assign({}, tableContent, true ? {} : true?colorBlue:colorRed)}>g/L</TableRowColumn>
-                                    <TableRowColumn style={Object.assign({}, tableContent, true ? {} : true?colorBlue:colorRed)}>
+                                    <TableRowColumn style={Object.assign({}, tableContent, true ? {} : true ? colorBlue : colorRed)}>总蛋白</TableRowColumn>
+                                    <TableRowColumn style={Object.assign({}, tableContent, true ? {} : true ? colorBlue : colorRed)}>g/L</TableRowColumn>
+                                    <TableRowColumn style={Object.assign({}, tableContent, true ? {} : true ? colorBlue : colorRed)}>
                                         <div onClick={this.handleReportEchars}>
                                             {true ? <i className="bar chart icon" /> : true ? <i className="blue bar chart icon" /> : <i className="red bar chart icon" />}
                                         </div>
                                     </TableRowColumn>
                                 </TableRow>
                                 <TableRow style={tableContent}>
-                                    <TableRowColumn style={Object.assign({}, tableContent, false ? {} : true?colorBlue:colorRed)}>总蛋白</TableRowColumn>
-                                    <TableRowColumn style={Object.assign({}, tableContent, false ? {} : true?colorBlue:colorRed)}>47.5</TableRowColumn>
+                                    <TableRowColumn style={Object.assign({}, tableContent, false ? {} : true ? colorBlue : colorRed)}>总蛋白</TableRowColumn>
+                                    <TableRowColumn style={Object.assign({}, tableContent, false ? {} : true ? colorBlue : colorRed)}>47.5</TableRowColumn>
                                     <TableRowColumn style={tableCont}>
                                         {false ? '' : true ? <i className="blue long arrow down icon" /> : <i className="red long arrow up icon" />}
                                     </TableRowColumn>
-                                    <TableRowColumn style={Object.assign({}, tableContent, false ? {} : true?colorBlue:colorRed)}>总蛋白</TableRowColumn>
-                                    <TableRowColumn style={Object.assign({}, tableContent, false ? {} : true?colorBlue:colorRed)}>g/L</TableRowColumn>
-                                    <TableRowColumn style={Object.assign({}, tableContent, false ? {} : true?colorBlue:colorRed)}>
+                                    <TableRowColumn style={Object.assign({}, tableContent, false ? {} : true ? colorBlue : colorRed)}>总蛋白</TableRowColumn>
+                                    <TableRowColumn style={Object.assign({}, tableContent, false ? {} : true ? colorBlue : colorRed)}>g/L</TableRowColumn>
+                                    <TableRowColumn style={Object.assign({}, tableContent, false ? {} : true ? colorBlue : colorRed)}>
                                         <div >
                                             {false ? <i className="bar chart icon" /> : true ? <i className="blue bar chart icon" /> : <i className="red bar chart icon" />}
                                         </div>
                                     </TableRowColumn>
                                 </TableRow>
                                 <TableRow style={tableContent}>
-                                    <TableRowColumn style={Object.assign({}, tableContent, false ? {} : false?colorBlue:colorRed)}>总蛋白</TableRowColumn>
-                                    <TableRowColumn style={Object.assign({}, tableContent, false ? {} : false?colorBlue:colorRed)}>47.5</TableRowColumn>
-                                    <TableRowColumn style={Object.assign({}, tableContent, false ? {} : false?colorBlue:colorRed)}>
+                                    <TableRowColumn style={Object.assign({}, tableContent, false ? {} : false ? colorBlue : colorRed)}>总蛋白</TableRowColumn>
+                                    <TableRowColumn style={Object.assign({}, tableContent, false ? {} : false ? colorBlue : colorRed)}>47.5</TableRowColumn>
+                                    <TableRowColumn style={Object.assign({}, tableContent, false ? {} : false ? colorBlue : colorRed)}>
                                         {false ? '' : false ? <i className="blue long arrow down icon" /> : <i className="red long arrow up icon" />}
                                     </TableRowColumn>
-                                    <TableRowColumn style={Object.assign({}, tableContent, false ? {} : false?colorBlue:colorRed)}>总蛋白</TableRowColumn>
-                                    <TableRowColumn style={Object.assign({}, tableContent, false ? {} : false?colorBlue:colorRed)}>g/L</TableRowColumn>
-                                    <TableRowColumn style={Object.assign({}, tableContent, false ? {} : false?colorBlue:colorRed)}>
+                                    <TableRowColumn style={Object.assign({}, tableContent, false ? {} : false ? colorBlue : colorRed)}>总蛋白</TableRowColumn>
+                                    <TableRowColumn style={Object.assign({}, tableContent, false ? {} : false ? colorBlue : colorRed)}>g/L</TableRowColumn>
+                                    <TableRowColumn style={Object.assign({}, tableContent, false ? {} : false ? colorBlue : colorRed)}>
                                         <div>
                                             {false ? <i className="bar chart icon" /> : false ? <i className="blue bar chart icon" /> : <i className="red bar chart icon" />}
                                         </div>
                                     </TableRowColumn>
-                                </TableRow>
+                                </TableRow> */}
                             </TableBody>
                         </Table>
                     </ReportTitle>

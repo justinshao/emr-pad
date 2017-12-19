@@ -71,7 +71,7 @@ const tableHeader = {
 const tableContent = {
     height: '26px',
     lineHeight: '1.2',
-    padding: ' 2px 0',
+    padding: '2px 6px',
     textAlign: 'center',
     fontSize: '12px',
     whiteSpace: 'normal',
@@ -89,7 +89,10 @@ const content = {
 const containerStyle = {
     marginTop: '14px',
     border:'1px #EAEAEA solid'
-}
+};
+const spanStyle = {
+    paddingRight: '16px'
+};
 
 export {
     headerBarStyle,
@@ -109,5 +112,6 @@ export {
     tableHeader,
     tableContent,
     content,
-    containerStyle
+    containerStyle,
+    spanStyle
 };

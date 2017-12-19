@@ -52,9 +52,8 @@ const loggedIn = () => {
         method: 'GET',
         credentials: credentials,
         headers: xHeaders
-    })
-        .then(checkApi)
-        .then(data => data == 'true');
+    }).then(checkApi)
+    .then(data => data == 'true');
 }
 
 const getWards = () => {
@@ -244,6 +243,34 @@ const getExamReport = (requestNo,sourceType) => {
         headers: xHeaders
     }).then(checkApi);
 }
+
+// 获取化验报告
+const getAssayRpt=(requestNo,sourceType)=>{
+    return fetch(`${root}/api/AssayRpt?requestNo=${requestNo}&sourceType=${sourceType}`, {
+        method: 'get',
+        credentials: credentials,
+        headers: xHeaders
+    }).then(checkApi);
+}
+
+// 获取病理报告
+const getPathlgRpt=(requestNo,sourceType)=>{
+    return fetch(`${root}/api/PathlgRpt?requestNo=${requestNo}&sourceType=${sourceType}`, {
+        method: 'get',
+        credentials: credentials,
+        headers: xHeaders
+    }).then(checkApi);
+}
+
+// 获取护理单图片
+const getNursingImage=(recordNo)=>{
+    return `${root}/api/NursingImage?recordNo=${recordNo}`;
+}
+
+// 获取体温单图片
+const getTemperatureSheetImage=(regId,week)=>{
+    return `${root}/api/TemperatureSheetImage?regId=${regId}&week=${week}`;
+}
 export {
     login,
     loginout,
@@ -269,5 +296,9 @@ export {
     getInpatTurn,
     getInpatChange,
     getAccountInfo,
-    getExamReport
+    getExamReport,
+    getAssayRpt,
+    getPathlgRpt,
+    getNursingImage,
+    getTemperatureSheetImage
 }

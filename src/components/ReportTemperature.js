@@ -1,7 +1,8 @@
 import React from 'react';
 import { titleStyle } from '../styles';
 import NoResult from './NoResult';
-import { Icon } from 'semantic-ui-react'
+import { Icon } from 'semantic-ui-react';
+import {getTemperatureSheetImage} from '../service';
 
 const viewHeight = document.body.clientHeight;
 const contentStyle = {
@@ -39,12 +40,21 @@ class ReportTemperature extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            src: '../../../images/picTemp.jpg',
+            src: '',
             startX: '',
-            startY: ''
+            startY: '',
+            week:1
         }
         this.handleWillChangeImg = this.handleWillChangeImg.bind(this);
         this.handleChangeImg = this.handleChangeImg.bind(this);
+    }
+    
+    componentDidMount(){
+        let {regId}=this.props;
+        let week=this.state.week;
+        this.setState({
+            src:getTemperatureSheetImage(regId,week)
+        })
     }
 
     handleWillChangeImg(e) {
