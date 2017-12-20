@@ -58,7 +58,7 @@ class WritingBoard extends React.Component {
     }
     
     render() {
-        console.log(writingBoardStyle);
+        // console.log(writingBoardStyle);
 
         return (
             <canvas style={writingBoardStyle} ref={(canvas) => { this.canvas = canvas }} />

@@ -13,53 +13,55 @@ class ReportChDtAdvice extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            // 药方类型(中药方/免煎中药)
-            typeofadvice: '2',
-            // 日期
-            date: '',
-            // 是否停用（控制未停和全部）
-            status: '3'
+            // （1-长期，2-临时，3-出院带药）
+            timeType:1,
+            //（0-中药方，1-免煎中药）
+            notDecoct:0,
+            // （1-未停，2-当日，0-全部）
+            selectFilter:0
         }
-        this.handleChangeTypeofadvice = this.handleChangeTypeofadvice.bind(this);
-        this.handleChangeDate = this.handleChangeDate.bind(this);
-        this.handleChangeStatus = this.handleChangeStatus.bind(this);
+        this.handleTimeType = this.handleTimeType.bind(this);
+        this.handleNotDecoct = this.handleNotDecoct.bind(this);
+        this.handleselectFilter = this.handleselectFilter.bind(this);
     }
 
-    //药方类型(中药方/免煎中药)
-    handleChangeTypeofadvice(param) {
-        this.setState = {
-            typeofadvice: param
-        }
+    //长期医嘱，临时医嘱
+    handleTimeType(n) {
+        this.setState({
+            timeType: n
+        });
     }
 
-    // 日期设定
-    handleChangeDate(param) {
-        this.setState = {
-            date: param
-        }
+    //中药方，免煎中药
+    handleNotDecoct(n) {
+        this.setState({
+            notDecoct: n
+        });
     }
 
-    // 是否停用（控制未停和全部）设置
-    handleChangeStatus(param) {
-        this.setState = {
-            status: param
-        }
+    //未停，当日，全部
+    handleselectFilter(n) {
+        this.setState({
+            selectFilter: n
+        })
     }
 
     render() {
+        let {regId}=this.props;
         let showContent = (
             true ? (
                 <div>
                     <h3 style={titleStyle}>中药医嘱单</h3>
                     <ReportChDtAdviceHeader
-                        onChangeTypeofadvice={this.handleChangeTypeofadvice}
-                        onChangeDate={this.handleChangeDate}
-                        onChangeStatus={this.handleChangeStatus}
+                        onTimeType={this.handleTimeType}
+                        onNotDecoct={this.handleNotDecoct}
+                        onselectFilter={this.handleselectFilter}
                     />
                     <ReportChDtAdviceContent
-                        typeofadvice={this.state.typeofadvice}
-                        date={this.state.date}
-                        status={this.state.status}
+                        timeType={this.state.timeType}
+                        notDecoct={this.state.notDecoct}
+                        selectFilter={this.state.selectFilter}
+                        regId={regId}
                     />
                 </div>
             ) : <NoResult />

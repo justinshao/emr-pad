@@ -3,7 +3,7 @@ import { List, ListItem } from 'material-ui/List';
 import CircularProgress from 'material-ui/CircularProgress';
 import { Icon } from 'semantic-ui-react'
 
-const color = {
+const colorStyle = {
     color: 'rgb(0, 188, 212)'
 };
 
@@ -41,7 +41,7 @@ class ClinicCatalogWrapper extends React.Component {
             return (
                 <ListItem
                     primaryText={mainmenu.Name}
-                    leftIcon={<Icon disabled name='tags' size='large' style={color} />}
+                    leftIcon={<Icon disabled name='tags' size='large' style={colorStyle}/>}
                     key={mainmenu.Name}
                     initiallyOpen={false}
                     primaryTogglesNestedList={true}

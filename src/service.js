@@ -271,6 +271,34 @@ const getNursingImage=(recordNo)=>{
 const getTemperatureSheetImage=(regId,week)=>{
     return `${root}/api/TemperatureSheetImage?regId=${regId}&week=${week}`;
 }
+
+// 获取住院医嘱
+const getInpatOrder=(regId,timeType,selectFilter,orderKind)=>{
+    return fetch(`${root}/api/InpatOrder?regId=${regId}&timeType=${timeType}&selectFilter=${selectFilter}&orderKind=${orderKind}`, {
+        method: 'get',
+        credentials: credentials,
+        headers: xHeaders
+    }).then(checkApi);
+}
+
+// 获取中药医嘱
+const getChnOrder=(regId,timeType,selectFilter,notDecoct)=>{
+    return fetch(`${root}/api/ChnOrder?regId=${regId}&timeType=${timeType}&selectFilter=${selectFilter}&notDecoct=${notDecoct}`, {
+        method: 'get',
+        credentials: credentials,
+        headers: xHeaders
+    }).then(checkApi);
+}
+
+// 获取诊断信息
+const getDiag=(regId,sourceType)=>{
+    return fetch(`${root}/api/Diag?regId=${regId}&sourceType=${sourceType}`, {
+        method: 'get',
+        credentials: credentials,
+        headers: xHeaders
+    }).then(checkApi);
+}
+
 export {
     login,
     loginout,
@@ -300,5 +328,8 @@ export {
     getAssayRpt,
     getPathlgRpt,
     getNursingImage,
-    getTemperatureSheetImage
+    getTemperatureSheetImage,
+    getInpatOrder,
+    getChnOrder,
+    getDiag
 }

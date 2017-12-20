@@ -33,7 +33,6 @@ class ReportExamination extends React.Component {
 
     componentWillReceiveProps(nextProps) {
         if (this.props.requestNo !== nextProps.requestNo) {
-            console.log(nextProps.requestNo);
             this.updateContent(nextProps.requestNo, nextProps.sourceType)
         }
     }

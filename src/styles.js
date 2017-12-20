@@ -76,7 +76,8 @@ const tableContent = {
     fontSize: '12px',
     whiteSpace: 'normal',
     textOverflow:'no',
-    wordWrap:'break-word'
+    wordWrap:'break-word',
+    border:'1px #f1f1f1 solid'
 };
 const content = {
     float: 'left',

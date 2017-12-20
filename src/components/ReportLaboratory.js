@@ -110,7 +110,6 @@ class ReportLaboratory extends React.Component {
 
     render() {
         let tableRow = this.state.details.map(item => {
-            let isNormal = true;
             return (
                 <TableRow style={tableContent}>
                     <TableRowColumn style={Object.assign({}, tableContent, true ? {} : true ? colorBlue : colorRed,tableHeader2)}>{item.Name}</TableRowColumn>

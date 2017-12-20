@@ -1,7 +1,7 @@
 import React from 'react';
 import { tableHeader, tableContent } from '../styles';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
-import NoResult from './NoResult';
+// import NoResult from './NoResult';
 import { getAccountInfo } from '../service';
 import CircularProgress from 'material-ui/CircularProgress';
 
@@ -76,8 +76,8 @@ class PatAccount extends React.Component {
                         </TableBody>
                     </Table>
                 </div>
-            ) : 
-            <CircularProgress size={60} thickness={7} style={styles.loading} />
+            ) :
+                <CircularProgress size={60} thickness={7} style={styles.loading} />
             // <NoResult />
         )
         return (

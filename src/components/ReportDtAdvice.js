@@ -13,79 +13,55 @@ class ReportDtAdvice extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            // 长期医嘱和临时医嘱判断
-            timeofAdvice: '1',
-            // 出院带药
-            dischargedDrug: '',
-            // 医嘱类型(药品/非药品)
-            typeofadvice: '3',
-            // 日期
-            date: '',
-            // 是否停用（控制未停和全部）
-            status: '3'
+            // （1-长期，2-临时，3-出院带药）
+            timeType: 1,
+            // (限制归类医嘱类型(0=全部/1=药品/2=非药品)
+            orderKind: 0,
+            // （1-未停，2-当日,0-全部）
+            selectFilter: 0
         }
-        this.handleChangeTimeofAdvice = this.handleChangeTimeofAdvice.bind(this);
-        this.handleChangeDischargedDrug = this.handleChangeDischargedDrug.bind(this);
-        this.handleChangeTypeofadvice = this.handleChangeTypeofadvice.bind(this);
-        this.handleChangeDate = this.handleChangeDate.bind(this);
-        this.handleChangeStatus = this.handleChangeStatus.bind(this);
+        this.handleTimeType = this.handleTimeType.bind(this);
+        this.handleOrderKind = this.handleOrderKind.bind(this);
+        this.handleSelectFilter = this.handleSelectFilter.bind(this);
     }
 
-    // 长期医嘱和临时医嘱设置
-    handleChangeTimeofAdvice(param) {
-        this.setState = {
-            timeofAdvice: param,
-            dischargedDrug: ''
-        }
+    // 长期医嘱,临时医嘱,出院带药
+    handleTimeType(n) {
+        this.setState({
+            timeType: n
+        })
     }
 
-    // 出院带药配置
-    handleChangeDischargedDrug(param) {
-        this.setState = {
-            timeofAdvice: '',
-            dischargedDrug: param
-        }
+    // 医嘱类型：药品，非药品
+    handleOrderKind(n) {
+        this.setState({
+            orderKind: n
+        })
     }
 
-    //药品/非药品设置
-    handleChangeTypeofadvice(param) {
-        this.setState = {
-            typeofadvice: param
-        }
-    }
-
-    // 日期设定
-    handleChangeDate(param) {
-        this.setState = {
-            date: param
-        }
-    }
-
-    // 是否停用（控制未停和全部）设置
-    handleChangeStatus(param) {
-        this.setState = {
-            status: param
-        }
+    //日期设定：未停，当日，全部
+    handleSelectFilter(n) {
+        this.setState({
+            selectFilter: n
+        })
     }
 
     render() {
+        let { regId } = this.props;
         let showContent = (
             true ? (
                 <div>
                     <h3 style={titleStyle}>医嘱单</h3>
                     <ReportDtAdviceHeader
-                        onChangeTimeofAdvice={this.handleChangeTimeofAdvice}
-                        onChangeDischargedDrug={this.handleChangeDischargedDrug}
-                        onChangeTypeofadvice={this.handleChangeTypeofadvice}
-                        onChangeDate={this.handleChangeDate}
-                        onChangeStatus={this.handleChangeStatus}
+                        onTimeType={this.handleTimeType}
+                        onOrderKind={this.handleOrderKind}
+                        onSelectFilter={this.handleSelectFilter}
                     />
                     <ReportDtAdviceContent
-                        timeofAdvice={this.state.timeofAdvice}
-                        dischargedDrug={this.state.dischargedDrug}
-                        typeofadvice={this.state.typeofadvice}
-                        date={this.state.date}
-                        status={this.state.status}
+                        timeType={this.state.timeType}
+                        orderKind={this.state.orderKind}
+                        selectFilter={this.state.selectFilter}
+                        regId={regId}
                     />
                 </div>
             ) : <NoResult />
