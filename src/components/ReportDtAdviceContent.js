@@ -11,8 +11,8 @@ import { tableHeader, tableContent } from '../styles';
 import { getInpatOrder } from '../service';
 
 const styles = {
-    bodyName: { width: '100px' },
-    headerName: { width: '100px' },
+    bodyName: { width: '110px' },
+    headerName: { width: '110px' },
     bodyNarrow: { width: '40px' },
     headerNarrow: { width: '40px' }
 }
@@ -43,27 +43,38 @@ class ReportDtAdviceContent extends React.Component {
 
     render() {
         let tableRow = this.state.data.map(item => {
-            let name = item.Details.map((detail,i) => (<div key={i}>{detail.Name}</div>));
-            let dose = item.Details.map((detail,i) => (<div key={i}>{detail.Dose}</div>));
-            let num = item.Details.map((detail,i) => (<div key={i}>{detail.Num}</div>));
-            let byo = item.Details.map((detail,i) => (<div key={i}>{detail.BYO}</div>));
             let stateColor = { backgroundColor: item.StateColor };
-            return (
-                <TableRow style={tableContent} key={item.OrderNo}>
-                    <TableRowColumn style={Object.assign({}, tableContent, stateColor, styles.bodyNarrow)}>{item.State}</TableRowColumn>
-                    <TableRowColumn style={tableContent}>{item.OrderDate}</TableRowColumn>
-                    <TableRowColumn style={{ ...tableContent, ...styles.bodyName }}>{name}</TableRowColumn>
-                    <TableRowColumn style={tableContent}>{item.Told}</TableRowColumn>
-                    <TableRowColumn style={tableContent}>{item.ExeWayCode}</TableRowColumn>
-                    <TableRowColumn style={{ ...tableContent, ...styles.bodyNarrow }}>{item.ExecFreqCode}</TableRowColumn>
-                    <TableRowColumn style={tableContent}>{dose}</TableRowColumn>
-                    <TableRowColumn style={tableContent}>{num}</TableRowColumn>
-                    <TableRowColumn style={tableContent}>{item.OrderDoctor}</TableRowColumn>
-                    <TableRowColumn style={{ ...tableContent, ...styles.bodyNarrow }}>{byo}</TableRowColumn>
-                    <TableRowColumn style={tableContent}>{item.StartTime}</TableRowColumn>
-                    <TableRowColumn style={tableContent}>{item.StopTime}</TableRowColumn>
-                </TableRow>
-            )
+            let rows = item.Details.map((detail, i) => {
+                if(i==0){
+                    return (
+                        <TableRow style={tableContent} key={i}>
+                            <TableRowColumn style={Object.assign({}, tableContent, stateColor, styles.bodyNarrow)} rowSpan={item.Details.length}>{item.State}</TableRowColumn>
+                            <TableRowColumn style={tableContent} rowSpan={item.Details.length}>{item.OrderDate}</TableRowColumn>
+                            <TableRowColumn style={{ ...tableContent, ...styles.bodyName }}>{detail.Name}</TableRowColumn>
+                            <TableRowColumn style={tableContent} rowSpan={item.Details.length}>{item.Told}</TableRowColumn>
+                            <TableRowColumn style={{ ...tableContent, ...styles.bodyNarrow }} rowSpan={item.Details.length}>{item.ExeWayCode}</TableRowColumn>
+                            <TableRowColumn style={{ ...tableContent, ...styles.bodyNarrow }} rowSpan={item.Details.length}>{item.ExecFreqCode}</TableRowColumn>
+                            <TableRowColumn style={tableContent}>{detail.Dose}</TableRowColumn>
+                            <TableRowColumn style={tableContent}>{detail.Num}</TableRowColumn>
+                            <TableRowColumn style={tableContent} rowSpan={item.Details.length}>{item.OrderDoctor}</TableRowColumn>
+                            <TableRowColumn style={{ ...tableContent, ...styles.bodyNarrow }}>{detail.BYO}</TableRowColumn>
+                            <TableRowColumn style={tableContent} rowSpan={item.Details.length}>{item.StartTime}</TableRowColumn>
+                            <TableRowColumn style={tableContent} rowSpan={item.Details.length}>{item.StopTime}</TableRowColumn>
+                        </TableRow>
+                    )
+                }
+                else{
+                    return (
+                        <TableRow style={tableContent} key={i}>
+                            <TableRowColumn style={{ ...tableContent, ...styles.bodyName }}>{detail.Name}</TableRowColumn>
+                            <TableRowColumn style={tableContent}>{detail.Dose}</TableRowColumn>
+                            <TableRowColumn style={tableContent}>{detail.Num}</TableRowColumn>
+                            <TableRowColumn style={{ ...tableContent, ...styles.bodyNarrow }}>{detail.BYO}</TableRowColumn>
+                        </TableRow>
+                    )
+                }
+            });
+            return rows;
         })
         return (
             <div>
@@ -74,7 +85,7 @@ class ReportDtAdviceContent extends React.Component {
                             <TableHeaderColumn style={tableHeader} >开嘱时间</TableHeaderColumn>
                             <TableHeaderColumn style={{ ...tableHeader, ...styles.headerName }} >名称</TableHeaderColumn>
                             <TableHeaderColumn style={tableHeader} >嘱托</TableHeaderColumn>
-                            <TableHeaderColumn style={tableHeader} >途径</TableHeaderColumn>
+                            <TableHeaderColumn style={{ ...tableHeader, ...styles.headerNarrow }} >途径</TableHeaderColumn>
                             <TableHeaderColumn style={{ ...tableHeader, ...styles.headerNarrow }} >频次</TableHeaderColumn>
                             <TableHeaderColumn style={tableHeader} >剂量/次</TableHeaderColumn>
                             <TableHeaderColumn style={tableHeader} >使用数量</TableHeaderColumn>

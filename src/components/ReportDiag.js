@@ -4,10 +4,12 @@ import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowCol
 import Toggle from 'material-ui/Toggle';
 import NoResult from './NoResult';
 import { Icon } from 'semantic-ui-react';
+import { getDiag } from '../service';
 
 const styles = {
     toggle: { maxWidth: 140, backgroundColor: 'white' },
-    noshow: { display: 'none' }
+    noshow: { display: 'none' },
+    typeNameStyle: { color: 'rgb(0, 188, 212)', textAlign: 'left', fontWeight: '600' }
 };
 
 class ReportDiag extends React.Component {
@@ -16,11 +18,18 @@ class ReportDiag extends React.Component {
         this.state = {
             initialtoggled: true,
             finaltoggled: true,
-            supplytoggled: true
+            supplytoggled: true,
+            data: ''
         };
         this.handleShowInitialDiag = this.handleShowInitialDiag.bind(this);
         this.handleShowFinalDiag = this.handleShowFinalDiag.bind(this);
         this.handleShowSupplyDiag = this.handleShowSupplyDiag.bind(this);
+    }
+
+    componentDidMount() {
+        let { regId, sourceType } = this.props;
+        getDiag(regId, sourceType)
+            .then(data => this.setState({ data: data }))
     }
 
     // 显示初步诊断信息
@@ -39,21 +48,81 @@ class ReportDiag extends React.Component {
 
     // 显示补充诊断信息
     handleShowSupplyDiag() {
-        // 点击togglelist表单隐藏
         this.setState({
             supplytoggled: !this.state.supplytoggled
         })
     }
 
     render() {
+        //code的格式是[[{},{}],[{}]]
+        let code4 = '', code3 = '', code2 = '';
+        this.state.data != '' ? this.state.data.Categories.map((item) => {
+            function returnContent(typesName, stateName) {
+                let c = typesName.map(type => {
+                    let typeName =
+                        <TableRow style={{ ...(stateName ? tableContent : styles.noshow) }} key={type.Id}>
+                            <TableRowColumn style={{ ...tableContent, ...styles.typeNameStyle }} colSpan='9'>
+                                <Icon disabled name='check circle outline' color='green' />
+                                {type.Name}
+                            </TableRowColumn>
+                        </TableRow>
+                    let typeDiags = type.Diags.map(diag => {
+                        return (
+                            <TableRow style={stateName ? tableContent : styles.noshow} key={diag.Name}>
+                                <TableRowColumn style={tableContent} colSpan='2'>{diag.Name}</TableRowColumn>
+                                <TableRowColumn style={tableContent}>
+                                    {diag.Primary ? <Icon disabled name='checkmark' color='green' /> : ''}
+                                </TableRowColumn>
+                                <TableRowColumn style={tableContent}>
+                                    {diag.Confirmed ? <Icon disabled name='checkmark' color='green' /> : ''}
+                                </TableRowColumn>
+                                <TableRowColumn style={tableContent}>
+                                    {diag.Contagious ? <Icon disabled name='checkmark' color='green' /> : ''}
+                                </TableRowColumn>
+                                <TableRowColumn style={tableContent}>{diag.ICD}</TableRowColumn>
+                                <TableRowColumn style={tableContent}>{diag.Doctor}</TableRowColumn>
+                                <TableRowColumn style={tableContent}>{diag.DiagTime}</TableRowColumn>
+                                <TableRowColumn style={tableContent}>{diag.DiagBased}</TableRowColumn>
+                            </TableRow>
+                        )
+                    })
+                    typeDiags.unshift(typeName);
+                    return typeDiags;
+                })
+                return c
+            }
+            if (item.Code == 4) {
+                let stateName = this.state.initialtoggled;
+                code4 = returnContent(item.Types, stateName);
+            }
+            if (item.Code == 3) {
+                let stateName = this.state.finaltoggled;
+                code3 = returnContent(item.Types, stateName);
+            }
+            if (item.Code == 2) {
+                let stateName = this.state.supplytoggled;
+                code2 = returnContent(item.Types, stateName);
+            }
+        }) : ''
+        for (let i = 1; i < code4.length; i++) {
+            code4[0] = code4[0].concat(code4[i]);
+        }
+        for (let i = 1; i < code3.length; i++) {
+            code3[0] = code3[0].concat(code3[i]);
+        }
+        for (let i = 1; i < code2.length; i++) {
+            code2[0] = code2[0].concat(code2[i]);
+        }
+
+        //渲染内容
         let showContent = (
             true ? (
                 <div>
                     <h3 style={titleStyle}>诊断信息</h3>
-                    <Table style={{ 'border': '2px solid #f1f1f1', 'minWidth': '500px' }} bodyStyle={{ 'minWidth': '500px' }} selectable={false}>
+                    <Table style={{ 'border': '2px solid #f1f1f1', 'minWidth': '560px' }} bodyStyle={{ 'minWidth': '560px' }} selectable={false}>
                         <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                             <TableRow style={tableHeader}>
-                                <TableHeaderColumn style={tableHeader} >诊断名</TableHeaderColumn>
+                                <TableHeaderColumn style={tableHeader} colSpan='2'>诊断名</TableHeaderColumn>
                                 <TableHeaderColumn style={tableHeader} >主诊断</TableHeaderColumn>
                                 <TableHeaderColumn style={tableHeader} >确诊</TableHeaderColumn>
                                 <TableHeaderColumn style={tableHeader} >传染</TableHeaderColumn>
@@ -63,95 +132,59 @@ class ReportDiag extends React.Component {
                                 <TableHeaderColumn style={tableHeader} >诊断依据</TableHeaderColumn>
                             </TableRow>
                         </TableHeader>
-                        {/* toggle组件实现显示控制 */}
                         <TableBody displayRowCheckbox={false}>
-                            <TableRow style={tableContent} >
-                                <TableRowColumn style={tableContent} colSpan='8'>
-                                    <Toggle
-                                        label="归类：初步诊断"
-                                        labelPosition="right"
-                                        style={styles.toggle}
-                                        labelStyle={styles.toggle}
-                                        iconStyle={styles.toggle}
-                                        onToggle={this.handleShowInitialDiag}
-                                        defaultToggled={this.state.initialtoggled}
-                                    />
-                                </TableRowColumn>
-                            </TableRow>
-                            <TableRow style={this.state.initialtoggled ? tableContent : styles.noshow}>
-                                <TableRowColumn style={tableContent}>慢性肠胃炎</TableRowColumn>
-                                <TableRowColumn style={tableContent}>
-                                    {true ? <Icon disabled name='checkmark' color='green' /> : ''}
-                                </TableRowColumn>
-                                <TableRowColumn style={tableContent}>
-                                    {true ? <Icon disabled name='checkmark' color='green' /> : ''}
-                                </TableRowColumn>
-                                <TableRowColumn style={tableContent}>
-                                    {false ? <Icon disabled name='checkmark' color='green' /> : ''}
-                                </TableRowColumn>
-                                <TableRowColumn style={tableContent}>K52.909</TableRowColumn>
-                                <TableRowColumn style={tableContent}>赵强</TableRowColumn>
-                                <TableRowColumn style={tableContent}>01-05</TableRowColumn>
-                                <TableRowColumn style={tableContent}></TableRowColumn>
-                            </TableRow>
-                            <TableRow style={tableContent}>
-                                <TableRowColumn style={tableContent} colSpan='8' >
-                                    <Toggle
-                                        label="归类：最后诊断"
-                                        labelPosition="right"
-                                        style={styles.toggle}
-                                        labelStyle={styles.toggle}
-                                        iconStyle={styles.toggle}
-                                        onToggle={this.handleShowFinalDiag}
-                                        defaultToggled={this.state.finaltoggled}
-                                    />
-                                </TableRowColumn>
-                            </TableRow>
-                            <TableRow style={this.state.finaltoggled ? tableContent : styles.noshow}>
-                                <TableRowColumn style={tableContent}>慢性肠胃炎</TableRowColumn>
-                                <TableRowColumn style={tableContent}>
-                                    {true ? <Icon disabled name='checkmark' color='green' /> : ''}
-                                </TableRowColumn>
-                                <TableRowColumn style={tableContent}>
-                                    {false ? <Icon disabled name='checkmark' color='green' /> : ''}
-                                </TableRowColumn>
-                                <TableRowColumn style={tableContent}>
-                                    {true ? <Icon disabled name='checkmark' color='green' /> : ''}
-                                </TableRowColumn>
-                                <TableRowColumn style={tableContent}>K52.909</TableRowColumn>
-                                <TableRowColumn style={tableContent}>赵强</TableRowColumn>
-                                <TableRowColumn style={tableContent}>01-05</TableRowColumn>
-                                <TableRowColumn style={tableContent}></TableRowColumn>
-                            </TableRow>
-                            <TableRow style={tableContent}>
-                                <TableRowColumn style={tableContent} colSpan='8'  >
-                                    <Toggle
-                                        label="归类：补充诊断"
-                                        labelPosition="right"
-                                        style={styles.toggle}
-                                        labelStyle={styles.toggle}
-                                        iconStyle={styles.toggle}
-                                        onToggle={this.handleShowSupplyDiag}
-                                        defaultToggled={this.state.supplytoggled}
-                                    />
-                                </TableRowColumn>
-                            </TableRow>
-                            <TableRow style={this.state.supplytoggled ? tableContent : styles.noshow}>
-                                <TableRowColumn style={tableContent}>慢性肠胃炎</TableRowColumn>
-                                <TableRowColumn style={tableContent}>
-                                    {false ? <Icon disabled name='checkmark' color='green' /> : ''}
-                                </TableRowColumn>
-                                <TableRowColumn style={tableContent}>
-                                    {true ? <Icon disabled name='checkmark' color='green' /> : ''}
-                                </TableRowColumn>
-                                <TableRowColumn style={tableContent}>
-                                    {true ? <Icon disabled name='checkmark' color='green' /> : ''}
-                                </TableRowColumn>
-                                <TableRowColumn style={tableContent}>K52.909</TableRowColumn>
-                                <TableRowColumn style={tableContent}>赵强</TableRowColumn>
-                                <TableRowColumn style={tableContent}>01-05</TableRowColumn>
-                                <TableRowColumn style={tableContent}></TableRowColumn>
-                            </TableRow>
+                            {
+                                code4 != '' ? (<TableRow style={tableContent} >
+                                    <TableRowColumn style={tableContent} colSpan='9'>
+                                        <Toggle
+                                            label="归类：初步诊断"
+                                            labelPosition="right"
+                                            style={styles.toggle}
+                                            labelStyle={styles.toggle}
+                                            iconStyle={styles.toggle}
+                                            onToggle={this.handleShowInitialDiag}
+                                            defaultToggled={this.state.initialtoggled}
+                                        />
+                                    </TableRowColumn>
+                                </TableRow>) : ''
+                            }
+                            {code4[0]}
+                            {
+                                code3 != '' ? (
+                                    <TableRow style={tableContent}>
+                                        <TableRowColumn style={tableContent} colSpan='9' >
+                                            <Toggle
+                                                label="归类：最后诊断"
+                                                labelPosition="right"
+                                                style={styles.toggle}
+                                                labelStyle={styles.toggle}
+                                                iconStyle={styles.toggle}
+                                                onToggle={this.handleShowFinalDiag}
+                                                defaultToggled={this.state.finaltoggled}
+                                            />
+                                        </TableRowColumn>
+                                    </TableRow>
+                                ) : ''
+                            }
+                            {code3[0]}
+                            {
+                                code2 ? (
+                                    <TableRow style={tableContent}>
+                                        <TableRowColumn style={tableContent} colSpan='9'  >
+                                            <Toggle
+                                                label="归类：补充诊断"
+                                                labelPosition="right"
+                                                style={styles.toggle}
+                                                labelStyle={styles.toggle}
+                                                iconStyle={styles.toggle}
+                                                onToggle={this.handleShowSupplyDiag}
+                                                defaultToggled={this.state.supplytoggled}
+                                            />
+                                        </TableRowColumn>
+                                    </TableRow>
+                                ) : ''
+                            }
+                            {code2[0]}
                         </TableBody>
                     </Table>
                 </div>

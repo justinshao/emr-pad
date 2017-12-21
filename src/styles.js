@@ -3,17 +3,17 @@ import signpad from './images/signpad.jpg'
 const headerBarHeight = 64;
 const headerBarLoadingSize = 40;
 const appThemeColor = 'rgb(0, 188, 212)';
-const titleStyle={
+const titleStyle = {
     textAlign: 'center',
     lineHeight: '2.8',
     margin: '0',
     fontWeight: '600',
-    color:'#3c3c3c'
+    color: '#3c3c3c'
 };
 const headerBarStyle = {
     position: 'fixed',
     paddingRight: '0px',
-    paddingLeft:'16px'
+    paddingLeft: '16px'
 };
 const contentStyle = {
     width: '100%',
@@ -75,9 +75,9 @@ const tableContent = {
     textAlign: 'center',
     fontSize: '12px',
     whiteSpace: 'normal',
-    textOverflow:'no',
-    wordWrap:'break-word',
-    border:'1px #f1f1f1 solid'
+    textOverflow: 'no',
+    wordWrap: 'break-word',
+    border: '1px #f1f1f1 solid'
 };
 const content = {
     float: 'left',
@@ -85,11 +85,11 @@ const content = {
     width: '76%',
     lineHeight: '1.6',
     letterSpacing: '1px',
-    textAlign:'justify'
+    textAlign: 'justify'
 };
 const containerStyle = {
     marginTop: '14px',
-    border:'1px #EAEAEA solid'
+    border: '1px #EAEAEA solid'
 };
 const spanStyle = {
     paddingRight: '16px'

@@ -1,5 +1,5 @@
 import React from 'react';
-import { contentStyle, tableHeader, tableContent,spanStyle } from '../styles';
+import { contentStyle, tableHeader, tableContent, spanStyle } from '../styles';
 import ReportTitle from './ReportTitle';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 import NoResult from './NoResult';
@@ -33,8 +33,8 @@ const headerCont = {
     width: '30px'
 }
 
-const tableHeader2={
-    width:'30%'
+const tableHeader2 = {
+    width: '30%'
 }
 
 class ReportLaboratory extends React.Component {
@@ -80,24 +80,26 @@ class ReportLaboratory extends React.Component {
         getAssayRpt(requestNo, sourceType)
             .then(data => this.setState({
                 title: '化验报告单标题',
-                detailHeader: <span>
-                    <span style={spanStyle}>姓名：{data[0].Header.PatientName}</span>
-                    <span style={spanStyle}>性别：{data[0].Header.Sex}</span>
-                    <span style={spanStyle}>年龄：{data[0].Header.Age}</span>
-                    <span style={spanStyle}>住院号：{data[0].Header.VisitNo}</span>
-                    <span style={spanStyle}>病区：{data[0].Header.Ward}</span>
-                    <span style={spanStyle}>床号：{data[0].Header.BedCode}</span>
-                    <span style={spanStyle}>样本编号：{data[0].Header.SampleNumber}</span>
-                    <span style={spanStyle}>样本种类：{data[0].Header.SpecType}</span>
-                    <span style={spanStyle}>科室：{data[0].Header.Dept}</span>
-                    <span style={spanStyle}>送检人员：{data[0].Header.SendEmp}</span>
-                </span>,
-                detailBottom: <span>
-                    <span style={spanStyle}>核对时间：{data[0].Header.AuditTime}</span>
-                    <span style={spanStyle}>报告时间：{data[0].Header.ReportTime}</span>
-                    <span style={spanStyle}>检验者：{data[0].Header.EntryEmp}</span>
-                    <span style={spanStyle}>审核者：{data[0].Header.AuditEmp}</span>
-                </span>,
+                detailHeader:
+                    <span>
+                        <span style={spanStyle}>姓名：{data[0].Header.PatientName}</span>
+                        <span style={spanStyle}>性别：{data[0].Header.Sex}</span>
+                        <span style={spanStyle}>年龄：{data[0].Header.Age}</span>
+                        <span style={spanStyle}>住院号：{data[0].Header.VisitNo}</span>
+                        <span style={spanStyle}>病区：{data[0].Header.Ward}</span>
+                        <span style={spanStyle}>床号：{data[0].Header.BedCode}</span>
+                        <span style={spanStyle}>样本编号：{data[0].Header.SampleNumber}</span>
+                        <span style={spanStyle}>样本种类：{data[0].Header.SpecType}</span>
+                        <span style={spanStyle}>科室：{data[0].Header.Dept}</span>
+                        <span style={spanStyle}>送检人员：{data[0].Header.SendEmp}</span>
+                    </span>,
+                detailBottom:
+                    <span>
+                        <span style={spanStyle}>核对时间：{data[0].Header.AuditTime}</span>
+                        <span style={spanStyle}>报告时间：{data[0].Header.ReportTime}</span>
+                        <span style={spanStyle}>检验者：{data[0].Header.EntryEmp}</span>
+                        <span style={spanStyle}>审核者：{data[0].Header.AuditEmp}</span>
+                    </span>,
                 details: data[0].Details
             }))
     }
@@ -109,18 +111,28 @@ class ReportLaboratory extends React.Component {
     }
 
     render() {
-        let tableRow = this.state.details.map(item => {
+        let tableRow = this.state.details.map((item, i) => {
+            let isNormal = true, isLow = true;
+            if (item.ResultState == 'N') {
+                isNormal = true;
+            } else {
+                isNormal = false;
+                if (item.ResultState == 'H' || item.ResultState == 'HH') {
+                    isLow = false;
+                } else {
+                    isLow = true;
+                }
+            }
             return (
-                <TableRow style={tableContent}>
-                    <TableRowColumn style={Object.assign({}, tableContent, true ? {} : true ? colorBlue : colorRed,tableHeader2)}>{item.Name}</TableRowColumn>
-                    <TableRowColumn style={Object.assign({}, tableContent, true ? {} : true ? colorBlue : colorRed)}>{item.ResultData}</TableRowColumn>
-                    <TableRowColumn style={tableCont}>{item.ResultStateDesc}
-                    </TableRowColumn>
-                    <TableRowColumn style={Object.assign({}, tableContent, true ? {} : true ? colorBlue : colorRed)}>{item.RefRange}</TableRowColumn>
-                    <TableRowColumn style={Object.assign({}, tableContent, true ? {} : true ? colorBlue : colorRed)}>{item.ResultUnit}</TableRowColumn>
-                    <TableRowColumn style={Object.assign({}, tableContent, true ? {} : true ? colorBlue : colorRed)}>
+                <TableRow style={Object.assign({}, tableContent, isNormal ? {} : isLow ? colorBlue : colorRed)} key={i}>
+                    <TableRowColumn style={Object.assign({}, tableContent, tableHeader2)}>{item.Name}</TableRowColumn>
+                    <TableRowColumn style={tableContent}>{item.ResultData}</TableRowColumn>
+                    <TableRowColumn style={tableCont}>{item.ResultStateDesc}</TableRowColumn>
+                    <TableRowColumn style={tableContent}>{item.RefRange}</TableRowColumn>
+                    <TableRowColumn style={tableContent}>{item.ResultUnit}</TableRowColumn>
+                    <TableRowColumn style={tableContent}>
                         <div onClick={this.handleReportEchars}>
-                            {true ? <i className="bar chart icon" /> : true ? <i className="blue bar chart icon" /> : <i className="red bar chart icon" />}
+                            {isNormal ? <i className="bar chart icon" /> : isLow ? <i className="blue bar chart icon" /> : <i className="red bar chart icon" />}
                         </div>
                     </TableRowColumn>
                 </TableRow>
@@ -137,7 +149,7 @@ class ReportLaboratory extends React.Component {
                         <Table style={{ 'border': '2px solid #f1f1f1' }} selectable={false}>
                             <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                                 <TableRow style={tableHeader}>
-                                    <TableHeaderColumn style={Object.assign({}, tableHeader,tableHeader2 )}>检查项目</TableHeaderColumn>
+                                    <TableHeaderColumn style={Object.assign({}, tableHeader, tableHeader2)}>检查项目</TableHeaderColumn>
                                     <TableHeaderColumn style={tableHeader} >检查结果</TableHeaderColumn>
                                     <TableHeaderColumn style={headerCont} ></TableHeaderColumn>
                                     <TableHeaderColumn style={tableHeader} >参考范围</TableHeaderColumn>
