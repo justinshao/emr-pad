@@ -94,13 +94,18 @@ const containerStyle = {
 const spanStyle = {
     paddingRight: '16px'
 };
-const tableOutTitle={
-    lineHeight:'30px',
-    backgroundColor:'rgba(0, 188, 212,0.65)',
-    borderWidth:'0px 1.5px',
-    borderColor:'white',
-    borderStyle:'solid',
-    marginTop:'1.5px'
+const tableOutTitle = {
+    lineHeight: '30px',
+    backgroundColor: 'rgba(0, 188, 212,0.65)',
+    borderWidth: '0px 1.5px',
+    borderColor: 'white',
+    borderStyle: 'solid',
+    marginTop: '1.5px'
+}
+const bodyHeight = document.body.clientHeight;
+const wrapperStyle = {
+    height: `${bodyHeight}` - 100,
+    overflowY: 'hidden'
 }
 
 export {
@@ -123,5 +128,6 @@ export {
     content,
     containerStyle,
     spanStyle,
-    tableOutTitle
+    tableOutTitle,
+    wrapperStyle
 };

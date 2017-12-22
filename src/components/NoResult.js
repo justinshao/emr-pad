@@ -1,9 +1,10 @@
 import React from 'react';
 
 const textStyle = {
-    'textAlign': 'center',
-    'color': '#999999',
-    'fontWeight': '500'
+    textAlign: 'center',
+    color: '#999999',
+    fontWeight: '500',
+    paddingTop:'30px'
 }
 class NoResult extends React.Component {
     render() {

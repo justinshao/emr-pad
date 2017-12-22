@@ -1,5 +1,5 @@
 import React from 'react';
-import { tableHeader, tableContent, tableOutTitle } from '../styles';
+import { tableHeader, tableContent, tableOutTitle,wrapperStyle } from '../styles';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 import NoResult from './NoResult';
 import { getDietOrder } from '../service';
@@ -29,14 +29,11 @@ class PatDiet extends React.Component {
             </TableRow>
         ))
         let content = (
-            true ? (
+            false ? (
                 <div>
                     <div style={{ ...tableHeader, ...tableOutTitle }}>饮食医嘱</div>
-                    <Table style={{ 'border': '2px solid #f1f1f1', minWidth: '500px' }} selectable={false} bodyStyle={{ 'minWidth': '500px' }}>
+                    <Table style={{ 'border': '2px solid #f1f1f1', minWidth: '500px' }} selectable={false} bodyStyle={{ 'minWidth': '500px' }} wrapperStyle={wrapperStyle}>
                         <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
-                            {/* <TableRow style={tableHeader} >
-                                <TableHeaderColumn style={tableHeader} colSpan='5'>饮食医嘱</TableHeaderColumn>
-                            </TableRow> */}
                             <TableRow style={tableHeader} >
                                 <TableHeaderColumn style={tableHeader}>医嘱日期</TableHeaderColumn>
                                 <TableHeaderColumn style={tableHeader}>医嘱内容</TableHeaderColumn>
@@ -45,7 +42,7 @@ class PatDiet extends React.Component {
                                 <TableHeaderColumn style={tableHeader}>停嘱人员</TableHeaderColumn>
                             </TableRow>
                         </TableHeader>
-                        <TableBody displayRowCheckbox={false}>
+                        <TableBody displayRowCheckbox={false} style={{overflowY:'auto'}}>
                             {tableRow}
                         </TableBody>
                     </Table>

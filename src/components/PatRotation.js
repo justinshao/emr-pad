@@ -1,5 +1,5 @@
 import React from 'react';
-import { tableHeader, tableContent,tableOutTitle } from '../styles';
+import { tableHeader, tableContent,tableOutTitle,wrapperStyle} from '../styles';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 import NoResult from './NoResult';
 import { getInpatTurn } from '../service';
@@ -35,11 +35,8 @@ class PatRotation extends React.Component {
             true ? (
                 <div>
                     <div style={{ ...tableHeader, ...tableOutTitle }}>轮转信息</div>
-                    <Table style={{ 'border': '2px solid #f1f1f1', minWidth: '600px' }} selectable={false} bodyStyle={{ 'minWidth': '600px'}}>
+                    <Table style={{ 'border': '2px solid #f1f1f1', minWidth: '600px' }} selectable={false} bodyStyle={{ 'minWidth': '600px'}} wrapperStyle={wrapperStyle}>
                         <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
-                            {/* <TableRow style={tableHeader} >
-                                <TableHeaderColumn style={tableHeader} colSpan='8'>轮转信息</TableHeaderColumn>
-                            </TableRow> */}
                             <TableRow style={tableHeader} >
                                 <TableHeaderColumn style={tableHeader}>原病区</TableHeaderColumn>
                                 <TableHeaderColumn style={tableHeader}>原科室</TableHeaderColumn>
@@ -51,7 +48,7 @@ class PatRotation extends React.Component {
                                 <TableHeaderColumn style={tableHeader}>医嘱号</TableHeaderColumn>
                             </TableRow>
                         </TableHeader>
-                        <TableBody displayRowCheckbox={false}>
+                        <TableBody displayRowCheckbox={false} style={{overflow:'auto'}}>
                             {tableRow}
                         </TableBody>
                     </Table>

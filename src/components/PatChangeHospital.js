@@ -1,8 +1,12 @@
 import React from 'react';
-import { tableHeader, tableContent ,tableOutTitle} from '../styles';
+import { tableHeader, tableContent ,tableOutTitle,wrapperStyle} from '../styles';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 import NoResult from './NoResult';
 import { getInpatChange } from '../service';
+
+const styles={
+    wideStyle:{width:'100px'}
+}
 
 class PatChangeHospital extends React.Component {
     constructor(props) {
@@ -20,7 +24,7 @@ class PatChangeHospital extends React.Component {
     render() {
         let tableRow = this.state.data.map((item, i) => (
             <TableRow style={tableContent} key={i}>
-                <TableRowColumn style={tableContent}>{item.RecordTime}</TableRowColumn>
+                <TableRowColumn style={{...tableContent,...styles.wideStyle}}>{item.RecordTime}</TableRowColumn>
                 <TableRowColumn style={tableContent}>{item.State}</TableRowColumn>
                 <TableRowColumn style={tableContent}>{item.InWardName}</TableRowColumn>
                 <TableRowColumn style={tableContent}>{item.DeptName}</TableRowColumn>
@@ -35,13 +39,10 @@ class PatChangeHospital extends React.Component {
             true ? (
                 <div>
                     <div style={{ ...tableHeader, ...tableOutTitle }}>住院变更信息</div>
-                    <Table style={{ 'border': '2px solid #f1f1f1', minWidth: '700px' }} selectable={false} bodyStyle={{ 'minWidth': '700px' }}>
+                    <Table style={{ 'border': '2px solid #f1f1f1', minWidth: '700px' }} selectable={false} bodyStyle={{ 'minWidth': '700px' }} wrapperStyle={wrapperStyle}>
                         <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
-                            {/* <TableRow style={tableHeader} >
-                                <TableHeaderColumn style={tableHeader} colSpan='9'>住院变更信息</TableHeaderColumn>
-                            </TableRow> */}
                             <TableRow style={tableHeader} >
-                                <TableHeaderColumn style={tableHeader}>记录时间</TableHeaderColumn>
+                                <TableHeaderColumn style={{...tableHeader,...styles.wideStyle}}>记录时间</TableHeaderColumn>
                                 <TableHeaderColumn style={tableHeader}>状态</TableHeaderColumn>
                                 <TableHeaderColumn style={tableHeader}>病区</TableHeaderColumn>
                                 <TableHeaderColumn style={tableHeader}>科室</TableHeaderColumn>
@@ -52,7 +53,7 @@ class PatChangeHospital extends React.Component {
                                 <TableHeaderColumn style={tableHeader}>记录人员</TableHeaderColumn>
                             </TableRow>
                         </TableHeader>
-                        <TableBody displayRowCheckbox={false}>
+                        <TableBody displayRowCheckbox={false} style={{overflowY:'auto'}}>
                             {tableRow}
                         </TableBody>
                     </Table>
