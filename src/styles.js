@@ -101,12 +101,22 @@ const tableOutTitle = {
     borderColor: 'white',
     borderStyle: 'solid',
     marginTop: '1.5px'
-}
+};
 const bodyHeight = document.body.clientHeight;
 const wrapperStyle = {
     height: `${bodyHeight}` - 100,
     overflowY: 'hidden'
-}
+};
+const cardtitle = {
+    fontSize: 14,
+    float: 'left',
+    lineHeight: '1.6',
+    margin: '0',
+    width: '20%'
+};
+const cardstyle = {
+    padding: '10px'
+};
 
 export {
     headerBarStyle,
@@ -129,5 +139,7 @@ export {
     containerStyle,
     spanStyle,
     tableOutTitle,
-    wrapperStyle
+    wrapperStyle,
+    cardtitle,
+    cardstyle
 };

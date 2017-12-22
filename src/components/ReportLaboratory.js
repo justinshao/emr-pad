@@ -3,15 +3,12 @@ import { contentStyle, tableHeader, tableContent, spanStyle } from '../styles';
 import ReportTitle from './ReportTitle';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 import NoResult from './NoResult';
+import CircularProgress from 'material-ui/CircularProgress';
 import 'semantic-ui-css/semantic.css';
 import { getAssayRpt } from '../service';
 
-const colorRed = {
-    color: 'red'
-};
-const colorBlue = {
-    color: '#2185D0'
-};
+const colorRed = {color: 'red'};
+const colorBlue = {color: '#2185D0'};
 const tableCont = {
     height: '26px',
     lineHeight: '1.2',
@@ -32,35 +29,18 @@ const headerCont = {
     color: 'white',
     width: '30px'
 }
-
-const tableHeader2 = {
-    width: '30%'
-}
+const tableHeader2 = {width: '30%'}
 
 class ReportLaboratory extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            title: '化验报告单标题',
-            detailHeader: <span>
-                <span>姓名：</span>
-                <span>性别：</span>
-                <span>年龄：</span>
-                <span>住院号：</span>
-                <span>病区：</span>
-                <span>床号：</span>
-                <span>样本编号：</span>
-                <span>样本种类：</span>
-                <span>科室：</span>
-                <span>送检人员：</span>
-            </span>,
-            detailBottom: <span>
-                <span>核对时间：</span>
-                <span>报告时间：</span>
-                <span>检验者：</span>
-                <span>审核者：</span>
-            </span>,
-            details: []
+            title: '',
+            detailHeader: '',
+            detailBottom: '',
+            details: [],
+            content:false,
+            loading:true
         }
         this.handleReportEchars = this.handleReportEchars.bind(this);
     }
@@ -78,30 +58,41 @@ class ReportLaboratory extends React.Component {
 
     getAssayRptFun(requestNo, sourceType) {
         getAssayRpt(requestNo, sourceType)
-            .then(data => this.setState({
-                title: '化验报告单标题',
-                detailHeader:
-                    <span>
-                        <span style={spanStyle}>姓名：{data[0].Header.PatientName}</span>
-                        <span style={spanStyle}>性别：{data[0].Header.Sex}</span>
-                        <span style={spanStyle}>年龄：{data[0].Header.Age}</span>
-                        <span style={spanStyle}>住院号：{data[0].Header.VisitNo}</span>
-                        <span style={spanStyle}>病区：{data[0].Header.Ward}</span>
-                        <span style={spanStyle}>床号：{data[0].Header.BedCode}</span>
-                        <span style={spanStyle}>样本编号：{data[0].Header.SampleNumber}</span>
-                        <span style={spanStyle}>样本种类：{data[0].Header.SpecType}</span>
-                        <span style={spanStyle}>科室：{data[0].Header.Dept}</span>
-                        <span style={spanStyle}>送检人员：{data[0].Header.SendEmp}</span>
-                    </span>,
-                detailBottom:
-                    <span>
-                        <span style={spanStyle}>核对时间：{data[0].Header.AuditTime}</span>
-                        <span style={spanStyle}>报告时间：{data[0].Header.ReportTime}</span>
-                        <span style={spanStyle}>检验者：{data[0].Header.EntryEmp}</span>
-                        <span style={spanStyle}>审核者：{data[0].Header.AuditEmp}</span>
-                    </span>,
-                details: data[0].Details
-            }))
+            .then(data => {
+                if(data.length!=0){
+                    this.setState({
+                        title: '化验报告单标题',
+                        detailHeader:
+                            <span>
+                                <span style={spanStyle}>姓名：{data[0].Header.PatientName}</span>
+                                <span style={spanStyle}>性别：{data[0].Header.Sex}</span>
+                                <span style={spanStyle}>年龄：{data[0].Header.Age}</span>
+                                <span style={spanStyle}>住院号：{data[0].Header.VisitNo}</span>
+                                <span style={spanStyle}>病区：{data[0].Header.Ward}</span>
+                                <span style={spanStyle}>床号：{data[0].Header.BedCode}</span>
+                                <span style={spanStyle}>样本编号：{data[0].Header.SampleNumber}</span>
+                                <span style={spanStyle}>样本种类：{data[0].Header.SpecType}</span>
+                                <span style={spanStyle}>科室：{data[0].Header.Dept}</span>
+                                <span style={spanStyle}>送检人员：{data[0].Header.SendEmp}</span>
+                            </span>,
+                        detailBottom:
+                            <span>
+                                <span style={spanStyle}>核对时间：{data[0].Header.AuditTime}</span>
+                                <span style={spanStyle}>报告时间：{data[0].Header.ReportTime}</span>
+                                <span style={spanStyle}>检验者：{data[0].Header.EntryEmp}</span>
+                                <span style={spanStyle}>审核者：{data[0].Header.AuditEmp}</span>
+                            </span>,
+                        details: data[0].Details,
+                        content:true,
+                    })
+                }
+                else{
+                    this.setState({
+                        content:false,
+                        loading:false
+                    })
+                }
+            })
     }
 
     handleReportEchars() {
@@ -139,7 +130,7 @@ class ReportLaboratory extends React.Component {
             )
         })
         let showContent = (
-            true ? (
+            this.state.content ? (
                 <div>
                     <ReportTitle
                         title={this.state.title}
@@ -159,53 +150,12 @@ class ReportLaboratory extends React.Component {
                             </TableHeader>
                             <TableBody displayRowCheckbox={false}>
                                 {tableRow}
-                                {/* <TableRow style={tableContent}>
-                                    <TableRowColumn style={Object.assign({}, tableContent, true ? {} : true ? colorBlue : colorRed)}>总蛋白</TableRowColumn>
-                                    <TableRowColumn style={Object.assign({}, tableContent, true ? {} : true ? colorBlue : colorRed)}>47.5</TableRowColumn>
-                                    <TableRowColumn style={tableCont}>
-                                        {true ? '' : true ? <i className="blue long arrow down icon" /> : <i className="red long arrow up icon" />}
-                                    </TableRowColumn>
-                                    <TableRowColumn style={Object.assign({}, tableContent, true ? {} : true ? colorBlue : colorRed)}>总蛋白</TableRowColumn>
-                                    <TableRowColumn style={Object.assign({}, tableContent, true ? {} : true ? colorBlue : colorRed)}>g/L</TableRowColumn>
-                                    <TableRowColumn style={Object.assign({}, tableContent, true ? {} : true ? colorBlue : colorRed)}>
-                                        <div onClick={this.handleReportEchars}>
-                                            {true ? <i className="bar chart icon" /> : true ? <i className="blue bar chart icon" /> : <i className="red bar chart icon" />}
-                                        </div>
-                                    </TableRowColumn>
-                                </TableRow>
-                                <TableRow style={tableContent}>
-                                    <TableRowColumn style={Object.assign({}, tableContent, false ? {} : true ? colorBlue : colorRed)}>总蛋白</TableRowColumn>
-                                    <TableRowColumn style={Object.assign({}, tableContent, false ? {} : true ? colorBlue : colorRed)}>47.5</TableRowColumn>
-                                    <TableRowColumn style={tableCont}>
-                                        {false ? '' : true ? <i className="blue long arrow down icon" /> : <i className="red long arrow up icon" />}
-                                    </TableRowColumn>
-                                    <TableRowColumn style={Object.assign({}, tableContent, false ? {} : true ? colorBlue : colorRed)}>总蛋白</TableRowColumn>
-                                    <TableRowColumn style={Object.assign({}, tableContent, false ? {} : true ? colorBlue : colorRed)}>g/L</TableRowColumn>
-                                    <TableRowColumn style={Object.assign({}, tableContent, false ? {} : true ? colorBlue : colorRed)}>
-                                        <div >
-                                            {false ? <i className="bar chart icon" /> : true ? <i className="blue bar chart icon" /> : <i className="red bar chart icon" />}
-                                        </div>
-                                    </TableRowColumn>
-                                </TableRow>
-                                <TableRow style={tableContent}>
-                                    <TableRowColumn style={Object.assign({}, tableContent, false ? {} : false ? colorBlue : colorRed)}>总蛋白</TableRowColumn>
-                                    <TableRowColumn style={Object.assign({}, tableContent, false ? {} : false ? colorBlue : colorRed)}>47.5</TableRowColumn>
-                                    <TableRowColumn style={Object.assign({}, tableContent, false ? {} : false ? colorBlue : colorRed)}>
-                                        {false ? '' : false ? <i className="blue long arrow down icon" /> : <i className="red long arrow up icon" />}
-                                    </TableRowColumn>
-                                    <TableRowColumn style={Object.assign({}, tableContent, false ? {} : false ? colorBlue : colorRed)}>总蛋白</TableRowColumn>
-                                    <TableRowColumn style={Object.assign({}, tableContent, false ? {} : false ? colorBlue : colorRed)}>g/L</TableRowColumn>
-                                    <TableRowColumn style={Object.assign({}, tableContent, false ? {} : false ? colorBlue : colorRed)}>
-                                        <div>
-                                            {false ? <i className="bar chart icon" /> : false ? <i className="blue bar chart icon" /> : <i className="red bar chart icon" />}
-                                        </div>
-                                    </TableRowColumn>
-                                </TableRow> */}
                             </TableBody>
                         </Table>
                     </ReportTitle>
                 </div>
-            ) : <NoResult />
+            ) : 
+            this.state.loading?<CircularProgress size={60} thickness={7} style={{ display: 'block', margin: '30px auto' }} />:<NoResult />
         );
         return (
             <div style={contentStyle}>
