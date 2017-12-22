@@ -28,28 +28,28 @@ class PatBasicInfor extends React.Component {
                                 <TableHeaderColumn style={tableHeader} colSpan='4'>病人信息</TableHeaderColumn>
                             </TableRow>
                             <TableRow style={tableContent}>
-                                <TableRowColumn style={tableContent}>姓名</TableRowColumn>
-                                <TableRowColumn style={tableContent}>{this.state.data.Name}</TableRowColumn>
-                                <TableRowColumn style={tableContent}>病案号</TableRowColumn>
-                                <TableRowColumn style={tableContent}>{this.state.data.MrNo}</TableRowColumn>
+                                <TableHeaderColumn style={tableContent}>姓名</TableHeaderColumn>
+                                <TableHeaderColumn style={tableContent}>{this.state.data.Name}</TableHeaderColumn>
+                                <TableHeaderColumn style={tableContent}>病案号</TableHeaderColumn>
+                                <TableHeaderColumn style={tableContent}>{this.state.data.MrNo}</TableHeaderColumn>
                             </TableRow>
                             <TableRow style={tableContent}>
-                                <TableRowColumn style={tableContent}>性别</TableRowColumn>
-                                <TableRowColumn style={tableContent}>{this.state.data.Sex}</TableRowColumn>
-                                <TableRowColumn style={tableContent}>证件号码</TableRowColumn>
-                                <TableRowColumn style={tableContent}>{this.state.data.IdCard}</TableRowColumn>
+                                <TableHeaderColumn style={tableContent}>性别</TableHeaderColumn>
+                                <TableHeaderColumn style={tableContent}>{this.state.data.Sex}</TableHeaderColumn>
+                                <TableHeaderColumn style={tableContent}>证件号码</TableHeaderColumn>
+                                <TableHeaderColumn style={tableContent}>{this.state.data.IdCard}</TableHeaderColumn>
                             </TableRow>
                             <TableRow style={tableContent}>
-                                <TableRowColumn style={tableContent}>出生日期</TableRowColumn>
-                                <TableRowColumn style={tableContent}>{this.state.data.BirthDay}</TableRowColumn>
-                                <TableRowColumn style={tableContent}>手机</TableRowColumn>
-                                <TableRowColumn style={tableContent}>{this.state.data.MobilePhone}</TableRowColumn>
+                                <TableHeaderColumn style={tableContent}>出生日期</TableHeaderColumn>
+                                <TableHeaderColumn style={tableContent}>{this.state.data.BirthDay}</TableHeaderColumn>
+                                <TableHeaderColumn style={tableContent}>手机</TableHeaderColumn>
+                                <TableHeaderColumn style={tableContent}>{this.state.data.MobilePhone}</TableHeaderColumn>
                             </TableRow>
                             <TableRow style={tableContent}>
-                                <TableRowColumn style={tableContent}>电话</TableRowColumn>
-                                <TableRowColumn style={tableContent}>{this.state.data.TelePhone}</TableRowColumn>
-                                <TableRowColumn style={tableContent}>隐私级别</TableRowColumn>
-                                <TableRowColumn style={tableContent}>{this.state.data.PrivacyLevel}</TableRowColumn>
+                                <TableHeaderColumn style={tableContent}>电话</TableHeaderColumn>
+                                <TableHeaderColumn style={tableContent}>{this.state.data.TelePhone}</TableHeaderColumn>
+                                <TableHeaderColumn style={tableContent}>隐私级别</TableHeaderColumn>
+                                <TableHeaderColumn style={tableContent}>{this.state.data.PrivacyLevel}</TableHeaderColumn>
                             </TableRow>
                         </TableHeader>
                         <TableBody stripedRows={true} displayRowCheckbox={false}>

@@ -31,17 +31,17 @@ class PatHospital extends React.Component {
         let content = (
             true ? (
                 <div>
-                    <Table style={{ 'border': '2px solid #f1f1f1'}} selectable={false}>
+                    <Table style={{ 'border': '2px solid #f1f1f1' }} selectable={false} >
                         <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                             <TableRow style={tableHeader}>
                                 <TableHeaderColumn style={tableHeader} >住院信息</TableHeaderColumn>
                             </TableRow>
                         </TableHeader>
                         <TableBody displayRowCheckbox={false}>
-                            <TableRow style={tableContent}>
-                                <TableRowColumn style={tableContent}>姓名</TableRowColumn>
+                            <TableRow style={tableContent} >
+                                <TableRowColumn style={{...tableContent,width:'86px'}}>姓名</TableRowColumn>
                                 <TableRowColumn style={tableContent}>{this.state.data.Name}</TableRowColumn>
-                                <TableRowColumn style={tableContent}>性别</TableRowColumn>
+                                <TableRowColumn style={{...tableContent,width:'86px'}}>性别</TableRowColumn>
                                 <TableRowColumn style={tableContent}>{this.state.data.Sex}</TableRowColumn>
                             </TableRow>
                             <TableRow style={tableContent}>

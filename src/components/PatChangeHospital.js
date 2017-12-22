@@ -1,5 +1,5 @@
 import React from 'react';
-import { tableHeader, tableContent } from '../styles';
+import { tableHeader, tableContent ,tableOutTitle} from '../styles';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 import NoResult from './NoResult';
 import { getInpatChange } from '../service';
@@ -34,11 +34,12 @@ class PatChangeHospital extends React.Component {
         let content = (
             true ? (
                 <div>
+                    <div style={{ ...tableHeader, ...tableOutTitle }}>住院变更信息</div>
                     <Table style={{ 'border': '2px solid #f1f1f1', minWidth: '700px' }} selectable={false} bodyStyle={{ 'minWidth': '700px' }}>
                         <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
-                            <TableRow style={tableHeader} >
+                            {/* <TableRow style={tableHeader} >
                                 <TableHeaderColumn style={tableHeader} colSpan='9'>住院变更信息</TableHeaderColumn>
-                            </TableRow>
+                            </TableRow> */}
                             <TableRow style={tableHeader} >
                                 <TableHeaderColumn style={tableHeader}>记录时间</TableHeaderColumn>
                                 <TableHeaderColumn style={tableHeader}>状态</TableHeaderColumn>

@@ -3,6 +3,7 @@ import ReportExamination from './ReportExamination';
 import ReportLaboratory from './ReportLaboratory';
 // import ReportLaboratoryX from './ReportLaboratoryX';
 import ReportCareOrder from './ReportCareOrder';
+import ReportConsultReq from './ReportConsultReq';
 import ReportTemperature from './ReportTemperature';
 import ReportDtAdvice from './ReportDtAdvice';
 import ReportChDtAdvice from './ReportChDtAdvice';
@@ -27,9 +28,11 @@ class ClinicView extends React.Component {
         return (
             <div>
                 {
+                    // content == 'firstPage' ? <病案首页/> :
                     content == 'exam' ? <ReportExamination {...this.props} /> :
                         content == 'pathlg' ? <ReportPathology {...this.props} /> :
                             content == 'assay' ? <ReportLaboratory {...this.props} /> :
+                            content == 'con' ? <ReportConsultReq {...this.props} /> :
                                 // content == 'assay' ? <ReportLaboratoryX {...this.props}/> :
                                 content == 'nursing' ? <ReportCareOrder {...this.props} /> :
                                     content == 'temp' ? <ReportTemperature {...this.props} /> :

@@ -254,6 +254,15 @@ const getAssayRpt=(requestNo,sourceType)=>{
 }
 
 // 获取病理报告
+const getConsultReq=(conId,sourceType)=>{
+    return fetch(`${root}/api/ConsultReq?conId=${conId}&sourceType=${sourceType}`, {
+        method: 'get',
+        credentials: credentials,
+        headers: xHeaders
+    }).then(checkApi);
+}
+
+// 获取会诊单
 const getPathlgRpt=(requestNo,sourceType)=>{
     return fetch(`${root}/api/PathlgRpt?requestNo=${requestNo}&sourceType=${sourceType}`, {
         method: 'get',
@@ -326,6 +335,7 @@ export {
     getAccountInfo,
     getExamReport,
     getAssayRpt,
+    getConsultReq,
     getPathlgRpt,
     getNursingImage,
     getTemperatureSheetImage,

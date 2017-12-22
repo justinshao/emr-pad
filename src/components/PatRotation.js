@@ -1,5 +1,5 @@
 import React from 'react';
-import { tableHeader, tableContent } from '../styles';
+import { tableHeader, tableContent,tableOutTitle } from '../styles';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 import NoResult from './NoResult';
 import { getInpatTurn } from '../service';
@@ -34,11 +34,12 @@ class PatRotation extends React.Component {
         let content = (
             true ? (
                 <div>
+                    <div style={{ ...tableHeader, ...tableOutTitle }}>轮转信息</div>
                     <Table style={{ 'border': '2px solid #f1f1f1', minWidth: '600px' }} selectable={false} bodyStyle={{ 'minWidth': '600px'}}>
                         <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
-                            <TableRow style={tableHeader} >
+                            {/* <TableRow style={tableHeader} >
                                 <TableHeaderColumn style={tableHeader} colSpan='8'>轮转信息</TableHeaderColumn>
-                            </TableRow>
+                            </TableRow> */}
                             <TableRow style={tableHeader} >
                                 <TableHeaderColumn style={tableHeader}>原病区</TableHeaderColumn>
                                 <TableHeaderColumn style={tableHeader}>原科室</TableHeaderColumn>

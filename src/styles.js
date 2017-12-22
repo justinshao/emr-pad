@@ -94,6 +94,14 @@ const containerStyle = {
 const spanStyle = {
     paddingRight: '16px'
 };
+const tableOutTitle={
+    lineHeight:'30px',
+    backgroundColor:'rgba(0, 188, 212,0.65)',
+    borderWidth:'0px 1.5px',
+    borderColor:'white',
+    borderStyle:'solid',
+    marginTop:'1.5px'
+}
 
 export {
     headerBarStyle,
@@ -114,5 +122,6 @@ export {
     tableContent,
     content,
     containerStyle,
-    spanStyle
+    spanStyle,
+    tableOutTitle
 };

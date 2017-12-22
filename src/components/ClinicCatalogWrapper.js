@@ -35,19 +35,40 @@ class ClinicCatalogWrapper extends React.Component {
                     key={item.Id}
                     primaryText={item.Name}
                     onClick={() => this.handleChangeTap(item)}
-                    style={{paddingLeft:'27px'}}
+                    style={{ paddingLeft: '27px' }}
                 />
             )) : [];
+            //配置目录图标
+            let iconName = (
+            //病案首页
+                mainmenu.Id == '1' ? 'h' :
+                //病例概要
+                    mainmenu.Id == '2' ? 'browser' :
+                    //检查报告
+                        mainmenu.Id == '3' ? 'first aid' :
+                        //化验报告
+                            mainmenu.Id == '4' ? 'file excel outline' :
+                            //病理报告，会诊单
+                                mainmenu.Id == '5' ? 'file text outline' :
+                                //护理单
+                                    mainmenu.Id == '6' ? 'heartbeat' :
+                                    //体温单
+                                        mainmenu.Id == '7' ? 'thermometer half' :
+                                        //医嘱/中药医嘱
+                                            mainmenu.Id == '8' ? 'doctor' :
+                                            //诊断
+                                                mainmenu.Id == '10' ? 'treatment' : 'file outline'
+            );
             return (
                 <ListItem
                     primaryText={mainmenu.Name}
-                    leftIcon={<Icon disabled name='tags' size='large' style={colorStyle}/>}
+                    leftIcon={<Icon disabled name={iconName} size='large' style={colorStyle} />}
                     key={mainmenu.Name}
                     initiallyOpen={false}
                     primaryTogglesNestedList={true}
                     nestedItems={nestedItem}
                     onClick={() => this.handleChangeTap(mainmenu)}
-                    innerDivStyle={{paddingLeft:'60px'}}
+                    innerDivStyle={{ paddingLeft: '60px' }}
                 />
 
             )

@@ -1,5 +1,5 @@
 import React from 'react';
-import { tableHeader, tableContent } from '../styles';
+import { tableHeader, tableContent, tableOutTitle } from '../styles';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 import NoResult from './NoResult';
 import { getRelaInHospital } from '../service';
@@ -34,11 +34,12 @@ class PatAssociatHospital extends React.Component {
         let content = (
             true ? (
                 <div>
-                    <Table style={{ 'border': '2px solid #f1f1f1', minWidth: '600px' }} selectable={false} bodyStyle={{ 'minWidth': '600px'}}>
+                    <div style={{ ...tableHeader, ...tableOutTitle }}>关联住院</div>
+                    <Table style={{ 'border': '2px solid #f1f1f1', minWidth: '600px' }} selectable={false} bodyStyle={{ 'minWidth': '600px' }}>
                         <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
-                            <TableRow style={tableHeader} >
+                            {/* <TableRow style={tableHeader} >
                                 <TableHeaderColumn style={tableHeader} colSpan='7'>关联住院</TableHeaderColumn>
-                            </TableRow>
+                            </TableRow> */}
                             <TableRow style={tableHeader} >
                                 <TableHeaderColumn style={tableHeader}>住院号</TableHeaderColumn>
                                 <TableHeaderColumn style={tableHeader}>姓名</TableHeaderColumn>
