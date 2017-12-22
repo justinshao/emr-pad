@@ -1,26 +1,32 @@
 import React from 'react';
 import { tableHeader, tableContent } from '../styles';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
-import NoResult from './NoResult';
+import CircularProgress from 'material-ui/CircularProgress';
 import { getPersonInfo } from '../service';
 
 class PatBasicInfor extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: ''
+            data: '',
+            content: false
         }
     }
 
     componentDidMount() {
         let { regId, sourceType } = this.props;
         getPersonInfo(regId, sourceType)
-            .then(data => {this.setState({ data: data })})
+            .then(data => {
+                this.setState({
+                    data: data,
+                    content: true
+                })
+            })
     }
 
     render() {
         let content = (
-            true ? (
+            this.state.content ? (
                 <div>
                     <Table style={{ 'border': '2px solid #f1f1f1' }} selectable={false}>
                         <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
@@ -104,7 +110,7 @@ class PatBasicInfor extends React.Component {
                         </TableBody>
                     </Table>
                 </div>
-            ) : <NoResult />
+            ) :<CircularProgress size={60} thickness={7} style={{ display: 'block', margin: '30px auto' }} />
         )
         return (
             <div>

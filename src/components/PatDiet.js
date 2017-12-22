@@ -2,20 +2,28 @@ import React from 'react';
 import { tableHeader, tableContent, tableOutTitle,wrapperStyle } from '../styles';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 import NoResult from './NoResult';
+import CircularProgress from 'material-ui/CircularProgress';
 import { getDietOrder } from '../service';
 
 class PatDiet extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: []
+            data: [],
+            loading: true
         }
     }
 
     componentDidMount() {
         let { regId } = this.props;
         getDietOrder(regId)
-            .then(data => this.setState({ data: data }))
+            .then(data => {
+                if(data.length==0){
+                    this.setState({loading: false,data: data})
+                }else{
+                    this.setState({data: data})
+                }
+            })
     }
 
     render() {
@@ -29,7 +37,7 @@ class PatDiet extends React.Component {
             </TableRow>
         ))
         let content = (
-            false ? (
+            this.state.data.length!=0?  (
                 <div>
                     <div style={{ ...tableHeader, ...tableOutTitle }}>饮食医嘱</div>
                     <Table style={{ 'border': '2px solid #f1f1f1', minWidth: '500px' }} selectable={false} bodyStyle={{ 'minWidth': '500px' }} wrapperStyle={wrapperStyle}>
@@ -47,7 +55,7 @@ class PatDiet extends React.Component {
                         </TableBody>
                     </Table>
                 </div>
-            ) : <NoResult />
+            ) : this.state.loading ? <CircularProgress size={60} thickness={7} style={{display: 'block',margin: '30px auto'}} /> : <NoResult />
         )
         return (
             <div>

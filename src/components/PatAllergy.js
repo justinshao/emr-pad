@@ -1,14 +1,16 @@
 import React from 'react';
-import { tableHeader, tableContent, tableOutTitle } from '../styles';
+import { tableHeader, tableContent, tableOutTitle,wrapperStyle } from '../styles';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 import NoResult from './NoResult';
+import CircularProgress from 'material-ui/CircularProgress';
 import { getAllergyInfo } from '../service';
 
 class PatAllergy extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: []
+            data: [],
+            loading: true
         }
     }
 
@@ -16,8 +18,12 @@ class PatAllergy extends React.Component {
         let { regId, sourceType } = this.props;
         getAllergyInfo(regId, sourceType)
             .then(data => {
-                this.setState({ data: data })
-            });
+                if(data.length==0){
+                    this.setState({loading: false,data: data})
+                }else{
+                    this.setState({data: data})
+                }
+            })
     }
 
     render() {
@@ -34,14 +40,11 @@ class PatAllergy extends React.Component {
         ));
 
         let content = (
-            true ? (
+            this.state.data.length!=0? (
                 <div>
                     <div style={{ ...tableHeader, ...tableOutTitle }}>过敏信息</div>
-                    <Table style={{ border: '2px solid #f1f1f1', minWidth: '600px' }} selectable={false} bodyStyle={{ 'minWidth': '600px' }}>
+                    <Table style={{ border: '2px solid #f1f1f1', minWidth: '600px' }} selectable={false} bodyStyle={{ 'minWidth': '600px'}} wrapperStyle={wrapperStyle}>
                         <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
-                            {/* <TableRow style={tableHeader} >
-                                <TableHeaderColumn style={tableHeader} colSpan='7'>过敏信息</TableHeaderColumn>
-                            </TableRow> */}
                             <TableRow style={tableHeader} >
                                 <TableHeaderColumn style={tableHeader}>发病日期</TableHeaderColumn>
                                 <TableHeaderColumn style={tableHeader}>药物过敏</TableHeaderColumn>
@@ -52,12 +55,12 @@ class PatAllergy extends React.Component {
                                 <TableHeaderColumn style={tableHeader}>登记时间</TableHeaderColumn>
                             </TableRow>
                         </TableHeader>
-                        <TableBody displayRowCheckbox={false} >
+                        <TableBody displayRowCheckbox={false} style={{overflowY:'auto'}}>
                             {allergyInfo}
                         </TableBody>
                     </Table>
                 </div>
-            ) : <NoResult />
+            ) : this.state.loading ? <CircularProgress size={60} thickness={7} style={{display: 'block',margin: '30px auto'}} /> : <NoResult />
         )
         return (
             <div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { tableHeader, tableContent } from '../styles';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
-import NoResult from './NoResult';
+import CircularProgress from 'material-ui/CircularProgress';
 import { getInHospitalInfo } from '../service';
 
 class PatHospital extends React.Component {
@@ -9,14 +9,20 @@ class PatHospital extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: ''
+            data: '',
+            content: false
         }
     }
 
     componentDidMount() {
         let { regId } = this.props;
         getInHospitalInfo(regId)
-            .then(data => { this.setState({ data: data }) })
+            .then(data => {
+                this.setState({
+                    data: data,
+                    content: true
+                })
+            })
     }
 
     render() {
@@ -29,7 +35,7 @@ class PatHospital extends React.Component {
                             this.state.data.OutWay == 5 ? '死亡' : '其他'
         )
         let content = (
-            true ? (
+            this.state.content ? (
                 <div>
                     <Table style={{ 'border': '2px solid #f1f1f1' }} selectable={false} >
                         <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
@@ -39,9 +45,9 @@ class PatHospital extends React.Component {
                         </TableHeader>
                         <TableBody displayRowCheckbox={false}>
                             <TableRow style={tableContent} >
-                                <TableRowColumn style={{...tableContent,width:'86px'}}>姓名</TableRowColumn>
+                                <TableRowColumn style={{ ...tableContent, width: '86px' }}>姓名</TableRowColumn>
                                 <TableRowColumn style={tableContent}>{this.state.data.Name}</TableRowColumn>
-                                <TableRowColumn style={{...tableContent,width:'86px'}}>性别</TableRowColumn>
+                                <TableRowColumn style={{ ...tableContent, width: '86px' }}>性别</TableRowColumn>
                                 <TableRowColumn style={tableContent}>{this.state.data.Sex}</TableRowColumn>
                             </TableRow>
                             <TableRow style={tableContent}>
@@ -113,7 +119,7 @@ class PatHospital extends React.Component {
                         </TableBody>
                     </Table>
                 </div>
-            ) : <NoResult />
+            ) :<CircularProgress size={60} thickness={7} style={{display: 'block',margin: '30px auto'}} />
         )
         return (
             <div>

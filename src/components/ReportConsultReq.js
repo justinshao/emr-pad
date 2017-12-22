@@ -74,10 +74,10 @@ class ReportConsultReq extends React.Component {
                                         data[0].ReqState == 5 ? '已完成' :
                                             data[0].ReqState == 9 ? '已作废' : ''
                 )
-                let urgent = (
-                    data[0].Urgent == 0 ? '普通会诊' :
-                        data[0].Urgent == 1 ? '急会诊' : ''
-                )
+                // let urgent = (
+                //     data[0].Urgent == 0 ? '普通会诊' :
+                //         data[0].Urgent == 1 ? '急会诊' : ''
+                // )
                 let conType = (
                     data[0].ConType == 0 ? '普通会诊' :
                         data[0].ConType == 1 ? '全院会诊' :
