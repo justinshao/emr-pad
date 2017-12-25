@@ -7,14 +7,14 @@ const styles = {
     imgNextStyle: {
         'display': 'block',
         'opacity': '0.6',
-        'position': 'absolute',
+        'position': 'fixed',
         'top': '40%',
         'right': '20px'
     },
     imgBeforeStyle: {
         'display': 'block',
         'opacity': '0.6',
-        'position': 'absolute',
+        'position': 'fixed',
         'top': '40%',
         'left': '20px'
     }
