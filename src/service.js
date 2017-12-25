@@ -271,16 +271,6 @@ const getPathlgRpt=(requestNo,sourceType)=>{
     }).then(checkApi);
 }
 
-// 获取护理单图片
-const getNursingImage=(recordNo)=>{
-    return `${root}/api/NursingImage?recordNo=${recordNo}`;
-}
-
-// 获取体温单图片
-const getTemperatureSheetImage=(regId,week)=>{
-    return `${root}/api/TemperatureSheetImage?regId=${regId}&week=${week}`;
-}
-
 // 获取住院医嘱
 const getInpatOrder=(regId,timeType,selectFilter,orderKind)=>{
     return fetch(`${root}/api/InpatOrder?regId=${regId}&timeType=${timeType}&selectFilter=${selectFilter}&orderKind=${orderKind}`, {
@@ -337,8 +327,6 @@ export {
     getAssayRpt,
     getConsultReq,
     getPathlgRpt,
-    getNursingImage,
-    getTemperatureSheetImage,
     getInpatOrder,
     getChnOrder,
     getDiag

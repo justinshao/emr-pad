@@ -69,7 +69,7 @@ class ClinicWrapper extends React.Component {
     // 跳转其他界面
     handleChangeTap(item) {
         let { history } = this.props;
-        if (item.Name == '病历概要') {
+        if (item.Type == 'emr') {
             history.push(item.Url);
         }
         else {

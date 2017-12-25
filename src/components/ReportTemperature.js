@@ -1,109 +1,59 @@
 import React from 'react';
-import { titleStyle } from '../styles';
-import NoResult from './NoResult';
+import { fullContentStyle } from '../styles';
 import { Icon } from 'semantic-ui-react';
-import {getTemperatureSheetImage} from '../service';
+import ImageViewer from './ImageViewer';
 
-const viewHeight = document.body.clientHeight;
-const contentStyle = {
-    'width': '100%',
-    'paddingTop': '64px',
-    'height': `${viewHeight - 64}px`,
-    'overflow': 'hidden'
-};
-const tempContentStyle = {
-    'height': `${viewHeight - 120}px`,
-    'overflow': 'scroll',
-    'position': 'relative'
-};
-const imgStyle = {
-    'width': '94%',
-    'display': 'block',
-    'margin': 'auto'
-};
-const imgNextStyle = {
-    'display': 'block',
-    'opacity': '0.6',
-    'position': 'absolute',
-    'top': '40%',
-    'right': '20px'
-};
-const imgBeforeStyle = {
-    'display': 'block',
-    'opacity': '0.6',
-    'position': 'absolute',
-    'top': '40%',
-    'left': '20px'
-};
+const styles = {
+    imgNextStyle: {
+        'display': 'block',
+        'opacity': '0.6',
+        'position': 'absolute',
+        'top': '40%',
+        'right': '20px'
+    },
+    imgBeforeStyle: {
+        'display': 'block',
+        'opacity': '0.6',
+        'position': 'absolute',
+        'top': '40%',
+        'left': '20px'
+    }
+}
 
 class ReportTemperature extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            src: '',
-            startX: '',
-            startY: '',
-            week:1
+            week: 1
         }
-        this.handleWillChangeImg = this.handleWillChangeImg.bind(this);
-        this.handleChangeImg = this.handleChangeImg.bind(this);
+
+        this.imgBefore = this.imgBefore.bind(this);
+        this.imgNext = this.imgNext.bind(this);
     }
-    
-    componentDidMount(){
-        let {regId}=this.props;
-        let week=this.state.week;
+
+    imgBefore() {
+        let week = this.state.week - 1;
         this.setState({
-            src:getTemperatureSheetImage(regId,week)
+            week: week
         })
     }
 
-    handleWillChangeImg(e) {
-        e.preventDefault();
-        this.setState = {
-            startX: e.pageX,
-            startY: e.pageY
-        }
-    }
-
-    handleChangeImg(e) {
-        e.preventDefault();
-        let moveEndX = e.pageX;
-        let moveEndY = e.pageY;
-        let X = moveEndX - this.state.startX;
-        let Y = moveEndY - this.state.startY;
-        if (Math.abs(X) > Math.abs(Y) && X > 0) {
-            alert('left to right');
-            this.setState = {
-                // 改变src
-            }
-        }
-        else if (Math.abs(X) > Math.abs(Y) && X < 0) {
-            alert('right to left');
-            this.setState = {
-                // 改变src
-            }
-        }
-        else {
-            alert('else');
-        }
+    imgNext() {
+        let week = this.state.week + 1;
+        this.setState({
+            week: week
+        })
     }
 
     render() {
-        let showContent = (
-            true ? (
-                <div>
-                    <h3 style={titleStyle}>体温单</h3>
-                    <div style={tempContentStyle} onTouchMove={this.handleChangeImg} onTouchStart={this.handleWillChangeImg}>
-                        <Icon name='chevron left' style={imgBeforeStyle} size='big'/>
-                        <Icon name='chevron right' style={imgNextStyle} size='big'/>
-                        <img src={this.state.src} style={imgStyle} />
-                    </div>
-                </div>
-            ) : <NoResult />
-        );
+        let { regId } = this.props;
+        let src = `/api/TemperatureSheetImage?regId=${regId}&week=${this.state.week}`;
+
         return (
-            <div style={contentStyle}>
-                {showContent}
+            <div style={fullContentStyle}>
+                <ImageViewer src={src} />
+                <Icon name='chevron left' style={styles.imgBeforeStyle} size='big' onClick={this.imgBefore} />
+                <Icon name='chevron right' style={styles.imgNextStyle} size='big' onClick={this.imgNext} />
             </div>
         )
     }

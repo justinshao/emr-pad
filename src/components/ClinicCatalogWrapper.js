@@ -30,13 +30,18 @@ class ClinicCatalogWrapper extends React.Component {
         );
         let menu = this.props.menu;
         let menus = menu.map(mainmenu => {
-            let nestedItem = mainmenu.Items ? (mainmenu.Items.map(item =>
-                <ListItem
+            let nestedItem = mainmenu.Items ? (mainmenu.Items.map(item =>{
+                let color=item.hasOwnProperty("HasReport")?(item.HasReport?'':'blue'):'';
+                return (
+                    <ListItem
                     key={item.Id}
                     primaryText={item.Name}
                     onClick={() => this.handleChangeTap(item)}
-                    style={{ paddingLeft: '27px' }}
+                    style={{ paddingLeft: '27px',color:color }}
                 />
+                )
+            }
+                
             )) : [];
             //配置目录图标
             let iconName = (

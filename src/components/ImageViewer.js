@@ -1,7 +1,7 @@
 import React from 'react';
 import CircularProgress from 'material-ui/CircularProgress';
 import ErrorMessage from './ErrorMessage';
-import { fullContentStyle, contentCenter } from '../styles';
+import { contentCenter } from '../styles';
 
 class ImageViewer extends React.Component {
 
@@ -55,7 +55,7 @@ class ImageViewer extends React.Component {
       style={{ maxWidth: '100%', display: this.state.loading ? 'none' : undefined }} />;
 
     return (
-      <div style={Object.assign({}, fullContentStyle, contentCenter)}>
+      <div style={Object.assign({}, contentCenter)}>
         {loading}
         {error || img}
       </div>

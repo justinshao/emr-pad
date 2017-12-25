@@ -3,6 +3,7 @@ import EmrHeaderBar from './EmrHeaderBar';
 import EmrCalalogBar from './EmrCalalogBar';
 import ImageViewer from './ImageViewer';
 import mobileApi from '../mobileApi';
+import { fullContentStyle } from '../styles';
 
 class EmrWrapper extends React.Component {
 
@@ -33,7 +34,7 @@ class EmrWrapper extends React.Component {
 
     componentWillReceiveProps(nextProps) {
         let { emrId } = nextProps.match.params;
-        
+
         this.setState({
             menuOpen: !emrId,
             reload: false
@@ -61,7 +62,7 @@ class EmrWrapper extends React.Component {
         let { regId, emrId } = this.props.match.params;
         let { history } = this.props;
 
-        if(emrId){
+        if (emrId) {
             history.push(`/sign/${regId}/${emrId}`);
         }
     }
@@ -73,7 +74,7 @@ class EmrWrapper extends React.Component {
             history.push(`/informed/${regId}/${emrId}`);
         }
     }
-    handleEmrAttachRequest(){
+    handleEmrAttachRequest() {
         let { regId, emrId } = this.props.match.params;
         let { history } = this.props;
 
@@ -93,7 +94,7 @@ class EmrWrapper extends React.Component {
             global.native.stopRecord();
         }
     }
-    handleTakePhotoRequest(){
+    handleTakePhotoRequest() {
         let { emrId } = this.props.match.params;
 
         if (emrId && global.native) {
@@ -161,9 +162,14 @@ class EmrWrapper extends React.Component {
                     open={this.state.menuOpen}
                     onEmrSelected={this.handleEmrSelected}
                     onRequestChange={this.handleMenuRequestChange} />
-                {emrId && <ImageViewer src={`/api/EmrFile/${emrId}`} force={this.state.reload}
-                    onImageLoaded={this.handleEmrLoaded}
-                    onImageLoadError={this.handleEmrLoadError} />}
+                {emrId &&
+                    <div style={fullContentStyle}>
+                        <ImageViewer
+                            src={`/api/EmrFile/${emrId}`}
+                            force={this.state.reload}
+                            onImageLoaded={this.handleEmrLoaded}
+                            onImageLoadError={this.handleEmrLoadError} />
+                    </div>}
             </div>
         );
     }
