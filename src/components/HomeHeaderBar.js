@@ -69,7 +69,7 @@ class HomeHeaderBar extends React.Component {
     render() {
         let leftElement = (<IconButton onTouchTap={this.handleUserHome}><AccountCircleIcon /></IconButton>);
         let rightElement = (
-            this.state.wards.length &&
+            this.state.wards.length ?
             <DropDownMenu value={this.props.wardId}
                 style={headerBarDDMenuStyle}
                 labelStyle={headerBarDDMenuStyle.label}
@@ -79,7 +79,7 @@ class HomeHeaderBar extends React.Component {
                         <MenuItem key={w.Id} value={w.Id} primaryText={w.Name} leftIcon={<PlaceIcon />} />
                     )
                 }
-            </DropDownMenu>
+            </DropDownMenu> : <div></div>
         );
 
         return (
