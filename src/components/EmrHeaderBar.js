@@ -200,8 +200,7 @@ class EmrHeaderBar extends React.Component {
       <NavBackHeaderBar
         title={title}
         onNavBackRequest={this.handleNavBackRequest}
-        style={headerBarStyle}
-        iconElementRight={false}>
+        style={headerBarStyle}>
         {optBtns}
         {optMenu}
         <FlatButton
