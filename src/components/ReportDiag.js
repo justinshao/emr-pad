@@ -9,7 +9,8 @@ import { getDiag } from '../service';
 const styles = {
     toggle: { maxWidth: 140, backgroundColor: 'white' },
     noshow: { display: 'none' },
-    typeNameStyle: { color: 'rgb(0, 188, 212)', textAlign: 'left', fontWeight: '600' }
+    typeNameStyle: { color: 'rgb(0, 188, 212)', textAlign: 'left', fontWeight: '600' },
+    // WebkitScrollbarY: { display: 'none' }
 };
 
 class ReportDiag extends React.Component {
@@ -132,7 +133,7 @@ class ReportDiag extends React.Component {
                                 <TableHeaderColumn style={tableHeader} >诊断依据</TableHeaderColumn>
                             </TableRow>
                         </TableHeader>
-                        <TableBody displayRowCheckbox={false}>
+                        <TableBody displayRowCheckbox={false} style={styles.WebkitScrollbarY}>
                             {
                                 code4 != '' ? (<TableRow style={tableContent} >
                                     <TableRowColumn style={tableContent} colSpan='9'>

@@ -10,12 +10,25 @@ import {
 import { tableHeader, tableContent } from '../styles';
 import { getChnOrder } from '../service';
 
+const bodyHeight = document.body.clientHeight;
 const styles = {
     widderStyle: {
         width: '90px'
     },
     narrowStyle: {
         width: '40px'
+    },
+    wrapperStyle: {
+        height: `${bodyHeight}` - 190,
+        overflowY: 'hidden'
+    },
+    circleStyle: {
+        display: 'block',
+        margin: '30px auto',
+        position: 'absolute',
+        left: '50%',
+        top: '30%',
+        transform: 'translateX(-50%)'
     }
 }
 
@@ -23,7 +36,8 @@ class ReportChDtAdviceContent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: ''
+            data: '',
+            content: false
         }
     }
 
@@ -41,13 +55,18 @@ class ReportChDtAdviceContent extends React.Component {
 
     getChnOrderFun(regId, timeType, selectFilter, notDecoct) {
         getChnOrder(regId, timeType, selectFilter, notDecoct)
-            .then(data => this.setState({ data: data }))
+            .then(data => {
+                this.setState({
+                    data: data,
+                    content: true
+                })
+            })
     }
 
     render() {
-        let tableRow = this.state.data != '' ? this.state.data.Orders.map(item => {
-            let rows = item.Details.map((detail,i) => {
-                if(i==0){
+        let tableRow = this.state.content ? this.state.data.Orders.map(item => {
+            let rows = item.Details.map((detail, i) => {
+                if (i == 0) {
                     return (
                         <TableRow style={tableContent} key={i}>
                             <TableRowColumn style={{ ...tableContent, ...styles.narrowStyle, backgroundColor: item.StateColor }} rowSpan={item.Details.length}>{item.State}</TableRowColumn>
@@ -64,7 +83,7 @@ class ReportChDtAdviceContent extends React.Component {
                             <TableRowColumn style={tableContent} rowSpan={item.Details.length}>{item.Told}</TableRowColumn>
                         </TableRow>
                     )
-                }else{
+                } else {
                     return (
                         <TableRow style={tableContent} key={i}>
                             <TableRowColumn style={{ ...tableContent, ...styles.widderStyle }}>{detail.Name}</TableRowColumn>
@@ -77,7 +96,7 @@ class ReportChDtAdviceContent extends React.Component {
         }) : ''
         return (
             <div>
-                <Table style={{ 'border': '2px solid #f1f1f1', 'minWidth': '700px' }} selectable={false} bodyStyle={{ 'minWidth': '700px' }}>
+                <Table style={{ 'border': '2px solid #f1f1f1', 'minWidth': '700px' }} selectable={false} bodyStyle={{ 'minWidth': '700px' }} wrapperStyle={styles.wrapperStyle}>
                     <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                         <TableRow style={tableHeader}>
                             <TableHeaderColumn style={{ ...tableHeader, ...styles.narrowStyle }}>状态</TableHeaderColumn>

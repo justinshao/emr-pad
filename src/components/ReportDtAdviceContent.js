@@ -7,21 +7,38 @@ import {
     TableRow,
     TableRowColumn
 } from 'material-ui/Table';
-import { tableHeader, tableContent } from '../styles';
+import { tableHeader, tableContent, wrapperStyle } from '../styles';
+import CircularProgress from 'material-ui/CircularProgress';
+import NoResult from './NoResult';
 import { getInpatOrder } from '../service';
+
+const bodyHeight = document.body.clientHeight;
 
 const styles = {
     bodyName: { width: '110px' },
     headerName: { width: '110px' },
     bodyNarrow: { width: '40px' },
-    headerNarrow: { width: '40px' }
+    headerNarrow: { width: '40px' },
+    wrapperStyle: {
+        height: `${bodyHeight}` - 174,
+        overflowY: 'hidden'
+    },
+    circleStyle:{
+        display: 'block',
+        margin: '30px auto',
+        position:'absolute',
+        left:'50%',
+        top:'30%',
+        transform:'translateX(-50%)'
+    }
 }
 
 class ReportDtAdviceContent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: []
+            data: [],
+            content: false
         }
     }
 
@@ -38,14 +55,19 @@ class ReportDtAdviceContent extends React.Component {
 
     getInpatOrderFun(regId, timeType, selectFilter, orderKind) {
         getInpatOrder(regId, timeType, selectFilter, orderKind)
-            .then(data => this.setState({ data: data }))
+            .then(data => {
+                this.setState({
+                    data: data,
+                    content: true
+                })
+            })
     }
 
     render() {
-        let tableRow = this.state.data.map(item => {
+        let tableRow = this.state.content?(this.state.data.map(item => {
             let stateColor = { backgroundColor: item.StateColor };
             let rows = item.Details.map((detail, i) => {
-                if(i==0){
+                if (i == 0) {
                     return (
                         <TableRow style={tableContent} key={i}>
                             <TableRowColumn style={Object.assign({}, tableContent, stateColor, styles.bodyNarrow)} rowSpan={item.Details.length}>{item.State}</TableRowColumn>
@@ -63,7 +85,7 @@ class ReportDtAdviceContent extends React.Component {
                         </TableRow>
                     )
                 }
-                else{
+                else {
                     return (
                         <TableRow style={tableContent} key={i}>
                             <TableRowColumn style={{ ...tableContent, ...styles.bodyName }}>{detail.Name}</TableRowColumn>
@@ -75,10 +97,10 @@ class ReportDtAdviceContent extends React.Component {
                 }
             });
             return rows;
-        })
+        })):''
         return (
             <div>
-                <Table style={{ 'border': '2px solid #f1f1f1', 'minWidth': '760px' }} selectable={false} bodyStyle={{ 'minWidth': '760px' }} >
+                <Table style={{ 'border': '2px solid #f1f1f1', 'minWidth': '760px' }} selectable={false} bodyStyle={{ 'minWidth': '760px' }} wrapperStyle={styles.wrapperStyle}>
                     <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                         <TableRow style={tableHeader}>
                             <TableHeaderColumn style={{ ...tableHeader, ...styles.headerNarrow }} >状态</TableHeaderColumn>

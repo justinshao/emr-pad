@@ -2,7 +2,6 @@ import React from 'react';
 import { titleStyle } from '../styles';
 import ReportDtAdviceHeader from './ReportDtAdviceHeader';
 import ReportDtAdviceContent from './ReportDtAdviceContent';
-import NoResult from './NoResult';
 
 const contentStyle = {
     'width': '100%',
@@ -49,22 +48,20 @@ class ReportDtAdvice extends React.Component {
     render() {
         let { regId } = this.props;
         let showContent = (
-            true ? (
-                <div>
-                    <h3 style={titleStyle}>医嘱单</h3>
-                    <ReportDtAdviceHeader
-                        onTimeType={this.handleTimeType}
-                        onOrderKind={this.handleOrderKind}
-                        onSelectFilter={this.handleSelectFilter}
-                    />
-                    <ReportDtAdviceContent
-                        timeType={this.state.timeType}
-                        orderKind={this.state.orderKind}
-                        selectFilter={this.state.selectFilter}
-                        regId={regId}
-                    />
-                </div>
-            ) : <NoResult />
+            <div>
+                <h3 style={titleStyle}>医嘱单</h3>
+                <ReportDtAdviceHeader
+                    onTimeType={this.handleTimeType}
+                    onOrderKind={this.handleOrderKind}
+                    onSelectFilter={this.handleSelectFilter}
+                />
+                <ReportDtAdviceContent
+                    timeType={this.state.timeType}
+                    orderKind={this.state.orderKind}
+                    selectFilter={this.state.selectFilter}
+                    regId={regId}
+                />
+            </div>
         );
         return (
             <div style={contentStyle}>

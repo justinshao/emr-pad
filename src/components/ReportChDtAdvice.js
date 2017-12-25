@@ -2,7 +2,6 @@ import React from 'react';
 import { titleStyle } from '../styles';
 import ReportChDtAdviceHeader from './ReportChDtAdviceHeader';
 import ReportChDtAdviceContent from './ReportChDtAdviceContent';
-import NoResult from './NoResult';
 
 const contentStyle = {
     'width': '100%',
@@ -49,7 +48,6 @@ class ReportChDtAdvice extends React.Component {
     render() {
         let {regId}=this.props;
         let showContent = (
-            true ? (
                 <div>
                     <h3 style={titleStyle}>中药医嘱单</h3>
                     <ReportChDtAdviceHeader
@@ -64,7 +62,6 @@ class ReportChDtAdvice extends React.Component {
                         regId={regId}
                     />
                 </div>
-            ) : <NoResult />
         );
         return (
             <div style={contentStyle}>
