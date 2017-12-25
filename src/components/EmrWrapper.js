@@ -1,7 +1,7 @@
 import React from 'react';
 import EmrHeaderBar from './EmrHeaderBar';
 import EmrCalalogBar from './EmrCalalogBar';
-import EmrViewer from './EmrViewer';
+import ImageViewer from './ImageViewer';
 import mobileApi from '../mobileApi';
 
 class EmrWrapper extends React.Component {
@@ -107,7 +107,9 @@ class EmrWrapper extends React.Component {
             global.native.takeVideo(Number(emrId));
         }
     }
-    handleEmrLoaded(emrId) {
+    handleEmrLoaded(src) {
+        let emrId = src.replace('/api/EmrFile/', '');
+
         if (global.native) {
             global.native.selectEmr(Number(emrId));
         }
@@ -159,9 +161,9 @@ class EmrWrapper extends React.Component {
                     open={this.state.menuOpen}
                     onEmrSelected={this.handleEmrSelected}
                     onRequestChange={this.handleMenuRequestChange} />
-                {emrId && <EmrViewer emrId={emrId} force={this.state.reload}
-                    onEmrLoaded={this.handleEmrLoaded}
-                    onEmrLoadError={this.handleEmrLoadError} />}
+                {emrId && <ImageViewer src={`/api/EmrFile/${emrId}`} force={this.state.reload}
+                    onImageLoaded={this.handleEmrLoaded}
+                    onImageLoadError={this.handleEmrLoadError} />}
             </div>
         );
     }
