@@ -9,11 +9,18 @@ import SignOutButton from './SignOutButton';
 import { headerBarDDMenuStyle, headerBarBtnStyle } from '../styles';
 import { getWards, getLoginInfo } from '../service';
 import logger from '../logger';
+import { Icon } from 'semantic-ui-react'
 
 const styles = {
     signOut: {
         height: 'inherit',
         minWidth: '50px'
+    },
+    changeIcon: {
+        opacity: '0.5',
+        position: 'fixed',
+        right: '0px',
+        bottom: '20px'
     }
 }
 
@@ -23,12 +30,14 @@ class HomeHeaderBar extends React.Component {
         super(props);
         this.state = {
             title: null,
-            wards: []
+            wards: [],
+            changeIcon: false
         }
 
         this.handleChange = this.handleChange.bind(this);
         this.handleExitApp = this.handleExitApp.bind(this);
         this.handleUserHome = this.handleUserHome.bind(this);
+        this.handleChangeType=this.handleChangeType.bind(this);
     }
 
     componentDidMount() {
@@ -49,11 +58,13 @@ class HomeHeaderBar extends React.Component {
     handleChange(event, index, value) {
         this.selectWard(value);
     }
+
     handleExitApp() {
         if (this.props.onExitAppRequest) {
             this.props.onExitAppRequest();
         }
     }
+
     handleUserHome() {
         if (this.props.onUserHomeRequest) {
             this.props.onUserHomeRequest();
@@ -64,6 +75,15 @@ class HomeHeaderBar extends React.Component {
         if (this.props.onSelectedWardChange) {
             this.props.onSelectedWardChange(wardId);
         }
+    }
+
+    handleChangeType() {
+        if(this.props.onChangeType){
+            this.props.onChangeType();
+        }
+        this.setState({
+            changeIcon:!this.state.changeIcon
+        })
     }
 
     render() {
@@ -92,6 +112,12 @@ class HomeHeaderBar extends React.Component {
                 titleStyle={{ fontSize: '18px' }}
             >
                 <SignOutButton style={Object.assign({}, headerBarBtnStyle, styles.signOut)} onLoginout={this.handleExitApp} />
+                <div style={styles.changeIcon} onClick={this.handleChangeType}>
+                    {
+                        this.state.changeIcon ? <Icon inverted color='grey' name='block layout' size='huge' /> :
+                            <Icon inverted color='grey' name='list layout' size='huge' />
+                    }
+                </div>
             </AppBar>
         );
     }

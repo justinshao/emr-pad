@@ -4,20 +4,25 @@ import HomeHeaderBar from './HomeHeaderBar';
 import { headerBarStyle, contentStyle, patListStyle } from '../styles';
 
 const cellHeight = 270;
+const cellHeightRow = 115;
 const [minCellWidth, maxCellWidth] = [200, 250];
+const [minCellWidthRow, maxCellWidthRow] = [350, 450];
 
 class Home extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            col: 5
+            col: 5,
+            colRow: 5,
+            changeType: false
         }
 
         this.handleSelectedWardChange = this.handleSelectedWardChange.bind(this);
         this.handleWindowResize = this.handleWindowResize.bind(this);
         this.handleExitAppRequest = this.handleExitAppRequest.bind(this);
         this.handleUserHomeRequest = this.handleUserHomeRequest.bind(this);
+        this.handleChangeType = this.handleChangeType.bind(this);
     }
 
     handleSelectedWardChange(wardId) {
@@ -47,6 +52,18 @@ class Home extends React.Component {
 
             this.setState({ col: col });
         }
+
+        if (minCellWidthRow * this.state.colRow > regin) {
+            let colRow = this.state.colRow - 1;
+            while (minCellWidthRow * colRow > regin) { colRow--; }
+
+            this.setState({ colRow: Math.max(1, colRow) });
+        } else if (maxCellWidthRow * this.state.colRow < regin) {
+            let colRow = this.state.colRow + 1;
+            while (maxCellWidthRow * colRow < regin) { colRow++; }
+
+            this.setState({ colRow: colRow });
+        }
     }
 
     componentDidMount() {
@@ -59,8 +76,15 @@ class Home extends React.Component {
         window.removeEventListener('resize', this.handleWindowResize);
     }
 
+    handleChangeType() {
+        this.setState({
+            changeType: !this.state.changeType
+        })
+    }
+
     render() {
         let { wardId } = this.props.match.params;
+        let changeType = this.state.changeType;
 
         return (
             <div>
@@ -68,9 +92,13 @@ class Home extends React.Component {
                     onSelectedWardChange={this.handleSelectedWardChange}
                     onExitAppRequest={this.handleExitAppRequest}
                     onUserHomeRequest={this.handleUserHomeRequest}
+                    onChangeType={this.handleChangeType}
                     style={headerBarStyle} />
-                <PatList wardId={wardId} cellHeight={cellHeight} col={this.state.col}
-                    style={Object.assign({}, contentStyle, patListStyle)} />
+                <PatList wardId={wardId}
+                    cellHeight={changeType ? cellHeightRow : cellHeight}
+                    col={changeType ? this.state.colRow : this.state.col}
+                    style={Object.assign({}, contentStyle, patListStyle)}
+                    changeType={this.state.changeType} />
             </div>
         );
     }

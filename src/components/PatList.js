@@ -5,6 +5,7 @@ import {
 import { GridList, GridTile } from 'material-ui/GridList';
 import CircularProgress from 'material-ui/CircularProgress';
 import PatTile from './PatTile';
+import PatTileRow from './PatTileRow';
 import ErrorMessage from './ErrorMessage';
 import { getPats } from '../service';
 import { contentCenter } from '../styles';
@@ -78,7 +79,7 @@ class PatList extends React.Component {
           this.state.pats.slice().map(pat =>
             <GridTile key={pat.VisitId} style={styles.tile}>
               <Link to={`/clinic/${pat.VisitId}/2`}>
-                <PatTile pat={pat} />
+              {this.props.changeType?<PatTileRow pat={pat}/>:<PatTile pat={pat} />}
               </Link>
             </GridTile>
           )

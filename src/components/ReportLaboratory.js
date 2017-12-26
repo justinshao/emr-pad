@@ -40,7 +40,7 @@ class ReportLaboratory extends React.Component {
             detailBottom: '',
             details: [],
             content: false,
-            loading: true,
+            loading: true
         }
         this.handleReportEchars = this.handleReportEchars.bind(this);
     }
