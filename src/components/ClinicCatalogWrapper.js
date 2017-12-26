@@ -30,38 +30,38 @@ class ClinicCatalogWrapper extends React.Component {
         );
         let menu = this.props.menu;
         let menus = menu.map(mainmenu => {
-            let nestedItem = mainmenu.Items ? (mainmenu.Items.map(item =>{
-                let color=item.hasOwnProperty('HasReport')?(item.HasReport?'':'blue'):'';
+            let nestedItem = mainmenu.Items ? (mainmenu.Items.map(item => {
+                let color = item.hasOwnProperty('HasReport') ? (item.HasReport ? '' : 'blue') : '';
                 return (
                     <ListItem
-                    key={item.Id}
-                    primaryText={item.Name}
-                    onClick={() => this.handleChangeTap(item)}
-                    style={{ paddingLeft: '27px',color:color }}
-                />
+                        key={item.Id}
+                        primaryText={item.Name}
+                        onClick={() => this.handleChangeTap(item)}
+                        style={{ paddingLeft: '27px', color: color }}
+                    />
                 )
             }
-                
+
             )) : [];
             //配置目录图标
             let iconName = (
-            //病案首页
+                //病案首页
                 mainmenu.Id == '1' ? 'h' :
-                //病例概要
+                    //病例概要
                     mainmenu.Id == '2' ? 'browser' :
-                    //检查报告
+                        //检查报告
                         mainmenu.Id == '3' ? 'first aid' :
-                        //化验报告
+                            //化验报告
                             mainmenu.Id == '4' ? 'file excel outline' :
-                            //病理报告，会诊单
+                                //病理报告，会诊单
                                 mainmenu.Id == '5' ? 'file text outline' :
-                                //护理单
+                                    //护理单
                                     mainmenu.Id == '6' ? 'heartbeat' :
-                                    //体温单
+                                        //体温单
                                         mainmenu.Id == '7' ? 'thermometer half' :
-                                        //医嘱/中药医嘱
+                                            //医嘱/中药医嘱
                                             mainmenu.Id == '8' ? 'doctor' :
-                                            //诊断
+                                                //诊断
                                                 mainmenu.Id == '10' ? 'treatment' : 'file outline'
             );
             return (

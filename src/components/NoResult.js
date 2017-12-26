@@ -4,7 +4,7 @@ const textStyle = {
     textAlign: 'center',
     color: '#999999',
     fontWeight: '500',
-    paddingTop:'30px'
+    paddingTop: '30px'
 }
 class NoResult extends React.Component {
     render() {

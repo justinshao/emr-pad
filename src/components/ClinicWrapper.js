@@ -10,7 +10,7 @@ class ClinicWrapper extends React.Component {
         this.state = {
             menuOpen: false,
             menu: [],
-            loading:true
+            loading: true
         }
 
         this.handleNavBackRequest = this.handleNavBackRequest.bind(this);
@@ -32,7 +32,7 @@ class ClinicWrapper extends React.Component {
     fetchMainMenu(regId, sourceType) {
         getMainMenu(regId, sourceType)
             .then(menu => {
-                this.setState({ menu: menu,loading:false });
+                this.setState({ menu: menu, loading: false });
             })
             .catch('数据出错');
     }
@@ -56,14 +56,14 @@ class ClinicWrapper extends React.Component {
     // 查看病人信息
     handlePaitentInfor() {
         let { history } = this.props;
-        let { regId ,sourceType} = this.props.match.params;
+        let { regId, sourceType } = this.props.match.params;
         history.push(`/patInfo/${regId}/${sourceType}`);
     }
 
     // 跳转趋势图
-    handleReportEchars() {
+    handleReportEchars(item) {
         let { history } = this.props;
-        history.push('/reportEchars');
+        history.push(`/reportEchars/${item.Name}/${item.ResultData}`);
     }
 
     // 跳转其他界面

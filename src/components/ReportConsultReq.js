@@ -39,8 +39,8 @@ class ReportConsultReq extends React.Component {
             detailBottom: '',
             opinion: '',
             details: [],
-            content:false,
-            loading:true
+            content: false,
+            loading: true
         }
     }
     componentDidMount() {
@@ -58,7 +58,7 @@ class ReportConsultReq extends React.Component {
     updateContent(conId, sourceType) {
         getConsultReq(conId, sourceType)
             .then(data => {
-                if(data.length!=0){
+                if (data.length != 0) {
                     let reqState = (
                         data[0].ReqState == 0 ? '初始' :
                             data[0].ReqState == 1 ? '已保存' :
@@ -97,13 +97,13 @@ class ReportConsultReq extends React.Component {
                                 <span style={spanStyle}>申请医生：{data[0].ReqEmp}</span>
                             </span>,
                         details: data[0].Details,
-                        content:true
+                        content: true
                     });
                 }
-                else{
+                else {
                     this.setState({
-                        content:false,
-                        loading:false
+                        content: false,
+                        loading: false
                     })
                 }
             })
@@ -150,7 +150,7 @@ class ReportConsultReq extends React.Component {
             >
                 {conContent}
             </ReportTitle>) :
-            this.state.loading?<CircularProgress size={60} thickness={7} style={{ display: 'block', margin: '30px auto' }} />:<NoResult />
+                this.state.loading ? <CircularProgress size={60} thickness={7} style={{ display: 'block', margin: '30px auto' }} /> : <NoResult />
         );
         return (
             <div style={contentStyle}>

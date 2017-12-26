@@ -44,7 +44,7 @@ class MediaList extends React.Component {
         );
 
         return (
-            <div>{ _loading || _error || list }</div>
+            <div>{_loading || _error || list}</div>
         );
     }
 }

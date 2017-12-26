@@ -12,12 +12,13 @@ class ReportExamination extends React.Component {
         super(props);
         this.state = {
             title: '',
-            detailHeader:'',
-            detailBottom:'',
+            detailHeader: '',
+            detailBottom: '',
             showContent: '',
             promptContent: '',
-            content:false,
-            loading:true
+            webUrl: '',
+            content: false,
+            loading: true
         }
     }
 
@@ -35,7 +36,7 @@ class ReportExamination extends React.Component {
     updateContent(requestNo, sourceType) {
         getExamReport(requestNo, sourceType)
             .then(data => {
-                if(data.length!=0){
+                if (data.length != 0) {
                     this.setState({
                         title: `${data[0].ProjectName} - 检查报告单`,
                         detailHeader:
@@ -58,13 +59,14 @@ class ReportExamination extends React.Component {
                             </span>,
                         showContent: data[0].Mani,
                         promptContent: data[0].Conclusion,
-                        content:true
+                        webUrl: data[0].WebUrl,
+                        content: true
                     });
                 }
-                else{
+                else {
                     this.setState({
-                        content:false,
-                        loading:false
+                        content: false,
+                        loading: false
                     })
                 }
             })
@@ -77,6 +79,7 @@ class ReportExamination extends React.Component {
                 title={this.state.title}
                 detailHeader={this.state.detailHeader}
                 detailBottom={this.state.detailBottom}
+                webUrl={this.state.webUrl}
             >
                 <Card containerStyle={containerStyle}>
                     <div style={cardstyle}>
@@ -97,7 +100,7 @@ class ReportExamination extends React.Component {
                     </div>
                 </Card>
             </ReportTitle>) :
-            this.state.loading?<CircularProgress size={60} thickness={7} style={{ display: 'block', margin: '30px auto' }} />:<NoResult />
+                this.state.loading ? <CircularProgress size={60} thickness={7} style={{ display: 'block', margin: '30px auto' }} /> : <NoResult />
         );
         return (
             <div style={contentStyle}>

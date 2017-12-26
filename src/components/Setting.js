@@ -21,7 +21,7 @@ class Setting extends React.Component {
         return (
             <div>
                 <NavBackHeaderBar title="设置" onNavBackRequest={this.handleNavBackRequest} />
-                <SettingContent style={ Object.assign({}, contentStyle, { paddingTop: '74px' }) } />
+                <SettingContent style={Object.assign({}, contentStyle, { paddingTop: '74px' })} />
             </div>
         );
     }

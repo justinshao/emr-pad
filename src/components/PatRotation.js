@@ -1,5 +1,5 @@
 import React from 'react';
-import { tableHeader, tableContent,tableOutTitle,wrapperStyle} from '../styles';
+import { tableHeader, tableContent, tableOutTitle, wrapperStyle } from '../styles';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 import NoResult from './NoResult';
 import CircularProgress from 'material-ui/CircularProgress';
@@ -18,10 +18,10 @@ class PatRotation extends React.Component {
         let { regId } = this.props;
         getInpatTurn(regId)
             .then(data => {
-                if(data.length==0){
-                    this.setState({loading: false,data: data})
-                }else{
-                    this.setState({data: data})
+                if (data.length == 0) {
+                    this.setState({ loading: false, data: data })
+                } else {
+                    this.setState({ data: data })
                 }
             })
     }
@@ -40,10 +40,10 @@ class PatRotation extends React.Component {
             </TableRow>
         ))
         let content = (
-            this.state.data.length!=0? (
+            this.state.data.length != 0 ? (
                 <div>
                     <div style={{ ...tableHeader, ...tableOutTitle }}>轮转信息</div>
-                    <Table style={{ 'border': '2px solid #f1f1f1', minWidth: '700px' }} selectable={false} bodyStyle={{ 'minWidth': '700px'}} wrapperStyle={wrapperStyle}>
+                    <Table style={{ 'border': '2px solid #f1f1f1', minWidth: '700px' }} selectable={false} bodyStyle={{ 'minWidth': '700px' }} wrapperStyle={wrapperStyle}>
                         <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                             <TableRow style={tableHeader} >
                                 <TableHeaderColumn style={tableHeader}>原病区</TableHeaderColumn>
@@ -56,12 +56,12 @@ class PatRotation extends React.Component {
                                 <TableHeaderColumn style={tableHeader}>医嘱号</TableHeaderColumn>
                             </TableRow>
                         </TableHeader>
-                        <TableBody displayRowCheckbox={false} style={{overflow:'auto'}}>
+                        <TableBody displayRowCheckbox={false} style={{ overflow: 'auto' }}>
                             {tableRow}
                         </TableBody>
                     </Table>
                 </div>
-            ) : this.state.loading ? <CircularProgress size={60} thickness={7} style={{display: 'block',margin: '30px auto'}} /> : <NoResult />
+            ) : this.state.loading ? <CircularProgress size={60} thickness={7} style={{ display: 'block', margin: '30px auto' }} /> : <NoResult />
         )
         return (
             <div>

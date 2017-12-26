@@ -3,7 +3,7 @@ import Signer from './Signer';
 
 class SignBoard extends React.Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
 
         this.handleEnd = this.handleEnd.bind(this);
@@ -38,7 +38,7 @@ class SignBoard extends React.Component {
         this.post();
     }
 
-    post(){
+    post() {
         let { onPost } = this.props;
         onPost && onPost(this.signer.isEmpty() ? null : this.signer.toDataURL());
     }

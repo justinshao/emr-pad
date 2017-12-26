@@ -2,7 +2,7 @@ import React from 'react';
 import Drawer from 'material-ui/Drawer';
 import EmrCatalogWrapper from './EmrCatalogWrapper';
 
-class EmrCalalogBar extends React.Component{
+class EmrCalalogBar extends React.Component {
 
     render() {
         return (
@@ -11,7 +11,7 @@ class EmrCalalogBar extends React.Component{
                 open={this.props.open}
                 onRequestChange={this.props.onRequestChange}
                 openSecondary>
-                <EmrCatalogWrapper onEmrSelected={this.props.onEmrSelected} regId={this.props.regId}/>
+                <EmrCatalogWrapper onEmrSelected={this.props.onEmrSelected} regId={this.props.regId} />
             </Drawer>
         );
     }

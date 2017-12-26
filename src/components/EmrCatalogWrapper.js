@@ -11,8 +11,8 @@ import { getEmrCatalog } from '../service';
 const emptyCatalog = [];
 
 class EmrCatalogWrapper extends React.Component {
-    
-    constructor(props){
+
+    constructor(props) {
         super(props);
 
         this.state = {

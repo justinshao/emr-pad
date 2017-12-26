@@ -23,8 +23,8 @@ class EmrMedias extends React.Component {
 
         return (
             <div>
-                <NavBackHeaderBar onNavBackRequest={this.handleNavBackRequest} title="病历附件"/>
-                <Medias emrId={emrId} style={ contentStyle } pos={pos} />
+                <NavBackHeaderBar onNavBackRequest={this.handleNavBackRequest} title="病历附件" />
+                <Medias emrId={emrId} style={contentStyle} pos={pos} />
             </div>
         );
     }

@@ -13,11 +13,11 @@ class ReportChDtAdvice extends React.Component {
         super(props);
         this.state = {
             // （1-长期，2-临时，3-出院带药）
-            timeType:1,
+            timeType: 1,
             //（0-中药方，1-免煎中药）
-            notDecoct:0,
+            notDecoct: 0,
             // （1-未停，2-当日，0-全部）
-            selectFilter:0
+            selectFilter: 0
         }
         this.handleTimeType = this.handleTimeType.bind(this);
         this.handleNotDecoct = this.handleNotDecoct.bind(this);
@@ -46,22 +46,22 @@ class ReportChDtAdvice extends React.Component {
     }
 
     render() {
-        let {regId}=this.props;
+        let { regId } = this.props;
         let showContent = (
-                <div>
-                    <h3 style={titleStyle}>中药医嘱单</h3>
-                    <ReportChDtAdviceHeader
-                        onTimeType={this.handleTimeType}
-                        onNotDecoct={this.handleNotDecoct}
-                        onselectFilter={this.handleselectFilter}
-                    />
-                    <ReportChDtAdviceContent
-                        timeType={this.state.timeType}
-                        notDecoct={this.state.notDecoct}
-                        selectFilter={this.state.selectFilter}
-                        regId={regId}
-                    />
-                </div>
+            <div>
+                <h3 style={titleStyle}>中药医嘱单</h3>
+                <ReportChDtAdviceHeader
+                    onTimeType={this.handleTimeType}
+                    onNotDecoct={this.handleNotDecoct}
+                    onselectFilter={this.handleselectFilter}
+                />
+                <ReportChDtAdviceContent
+                    timeType={this.state.timeType}
+                    notDecoct={this.state.notDecoct}
+                    selectFilter={this.state.selectFilter}
+                    regId={regId}
+                />
+            </div>
         );
         return (
             <div style={contentStyle}>

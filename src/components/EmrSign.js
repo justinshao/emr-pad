@@ -24,7 +24,7 @@ class EmrSign extends React.Component {
         return (
             <div>
                 <NavBackHeaderBar onNavBackRequest={this.handleNavBackRequest} title="签名" />
-                <Sign emrId={emrId} style={ Object.assign({}, contentStyle, { textAlign: 'center', paddingTop: '150px' }) } />
+                <Sign emrId={emrId} style={Object.assign({}, contentStyle, { textAlign: 'center', paddingTop: '150px' })} />
             </div>
         );
     }

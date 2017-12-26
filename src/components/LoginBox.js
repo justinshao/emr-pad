@@ -47,13 +47,13 @@ class LoginBox extends React.Component {
         return (
             <div style={Object.assign({}, { textAlign: 'center' }, this.props.style)}>
                 <TextField hintText="请输入工号" value={this.state.usr}
-                    errorText={ this.props.usrError }
-                    onChange={ this.handleUsrChange } style={{ marginBottom: '10px' }}/><br />
-                <TextField hintText="请输入密码" value={ this.state.pwd }
-                    errorText={ this.props.pwdError }
-                    onChange={ this.handlePwdChange } type="password" style={{ marginBottom: '10px' }}/><br />
+                    errorText={this.props.usrError}
+                    onChange={this.handleUsrChange} style={{ marginBottom: '10px' }} /><br />
+                <TextField hintText="请输入密码" value={this.state.pwd}
+                    errorText={this.props.pwdError}
+                    onChange={this.handlePwdChange} type="password" style={{ marginBottom: '10px' }} /><br />
                 <FlatButton label="登录"
-                    onTouchTap={ this.handleLoginTouchTap }
+                    onTouchTap={this.handleLoginTouchTap}
                     labelPosition="before"
                     style={{ width: '200px', height: '50px' }}
                     labelStyle={{ fontSize: '20px' }}

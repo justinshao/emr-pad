@@ -42,7 +42,7 @@ class SignOutButton extends React.Component {
 
     render() {
         return this.state.processing ? (
-            <FlatButton style={this.props.style} icon={loading}/>
+            <FlatButton style={this.props.style} icon={loading} />
         ) : (
                 <FlatButton
                     icon={<ExitIcon />}

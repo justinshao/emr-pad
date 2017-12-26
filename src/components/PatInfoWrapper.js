@@ -29,10 +29,11 @@ class PatInfoWrapper extends React.Component {
 
     componentDidMount() {
         let { regId } = this.props;
-        
+
         getInHospitalInfo(regId)
-            .then(data => {this.setState({ data: data })
-        })
+            .then(data => {
+                this.setState({ data: data })
+            })
     }
 
     // 跳转病人信息

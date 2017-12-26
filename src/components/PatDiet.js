@@ -1,5 +1,5 @@
 import React from 'react';
-import { tableHeader, tableContent, tableOutTitle,wrapperStyle } from '../styles';
+import { tableHeader, tableContent, tableOutTitle, wrapperStyle } from '../styles';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 import NoResult from './NoResult';
 import CircularProgress from 'material-ui/CircularProgress';
@@ -18,10 +18,10 @@ class PatDiet extends React.Component {
         let { regId } = this.props;
         getDietOrder(regId)
             .then(data => {
-                if(data.length==0){
-                    this.setState({loading: false,data: data})
-                }else{
-                    this.setState({data: data})
+                if (data.length == 0) {
+                    this.setState({ loading: false, data: data })
+                } else {
+                    this.setState({ data: data })
                 }
             })
     }
@@ -37,7 +37,7 @@ class PatDiet extends React.Component {
             </TableRow>
         ))
         let content = (
-            this.state.data.length!=0?  (
+            this.state.data.length != 0 ? (
                 <div>
                     <div style={{ ...tableHeader, ...tableOutTitle }}>饮食医嘱</div>
                     <Table style={{ 'border': '2px solid #f1f1f1', minWidth: '500px' }} selectable={false} bodyStyle={{ 'minWidth': '500px' }} wrapperStyle={wrapperStyle}>
@@ -50,12 +50,12 @@ class PatDiet extends React.Component {
                                 <TableHeaderColumn style={tableHeader}>停嘱人员</TableHeaderColumn>
                             </TableRow>
                         </TableHeader>
-                        <TableBody displayRowCheckbox={false} style={{overflowY:'auto'}}>
+                        <TableBody displayRowCheckbox={false} style={{ overflowY: 'auto' }}>
                             {tableRow}
                         </TableBody>
                     </Table>
                 </div>
-            ) : this.state.loading ? <CircularProgress size={60} thickness={7} style={{display: 'block',margin: '30px auto'}} /> : <NoResult />
+            ) : this.state.loading ? <CircularProgress size={60} thickness={7} style={{ display: 'block', margin: '30px auto' }} /> : <NoResult />
         )
         return (
             <div>

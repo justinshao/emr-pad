@@ -5,7 +5,7 @@ const titlestyle = {
     lineHeight: '1.8',
     margin: '0',
     fontWeight: '600',
-    color:'#3c3c3c'
+    color: '#3c3c3c'
 };
 const detail = {
     color: '#999999',
@@ -23,14 +23,25 @@ const detailstyle = {
 };
 
 class ReportTitle extends React.Component {
+    constructor(props) {
+        super(props);
+        this.handleLinkTo = this.handleLinkTo.bind(this);
+    }
+
+    handleLinkTo() {
+        let url = this.props.webUrl;
+        window.open(url, '_blank');
+    }
+
     render() {
+        let none = this.props.ifshow ? 'none' : '';
         return (
             <div style={{ padding: '15px' }}>
                 <h3 style={titlestyle}>{this.props.title}</h3>
                 <h6 style={detail}>（此单仅供本院医生参考用，不做证明用）</h6>
                 <h5 style={detailstyle}>
                     {this.props.detailHeader}
-                    <div style={{ color: '#0072e3', fontWeight: '500' }}> 查看详细报告>></div>
+                    <div style={{ color: '#0072e3', fontWeight: '500', display: none }} onClick={this.handleLinkTo}> 查看详细报告>></div>
                 </h5>
                 {/* 插入报告正文 */}
                 {this.props.children}

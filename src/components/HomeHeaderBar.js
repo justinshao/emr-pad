@@ -13,7 +13,7 @@ import logger from '../logger';
 const styles = {
     signOut: {
         height: 'inherit',
-        minWidth:'50px'
+        minWidth: '50px'
     }
 }
 
@@ -33,13 +33,13 @@ class HomeHeaderBar extends React.Component {
 
     componentDidMount() {
         getWards().then(wards => {
-                if (wards.length) {
-                    this.setState({ wards: wards });
-                    if (!this.props.wardId) {
-                        this.selectWard(wards[0].Id);
-                    }
+            if (wards.length) {
+                this.setState({ wards: wards });
+                if (!this.props.wardId) {
+                    this.selectWard(wards[0].Id);
                 }
-            })
+            }
+        })
             .catch(() => logger.error('获取病区列表出错'));
 
         getLoginInfo().then(info => this.setState({ title: `${info.Name}（${info.Dept}）` }))
@@ -50,12 +50,12 @@ class HomeHeaderBar extends React.Component {
         this.selectWard(value);
     }
     handleExitApp() {
-        if(this.props.onExitAppRequest){
+        if (this.props.onExitAppRequest) {
             this.props.onExitAppRequest();
         }
     }
     handleUserHome() {
-        if(this.props.onUserHomeRequest){
+        if (this.props.onUserHomeRequest) {
             this.props.onUserHomeRequest();
         }
     }
@@ -70,28 +70,28 @@ class HomeHeaderBar extends React.Component {
         let leftElement = (<IconButton onTouchTap={this.handleUserHome}><AccountCircleIcon /></IconButton>);
         let rightElement = (
             this.state.wards.length ?
-            <DropDownMenu value={this.props.wardId}
-                style={headerBarDDMenuStyle}
-                labelStyle={headerBarDDMenuStyle.label}
-                onChange={this.handleChange}>
-                {
-                    this.state.wards.slice().map(w =>
-                        <MenuItem key={w.Id} value={w.Id} primaryText={w.Name} leftIcon={<PlaceIcon />} />
-                    )
-                }
-            </DropDownMenu> : <div></div>
+                <DropDownMenu value={this.props.wardId}
+                    style={headerBarDDMenuStyle}
+                    labelStyle={headerBarDDMenuStyle.label}
+                    onChange={this.handleChange}>
+                    {
+                        this.state.wards.slice().map(w =>
+                            <MenuItem key={w.Id} value={w.Id} primaryText={w.Name} leftIcon={<PlaceIcon />} />
+                        )
+                    }
+                </DropDownMenu> : <div></div>
         );
 
         return (
             <AppBar
                 iconElementLeft={leftElement}
                 iconElementRight={rightElement}
-                iconStyleRight={{ marginTop: '0px'}}
+                iconStyleRight={{ marginTop: '0px' }}
                 title={this.state.title}
                 style={this.props.style}
-                titleStyle={{fontSize:'18px'}}
-                >
-                <SignOutButton style={ Object.assign({}, headerBarBtnStyle, styles.signOut)} onLoginout={ this.handleExitApp } />
+                titleStyle={{ fontSize: '18px' }}
+            >
+                <SignOutButton style={Object.assign({}, headerBarBtnStyle, styles.signOut)} onLoginout={this.handleExitApp} />
             </AppBar>
         );
     }

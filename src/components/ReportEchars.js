@@ -24,13 +24,18 @@ class ReportEchars extends React.Component {
     }
 
     componentDidMount() {
-        // 基于准备好的dom，初始化echarts实例
+        let { title, data } = this.props.match.params;
+        let dataArray = [];
+        dataArray.push(data);
         var myChart = echarts.init(document.getElementById('main'));
-        // 绘制图表
         myChart.setOption({
             title: {
-                text: 'xxxxx-趋势图',
+                text: `${title}-趋势图`,
                 left: 'center'
+            },
+            axisPointer: {
+                show: true,
+                snap: true
             },
             grid: {
                 left: '5%',
@@ -42,19 +47,17 @@ class ReportEchars extends React.Component {
             xAxis: {
                 type: 'category',
                 splitLine: { show: false },
-                data: ['一', '二', '三', '四']
+                data: [1]
             },
             yAxis: {
-                type: 'value',
-                min: 0,
-                max: 1
+                type: 'value'
             },
             series: [
                 {
-                    name: '邮件营销',
+                    name: title,
                     type: 'line',
-                    stack: '总量',
-                    data: [0.1, 0.6]
+                    stack: '结果',
+                    data: dataArray
                 }
             ]
         });

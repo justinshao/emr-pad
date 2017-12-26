@@ -7,8 +7,8 @@ import CircularProgress from 'material-ui/CircularProgress';
 import 'semantic-ui-css/semantic.css';
 import { getAssayRpt } from '../service';
 
-const colorRed = {color: 'red'};
-const colorBlue = {color: '#2185D0'};
+const colorRed = { color: 'red' };
+const colorBlue = { color: '#2185D0' };
 const tableCont = {
     height: '26px',
     lineHeight: '1.2',
@@ -18,7 +18,7 @@ const tableCont = {
     whiteSpace: 'normal',
     textOverflow: 'no',
     wordWrap: 'break-word',
-    width: '30px'
+    width: '20px'
 };
 const headerCont = {
     backgroundColor: 'rgba(0, 188, 212,0.4)',
@@ -29,7 +29,7 @@ const headerCont = {
     color: 'white',
     width: '30px'
 }
-const tableHeader2 = {width: '30%'}
+const tableHeader2 = { width: '24%' }
 
 class ReportLaboratory extends React.Component {
     constructor(props) {
@@ -39,8 +39,8 @@ class ReportLaboratory extends React.Component {
             detailHeader: '',
             detailBottom: '',
             details: [],
-            content:false,
-            loading:true
+            content: false,
+            loading: true,
         }
         this.handleReportEchars = this.handleReportEchars.bind(this);
     }
@@ -59,7 +59,7 @@ class ReportLaboratory extends React.Component {
     getAssayRptFun(requestNo, sourceType) {
         getAssayRpt(requestNo, sourceType)
             .then(data => {
-                if(data.length!=0){
+                if (data.length != 0) {
                     this.setState({
                         title: '化验报告单标题',
                         detailHeader:
@@ -83,21 +83,22 @@ class ReportLaboratory extends React.Component {
                                 <span style={spanStyle}>审核者：{data[0].Header.AuditEmp}</span>
                             </span>,
                         details: data[0].Details,
-                        content:true
+                        content: true,
+                        reportTime: data[0].Header.ReportTime
                     })
                 }
-                else{
+                else {
                     this.setState({
-                        content:false,
-                        loading:false
+                        content: false,
+                        loading: false
                     })
                 }
             })
     }
 
-    handleReportEchars() {
+    handleReportEchars(item) {
         if (this.props.onReportEchars) {
-            this.props.onReportEchars();
+            this.props.onReportEchars(item);
         }
     }
 
@@ -116,13 +117,14 @@ class ReportLaboratory extends React.Component {
             }
             return (
                 <TableRow style={Object.assign({}, tableContent, isNormal ? {} : isLow ? colorBlue : colorRed)} key={i}>
+                    <TableRowColumn style={{ ...tableContent, width: '36px' }}>{item.ItemCode}</TableRowColumn>
                     <TableRowColumn style={Object.assign({}, tableContent, tableHeader2)}>{item.Name}</TableRowColumn>
                     <TableRowColumn style={tableContent}>{item.ResultData}</TableRowColumn>
                     <TableRowColumn style={tableCont}>{item.ResultStateDesc}</TableRowColumn>
-                    <TableRowColumn style={tableContent}>{item.RefRange}</TableRowColumn>
+                    <TableRowColumn style={{ ...tableContent, width: '60px' }}>{item.RefRange}</TableRowColumn>
                     <TableRowColumn style={tableContent}>{item.ResultUnit}</TableRowColumn>
-                    <TableRowColumn style={tableContent}>
-                        <div onClick={this.handleReportEchars}>
+                    <TableRowColumn style={{ ...tableContent, width: '36px' }}>
+                        <div onClick={this.handleReportEchars.bind(this, item)}>
                             {isNormal ? <i className="bar chart icon" /> : isLow ? <i className="blue bar chart icon" /> : <i className="red bar chart icon" />}
                         </div>
                     </TableRowColumn>
@@ -136,16 +138,18 @@ class ReportLaboratory extends React.Component {
                         title={this.state.title}
                         detailHeader={this.state.detailHeader}
                         detailBottom={this.state.detailBottom}
+                        ifshow={true}
                     >
                         <Table style={{ 'border': '2px solid #f1f1f1' }} selectable={false}>
                             <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                                 <TableRow style={tableHeader}>
+                                    <TableHeaderColumn style={{ ...tableHeader, width: '36px' }} ></TableHeaderColumn>
                                     <TableHeaderColumn style={Object.assign({}, tableHeader, tableHeader2)}>检查项目</TableHeaderColumn>
-                                    <TableHeaderColumn style={tableHeader} >检查结果</TableHeaderColumn>
+                                    <TableHeaderColumn style={tableHeader} >结果</TableHeaderColumn>
                                     <TableHeaderColumn style={headerCont} ></TableHeaderColumn>
-                                    <TableHeaderColumn style={tableHeader} >参考范围</TableHeaderColumn>
+                                    <TableHeaderColumn style={{ ...tableHeader, width: '60px' }}>参考范围</TableHeaderColumn>
                                     <TableHeaderColumn style={tableHeader} >单位</TableHeaderColumn>
-                                    <TableHeaderColumn style={tableHeader} >趋势图</TableHeaderColumn>
+                                    <TableHeaderColumn style={{ ...tableHeader, width: '36px' }} >趋势</TableHeaderColumn>
                                 </TableRow>
                             </TableHeader>
                             <TableBody displayRowCheckbox={false}>
@@ -155,7 +159,7 @@ class ReportLaboratory extends React.Component {
                     </ReportTitle>
                 </div>
             ) :
-            this.state.loading?<CircularProgress size={60} thickness={7} style={{ display: 'block', margin: '30px auto' }} />:<NoResult />
+                this.state.loading ? <CircularProgress size={60} thickness={7} style={{ display: 'block', margin: '30px auto' }} /> : <NoResult />
         );
         return (
             <div style={contentStyle}>

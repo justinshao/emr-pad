@@ -18,14 +18,14 @@ class PatInfoContent extends React.Component {
     render() {
         let inforId = this.props.inforId;
         let content = (
-            inforId == 'patHospital' ? <PatHospital {...this.props}/> :
-                inforId == 'patBasicInfor' ? <PatBasicInfor {...this.props}/> :
-                    inforId == 'patAllergy' ? <PatAllergy {...this.props}/> :
-                        inforId == 'patDiet' ? <PatDiet {...this.props}/> :
-                            inforId == 'patAssociatHospital' ? <PatAssociatHospital {...this.props}/> :
-                                inforId == 'patRotation' ? <PatRotation {...this.props}/> :
-                                    inforId == 'patChangeHospital' ? <PatChangeHospital {...this.props}/> :
-                                        inforId == 'patAccount' ? <PatAccount {...this.props}/> : <PatHospital {...this.props}/>
+            inforId == 'patHospital' ? <PatHospital {...this.props} /> :
+                inforId == 'patBasicInfor' ? <PatBasicInfor {...this.props} /> :
+                    inforId == 'patAllergy' ? <PatAllergy {...this.props} /> :
+                        inforId == 'patDiet' ? <PatDiet {...this.props} /> :
+                            inforId == 'patAssociatHospital' ? <PatAssociatHospital {...this.props} /> :
+                                inforId == 'patRotation' ? <PatRotation {...this.props} /> :
+                                    inforId == 'patChangeHospital' ? <PatChangeHospital {...this.props} /> :
+                                        inforId == 'patAccount' ? <PatAccount {...this.props} /> : <PatHospital {...this.props} />
         );
         return (
             <div style={contentStyle}>

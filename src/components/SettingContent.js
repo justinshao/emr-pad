@@ -25,9 +25,9 @@ class SettingContent extends React.Component {
     handleOk() {
         if (!rIp.test(this.state.appRoot)) {
             this.setState({ appRootError: 'IP地址格式错误' });
-        } else{
+        } else {
             localStorage.setItem('appRoot', this.state.appRoot);
-            if(global.native){
+            if (global.native) {
                 global.native.saveAppRoot(this.state.appRoot);
             }
         }

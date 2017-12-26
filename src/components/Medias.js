@@ -36,7 +36,7 @@ export default class Medias extends React.Component {
         });
     }
 
-    handleError(error){
+    handleError(error) {
         this.setState({
             error: error
         });
@@ -62,8 +62,8 @@ export default class Medias extends React.Component {
                     index={this.state.slideIndex}
                     onChangeIndex={this.handleChange}>
                     <PicList emrId={this.props.emrId} onError={this.handleError} />
-                    <AudioList emrId={this.props.emrId} onError={this.handleError}/>
-                    <VideoList emrId={this.props.emrId} onError={this.handleError}/>
+                    <AudioList emrId={this.props.emrId} onError={this.handleError} />
+                    <VideoList emrId={this.props.emrId} onError={this.handleError} />
                 </SwipeableViews>
                 <Snackbar
                     open={!!this.state.error}

@@ -2,7 +2,7 @@ import React from 'react';
 
 export default (MediaList, getMedias, playMedia, deleteMedia) => {
     return class extends React.Component {
-        
+
         constructor(props) {
             super(props);
             this.state = {
@@ -53,8 +53,8 @@ export default (MediaList, getMedias, playMedia, deleteMedia) => {
 
             return (
                 <MediaList loading={loading} medias={medias} error={error}
-                        playHandler={this.handlePlay} deleteHandler={this.handleDelete}
-                        {...this.props} />
+                    playHandler={this.handlePlay} deleteHandler={this.handleDelete}
+                    {...this.props} />
             );
         }
     }

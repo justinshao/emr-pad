@@ -60,9 +60,9 @@ class EmrCatalog extends React.Component {
                     onNestedListToggle={() => this.handleNestedListToggle(c)} />
             );
         });
-        
+
         return (
-            <List style={ this.props.style }>
+            <List style={this.props.style}>
                 {list}
             </List>
         );

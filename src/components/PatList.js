@@ -10,11 +10,11 @@ import { getPats } from '../service';
 import { contentCenter } from '../styles';
 
 const styles = {
-  loading:{
+  loading: {
     display: 'block',
     margin: '30px auto'
   },
-  tile:{
+  tile: {
     backgroundColor: '#0096a9',
     boxShadow: '2px 2px 5px #777777',
     borderTopRightRadius: '5px',
@@ -26,7 +26,7 @@ const emptyPatList = [];
 
 class PatList extends React.Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       pats: emptyPatList,
@@ -70,10 +70,10 @@ class PatList extends React.Component {
 
   render() {
     let loading = (this.state.loading && <CircularProgress size={60} thickness={7} style={styles.loading} />);
-    let error = (this.state.error && <ErrorMessage message={this.state.error} style={contentCenter}/>);
+    let error = (this.state.error && <ErrorMessage message={this.state.error} style={contentCenter} />);
     let patList = (
       this.state.pats.length &&
-      <GridList cellHeight={ this.props.cellHeight || 300 } cols={ this.props.col || 5 } padding={20}>
+      <GridList cellHeight={this.props.cellHeight || 300} cols={this.props.col || 5} padding={20}>
         {
           this.state.pats.slice().map(pat =>
             <GridTile key={pat.VisitId} style={styles.tile}>

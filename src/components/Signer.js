@@ -218,12 +218,12 @@ class Signer {
         return this._isEmpty;
     }
 
-    copyTo(canvas, x, y, width, height){
+    copyTo(canvas, x, y, width, height) {
         var target = canvas.getContext('2d');
 
         target.drawImage(this._canvas,
-                0, 0, this._canvas.width, this._canvas.height,
-                x, y, width, height);
+            0, 0, this._canvas.width, this._canvas.height,
+            x, y, width, height);
     }
 
     _reset() {

@@ -24,7 +24,7 @@ class WritingBoard extends React.Component {
             maxWidth: 7
         });
 
-        if(this.props.enabled){
+        if (this.props.enabled) {
             this.signer.on();
         }
     }
@@ -32,31 +32,31 @@ class WritingBoard extends React.Component {
     componentWillUnmount() {
         this.signer.off();
     }
-    
-    handleBegin(){
+
+    handleBegin() {
         this.stopTimer();
     }
     handleEnd() {
         this.startTimer();
     }
-    handlePostWord(){
-        if(this.props.onPostWord){
+    handlePostWord() {
+        if (this.props.onPostWord) {
             this.stopTimer();
             this.props.onPostWord(this.signer);
             this.signer.clear();
         }
     }
 
-    startTimer(){
+    startTimer() {
         this.timer = setTimeout(this.handlePostWord, this.props.interval);
     }
-    stopTimer(){
-        if(this.timer){
+    stopTimer() {
+        if (this.timer) {
             clearTimeout(this.timer);
             this.timer = null;
         }
     }
-    
+
     render() {
         // console.log(writingBoardStyle);
 

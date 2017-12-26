@@ -21,13 +21,13 @@ const styles = {
         height: `${bodyHeight}` - 170,
         overflowY: 'hidden'
     },
-    circleStyle:{
+    circleStyle: {
         display: 'block',
         margin: '30px auto',
-        position:'absolute',
-        left:'50%',
-        top:'30%',
-        transform:'translateX(-50%)'
+        position: 'absolute',
+        left: '50%',
+        top: '30%',
+        transform: 'translateX(-50%)'
     }
 }
 
@@ -62,7 +62,7 @@ class ReportDtAdviceContent extends React.Component {
     }
 
     render() {
-        let tableRow = this.state.content?(this.state.data.map(item => {
+        let tableRow = this.state.content ? (this.state.data.map(item => {
             let stateColor = { backgroundColor: item.StateColor };
             let rows = item.Details.map((detail, i) => {
                 if (i == 0) {
@@ -95,7 +95,7 @@ class ReportDtAdviceContent extends React.Component {
                 }
             });
             return rows;
-        })):''
+        })) : ''
         return (
             <div>
                 <Table style={{ 'border': '2px solid #f1f1f1', 'minWidth': '760px' }} selectable={false} bodyStyle={{ 'minWidth': '760px' }} wrapperStyle={styles.wrapperStyle}>

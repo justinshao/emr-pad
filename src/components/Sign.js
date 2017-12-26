@@ -31,13 +31,13 @@ class Sign extends React.Component {
         this.handleAlertClose = this.handleAlertClose.bind(this);
     }
 
-    handleClear(){
+    handleClear() {
         this.setState({ empty: true });
     }
-    handlePost(){
+    handlePost() {
         const data = this.data;
         const { emrId } = this.props;
-        if(data){
+        if (data) {
             let base64 = data.match(/data:image\/.+;base64,(.+)/)[1];
 
             patSign(emrId, base64)
@@ -45,7 +45,7 @@ class Sign extends React.Component {
                 .catch((e) => this.setState({ alertMessage: e.message }))
         }
     }
-    handleWritingPost(data){
+    handleWritingPost(data) {
         this.data = data;
     }
 
@@ -80,9 +80,9 @@ class Sign extends React.Component {
 
         return (
             <div style={this.props.style}>
-                <SignBoard width={600} height={200} style={ signBoardStyle } empty={ this.state.empty }
-                        onPost={this.handleWritingPost}/><br/>
-                { btns }
+                <SignBoard width={600} height={200} style={signBoardStyle} empty={this.state.empty}
+                    onPost={this.handleWritingPost} /><br />
+                {btns}
                 <Snackbar
                     open={!!alertMessage}
                     message={alertMessage}

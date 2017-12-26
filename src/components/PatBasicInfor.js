@@ -110,7 +110,7 @@ class PatBasicInfor extends React.Component {
                         </TableBody>
                     </Table>
                 </div>
-            ) :<CircularProgress size={60} thickness={7} style={{ display: 'block', margin: '30px auto' }} />
+            ) : <CircularProgress size={60} thickness={7} style={{ display: 'block', margin: '30px auto' }} />
         )
         return (
             <div>

@@ -86,7 +86,7 @@ class PatCatalogBar extends React.Component {
                     onPaitentInfor={this.handlePaitentInfor}
                     regId={this.props.regId}
                     sourceType={this.props.sourceType}
-                    />
+                />
                 <List>
                     <ListItem
                         key='zhuyuan'

@@ -5,7 +5,7 @@ const viewHeight = document.body.clientHeight;
 const contentStyle = {
     'width': '100%',
     'paddingTop': '64px',
-    'height': `${viewHeight-64}px`,
+    'height': `${viewHeight - 64}px`,
     'overflow': 'auto'
 };
 
@@ -15,7 +15,7 @@ class ReportCareOrder extends React.Component {
         let recordNo = this.props.requestNo;
         return (
             <div style={contentStyle}>
-                <ImageViewer src={`/api/NursingImage?recordNo=${recordNo}`}/>
+                <ImageViewer src={`/api/NursingImage?recordNo=${recordNo}`} />
             </div>
         )
     }

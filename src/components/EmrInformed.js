@@ -7,7 +7,7 @@ import logger from '../logger';
 
 class EmrSign extends React.Component {
 
-    
+
 
     constructor(props) {
         super(props);
@@ -38,8 +38,8 @@ class EmrSign extends React.Component {
 
         return (
             <div>
-                <NavBackHeaderBar onNavBackRequest={this.handleNavBackRequest} title="知情同意书"/>
-                <Informed style={ contentStyle } emrId={emrId} informedText={ this.state.informedText } />
+                <NavBackHeaderBar onNavBackRequest={this.handleNavBackRequest} title="知情同意书" />
+                <Informed style={contentStyle} emrId={emrId} informedText={this.state.informedText} />
             </div>
         );
     }
