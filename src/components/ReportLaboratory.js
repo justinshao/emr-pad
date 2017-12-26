@@ -83,7 +83,7 @@ class ReportLaboratory extends React.Component {
                                 <span style={spanStyle}>审核者：{data[0].Header.AuditEmp}</span>
                             </span>,
                         details: data[0].Details,
-                        content:true,
+                        content:true
                     })
                 }
                 else{
@@ -154,7 +154,7 @@ class ReportLaboratory extends React.Component {
                         </Table>
                     </ReportTitle>
                 </div>
-            ) : 
+            ) :
             this.state.loading?<CircularProgress size={60} thickness={7} style={{ display: 'block', margin: '30px auto' }} />:<NoResult />
         );
         return (

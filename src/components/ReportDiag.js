@@ -5,12 +5,17 @@ import Toggle from 'material-ui/Toggle';
 import NoResult from './NoResult';
 import { Icon } from 'semantic-ui-react';
 import { getDiag } from '../service';
+import '../styles/App.css';
 
+const bodyHeight = document.body.clientHeight;
 const styles = {
     toggle: { maxWidth: 140, backgroundColor: 'white' },
     noshow: { display: 'none' },
     typeNameStyle: { color: 'rgb(0, 188, 212)', textAlign: 'left', fontWeight: '600' },
-    // WebkitScrollbarY: { display: 'none' }
+    wrapperStyle: {
+        height: `${bodyHeight}` - 115,
+        overflowY: 'hidden'
+    }
 };
 
 class ReportDiag extends React.Component {
@@ -120,7 +125,7 @@ class ReportDiag extends React.Component {
             true ? (
                 <div>
                     <h3 style={titleStyle}>诊断信息</h3>
-                    <Table style={{ 'border': '2px solid #f1f1f1', 'minWidth': '560px' }} bodyStyle={{ 'minWidth': '560px' }} selectable={false}>
+                    <Table id="aaaaa" style={{ 'border': '2px solid #f1f1f1', 'minWidth': '560px' }} bodyStyle={{ 'minWidth': '560px' }} selectable={false} wrapperStyle={styles.wrapperStyle}>
                         <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                             <TableRow style={tableHeader}>
                                 <TableHeaderColumn style={tableHeader} colSpan='2'>诊断名</TableHeaderColumn>
@@ -133,7 +138,7 @@ class ReportDiag extends React.Component {
                                 <TableHeaderColumn style={tableHeader} >诊断依据</TableHeaderColumn>
                             </TableRow>
                         </TableHeader>
-                        <TableBody displayRowCheckbox={false} style={styles.WebkitScrollbarY}>
+                        <TableBody displayRowCheckbox={false}>
                             {
                                 code4 != '' ? (<TableRow style={tableContent} >
                                     <TableRowColumn style={tableContent} colSpan='9'>

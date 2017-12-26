@@ -31,7 +31,7 @@ class ClinicCatalogWrapper extends React.Component {
         let menu = this.props.menu;
         let menus = menu.map(mainmenu => {
             let nestedItem = mainmenu.Items ? (mainmenu.Items.map(item =>{
-                let color=item.hasOwnProperty("HasReport")?(item.HasReport?'':'blue'):'';
+                let color=item.hasOwnProperty('HasReport')?(item.HasReport?'':'blue'):'';
                 return (
                     <ListItem
                     key={item.Id}

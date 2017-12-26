@@ -7,9 +7,7 @@ import {
     TableRow,
     TableRowColumn
 } from 'material-ui/Table';
-import { tableHeader, tableContent, wrapperStyle } from '../styles';
-import CircularProgress from 'material-ui/CircularProgress';
-import NoResult from './NoResult';
+import { tableHeader, tableContent } from '../styles';
 import { getInpatOrder } from '../service';
 
 const bodyHeight = document.body.clientHeight;
@@ -20,7 +18,7 @@ const styles = {
     bodyNarrow: { width: '40px' },
     headerNarrow: { width: '40px' },
     wrapperStyle: {
-        height: `${bodyHeight}` - 174,
+        height: `${bodyHeight}` - 170,
         overflowY: 'hidden'
     },
     circleStyle:{

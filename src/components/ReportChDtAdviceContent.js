@@ -19,7 +19,7 @@ const styles = {
         width: '40px'
     },
     wrapperStyle: {
-        height: `${bodyHeight}` - 190,
+        height: `${bodyHeight}` - 185,
         overflowY: 'hidden'
     },
     circleStyle: {

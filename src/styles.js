@@ -112,7 +112,7 @@ const cardtitle = {
     float: 'left',
     lineHeight: '1.6',
     margin: '0',
-    width: '20%'
+    width: '22%'
 };
 const cardstyle = {
     padding: '10px'

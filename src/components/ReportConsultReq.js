@@ -149,7 +149,7 @@ class ReportConsultReq extends React.Component {
                 detailBottom={this.state.detailBottom}
             >
                 {conContent}
-            </ReportTitle>) : 
+            </ReportTitle>) :
             this.state.loading?<CircularProgress size={60} thickness={7} style={{ display: 'block', margin: '30px auto' }} />:<NoResult />
         );
         return (
