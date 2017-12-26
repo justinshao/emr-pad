@@ -37,7 +37,7 @@ class HomeHeaderBar extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleExitApp = this.handleExitApp.bind(this);
         this.handleUserHome = this.handleUserHome.bind(this);
-        this.handleChangeType=this.handleChangeType.bind(this);
+        this.handleChangeType = this.handleChangeType.bind(this);
     }
 
     componentDidMount() {
@@ -78,11 +78,11 @@ class HomeHeaderBar extends React.Component {
     }
 
     handleChangeType() {
-        if(this.props.onChangeType){
+        if (this.props.onChangeType) {
             this.props.onChangeType();
         }
         this.setState({
-            changeIcon:!this.state.changeIcon
+            changeIcon: !this.state.changeIcon
         })
     }
 

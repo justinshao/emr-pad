@@ -73,8 +73,8 @@ const styles = {
         top: '20px',
         left: '125px'
     },
-    ageBox:{
-        marginLeft:'21px'
+    ageBox: {
+        marginLeft: '21px'
     }
 }
 
