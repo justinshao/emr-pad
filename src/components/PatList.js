@@ -86,7 +86,7 @@ class PatList extends React.Component {
         }
       </GridList>
     );
-    let none = this.props.wardId && !patList && <h1>暂无病人</h1>
+    let none = this.props.wardId && !patList && <h1 style={{textAlign:'center'}}>暂无病人</h1>
 
     return (
       <div style={this.props.style}>

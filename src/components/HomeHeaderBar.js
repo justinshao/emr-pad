@@ -1,15 +1,14 @@
 import React from 'react';
 import AppBar from 'material-ui/AppBar';
-import DropDownMenu from 'material-ui/DropDownMenu';
-import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';
-import PlaceIcon from 'material-ui/svg-icons/maps/place';
 import AccountCircleIcon from 'material-ui/svg-icons/action/account-circle';
 import SignOutButton from './SignOutButton';
-import { headerBarDDMenuStyle, headerBarBtnStyle } from '../styles';
+import { headerBarBtnStyle } from '../styles';
 import { getWards, getLoginInfo } from '../service';
 import logger from '../logger';
-import { Icon } from 'semantic-ui-react';
+import { Icon, Dropdown } from 'semantic-ui-react';
+import '../styles/App.css'
+
 
 const styles = {
     signOut: {
@@ -31,7 +30,8 @@ class HomeHeaderBar extends React.Component {
         this.state = {
             title: null,
             wards: [],
-            changeIcon: false
+            changeIcon: false,
+            value:props.wardId
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -53,10 +53,6 @@ class HomeHeaderBar extends React.Component {
 
         getLoginInfo().then(info => this.setState({ title: `${info.Name}（${info.Dept}）` }))
             .catch(() => this.setState({ title: '获取登录信息出错' }));
-    }
-
-    handleChange(event, index, value) {
-        this.selectWard(value);
     }
 
     handleExitApp() {
@@ -86,21 +82,33 @@ class HomeHeaderBar extends React.Component {
         })
     }
 
+    handleChange(e, { value }){
+        this.setState({ value });
+        this.selectWard(value);
+    }
+
     render() {
         let leftElement = (<IconButton onTouchTap={this.handleUserHome}><AccountCircleIcon /></IconButton>);
-        let rightElement = (
-            this.state.wards.length ?
-                <DropDownMenu value={this.props.wardId}
-                    style={headerBarDDMenuStyle}
-                    labelStyle={headerBarDDMenuStyle.label}
-                    onChange={this.handleChange}>
-                    {
-                        this.state.wards.slice().map(w =>
-                            <MenuItem key={w.Id} value={w.Id} primaryText={w.Name} leftIcon={<PlaceIcon />} />
-                        )
-                    }
-                </DropDownMenu> : <div></div>
-        );
+        let value = this.state.value;
+        var options = [];
+        value ? this.state.wards.map(w => {
+            let option = { key: '', text: '', value: '' };
+            option.key = w.Id;
+            option.text = w.Name;
+            option.value = w.Id;
+            options.push(option);
+        }) : '';
+
+        let rightElement = this.state.wards.length ? <div style={{marginRight:'10px',height:'100%',lineHeight:'64px'}}><Dropdown onChange={this.handleChange}
+            options={options}
+            placeholder='Choose an option'
+            floating
+            scrolling
+            icon='filter'
+            value={value}
+            style={{border:'none',background:'none',color:'white',width:'20px!important'}}
+            className={'wardStyle'}
+        /></div> : <div></div>;
 
         return (
             <AppBar

@@ -56,12 +56,13 @@ class ClinicBottomMenu extends React.Component {
                 )
             }
         })
+        let menuLength = this.props.menu.length < 5 ? '100%' : this.props.menu.length * bodywidth
 
         return (
             <div className={'mobileComponentShow'}>
                 <div className={'bottomMenu'} style={{ height: this.state.bottomMenuHeight }}>
                     <Menu
-                        style={{ position: 'absolute', bottom: '0px', left: '0px', width: this.props.menu.length * bodywidth }}
+                        style={{ position: 'absolute', bottom: '0px', left: '0px', width: menuLength }}
                         widths={Math.max(this.props.menu.length, 1)}
                         onClick={this.handleIsVisible}>
                         {menu}

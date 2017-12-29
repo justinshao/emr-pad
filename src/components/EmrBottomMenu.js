@@ -9,20 +9,20 @@ class EmrBottomMenu extends React.Component {
         super(props);
         this.state = {
             bottomMenuHeight: 70,
-            menu:[]
+            menu: []
         }
         this.handleEmrSelected = this.handleEmrSelected.bind(this);
         this.handleChangeHeight = this.handleChangeHeight.bind(this);
     }
 
-    componentDidMount(){
-        let {regId}=this.props;
+    componentDidMount() {
+        let { regId } = this.props;
         this.fetchCatalog(regId);
     }
 
     fetchCatalog(regId) {
         getEmrCatalog(regId)
-            .then(catalog => this.setState({menu:catalog}))
+            .then(catalog => this.setState({ menu: catalog }))
     }
 
     // 跳转页面
@@ -38,10 +38,10 @@ class EmrBottomMenu extends React.Component {
         })
     }
 
-    
+
 
     render() {
-        let menu = this.state.menu.map((menuItem, i) => {
+        let menu = this.state.menu.length!=0?this.state.menu.map((menuItem, i) => {
             if (menuItem.Documents) {
                 let items = menuItem.Documents.map((item, j) => {
                     return (
@@ -68,13 +68,14 @@ class EmrBottomMenu extends React.Component {
                     <Menu.Item key={i} onClick={this.handleEmrSelected.bind(this, menuItem)}>{menuItem.Title}</Menu.Item>
                 )
             }
-        })
+        }):<h3 style={{lineHeight:'40px'}}>暂无病历</h3>
+        let menuLength = this.state.menu.length < 5 ? '100%' : this.state.menu.length * bodywidth
 
         return (
             <div className={'mobileComponentShow'}>
                 <div className={'bottomMenu'} style={{ height: this.state.bottomMenuHeight }}>
                     <Menu
-                        style={{ position: 'absolute', bottom: '0px', left: '0px', width: this.state.menu.length * bodywidth }}
+                        style={{ position: 'absolute', bottom: '0px', left: '0px', width: menuLength }}
                         widths={Math.max(this.state.menu.length, 1)}>
                         {menu}
                     </Menu>

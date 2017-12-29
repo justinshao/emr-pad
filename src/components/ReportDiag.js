@@ -1,5 +1,5 @@
 import React from 'react';
-import { contentStyle, titleStyle, tableHeader, tableContent } from '../styles';
+import { titleStyle, tableHeader, tableContent } from '../styles';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 import Toggle from 'material-ui/Toggle';
 import NoResult from './NoResult';
@@ -15,6 +15,11 @@ const styles = {
     wrapperStyle: {
         height: `${bodyHeight}` - 115,
         overflowY: 'hidden'
+    },
+    contentStyle:{
+        width: '100%',
+        paddingTop: '64px',
+        boxSizing: 'border-box'
     }
 };
 
@@ -125,7 +130,7 @@ class ReportDiag extends React.Component {
             true ? (
                 <div>
                     <h3 style={titleStyle}>诊断信息</h3>
-                    <Table id="aaaaa" style={{ 'border': '2px solid #f1f1f1', 'minWidth': '560px' }} bodyStyle={{ 'minWidth': '560px' }} selectable={false} wrapperStyle={styles.wrapperStyle}>
+                    <Table id="aaaaa" style={{ 'border': '2px solid #f1f1f1', 'minWidth': '560px' }} bodyStyle={{ 'minWidth': '560px',paddingBottom:'60px' }} selectable={false} wrapperStyle={styles.wrapperStyle}>
                         <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                             <TableRow style={tableHeader}>
                                 <TableHeaderColumn style={tableHeader} colSpan='2'>诊断名</TableHeaderColumn>
@@ -138,7 +143,7 @@ class ReportDiag extends React.Component {
                                 <TableHeaderColumn style={tableHeader} >诊断依据</TableHeaderColumn>
                             </TableRow>
                         </TableHeader>
-                        <TableBody displayRowCheckbox={false}>
+                        <TableBody displayRowCheckbox={false} style={{paddingBottom:'60px'}}>
                             {
                                 code4 != '' ? (<TableRow style={tableContent} >
                                     <TableRowColumn style={tableContent} colSpan='9'>
@@ -197,7 +202,7 @@ class ReportDiag extends React.Component {
             ) : <NoResult />
         );
         return (
-            <div style={contentStyle}>
+            <div style={styles.contentStyle}>
                 {showContent}
             </div>
         )
