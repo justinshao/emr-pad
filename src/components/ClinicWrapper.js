@@ -2,7 +2,7 @@ import React from 'react';
 import ClinicHeaderBar from './ClinicHeaderBar';
 import ClinicCatalogBar from './ClinicCatalogBar';
 import ClinicView from './ClinicView';
-import ClinicBottomMenu from './ClinicBottomMenu'
+import ClinicBottomMenu from './ClinicBottomMenu';
 import { getMainMenu } from '../service';
 
 

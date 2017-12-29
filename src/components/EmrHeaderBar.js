@@ -16,6 +16,7 @@ import NavBackHeaderBar from './NavBackHeaderBar';
 import CircularProgress from 'material-ui/CircularProgress';
 import { headerBarStyle, headerBarBtnStyle, headerBarLoadingStyle } from '../styles';
 import { getPat } from '../service';
+import '../styles/App.css';
 
 class EmrHeaderBar extends React.Component {
 
@@ -207,6 +208,7 @@ class EmrHeaderBar extends React.Component {
           icon={<MenuIcon />}
           style={headerBarBtnStyle}
           onTouchTap={this.handleMenuButtonTouchTap}
+          className='webComponentShow'
         />
       </NavBackHeaderBar>
     );

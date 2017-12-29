@@ -3,6 +3,7 @@ import EmrHeaderBar from './EmrHeaderBar';
 import EmrCalalogBar from './EmrCalalogBar';
 import ImageViewer from './ImageViewer';
 import mobileApi from '../mobileApi';
+import EmrBottomMenu from './EmrBottomMenu';
 import { fullContentStyle } from '../styles';
 
 class EmrWrapper extends React.Component {
@@ -162,6 +163,10 @@ class EmrWrapper extends React.Component {
                     open={this.state.menuOpen}
                     onEmrSelected={this.handleEmrSelected}
                     onRequestChange={this.handleMenuRequestChange} />
+                <EmrBottomMenu
+                    onEmrSelected={this.handleEmrSelected}
+                    regId={regId}
+                />
                 {emrId &&
                     <div style={fullContentStyle}>
                         <ImageViewer
