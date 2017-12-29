@@ -2,6 +2,7 @@ import React from 'react';
 import ClinicCatalogWrapper from './ClinicCatalogWrapper';
 import Drawer from 'material-ui/Drawer';
 import PatInfoWrapper from './PatInfoWrapper';
+import '../styles/App.css';
 
 class ClinicCatalogBar extends React.Component {
 
@@ -27,10 +28,12 @@ class ClinicCatalogBar extends React.Component {
 
     render() {
         return (
-            <Drawer docked={false} open={this.props.open} onRequestChange={this.props.onMenuRequestChange} openSecondary={true} containerStyle={{ overflow: 'hidden' }}>
-                <PatInfoWrapper onPaitentInfor={this.handlePaitentInfor} sourceType={this.props.sourceType} regId={this.props.regId} />
-                <ClinicCatalogWrapper menu={this.props.menu} onChangeTap={this.handleChangeTap} loading={this.props.loading} />
-            </Drawer>
+            <div className='webComponentShow'>
+                <Drawer docked={false} open={this.props.open} onRequestChange={this.props.onMenuRequestChange} openSecondary={true} containerStyle={{ overflow: 'hidden' }}>
+                    <PatInfoWrapper onPaitentInfor={this.handlePaitentInfor} sourceType={this.props.sourceType} regId={this.props.regId} />
+                    <ClinicCatalogWrapper menu={this.props.menu} onChangeTap={this.handleChangeTap} loading={this.props.loading} />
+                </Drawer>
+            </div>
         );
     }
 }

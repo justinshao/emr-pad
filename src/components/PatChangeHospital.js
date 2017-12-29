@@ -6,7 +6,7 @@ import CircularProgress from 'material-ui/CircularProgress';
 import { getInpatChange } from '../service';
 
 const styles = {
-    wideStyle: { width: '100px' }
+    wideStyle: { width: '14%' }
 }
 
 class PatChangeHospital extends React.Component {
@@ -34,7 +34,7 @@ class PatChangeHospital extends React.Component {
             <TableRow style={tableContent} key={i}>
                 <TableRowColumn style={{ ...tableContent, ...styles.wideStyle }}>{item.RecordTime}</TableRowColumn>
                 <TableRowColumn style={tableContent}>{item.State}</TableRowColumn>
-                <TableRowColumn style={{ ...tableContent, width: '100px' }}>{item.InWardName}</TableRowColumn>
+                <TableRowColumn style={{ ...tableContent, ...styles.wideStyle }}>{item.InWardName}</TableRowColumn>
                 <TableRowColumn style={tableContent}>{item.DeptName}</TableRowColumn>
                 <TableRowColumn style={tableContent}>{item.BedName}</TableRowColumn>
                 <TableRowColumn style={tableContent}>{item.CareLevel}</TableRowColumn>
@@ -52,7 +52,7 @@ class PatChangeHospital extends React.Component {
                             <TableRow style={tableHeader} >
                                 <TableHeaderColumn style={{ ...tableHeader, ...styles.wideStyle }}>记录时间</TableHeaderColumn>
                                 <TableHeaderColumn style={tableHeader}>状态</TableHeaderColumn>
-                                <TableHeaderColumn style={{ ...tableHeader, width: '100px' }}>病区</TableHeaderColumn>
+                                <TableHeaderColumn style={{ ...tableHeader,...styles.wideStyle }}>病区</TableHeaderColumn>
                                 <TableHeaderColumn style={tableHeader}>科室</TableHeaderColumn>
                                 <TableHeaderColumn style={tableHeader}>床位</TableHeaderColumn>
                                 <TableHeaderColumn style={tableHeader}>护理级别</TableHeaderColumn>

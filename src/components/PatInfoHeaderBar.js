@@ -5,6 +5,7 @@ import CircularProgress from 'material-ui/CircularProgress';
 import { getPat } from '../service';
 import MenuIcon from 'material-ui/svg-icons/navigation/menu';
 import FlatButton from 'material-ui/FlatButton';
+import '../styles/App.css';
 
 class PatInfoHeaderBar extends React.Component {
     constructor(props) {
@@ -53,7 +54,8 @@ class PatInfoHeaderBar extends React.Component {
                 <FlatButton
                     icon={<MenuIcon />}
                     style={headerBarBtnStyle}
-                    onTouchTap={this.handleMenuButtonTouchTap} />
+                    onTouchTap={this.handleMenuButtonTouchTap}
+                    className={'webComponentShow'}/>
             </NavBackHeaderBar>
         )
     }

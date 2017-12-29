@@ -2,7 +2,9 @@ import React from 'react';
 import ClinicHeaderBar from './ClinicHeaderBar';
 import ClinicCatalogBar from './ClinicCatalogBar';
 import ClinicView from './ClinicView';
+import ClinicBottomMenu from './ClinicBottomMenu'
 import { getMainMenu } from '../service';
+
 
 class ClinicWrapper extends React.Component {
     constructor(props) {
@@ -89,6 +91,7 @@ class ClinicWrapper extends React.Component {
                     regId={regId}
                     onNavBackRequest={this.handleNavBackRequest}
                     onOpenMenuRequest={this.handleMenuButtonTouchTap}
+                    onPaitentInfor={this.handlePaitentInfor}
                 />
                 {/* 侧边栏菜单组件 */}
                 <ClinicCatalogBar
@@ -99,6 +102,10 @@ class ClinicWrapper extends React.Component {
                     menu={this.state.menu}
                     onMenuRequestChange={this.handleMenuRequestChange}
                     onPaitentInfor={this.handlePaitentInfor}
+                    onChangeTap={this.handleChangeTap}
+                />
+                <ClinicBottomMenu
+                    menu={this.state.menu}
                     onChangeTap={this.handleChangeTap}
                 />
                 {/* 正文组件 */}

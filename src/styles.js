@@ -18,6 +18,7 @@ const headerBarStyle = {
 const contentStyle = {
     width: '100%',
     paddingTop: `${headerBarHeight}px`,
+    paddingBottom: '50px',
     boxSizing: 'border-box'
 };
 const fullContentStyle = Object.assign({}, contentStyle, {

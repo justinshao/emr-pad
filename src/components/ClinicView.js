@@ -10,6 +10,7 @@ import ReportChDtAdvice from './ReportChDtAdvice';
 import ReportDiag from './ReportDiag';
 import ReportPathology from './ReportPathology';
 import EmrFirstPage from './EmrFirstPage';
+import '../styles/App.css';
 
 class ClinicView extends React.Component {
 

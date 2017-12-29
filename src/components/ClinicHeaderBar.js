@@ -5,6 +5,13 @@ import CircularProgress from 'material-ui/CircularProgress';
 import { getPat } from '../service';
 import MenuIcon from 'material-ui/svg-icons/navigation/menu';
 import FlatButton from 'material-ui/FlatButton';
+import '../styles/App.css';
+import { Icon } from 'semantic-ui-react';
+
+const style = {
+    'color': 'white',
+    'paddingRight': '40px'
+}
 
 class ClinicHeaderBar extends React.Component {
     constructor(props) {
@@ -14,6 +21,7 @@ class ClinicHeaderBar extends React.Component {
         };
         this.handleNavBackRequest = this.handleNavBackRequest.bind(this);
         this.handleMenuButtonTouchTap = this.handleMenuButtonTouchTap.bind(this);
+        this.handlePaitentInfor = this.handlePaitentInfor.bind(this);
     }
 
     // 挂在时加载病人信息
@@ -37,12 +45,17 @@ class ClinicHeaderBar extends React.Component {
         }
     }
 
+    // 跳转病人信息
+    handlePaitentInfor() {
+        if (this.props.onPaitentInfor) {
+            this.props.onPaitentInfor();
+        }
+    }
+
+
+
     render() {
         let title = (this.state.title || <CircularProgress color="white" size={headerBarLoadingStyle.size} style={headerBarLoadingStyle} />);
-        const style = {
-            'color': 'white',
-            'paddingRight': '40px'
-        }
         return (
             <NavBackHeaderBar
                 title={title}
@@ -52,7 +65,13 @@ class ClinicHeaderBar extends React.Component {
                 <FlatButton
                     icon={<MenuIcon />}
                     style={headerBarBtnStyle}
-                    onTouchTap={this.handleMenuButtonTouchTap} />
+                    onTouchTap={this.handleMenuButtonTouchTap}
+                    className='webComponentShow'
+                />
+                <div className={'userIcon'} onClick={this.handlePaitentInfor}>
+                    <Icon name='user circle' size='big' />
+                </div>
+
             </NavBackHeaderBar>
         )
     }

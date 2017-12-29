@@ -1,7 +1,5 @@
 import React from 'react';
-import {
-    Redirect
-} from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import AppBar from 'material-ui/AppBar';
 import SettingsIcon from 'material-ui/svg-icons/action/settings';
 import IconButton from 'material-ui/IconButton';

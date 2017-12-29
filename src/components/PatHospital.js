@@ -45,9 +45,9 @@ class PatHospital extends React.Component {
                         </TableHeader>
                         <TableBody displayRowCheckbox={false}>
                             <TableRow style={tableContent} >
-                                <TableRowColumn style={{ ...tableContent, width: '86px' }}>姓名</TableRowColumn>
+                                <TableRowColumn style={{ ...tableContent, width: '23%' }}>姓名</TableRowColumn>
                                 <TableRowColumn style={tableContent}>{this.state.data.Name}</TableRowColumn>
-                                <TableRowColumn style={{ ...tableContent, width: '86px' }}>性别</TableRowColumn>
+                                <TableRowColumn style={{ ...tableContent, width: '23%' }}>性别</TableRowColumn>
                                 <TableRowColumn style={tableContent}>{this.state.data.Sex}</TableRowColumn>
                             </TableRow>
                             <TableRow style={tableContent}>

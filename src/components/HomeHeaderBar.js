@@ -9,7 +9,7 @@ import SignOutButton from './SignOutButton';
 import { headerBarDDMenuStyle, headerBarBtnStyle } from '../styles';
 import { getWards, getLoginInfo } from '../service';
 import logger from '../logger';
-import { Icon } from 'semantic-ui-react'
+import { Icon } from 'semantic-ui-react';
 
 const styles = {
     signOut: {

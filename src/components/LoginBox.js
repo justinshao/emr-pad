@@ -10,8 +10,8 @@ class LoginBox extends React.Component {
         super(props);
 
         this.state = {
-            usr: props.usr,
-            pwd: props.pwd
+            usr: '',
+            pwd: ''
         };
 
         this.handleLoginTouchTap = this.handleLoginTouchTap.bind(this);

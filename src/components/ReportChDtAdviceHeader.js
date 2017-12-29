@@ -59,7 +59,7 @@ class ReportChDtAdviceHeader extends React.Component {
                         <Dropdown.Item style={{ textAlign: 'center' }} onClick={this.handleNotDecoct.bind(this, 1)}>免煎中药</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
-                <Dropdown text={this.state.selectFilter} pointing className='link item'>
+                <Dropdown text={this.state.selectFilter} pointing className='link item '>
                     <Dropdown.Menu>
                         <Dropdown.Item style={{ textAlign: 'center' }} onClick={this.handleselectFilter.bind(this, 2)}>当日</Dropdown.Item>
                         <Dropdown.Item style={{ textAlign: 'center' }} onClick={this.handleselectFilter.bind(this, 1)}>未停</Dropdown.Item>

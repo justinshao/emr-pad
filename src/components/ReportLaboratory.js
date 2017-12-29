@@ -17,8 +17,7 @@ const tableCont = {
     fontSize: '12px',
     whiteSpace: 'normal',
     textOverflow: 'no',
-    wordWrap: 'break-word',
-    width: '20px'
+    wordWrap: 'break-word'
 };
 const headerCont = {
     backgroundColor: 'rgba(0, 188, 212,0.4)',
@@ -26,9 +25,11 @@ const headerCont = {
     lineHeight: '1',
     padding: '0',
     fontSize: '13px',
-    color: 'white',
-    width: '30px'
+    color: 'white'
 }
+const wrapperStyle={width:'16%'}
+const narrowStyle={width:'14%'}
+const minStyle={width:'6%'}
 const tableHeader2 = { width: '24%' }
 
 class ReportLaboratory extends React.Component {
@@ -61,7 +62,7 @@ class ReportLaboratory extends React.Component {
             .then(data => {
                 if (data.length != 0) {
                     this.setState({
-                        title: '化验报告单标题',
+                        title: `${data[0].Header.Title} - 化验报告单`,
                         detailHeader:
                             <span>
                                 <span style={spanStyle}>姓名：{data[0].Header.PatientName}</span>
@@ -117,13 +118,13 @@ class ReportLaboratory extends React.Component {
             }
             return (
                 <TableRow style={Object.assign({}, tableContent, isNormal ? {} : isLow ? colorBlue : colorRed)} key={i}>
-                    <TableRowColumn style={{ ...tableContent, width: '36px' }}>{item.ItemCode}</TableRowColumn>
+                    <TableRowColumn style={{ ...tableContent, ...narrowStyle }}>{item.ItemCode}</TableRowColumn>
                     <TableRowColumn style={Object.assign({}, tableContent, tableHeader2)}>{item.Name}</TableRowColumn>
                     <TableRowColumn style={tableContent}>{item.ResultData}</TableRowColumn>
-                    <TableRowColumn style={tableCont}>{item.ResultStateDesc}</TableRowColumn>
-                    <TableRowColumn style={{ ...tableContent, width: '60px' }}>{item.RefRange}</TableRowColumn>
+                    <TableRowColumn style={{...tableCont,...minStyle}}>{item.ResultStateDesc}</TableRowColumn>
+                    <TableRowColumn style={{ ...tableContent, ...wrapperStyle }}>{item.RefRange}</TableRowColumn>
                     <TableRowColumn style={tableContent}>{item.ResultUnit}</TableRowColumn>
-                    <TableRowColumn style={{ ...tableContent, width: '36px' }}>
+                    <TableRowColumn style={{ ...tableContent, ...narrowStyle }}>
                         <div onClick={this.handleReportEchars.bind(this, item)}>
                             {isNormal ? <i className="bar chart icon" /> : isLow ? <i className="blue bar chart icon" /> : <i className="red bar chart icon" />}
                         </div>
@@ -143,13 +144,13 @@ class ReportLaboratory extends React.Component {
                         <Table style={{ 'border': '2px solid #f1f1f1' }} selectable={false}>
                             <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                                 <TableRow style={tableHeader}>
-                                    <TableHeaderColumn style={{ ...tableHeader, width: '36px' }} ></TableHeaderColumn>
+                                    <TableHeaderColumn style={{ ...tableHeader, ...narrowStyle }} ></TableHeaderColumn>
                                     <TableHeaderColumn style={Object.assign({}, tableHeader, tableHeader2)}>检查项目</TableHeaderColumn>
                                     <TableHeaderColumn style={tableHeader} >结果</TableHeaderColumn>
-                                    <TableHeaderColumn style={headerCont} ></TableHeaderColumn>
-                                    <TableHeaderColumn style={{ ...tableHeader, width: '60px' }}>参考范围</TableHeaderColumn>
+                                    <TableHeaderColumn style={{...headerCont,...minStyle}} ></TableHeaderColumn>
+                                    <TableHeaderColumn style={{ ...tableHeader, ...wrapperStyle }}>参考范围</TableHeaderColumn>
                                     <TableHeaderColumn style={tableHeader} >单位</TableHeaderColumn>
-                                    <TableHeaderColumn style={{ ...tableHeader, width: '36px' }} >趋势</TableHeaderColumn>
+                                    <TableHeaderColumn style={{ ...tableHeader, ...narrowStyle }} >趋势</TableHeaderColumn>
                                 </TableRow>
                             </TableHeader>
                             <TableBody displayRowCheckbox={false}>

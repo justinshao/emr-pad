@@ -74,7 +74,7 @@ const styles = {
         left: '125px'
     },
     ageBox: {
-        marginLeft: '21px'
+        marginLeft: '20px'
     }
 }
 

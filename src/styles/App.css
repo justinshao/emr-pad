@@ -11,11 +11,45 @@ a{
 *{
     font-family: 'ping'f-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
 }
-body ::-webkit-scrollbar{
-    width: '0px';
-    -webkit-appearance: '';
+/* 当屏幕宽度小于800px时，以下样式触发 */
+@media screen and (max-width: 800px) {
+    .webComponentShow{display: none!important}
+    .mobileComponentShow{
+        position:fixed;
+        bottom:0px;
+        left:0px;
+        width:100%;
+    }
+    .bottomMenu{
+        position:relative; 
+        bottom:0px;
+        overflow-X:auto;
+        height:230px;
+        z-index:10;
+        box-sizing: border-box;
+        overflow-Y:hidden;
+        padding-bottom: 2px
+    }
+    .bottomMenu::-webkit-scrollbar {display: none;}
+    .infoBottomMenu::-webkit-scrollbar {display: none;}
+    .infoBottomMenu{
+        position:relative; 
+        bottom:0px;
+        overflow-X:auto;
+        height:60px;
+        z-index:10;
+    }
+    .userIcon{
+        color: white;
+        line-height: 64px;
+        padding-right: 20px;
+    }
+    .hasreportColor{
+        color:blue!important;
+    }
 }
-
-.scroolStyle::-webkit-scrollbar {
-    display: none;
-   }
+/* 当屏幕宽度大于800px时，以下样式触发 */
+@media screen and (min-width: 800px) {
+    .mobileComponentShow{display: none!important}
+    .userIcon{display: none!important}
+}

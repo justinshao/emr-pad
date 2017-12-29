@@ -13,10 +13,10 @@ import { getChnOrder } from '../service';
 const bodyHeight = document.body.clientHeight;
 const styles = {
     widderStyle: {
-        width: '90px'
+        width: '12%'
     },
     narrowStyle: {
-        width: '40px'
+        width: '6%'
     },
     wrapperStyle: {
         height: `${bodyHeight}` - 185,
@@ -96,7 +96,7 @@ class ReportChDtAdviceContent extends React.Component {
         }) : ''
         return (
             <div>
-                <Table style={{ 'border': '2px solid #f1f1f1', 'minWidth': '700px' }} selectable={false} bodyStyle={{ 'minWidth': '700px' }} wrapperStyle={styles.wrapperStyle}>
+                <Table style={{ 'border': '2px solid #f1f1f1', 'minWidth': '800px' }} selectable={false} bodyStyle={{ 'minWidth': '800px',paddingBottom:'100px' }} wrapperStyle={styles.wrapperStyle}>
                     <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                         <TableRow style={tableHeader}>
                             <TableHeaderColumn style={{ ...tableHeader, ...styles.narrowStyle }}>状态</TableHeaderColumn>
@@ -113,7 +113,7 @@ class ReportChDtAdviceContent extends React.Component {
                             <TableHeaderColumn style={tableHeader} >嘱托</TableHeaderColumn>
                         </TableRow>
                     </TableHeader>
-                    <TableBody displayRowCheckbox={false} >
+                    <TableBody displayRowCheckbox={false} style={{paddingBottom:'100px'}}>
                         {tableRow}
                     </TableBody>
                 </Table>

@@ -13,10 +13,8 @@ import { getInpatOrder } from '../service';
 const bodyHeight = document.body.clientHeight;
 
 const styles = {
-    bodyName: { width: '110px' },
-    headerName: { width: '110px' },
-    bodyNarrow: { width: '40px' },
-    headerNarrow: { width: '40px' },
+    headerName: { width: '16%' },
+    headerNarrow: { width: '6%' },
     wrapperStyle: {
         height: `${bodyHeight}` - 170,
         overflowY: 'hidden'
@@ -68,16 +66,16 @@ class ReportDtAdviceContent extends React.Component {
                 if (i == 0) {
                     return (
                         <TableRow style={tableContent} key={i}>
-                            <TableRowColumn style={Object.assign({}, tableContent, stateColor, styles.bodyNarrow)} rowSpan={item.Details.length}>{item.State}</TableRowColumn>
+                            <TableRowColumn style={Object.assign({}, tableContent, stateColor, styles.headerNarrow)} rowSpan={item.Details.length}>{item.State}</TableRowColumn>
                             <TableRowColumn style={tableContent} rowSpan={item.Details.length}>{item.OrderDate}</TableRowColumn>
-                            <TableRowColumn style={{ ...tableContent, ...styles.bodyName }}>{detail.Name}</TableRowColumn>
+                            <TableRowColumn style={{ ...tableContent, ...styles.headerName }}>{detail.Name}</TableRowColumn>
                             <TableRowColumn style={tableContent} rowSpan={item.Details.length}>{item.Told}</TableRowColumn>
-                            <TableRowColumn style={{ ...tableContent, ...styles.bodyNarrow }} rowSpan={item.Details.length}>{item.ExeWayCode}</TableRowColumn>
-                            <TableRowColumn style={{ ...tableContent, ...styles.bodyNarrow }} rowSpan={item.Details.length}>{item.ExecFreqCode}</TableRowColumn>
+                            <TableRowColumn style={{ ...tableContent, ...styles.headerNarrow }} rowSpan={item.Details.length}>{item.ExeWayCode}</TableRowColumn>
+                            <TableRowColumn style={{ ...tableContent, ...styles.headerNarrow }} rowSpan={item.Details.length}>{item.ExecFreqCode}</TableRowColumn>
                             <TableRowColumn style={tableContent}>{detail.Dose}</TableRowColumn>
                             <TableRowColumn style={tableContent}>{detail.Num}</TableRowColumn>
                             <TableRowColumn style={tableContent} rowSpan={item.Details.length}>{item.OrderDoctor}</TableRowColumn>
-                            <TableRowColumn style={{ ...tableContent, ...styles.bodyNarrow }}>{detail.BYO}</TableRowColumn>
+                            <TableRowColumn style={{ ...tableContent, ...styles.headerNarrow }}>{detail.BYO}</TableRowColumn>
                             <TableRowColumn style={tableContent} rowSpan={item.Details.length}>{item.StartTime}</TableRowColumn>
                             <TableRowColumn style={tableContent} rowSpan={item.Details.length}>{item.StopTime}</TableRowColumn>
                         </TableRow>
@@ -86,10 +84,10 @@ class ReportDtAdviceContent extends React.Component {
                 else {
                     return (
                         <TableRow style={tableContent} key={i}>
-                            <TableRowColumn style={{ ...tableContent, ...styles.bodyName }}>{detail.Name}</TableRowColumn>
+                            <TableRowColumn style={{ ...tableContent, ...styles.headerName }}>{detail.Name}</TableRowColumn>
                             <TableRowColumn style={tableContent}>{detail.Dose}</TableRowColumn>
                             <TableRowColumn style={tableContent}>{detail.Num}</TableRowColumn>
-                            <TableRowColumn style={{ ...tableContent, ...styles.bodyNarrow }}>{detail.BYO}</TableRowColumn>
+                            <TableRowColumn style={{ ...tableContent, ...styles.headerNarrow }}>{detail.BYO}</TableRowColumn>
                         </TableRow>
                     )
                 }
@@ -98,7 +96,7 @@ class ReportDtAdviceContent extends React.Component {
         })) : ''
         return (
             <div>
-                <Table style={{ 'border': '2px solid #f1f1f1', 'minWidth': '760px' }} selectable={false} bodyStyle={{ 'minWidth': '760px' }} wrapperStyle={styles.wrapperStyle}>
+                <Table style={{ 'border': '2px solid #f1f1f1', 'minWidth': '760px' }} selectable={false} bodyStyle={{ 'minWidth': '760px',paddingBottom:'100px'}} wrapperStyle={styles.wrapperStyle}>
                     <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                         <TableRow style={tableHeader}>
                             <TableHeaderColumn style={{ ...tableHeader, ...styles.headerNarrow }} >状态</TableHeaderColumn>
@@ -115,7 +113,7 @@ class ReportDtAdviceContent extends React.Component {
                             <TableHeaderColumn style={tableHeader} >停嘱时间</TableHeaderColumn>
                         </TableRow>
                     </TableHeader>
-                    <TableBody displayRowCheckbox={false}>
+                    <TableBody displayRowCheckbox={false} style={{paddingBottom:'100px'}}>
                         {tableRow}
                     </TableBody>
                 </Table>
