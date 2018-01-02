@@ -30,8 +30,7 @@ class HomeHeaderBar extends React.Component {
         this.state = {
             title: null,
             wards: [],
-            changeIcon: false,
-            value:props.wardId
+            changeIcon: false
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -45,7 +44,8 @@ class HomeHeaderBar extends React.Component {
             if (wards.length) {
                 this.setState({ wards: wards });
                 if (!this.props.wardId) {
-                    this.selectWard(wards[0].Id);
+                    let value = wards[0].Id;
+                    this.selectWard(value);
                 }
             }
         })
@@ -67,6 +67,7 @@ class HomeHeaderBar extends React.Component {
         }
     }
 
+    // 向上传入筛选的wardid
     selectWard(wardId) {
         if (this.props.onSelectedWardChange) {
             this.props.onSelectedWardChange(wardId);
@@ -82,14 +83,14 @@ class HomeHeaderBar extends React.Component {
         })
     }
 
-    handleChange(e, { value }){
+    handleChange(e, { value }) {
         this.setState({ value });
         this.selectWard(value);
     }
 
     render() {
         let leftElement = (<IconButton onTouchTap={this.handleUserHome}><AccountCircleIcon /></IconButton>);
-        let value = this.state.value;
+        let value = this.props.wardId;
         var options = [];
         value ? this.state.wards.map(w => {
             let option = { key: '', text: '', value: '' };
@@ -99,14 +100,14 @@ class HomeHeaderBar extends React.Component {
             options.push(option);
         }) : '';
 
-        let rightElement = this.state.wards.length ? <div style={{marginRight:'10px',height:'100%',lineHeight:'64px'}}><Dropdown onChange={this.handleChange}
+        let rightElement = this.state.wards.length ? <div style={{ marginRight: '16px', height: '100%', lineHeight: '64px' }}><Dropdown onChange={this.handleChange}
             options={options}
             placeholder='Choose an option'
             floating
             scrolling
             icon='filter'
             value={value}
-            style={{border:'none',background:'none',color:'white',width:'20px!important'}}
+            style={{ border: 'none', background: 'none', color: 'white' }}
             className={'wardStyle'}
         /></div> : <div></div>;
 
