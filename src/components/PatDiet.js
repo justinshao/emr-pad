@@ -27,15 +27,19 @@ class PatDiet extends React.Component {
     }
 
     render() {
-        let tableRow = this.state.data.map((item, i) => (
-            <TableRow style={tableContent} key={i}>
-                <TableRowColumn style={tableContent}>{item.StartDate}</TableRowColumn>
-                <TableRowColumn style={tableContent}>{item.OrderNames}</TableRowColumn>
-                <TableRowColumn style={tableContent}>{item.OrderEmp}</TableRowColumn>
-                <TableRowColumn style={tableContent}>{item.StopDate}</TableRowColumn>
-                <TableRowColumn style={tableContent}>{item.StopEmp}</TableRowColumn>
-            </TableRow>
-        ))
+        let tableRow = this.state.data.map((item, i) => {
+            let startDate=item.StartDate.split('T');
+            let date=<div><div>{startDate[0]}</div><div>{startDate[1]}</div></div>
+            return (
+                <TableRow style={tableContent} key={i}>
+                    <TableRowColumn style={tableContent}>{date}</TableRowColumn>
+                    <TableRowColumn style={tableContent}>{item.OrderNames}</TableRowColumn>
+                    <TableRowColumn style={tableContent}>{item.OrderEmp}</TableRowColumn>
+                    <TableRowColumn style={tableContent}>{item.StopDate}</TableRowColumn>
+                    <TableRowColumn style={tableContent}>{item.StopEmp}</TableRowColumn>
+                </TableRow>
+            )
+        })
         let content = (
             this.state.data.length != 0 ? (
                 <div>

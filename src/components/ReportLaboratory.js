@@ -27,9 +27,9 @@ const headerCont = {
     fontSize: '13px',
     color: 'white'
 }
-const wrapperStyle={width:'16%'}
-const narrowStyle={width:'14%'}
-const minStyle={width:'6%'}
+const wrapperStyle = { width: '16%' }
+const narrowStyle = { width: '14%' }
+const minStyle = { width: '6%' }
 const tableHeader2 = { width: '24%' }
 
 class ReportLaboratory extends React.Component {
@@ -41,7 +41,9 @@ class ReportLaboratory extends React.Component {
             detailBottom: '',
             details: [],
             content: false,
-            loading: true
+            loading: true,
+            regId: '',
+            sourceType: ''
         }
         this.handleReportEchars = this.handleReportEchars.bind(this);
     }
@@ -85,7 +87,9 @@ class ReportLaboratory extends React.Component {
                             </span>,
                         details: data[0].Details,
                         content: true,
-                        reportTime: data[0].Header.ReportTime
+                        reportTime: data[0].Header.ReportTime,
+                        regId: data[0].Header.RegId,
+                        sourceType: data[0].Header.SourceType
                     })
                 }
                 else {
@@ -97,9 +101,9 @@ class ReportLaboratory extends React.Component {
             })
     }
 
-    handleReportEchars(item) {
+    handleReportEchars(regId,sourceType,item) {
         if (this.props.onReportEchars) {
-            this.props.onReportEchars(item);
+            this.props.onReportEchars(regId,sourceType,item);
         }
     }
 
@@ -121,11 +125,11 @@ class ReportLaboratory extends React.Component {
                     <TableRowColumn style={{ ...tableContent, ...narrowStyle }}>{item.ItemCode}</TableRowColumn>
                     <TableRowColumn style={Object.assign({}, tableContent, tableHeader2)}>{item.Name}</TableRowColumn>
                     <TableRowColumn style={tableContent}>{item.ResultData}</TableRowColumn>
-                    <TableRowColumn style={{...tableCont,...minStyle}}>{item.ResultStateDesc}</TableRowColumn>
+                    <TableRowColumn style={{ ...tableCont, ...minStyle }}>{item.ResultStateDesc}</TableRowColumn>
                     <TableRowColumn style={{ ...tableContent, ...wrapperStyle }}>{item.RefRange}</TableRowColumn>
                     <TableRowColumn style={tableContent}>{item.ResultUnit}</TableRowColumn>
                     <TableRowColumn style={{ ...tableContent, ...narrowStyle }}>
-                        <div onClick={this.handleReportEchars.bind(this, item)}>
+                        <div onClick={this.handleReportEchars.bind(this, this.state.regId, this.state.sourceType, item)}>
                             {isNormal ? <i className="bar chart icon" /> : isLow ? <i className="blue bar chart icon" /> : <i className="red bar chart icon" />}
                         </div>
                     </TableRowColumn>
@@ -147,7 +151,7 @@ class ReportLaboratory extends React.Component {
                                     <TableHeaderColumn style={{ ...tableHeader, ...narrowStyle }} ></TableHeaderColumn>
                                     <TableHeaderColumn style={Object.assign({}, tableHeader, tableHeader2)}>检查项目</TableHeaderColumn>
                                     <TableHeaderColumn style={tableHeader} >结果</TableHeaderColumn>
-                                    <TableHeaderColumn style={{...headerCont,...minStyle}} ></TableHeaderColumn>
+                                    <TableHeaderColumn style={{ ...headerCont, ...minStyle }} ></TableHeaderColumn>
                                     <TableHeaderColumn style={{ ...tableHeader, ...wrapperStyle }}>参考范围</TableHeaderColumn>
                                     <TableHeaderColumn style={tableHeader} >单位</TableHeaderColumn>
                                     <TableHeaderColumn style={{ ...tableHeader, ...narrowStyle }} >趋势</TableHeaderColumn>

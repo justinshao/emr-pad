@@ -45,7 +45,7 @@ const AppRouter = () => (
                 <PrivateRoute path="/media/:regId/:emrId/:pos?" component={EmrMedias} />
                 <Route path="/setting" component={Setting} />
                 <Route path="/login" component={Login} />
-                <Route path="/reportEchars/:title?/:data?" component={ReportEchars} />
+                <Route path="/reportEchars/:regId/:sourceType/:itemCode/:title?" component={ReportEchars} />
                 <Route component={NotFound} />
             </Switch>
         </div>

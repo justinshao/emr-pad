@@ -63,9 +63,9 @@ class ClinicWrapper extends React.Component {
     }
 
     // 跳转趋势图
-    handleReportEchars(item) {
+    handleReportEchars(regId,sourceType,item) {
         let { history } = this.props;
-        history.push(`/reportEchars/${item.Name}/${item.ResultData}`);
+        history.push(`/reportEchars/${regId}/${sourceType}/${item.ItemCode}/${item.Name}`);
     }
 
     // 跳转其他界面

@@ -1,7 +1,7 @@
 import React from 'react';
 import Paper from 'material-ui/Paper';
 import { Icon } from 'semantic-ui-react';
-import { getInHospitalInfo } from '../service';
+import { getPat } from '../service';
 
 const style = {
     width: '90%',
@@ -30,7 +30,7 @@ class PatInfoWrapper extends React.Component {
     componentDidMount() {
         let { regId } = this.props;
 
-        getInHospitalInfo(regId)
+        getPat(regId)
             .then(data => {
                 this.setState({ data: data })
             })
@@ -49,7 +49,7 @@ class PatInfoWrapper extends React.Component {
                 <Paper style={style} zDepth={1}>
                     <div>病人：{this.state.data.Name}</div>
                     <div>性别：{this.state.data.Sex}</div>
-                    <div>年龄：{this.state.data.BirthDay}</div>
+                    <div>年龄：{this.state.data.Age}</div>
                     <div>住院号：{this.state.data.VisitNo}</div>
                     <div style={person}><Icon name='user circle' size='big' /></div>
                 </Paper>

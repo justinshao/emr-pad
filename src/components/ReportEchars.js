@@ -4,6 +4,7 @@ import 'echarts/lib/chart/line';
 import 'echarts/lib/component/tooltip';
 import 'echarts/lib/component/title';
 import 'echarts/lib/component/toolbox';
+import { getAssayResultHistory } from '../service';
 
 const contentStyle = {
     'width': '90%',
@@ -15,6 +16,10 @@ const contentStyle = {
 class ReportEchars extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            times: [],
+            values: []
+        }
         this.handleGoBack = this.handleGoBack.bind(this);
     }
 
@@ -24,43 +29,58 @@ class ReportEchars extends React.Component {
     }
 
     componentDidMount() {
-        let { title, data } = this.props.match.params;
-        let dataArray = [];
-        dataArray.push(data);
-        var myChart = echarts.init(document.getElementById('main'));
-        myChart.setOption({
-            title: {
-                text: `${title}-趋势图`,
-                left: 'center'
-            },
-            axisPointer: {
-                show: true,
-                snap: true
-            },
-            grid: {
-                left: '5%',
-                right: '7%',
-                bottom: '10%',
-                top: '20%',
-                containLabel: true
-            },
-            xAxis: {
-                type: 'category',
-                splitLine: { show: false },
-                data: [1]
-            },
-            yAxis: {
-                type: 'value'
-            },
-            series: [
-                {
-                    name: title,
-                    type: 'line',
-                    stack: '结果',
-                    data: dataArray
-                }
-            ]
-        });
+        let { regId, sourceType, itemCode, title } = this.props.match.params;
+        getAssayResultHistory(regId, sourceType, itemCode)
+            .then(data => {
+                var myChart = echarts.init(document.getElementById('main'));
+                myChart.setOption({
+                    title: {
+                        text: `${title}-趋势图`,
+                        left: 'center'
+                    },
+                    axisPointer: {
+                        show: true,
+                        snap: true
+                    },
+                    // tooltip : {
+                    //     trigger: 'axis',
+                    //     axisPointer: {
+                    //         type: 'cross',
+                    //         label: {
+                    //             backgroundColor: '#6a7985'
+                    //         }
+                    //     }
+                    // },
+                    grid: {
+                        left: '5%',
+                        right: '7%',
+                        bottom: '10%',
+                        top: '20%',
+                        containLabel: true
+                    },
+                    xAxis: {
+                        type: 'category',
+                        splitLine: { show: false },
+                        data: data.times
+                    },
+                    yAxis: {
+                        type: 'value'
+                    },
+                    series: [
+                        {
+                            name: title,
+                            type: 'line',
+                            stack: '结果',
+                            data: data.values,
+                            label: {
+                                normal: {
+                                  formatter:data.values,
+                                }
+                              }
+                        }
+                    ]
+                });
+            })
     }
 
     render() {

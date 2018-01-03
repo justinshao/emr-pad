@@ -31,7 +31,6 @@ module.exports = {
       {
         context: ['/api/*'],
         target: 'http://10.1.51.230:8084',
-        // target: 'http://127.0.0.1:8080',
         secure: false
       }
     ]
