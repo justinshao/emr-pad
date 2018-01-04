@@ -43,25 +43,33 @@ class Home extends React.Component {
 
         if (minCellWidth * this.state.col > regin) {
             let col = this.state.col - 1;
-            while (minCellWidth * col > regin) { col--; }
-
+            if (maxCellWidth * col < regin) {
+                col = col + 1;
+            }
+            else {
+                while (minCellWidth * col > regin) { col--; }
+            }
             this.setState({ col: Math.max(2, col) });
-        } else if (maxCellWidth * this.state.col < regin) {
+        }
+        else if (maxCellWidth * this.state.col < regin) {
             let col = this.state.col + 1;
             while (maxCellWidth * col < regin) { col++; }
-
             this.setState({ col: col });
         }
 
         if (minCellWidthRow * this.state.colRow > regin) {
             let colRow = this.state.colRow - 1;
-            while (minCellWidthRow * colRow > regin) { colRow--; }
-
+            if (maxCellWidth * colRow < regin) {
+                colRow = colRow + 1;
+            }
+            else {
+                while (minCellWidthRow * colRow > regin) { colRow--; }
+            }
             this.setState({ colRow: Math.max(1, colRow) });
-        } else if (maxCellWidthRow * this.state.colRow < regin) {
+        }
+        else if (maxCellWidthRow * this.state.colRow < regin) {
             let colRow = this.state.colRow + 1;
             while (maxCellWidthRow * colRow < regin) { colRow++; }
-
             this.setState({ colRow: colRow });
         }
     }
