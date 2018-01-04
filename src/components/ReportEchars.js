@@ -7,10 +7,9 @@ import 'echarts/lib/component/toolbox';
 import { getAssayResultHistory } from '../service';
 
 const contentStyle = {
-    'width': '90%',
-    'height': '400px',
-    'paddingTop': '40px',
-    'paddingLeft': '5%'
+    width: '100%',
+    height: '400px',
+    paddingTop: '40px'
 }
 
 class ReportEchars extends React.Component {
@@ -38,46 +37,91 @@ class ReportEchars extends React.Component {
                         text: `${title}-趋势图`,
                         left: 'center'
                     },
-                    axisPointer: {
-                        show: true,
-                        snap: true
+                    tooltip: {
+                        trigger: 'axis'
                     },
-                    // tooltip : {
-                    //     trigger: 'axis',
-                    //     axisPointer: {
-                    //         type: 'cross',
-                    //         label: {
-                    //             backgroundColor: '#6a7985'
-                    //         }
-                    //     }
-                    // },
                     grid: {
-                        left: '5%',
-                        right: '7%',
+                        left: '3%',
+                        right: '3%',
                         bottom: '10%',
                         top: '20%',
-                        containLabel: true,
+                        containLabel: true
                     },
                     xAxis: {
                         type: 'category',
                         splitLine: { show: false },
                         data: data.times,
-                        
+                        axisLabel: {
+                            interval: 0,
+                            rotate: 40,
+                            margin: 6,
+                            textStyle:{
+                                color: '#666666'
+                            }
+                        },
+                        axisLine: {
+                            lineStyle: {
+                                color: '#6699FF',
+                                width: 2
+                            }
+                        }
                     },
                     yAxis: {
-                        type: 'value'
+                        type: 'value',
+                        splitLine: { show: true },
+                        axisLine: {
+                            lineStyle: {
+                                color: '#6699FF',
+                                width: 2
+                            }
+                        },
+                        axisLabel: {
+                            color: '#666666'
+                        }
                     },
                     series: [
                         {
-                            name: title,
+                            name: '指标值',
                             type: 'line',
-                            stack: '结果',
                             data: data.values,
-                            label: {
+                            itemStyle: {
                                 normal: {
-                                  formatter:data.values,
+                                    label: {
+                                        show: true,
+                                        textStyle: {
+                                            fontSize: '10',
+                                            color: '#999999'
+                                        }
+                                    }
                                 }
-                              }
+                            },
+                            lineStyle: {
+                                normal: {
+                                    color: '#FF6600'
+                                }
+                            },
+                            areaStyle: {
+                                normal: {
+                                    color: {
+                                        type: 'linear',
+                                        x: 0,
+                                        y: 0,
+                                        x2: 0,
+                                        y2: 1,
+                                        colorStops: [
+                                            {
+                                                offset: 0,
+                                                color: 'rgba(255,204,204,0.8)'
+                                            },
+                                            {
+                                                offset: 1,
+                                                color: 'rgba(255,204,204,0.2)'
+                                            }
+                                        ],
+                                        globalCoord: false
+                                    }
+                                }
+                            }
                         }
                     ]
                 });
