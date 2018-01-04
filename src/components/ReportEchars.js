@@ -56,12 +56,13 @@ class ReportEchars extends React.Component {
                         right: '7%',
                         bottom: '10%',
                         top: '20%',
-                        containLabel: true
+                        containLabel: true,
                     },
                     xAxis: {
                         type: 'category',
                         splitLine: { show: false },
-                        data: data.times
+                        data: data.times,
+                        
                     },
                     yAxis: {
                         type: 'value'
